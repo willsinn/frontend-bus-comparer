@@ -1,11 +1,7 @@
 export const /*FUNCTION*/ loginUser = (username, password) => {
-  return /*FUNCTION*/ (dispatch) => { //thunk
+  return function(dispatch) { //thunk
     // console.log(process.env.REACT_APP_API_ENDPOINT)
     dispatch({ type: 'AUTHENTICATING_USER' })
-    // dispatch(authenticatingUser())
-    // fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/login`)
-    // adapter.loginUser(username, password)
-    // http://localhost:3000
     fetch('http://localhost:3000/api/v1/login', { //TODO: move this to an adapter
       method: 'POST',
       headers: {
