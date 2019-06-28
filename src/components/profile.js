@@ -5,6 +5,10 @@ import withAuth from '../hocs/withAuth'
 
 // props: { user: { avatar: 'url', username: 'Chandler Bing', bio: 'bio' } }
 class Profile extends React.Component {
+  handleClick = () => {
+    // console.log("logout-clicked");
+    localStorage.clear();
+  }
 
   render(){
     console.log(this.props);
@@ -15,7 +19,6 @@ class Profile extends React.Component {
           <Card.Header>{this.props.username}</Card.Header>
 
           <Card.Description>{this.props.bio}</Card.Description>
-          <button> Logout </button>
         </Card.Content>
       </Card>
     )

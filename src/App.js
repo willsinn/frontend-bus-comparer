@@ -1,10 +1,13 @@
 import React, { Fragment } from 'react'
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
-import Profile from './components/profile'
-import LoginForm from './components/loginForm'
-import Nav from './components/nav'
-import NotFound from './components/notFound'
 import './App.css'
+
+
+import Profile from './components/Profile'
+import LoginForm from './components/LoginForm'
+import Nav from './components/Nav'
+import NotFound from './components/NotFound'
+import SignUp from './components/SignUp'
 
 const App = props => {
   console.log('%c APP Props: ', 'color: firebrick', props)
@@ -16,6 +19,7 @@ const App = props => {
 
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/login" component={LoginForm} />
+        <Route exact path="/signup" component={SignUp} />
         <Route component={NotFound} />
       </Switch>
     </Fragment>

@@ -67,3 +67,4 @@ export const authenticatingUser = () => ({ type: 'AUTHENTICATING_USER' })
 // export const authenticatingUser = () => {
 //   return { type: 'AUTHENTICATING_USER' }
 // }
+export const logoutUser = () => ({ type: 'LOGOUT_USER' })
