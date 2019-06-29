@@ -12,6 +12,7 @@ const withAuth = (WrappedComponent) => {
       // POTENTIAL SECURITY FLAW!!! my tokens don't expire
       if (localStorage.getItem('jwt') && !this.props.loggedIn) this.props.fetchCurrentUser()
       // if i have a token but don't know who it belongs to, ask the server for that user's data
+      
     }
 
     render() {

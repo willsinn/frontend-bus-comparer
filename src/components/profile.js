@@ -7,8 +7,14 @@ import Search from './Search'
 
 
 class Profile extends Component {
+  state = {
+    searches:[]
+  }
+  componentDidMount(){
+    console.log(this.state);
+    const token = `Bearer ${localStorage.jwt}`
+  }
   render() {
-    console.log(this.props);
     return (
         <Card>
           <Image src={this.props.avatar} />
