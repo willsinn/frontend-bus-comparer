@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react'
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
-import Profile from './components/profile'
-import LoginForm from './components/loginForm'
-import Nav from './components/nav'
-import NotFound from './components/notFound'
+import Profile from './components/Profile'
+import LoginForm from './components/LoginForm'
+import Nav from './components/Nav'
+import NotFound from './components/NotFound'
 import './App.css'
 
 const App = props => {
