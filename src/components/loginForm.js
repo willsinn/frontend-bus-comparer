@@ -6,11 +6,10 @@ import { loginUser } from '../actions/user'
 import { Button, Form, Segment, Message } from 'semantic-ui-react'
 
 class LoginForm extends React.Component {
-  // constructor() {
-  //   this.state = { username: '', password: '' }
-  // }
-  state = { username: '', password: '' }
-
+  state = {
+    username: '',
+    password: ''
+  }
   // handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   handleChange = (e, semanticInputData) => {

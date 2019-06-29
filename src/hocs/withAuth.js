@@ -5,7 +5,7 @@ import { Redirect } from 'react-router'
 import { fetchCurrentUser } from '../actions/user'
 import { Loader } from 'semantic-ui-react'
 
-const withAuth = /*FUNCTION*/ (WrappedComponent) => {
+const withAuth = (WrappedComponent) => {
   class AuthorizedComponent extends React.Component {
     componentDidMount() {
       console.log('%c INSIDE COMPONENT DID MOUNT FOR AUTH HOC', 'color: purple')
@@ -30,7 +30,7 @@ const withAuth = /*FUNCTION*/ (WrappedComponent) => {
     }
   }
 
-  const mapStateToProps = /*FUNCTION*/ (reduxStoreState) => {
+  const mapStateToProps = (reduxStoreState) => {
     return {
       loggedIn: reduxStoreState.usersReducer.loggedIn,
       authenticatingUser: reduxStoreState.usersReducer.authenticatingUser
