@@ -13,6 +13,15 @@ class Profile extends Component {
   componentDidMount(){
     console.log(this.state);
     const token = `Bearer ${localStorage.jwt}`
+    fetch('http://localhost:3000/api/v1/searches', {
+      method:'GET',
+      headers: {
+        Authorization: `Bearer ${localStorage.jwt}`
+      }
+    }).then(r => r.json())
+    .then(object => {
+      console.log(object);
+    })
   }
   render() {
     return (
