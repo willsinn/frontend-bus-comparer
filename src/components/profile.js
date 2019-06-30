@@ -5,48 +5,23 @@ import withAuth from '../hocs/withAuth'
 
 import Search from './Search'
 
+const Profile = ({ avatar, username, bio }) => (
+  <div>
+    <Card>
+      <Image src={avatar} />
+      <Card.Content>
+        <Card.Header>{username}</Card.Header>
 
-class Profile extends Component {
-  state = {
-    searches:[]
-  }
-  componentDidMount(){
-    console.log(this.state);
-    const token = `Bearer ${localStorage.jwt}`
-    fetch('http://localhost:3000/api/v1/searches', {
-      method:'GET',
-      headers: {
-        Authorization: `Bearer ${localStorage.jwt}`
-      }
-    }).then(r => r.json())
-    .then(object => {
-      console.log(object);
-    })
-  }
-  render() {
-    return (
-        <Card>
-          <Image src={this.props.avatar} />
-          <Card.Content>
-            <Card.Header>{this.props.username}</Card.Header>
+        <Card.Description>{bio}</Card.Description>
+      </Card.Content>
 
-            <Card.Description>{this.props.bio}</Card.Description>
-          </Card.Content>
-          <Search />
-        </Card>
-    )
-  }
-}
-// const Profile = ({ avatar, username, bio }) => (
-//   <Card>
-//     <Image src={avatar} />
-//     <Card.Content>
-//       <Card.Header>{username}</Card.Header>
-//
-//       <Card.Description>{bio}</Card.Description>
-//     </Card.Content>
-//   </Card>
-// )
+    </Card>
+    <Card>
+      <Search />
+    </Card>
+  </div>
+
+)
 
 // const mapStateToProps = (reduxStoreState) => {
 //   return {
