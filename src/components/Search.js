@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import SearchList from './SearchList'
 
 
 class Search extends Component {
@@ -16,11 +17,21 @@ class Search extends Component {
       this.setState({ searches })
     })
   }
+
   render() {
+    const generateSearchList = () => {
+      debugger
+      
+      this.state.map(search => {
+        <SearchList
+          search={search}
+        />
+      })
+    }
     console.log(this.state);
     return(
       <div>
-        Search!
+      {generateSearchList()}
       </div>)
   }
 }

@@ -4,7 +4,6 @@ import { Card, Image } from 'semantic-ui-react'
 import withAuth from '../hocs/withAuth'
 
 import Search from './Search'
-
 const Profile = ({ avatar, username, bio }) => (
   <div>
     <Card>
@@ -20,7 +19,6 @@ const Profile = ({ avatar, username, bio }) => (
       <Search />
     </Card>
   </div>
-
 )
 
 // const mapStateToProps = (reduxStoreState) => {
