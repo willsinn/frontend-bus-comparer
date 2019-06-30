@@ -1,18 +1,26 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Card, Image } from 'semantic-ui-react'
 import withAuth from '../hocs/withAuth'
 
-// props: { user: { avatar: 'url', username: 'Chandler Bing', bio: 'bio' } }
-const Profile = ({ avatar, username, bio }) => (
-  <Card>
-    <Image src={avatar} />
-    <Card.Content>
-      <Card.Header>{username}</Card.Header>
+import Search from './Search'
 
-      <Card.Description>{bio}</Card.Description>
-    </Card.Content>
-  </Card>
+const Profile = ({ avatar, username, bio }) => (
+  <div>
+    <Card>
+      <Image src={avatar} />
+      <Card.Content>
+        <Card.Header>{username}</Card.Header>
+
+        <Card.Description>{bio}</Card.Description>
+      </Card.Content>
+
+    </Card>
+    <Card>
+      <Search />
+    </Card>
+  </div>
+
 )
 
 // const mapStateToProps = (reduxStoreState) => {
