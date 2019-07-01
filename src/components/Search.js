@@ -22,8 +22,8 @@ class Search extends Component {
     this.state.searches.map(search => {
       return (
         <SearchList
-        key={search.id}
-        search={search}
+          key={search.id}
+          search={search}
         />
       )
     })
