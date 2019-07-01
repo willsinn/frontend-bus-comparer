@@ -1,7 +1,4 @@
 import React from 'react'
-import { Card } from 'semantic-ui-react'
-
-
 
 const SearchListItem = props => {
   console.log(props);
