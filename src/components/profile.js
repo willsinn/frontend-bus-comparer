@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { Card, Image } from 'semantic-ui-react'
 import withAuth from '../hocs/withAuth'
@@ -54,6 +54,7 @@ class Profile extends Component {
     )
   }
 }
+
 
 const mapStateToProps = ({ usersReducer: { user: { avatar, username, bio } } }) => ({
   avatar,
