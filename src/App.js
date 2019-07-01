@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
 
 import Profile from './components/Profile'
@@ -10,7 +10,7 @@ import './App.css'
 const App = props => {
   console.log('%c APP Props: ', 'color: firebrick', props)
   return (
-    <Fragment>
+    <>
       <Nav />
       <Switch>
         <Route exact path="/" render={() => <Redirect to="/profile" />} />
@@ -20,7 +20,7 @@ const App = props => {
         <Route component={NotFound} />
 
       </Switch>
-    </Fragment>
+    </>
   )
 }
 
