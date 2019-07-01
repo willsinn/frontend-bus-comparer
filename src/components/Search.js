@@ -12,7 +12,8 @@ class Search extends Component {
       headers: {
         Authorization: `Bearer ${localStorage.jwt}`
       }
-    }).then(r => r.json())
+    })
+    .then(r => r.json())
     .then(searches => {
       this.setState({ searches })
     })
