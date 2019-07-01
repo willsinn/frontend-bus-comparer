@@ -5,6 +5,7 @@ import withAuth from '../hocs/withAuth'
 
 import Search from './Search'
 
+
 const Profile = ({ avatar, username, bio }) => (
   <>
     <Card>

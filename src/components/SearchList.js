@@ -4,9 +4,9 @@ import SearchListItem from './SearchListItem'
 
 
 const SearchList = props => {
-  const bus = props.search
+  const busList = props.search
   const generateItem = () => (
-    bus.items.map(item => (
+    busList.items.map(item => (
       <SearchListItem
         key={item.id}
         item={item}
@@ -18,9 +18,9 @@ const SearchList = props => {
       <br/>
       <Card>
       <Card.Content>
-        <Card.Header>{bus.company}</Card.Header>
-        <Card.Description>{bus.target_date}</Card.Description>
-        <Card.Description>{bus.url}</Card.Description>
+        <Card.Header>{busList.company}</Card.Header>
+        <Card.Description>{busList.target_date}</Card.Description>
+        <Card.Description>{busList.url}</Card.Description>
         <Card>
           {generateItem()}
         </Card>
