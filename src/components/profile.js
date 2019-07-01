@@ -45,9 +45,11 @@ class Profile extends Component {
         ) : (
           <>
             <button onClick={(e) => {this.handleClick(e)}}> To Profile </button>
-            <Search
-              searches={this.state.searches}
-            />
+            <div id="search-console">
+              <Search
+                searches={this.state.searches}
+              />
+            </div>
           </>
         )}
       </>
