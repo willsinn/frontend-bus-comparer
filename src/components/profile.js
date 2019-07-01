@@ -15,17 +15,19 @@ class Profile extends Component {
       method:'GET',
       headers: {
         Authorization: `Bearer ${localStorage.jwt}`
-      }
-    }).then(r => r.json())
-    .then(searches => {
-      this.setState({ searches })
+        }
+      })
+      .then(r => r.json())
+      .then(searches => {
+        this.setState({ searches })
     })
   }
+
   handleClick = (e) => {
     this.setState({ isProfile: !this.state.isProfile })
   }
+
   render() {
-    console.log(this.state);
     return (
       <>
         {(this.state.isProfile) ?
