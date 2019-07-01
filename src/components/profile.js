@@ -11,10 +11,8 @@ const Profile = ({ avatar, username, bio }) => (
       <Image src={avatar} />
       <Card.Content>
         <Card.Header>{username}</Card.Header>
-
         <Card.Description>{bio}</Card.Description>
       </Card.Content>
-
     </Card>
     <Card>
       <Search />
