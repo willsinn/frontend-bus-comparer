@@ -23,17 +23,22 @@ class Profile extends Component {
     })
   }
 
-  handleClick = (e) => {
+  handleToggleClick = (e) => {
     this.setState({ isProfile: !this.state.isProfile })
   }
 
+  handleLogoutClick = (e) => {
+    localStorage.clear()
+    document.location.reload()
+  }
   render() {
     return (
       <>
+        <button onClick={(e) => {this.handleLogoutClick(e)}}> Logout </button>
         {(this.state.isProfile) ?
         (
           <>
-            <button onClick={(e) => {this.handleClick(e)}}> To Console </button>
+            <button onClick={(e) => {this.handleToggleClick(e)}}> To Console </button>
             <Card>
               <Image src={this.props.avatar} />
               <Card.Content>
@@ -44,7 +49,7 @@ class Profile extends Component {
           </>
         ) : (
           <>
-            <button onClick={(e) => {this.handleClick(e)}}> To Profile </button>
+            <button onClick={(e) => {this.handleToggleClick(e)}}> To Profile </button>
             <div id="search-console">
               <Search
                 searches={this.state.searches}
