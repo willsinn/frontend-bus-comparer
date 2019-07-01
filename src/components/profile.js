@@ -1,11 +1,12 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { Card, Image } from 'semantic-ui-react'
 import withAuth from '../hocs/withAuth'
 
 import Search from './Search'
+
 const Profile = ({ avatar, username, bio }) => (
-  <div>
+  <>
     <Card>
       <Image src={avatar} />
       <Card.Content>
@@ -18,7 +19,7 @@ const Profile = ({ avatar, username, bio }) => (
     <Card>
       <Search />
     </Card>
-  </div>
+  </>
 )
 
 // const mapStateToProps = (reduxStoreState) => {

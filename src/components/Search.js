@@ -18,21 +18,23 @@ class Search extends Component {
     })
   }
 
-  render() {
-    const generateSearchList = () => {
-      debugger
-      
-      this.state.map(search => {
+  generateSearchList = () => (
+    this.state.searches.map(search => {
+      return (
         <SearchList
-          search={search}
+        key={search.id}
+        search={search}
         />
-      })
-    }
+      )
+    })
+  )
+  render() {
     console.log(this.state);
     return(
       <div>
-      {generateSearchList()}
-      </div>)
+        {this.generateSearchList()}
+      </div>
+    )
   }
 }
 
