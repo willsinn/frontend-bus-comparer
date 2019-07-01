@@ -1,5 +1,5 @@
-export const /*FUNCTION*/ loginUser = (username, password) => {
-  return /*FUNCTION*/ (dispatch) => { //thunk
+export const loginUser = (username, password) => {
+  return (dispatch) => { //thunk
     // console.log(process.env.REACT_APP_API_ENDPOINT)
     dispatch({ type: 'AUTHENTICATING_USER' })
     // dispatch(authenticatingUser())
