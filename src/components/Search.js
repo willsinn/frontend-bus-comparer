@@ -1,41 +1,22 @@
-import React, { Component } from 'react'
+import React from 'react'
 import SearchList from './SearchList'
 
 
-class Search extends Component {
-  state = {
-    searches:[]
-  }
-  componentDidMount(){
-    fetch('http://localhost:3000/api/v1/searches', {
-      method:'GET',
-      headers: {
-        Authorization: `Bearer ${localStorage.jwt}`
-      }
-    }).then(r => r.json())
-    .then(searches => {
-      this.setState({ searches })
-    })
-  }
-
-  generateSearchList = () => (
-    this.state.searches.map(search => {
-      return (
-        <SearchList
-          key={search.id}
-          search={search}
-        />
-      )
-    })
-  )
-  render() {
-    console.log(this.state);
-    return(
-      <div>
-        {this.generateSearchList()}
-      </div>
+const Search = props => {
+  const generateSearchList = () => (
+      props.searches.map(search => {
+        return (
+          <SearchList
+            key={search.id}
+            search={search}
+          />
+        )
+      })
     )
-  }
+  return (
+    <>
+    {generateSearchList()}
+    </>
+  )
 }
-
 export default Search
