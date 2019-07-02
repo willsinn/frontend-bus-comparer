@@ -5,10 +5,15 @@ const SearchListItem = props => {
   const bus = props.item
   return(
       <div className="search-list-item">
-        <span>Price: ${bus.price} </span>
-        <span>Time: {bus.bus_time} </span>
-        <span>Location: {bus.location} </span>
-        <span>Location: {bus.location} </span>
+        <div className="search-info">
+          Price: ${bus.price}
+        </div>
+        <div className="search-info">
+          Time: {bus.bus_time}
+        </div>
+        <div className="search-info">
+          Location: {bus.location}
+        </div>
       </div>
   )
 }
