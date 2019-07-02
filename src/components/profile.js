@@ -5,13 +5,24 @@ import withAuth from '../hocs/withAuth'
 
 class Profile extends Component {
   state = {
-    isProfile: true
+    isProfile: true,
+    toggleEditing: false,
+    avatarUrl: ''
   }
-  handleUpdate = (fieldType) => {
+  handleClick = () => {
+    this.setState({ toggleEditing: !this.state.toggleEditing })
+  }
+  handleChange = (fieldType) => {
+    return (event) => {
+      this.setState({
+        [fieldType]: event.target.value
+      })
+    }
+  }
 
-  }
 
   render() {
+    console.log(this.state.avatarUrl);
     return (
       <>
       <div className="profile-page">
@@ -22,7 +33,20 @@ class Profile extends Component {
             </div>
           </div>
           <div className="avatar-btn-wrapper">
-            <button onClick={this.handleUpdate}> Change Avatar </button>
+            {(!this.state.toggleEditing)?
+              (
+                <button onClick={this.handleClick}> Change Avatar </button>
+              ) : (
+                <div className='editing-wrapper'>
+                  <div className='editing-header'>
+                    New Avatar: <input type="text" onChange={this.handleChange('avatarUrl')} />
+                  </div>
+                  <div className='editing input-form'>
+
+                    <button onClick={this.handleSave}> Update </button>
+                  </div>
+                </div>
+              )}
           </div>
           <div className="edit-fields-wrapper">
             <div className="profile-fields">
