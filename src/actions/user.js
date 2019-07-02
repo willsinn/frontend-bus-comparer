@@ -1,12 +1,7 @@
 export const loginUser = (username, password) => {
-  return (dispatch) => { //thunk
-    // console.log(process.env.REACT_APP_API_ENDPOINT)
+  return (dispatch) => {
     dispatch({ type: 'AUTHENTICATING_USER' })
-    // dispatch(authenticatingUser())
-    // fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/login`)
-    // adapter.loginUser(username, password)
-    // http://localhost:3000
-    fetch('http://localhost:3000/api/v1/login', { //TODO: move this to an adapter
+    fetch('http://localhost:3000/api/v1/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -31,13 +26,9 @@ export const loginUser = (username, password) => {
         console.log('%c INSIDE YE OLDE .THEN', 'color: navy')
         localStorage.setItem('jwt', JSONResponse.jwt)
         dispatch({ type: 'SET_CURRENT_USER', payload: JSONResponse.user })
-        // dispatch(setCurrentUser(JSONResponse.user))
       })
       .catch(r => r.json().then(e => dispatch({ type: 'FAILED_LOGIN', payload: e.message })))
-      // .then((jsonResponse) => {
-      //   localStorage.setItem('jwt', jsonResponse.jwt)
-      //   dispatch(setCurrentUser(jsonResponse.user))
-      // })
+
   }
 }
 
@@ -56,6 +47,54 @@ export const fetchCurrentUser = () => {
   }
 }
 
+export const setUpUser = (username, password) => {
+  return (dispatch) => {
+    dispatch({ type: 'AUTHENTICATING_USER' })
+    fetch('http://localhost:3000/api/v1/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify({
+        user: {
+          username: username,
+          password: password
+        }
+      })
+    })
+      .then(response => {
+        console.log(response);
+        if (response.ok) {
+          return response.json()
+        } else {
+          throw response
+        }
+      })
+      /* {username: will, pw: will} */
+      .then(JSONResponse => {
+        console.log('%c INSIDE YE OLDE .THEN', 'color: navy')
+        localStorage.setItem('jwt', JSONResponse.jwt)
+        dispatch({ type: 'SET_CURRENT_USER', payload: JSONResponse.user })
+      })
+      .catch(r => r.json().then(e => dispatch({ type: 'FAILED_LOGIN', payload: e.message })))
+  }
+}
+//
+// export const setUpUser = () => {
+//   return (dispatch) => {
+//     dispatch({ type: 'SIGNUP_USER'})
+//     fetch('http://localhost:3000/api/v1/users', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type':'application/json',
+//         Accept: 'application/json'
+//       }
+//     })
+//
+//   }
+// }
+
 export const setCurrentUser = (userData) => ({
   type: 'SET_CURRENT_USER',
   payload: userData
@@ -66,8 +105,4 @@ export const failedLogin = (errorMsg) => ({
   payload: errorMsg
 })
 
-// tell our app we're currently fetching
 export const authenticatingUser = () => ({ type: 'AUTHENTICATING_USER' })
-// export const authenticatingUser = () => {
-//   return { type: 'AUTHENTICATING_USER' }
-// }

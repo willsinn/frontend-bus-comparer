@@ -4,7 +4,7 @@ import SearchListItem from './SearchListItem'
 
 const SearchList = props => {
   const busList = props.search
-  const generateItem = () => (
+  const generateItems = () => (
     busList.items.map(item => (
       <SearchListItem
         key={item.id}
@@ -14,12 +14,12 @@ const SearchList = props => {
   )
   return (
     <div className="search-list">
-      <div>{busList.company}</div>
-      <div>{busList.target_date}</div>
-      <div>{busList.url}</div>
-      <div>
-        {generateItem()}
+      <div className="search-result-company">
+        {busList.company}
       </div>
+      {/*<div>{busList.target_date}</div>*/}
+      {/*<div>{busList.url}</div>*/}
+      {generateItems()}
     </div>
   )
 }

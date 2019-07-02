@@ -6,6 +6,7 @@ class Search extends Component {
   state = {
     searches:[]
   }
+
   componentDidMount(){
     fetch('http://localhost:3000/api/v1/searches', {
       method:'GET',
@@ -32,8 +33,10 @@ class Search extends Component {
   render() {
     console.log(this.state);
     return(
-      <div>
-        {this.generateSearchList()}
+      <div id="search-console">
+        <div className="search-wrapper">
+          {this.generateSearchList()}
+        </div>
       </div>
     )
   }
