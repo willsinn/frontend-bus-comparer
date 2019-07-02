@@ -71,3 +71,39 @@ body {
   padding: 30px 20px;
   color: white;
 }
+
+.profile-page {
+  display:flex;
+  justify-content: center;
+  align-content: center;
+  padding: 15px;
+}
+.profile-wrapper {
+  border: 2px solid black;
+  width: 400px;
+  height: 500px;
+}
+.profile-avatar {
+  width: 320px;
+  height: 320px;
+}
+.edit-fields-wrapper {
+  margin: 20px;
+}
+.avatar-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.avatar-btn-wrapper {
+  margin:0;
+}
+.avatar-frame {
+  border: 3px inset #47aedc96;
+  border-radius: 4px;
+}
+.profile-fields {
+  display:flex;
+  justify-content: space-between;
+}

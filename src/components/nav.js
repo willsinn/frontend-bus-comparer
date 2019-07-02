@@ -33,6 +33,8 @@ const Nav = ({ user: { loggedIn }, location: { pathname } }) => {
               />
           </div>
           <div className="right-menu">
+            <div className="nav-profile-avatar">
+            </div>
             <button
               className="nav-menu-item"
               onClick={(e) => {handleLogoutClick(e)}}

@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Card, Image } from 'semantic-ui-react'
 import withAuth from '../hocs/withAuth'
 
-import Search from './Search'
 
 class Profile extends Component {
   state = {
@@ -13,13 +11,32 @@ class Profile extends Component {
   render() {
     return (
       <>
-        <Card>
-          <Image src={this.props.avatar} />
-          <Card.Content>
-            <Card.Header>{this.props.username}</Card.Header>
-            <Card.Description>{this.props.bio}</Card.Description>
-          </Card.Content>
-        </Card>
+      <div className="profile-page">
+        <div className="profile-wrapper">
+          <div className="avatar-wrapper">
+            <div className="avatar-frame">
+              <img className="profile-avatar" src={this.props.avatar} />
+            </div>
+          </div>
+          <div className="avatar-btn-wrapper">
+            <button> Change Avatar </button>
+          </div>
+          <div className="edit-fields-wrapper">
+            <div className="profile-fields">
+              <div>Username: {this.props.username}</div>
+              <div>
+                <button> Edit Username </button>
+              </div>
+            </div>
+            <div className="profile-fields">
+              <div>Full-Name: Full Name</div>
+              <div>
+                <button> Edit name </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       </>
     )
   }

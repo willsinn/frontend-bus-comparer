@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { setUpUser } from '../actions/user'
-import { withRouter, Redirect } from 'react-router'
-import { Button, Form, Segment, Message } from 'semantic-ui-react'
+import { Redirect } from 'react-router'
+import { Button, Form, Message } from 'semantic-ui-react'
 
 class SignupForm extends Component {
   state = {
