@@ -45,6 +45,18 @@ body {
   height: 40px;
   background-color: #3f92b9;
   display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.navigation-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-menu-item {
+  margin: 5px;
 }
 
 .form-wrapper {

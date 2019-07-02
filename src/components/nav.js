@@ -6,19 +6,44 @@ import { Menu } from 'semantic-ui-react'
 
 
 const Nav = ({ user: { loggedIn }, location: { pathname } }) => {
+  const handleLogoutClick = (e) => {
+    localStorage.clear()
+    document.location.reload()
+    window.location.href = '/';
+  }
+
   return (
     <div className="navigation">
-      <Menu pointing secondary>
-        {loggedIn ? (
-          <>
-          <Menu.Item as={NavLink} to="/profile" active={pathname === '/profile'} />
-          </>
-        ) : (
-          <Menu.Item as={NavLink} to="/login" active={pathname === '/login'} />
-        )}
-      </Menu>
+      {loggedIn ? (
+        <div className="navigation-wrapper">
+          <div className="left-menu">
+            <Menu.Item
+              className="nav-menu-item"
+              as={NavLink}
+              to="/profile"
+              name="Profile"
+              active={pathname === '/profile'}
+            />
+            <Menu.Item
+              className="nav-menu-item"
+              as={NavLink}
+              to="/search"
+              name="Search"
+              active={pathname === '/search'}
+              />
+          </div>
+          <div className="right-menu">
+            <button
+              className="nav-menu-item"
+              onClick={(e) => {handleLogoutClick(e)}}
+            >
+              Logout
+            </button>
+          </div>
+        </div>
+      ) : null }
     </div>
-  )
+  );
 }
 
 

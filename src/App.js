@@ -6,6 +6,7 @@ import LoginForm from './components/LoginForm'
 import SignupForm from './components/SignupForm'
 import Nav from './components/Nav'
 import NotFound from './components/NotFound'
+import Search from './components/Search';
 import './App.css'
 
 const App = props => {
@@ -17,6 +18,7 @@ const App = props => {
         <Route exact path="/" render={() => <Redirect to="/profile" />} />
 
         <Route exact path="/profile" component={Profile} />
+        <Route exact path="/search" component={Search} />
         <Route exact path="/login" component={LoginForm} />
         <Route exact path="/signup" component={SignupForm} />
         <Route component={NotFound} />
