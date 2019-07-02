@@ -19,10 +19,28 @@ class Profile extends Component {
       })
     }
   }
+  handleUpdate = () => {
+    fetch('http://localhost:3000/api/v1/users/1',
+    { method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`
+      }, body: JSON.stringify({
+        avatar: this.state.avatarUrl
+      })
+    })
+    .then(r => r.json())
+    .then(object => {
+      console.log(object);
+    })
+  }
+
 
 
   render() {
-    console.log(this.state.avatarUrl);
+    console.log(this.props);
+
     return (
       <>
       <div className="profile-page">
@@ -42,8 +60,7 @@ class Profile extends Component {
                     New Avatar: <input type="text" onChange={this.handleChange('avatarUrl')} />
                   </div>
                   <div className='editing input-form'>
-
-                    <button onClick={this.handleSave}> Update </button>
+                    <button onClick={this.handleUpdate}> Update </button>
                   </div>
                 </div>
               )}
