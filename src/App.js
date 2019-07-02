@@ -18,7 +18,7 @@ const App = props => {
 
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/login" component={LoginForm} />
-        <Route exact path="/signup" component={SignupForm} />  
+        <Route exact path="/signup" component={SignupForm} />
         <Route component={NotFound} />
 
       </Switch>

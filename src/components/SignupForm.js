@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { setUpUser } from '../actions/user'
 import { withRouter, Redirect } from 'react-router'
+import { Button, Form, Segment, Message } from 'semantic-ui-react'
 
 class SignupForm extends Component {
   state = {
@@ -38,24 +39,47 @@ class SignupForm extends Component {
     return this.props.loggedIn ? (
       <Redirect to="/profile" />
     ) : (
-      <div>
-      <p style={{color:'red'}}>{this.state.error}</p>
-
-        {signupFields.map((field) => {
-          return (
-            <input
-              onChange={this.handleChange(field)}
-              value={this.state[field]}
-            />
-          )
-        })}
-        <button onClick={this.handleSubmit}>Submit</button>
+      <div className="signup-page">
+        <div className="form-wrapper">
+          <div className="form-box">
+            <h3>Signup</h3>
+            <Form
+              onSubmit={this.handleSubmit}
+              size="mini"
+              key="mini"
+              loading={this.props.authenticatingUser}
+              error={this.props.failedLogin}
+            >
+              <Message error header={this.state.error ? this.state.error : null} />
+              <Form.Group widths="equal">
+                {signupFields.map((field) => {
+                  return (
+                    <Form.Input
+                      type={field}
+                      label={field}
+                      placeholder={field}
+                      name={field}
+                      onChange={this.handleChange(field)}
+                      value={this.state[field]}
+                    />
+                  )
+                })}
+              </Form.Group>
+              <Button type="submit">Signup</Button>
+            </Form>
+          </div>
+        </div>
       </div>
     )
   }
 }
 
-const mapStateToProps = ({ usersReducer: { loggedIn } }) => {
+const mapStateToProps = ({
+  usersReducer: {
+    authenticatingUser,
+    loggedIn
+  }
+}) => {
   return {
     loggedIn
   }

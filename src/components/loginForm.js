@@ -28,35 +28,42 @@ class LoginForm extends React.Component {
     return this.props.loggedIn ? (
       <Redirect to="/profile" />
     ) : (
-      <Segment>
-        <Form
-          onSubmit={this.handleLoginSubmit}
-          size="mini"
-          key="mini"
-          loading={this.props.authenticatingUser}
-          error={this.props.failedLogin}
-        >
-          <Message error header={this.props.failedLogin ? this.props.error : null} />
-          <Form.Group widths="equal">
-            <Form.Input
-              label="username"
-              placeholder="username"
-              name="username"
-              onChange={this.handleChange}
-              value={this.state.username}
-            />
-            <Form.Input
-              type="password"
-              label="password"
-              placeholder="password"
-              name="password"
-              onChange={this.handleChange}
-              value={this.state.password}
-            />
-          </Form.Group>
-          <Button type="submit">Login</Button>
-        </Form>
-      </Segment>
+      <div className="login-page">
+        <div className="form-wrapper">
+          <div className="form-box">
+            <Segment>
+              <h3>Login</h3>
+              <Form
+                onSubmit={this.handleLoginSubmit}
+                size="mini"
+                key="mini"
+                loading={this.props.authenticatingUser}
+                error={this.props.failedLogin}
+              >
+                <Message error header={this.props.failedLogin ? this.props.error : null} />
+                <Form.Group widths="equal">
+                  <Form.Input
+                    label="username"
+                    placeholder="username"
+                    name="username"
+                    onChange={this.handleChange}
+                    value={this.state.username}
+                  />
+                  <Form.Input
+                    type="password"
+                    label="password"
+                    placeholder="password"
+                    name="password"
+                    onChange={this.handleChange}
+                    value={this.state.password}
+                  />
+                </Form.Group>
+                <Button type="submit">Login</Button>
+              </Form>
+            </Segment>
+          </div>
+        </div>
+      </div>
     )
   }
 }

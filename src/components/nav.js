@@ -7,15 +7,17 @@ import { Menu } from 'semantic-ui-react'
 
 const Nav = ({ user: { loggedIn }, location: { pathname } }) => {
   return (
-    <Menu pointing secondary>
-      {loggedIn ? (
-        <>
-        <Menu.Item as={NavLink} to="/profile" active={pathname === '/profile'} />
-        </>
-      ) : (
-        <Menu.Item as={NavLink} to="/login" name="Login" active={pathname === '/login'} />
-      )}
-    </Menu>
+    <div className="navigation">
+      <Menu pointing secondary>
+        {loggedIn ? (
+          <>
+          <Menu.Item as={NavLink} to="/profile" active={pathname === '/profile'} />
+          </>
+        ) : (
+          <Menu.Item as={NavLink} to="/login" active={pathname === '/login'} />
+        )}
+      </Menu>
+    </div>
   )
 }
 
