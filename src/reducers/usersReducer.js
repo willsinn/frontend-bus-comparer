@@ -23,6 +23,8 @@ const usersReducer = /*FUNCTION*/ (state=defaultState, action) => {
         error: action.payload,
         authenticatingUser: false
       }
+    case 'SIGNUP_USER':
+      return {}
     default:
       return state
   }

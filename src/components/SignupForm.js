@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { setUpUser } from '../actions/user'
 
 class SignupForm extends Component {
   state = {
@@ -12,6 +14,13 @@ class SignupForm extends Component {
         [fieldType]: event.target.value
       })
     }
+  }
+
+  handleSubmit = () => {
+    this.props.setUpUser(
+      this.state.username,
+      this.state.password
+    );
   }
   render(){
     const signupFields = [
@@ -30,9 +39,16 @@ class SignupForm extends Component {
             />
           )
         })}
+        <button onClick={this.handleSubmit}></button>
       </div>
     )
   }
 }
 
-export default SignupForm
+const mapDispatchToProps = dispatch => {
+  return {
+    setUpUser: (username, password) => dispatch(setUpUser(username, password))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(SignupForm)
