@@ -6,7 +6,7 @@ const defaultState = {
   error: null
 }
 
-const usersReducer = /*FUNCTION*/ (state=defaultState, action) => {
+const usersReducer = (state=defaultState, action) => {
   switch (action.type) {
     // TODO: move to types
     case 'SET_CURRENT_USER':

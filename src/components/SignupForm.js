@@ -6,7 +6,8 @@ class SignupForm extends Component {
   state = {
     username: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
+    error:''
   }
   handleChange = (fieldType) => {
     return (event) => {
@@ -17,10 +18,14 @@ class SignupForm extends Component {
   }
 
   handleSubmit = () => {
-    this.props.setUpUser(
-      this.state.username,
-      this.state.password
-    );
+    if(this.state.password !== this.state.confirmPassword) {
+      this.setState({error: 'Passwords dont match'})
+    } else {
+      this.props.setUpUser(
+        this.state.username,
+        this.state.password
+      );
+    }
   }
   render(){
     const signupFields = [
@@ -31,6 +36,8 @@ class SignupForm extends Component {
 
     return(
       <div>
+      <p style={{color:'red'}}>{this.state.error}</p>
+
         {signupFields.map((field) => {
           return (
             <input
@@ -39,7 +46,7 @@ class SignupForm extends Component {
             />
           )
         })}
-        <button onClick={this.handleSubmit}></button>
+        <button onClick={this.handleSubmit}>Submit</button>
       </div>
     )
   }
