@@ -3,6 +3,7 @@ import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
 
 import Profile from './components/Profile'
 import LoginForm from './components/LoginForm'
+import SignupForm from './components/SignupForm'
 import Nav from './components/Nav'
 import NotFound from './components/NotFound'
 import './App.css'
@@ -17,6 +18,7 @@ const App = props => {
 
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/login" component={LoginForm} />
+        <Route exact path="/signup" component={SignupForm} />  
         <Route component={NotFound} />
 
       </Switch>

@@ -22,10 +22,11 @@ console.log(`%c INITIAL REDUX STORE`, 'color: purple', store.getState())
 ReactDOM.render(
   <Provider store={store}>
     <Router>
-      {/*<App />*/}
-      <SignupForm />
+      <App />
     </Router>
   </Provider>,
   document.getElementById('root')
 )
 serviceWorker.unregister();
+
+// <SignupForm />

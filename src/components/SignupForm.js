@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { setUpUser } from '../actions/user'
+import { withRouter, Redirect } from 'react-router'
 
 class SignupForm extends Component {
   state = {
@@ -34,7 +35,9 @@ class SignupForm extends Component {
       'confirmPassword'
     ];
 
-    return(
+    return this.props.loggedIn ? (
+      <Redirect to="/profile" />
+    ) : (
       <div>
       <p style={{color:'red'}}>{this.state.error}</p>
 
@@ -52,10 +55,16 @@ class SignupForm extends Component {
   }
 }
 
+const mapStateToProps = ({ usersReducer: { loggedIn } }) => {
+  return {
+    loggedIn
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     setUpUser: (username, password) => dispatch(setUpUser(username, password))
   }
 }
 
-export default connect(null, mapDispatchToProps)(SignupForm)
+export default connect(mapStateToProps, mapDispatchToProps)(SignupForm)

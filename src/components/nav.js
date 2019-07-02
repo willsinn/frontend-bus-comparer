@@ -10,8 +10,7 @@ const Nav = ({ user: { loggedIn }, location: { pathname } }) => {
     <Menu pointing secondary>
       {loggedIn ? (
         <>
-          <Menu.Item as={NavLink} to="/profile" active={pathname === '/profile'} />
-            <Menu.Item to="/logout" name="Logout"/>
+        <Menu.Item as={NavLink} to="/profile" active={pathname === '/profile'} />
         </>
       ) : (
         <Menu.Item as={NavLink} to="/login" name="Login" active={pathname === '/login'} />
