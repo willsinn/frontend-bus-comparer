@@ -88,16 +88,18 @@ body {
   height: 320px;
 }
 .edit-fields-wrapper {
-  margin: 20px;
+  margin-top: 40px;
+  margin-left: 40px;
+  margin-right: 40px;
 }
 .avatar-wrapper {
   display: flex;
   justify-content: center;
   margin-top: 15px;
-  margin-bottom: 15px;
 }
 .avatar-btn-wrapper {
-  margin:0;
+  margin-top: 10px;
+  margin-left: 40px;
 }
 .avatar-frame {
   border: 3px inset #47aedc96;
@@ -106,4 +108,5 @@ body {
 .profile-fields {
   display:flex;
   justify-content: space-between;
+  margin-top: 10px;
 }

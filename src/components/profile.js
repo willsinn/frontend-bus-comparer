@@ -7,6 +7,9 @@ class Profile extends Component {
   state = {
     isProfile: true
   }
+  handleUpdate = (fieldType) => {
+
+  }
 
   render() {
     return (
@@ -19,7 +22,7 @@ class Profile extends Component {
             </div>
           </div>
           <div className="avatar-btn-wrapper">
-            <button> Change Avatar </button>
+            <button onClick={this.handleUpdate}> Change Avatar </button>
           </div>
           <div className="edit-fields-wrapper">
             <div className="profile-fields">
