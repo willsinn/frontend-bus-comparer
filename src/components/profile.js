@@ -5,10 +5,26 @@ import withAuth from '../hocs/withAuth'
 
 class Profile extends Component {
   state = {
+    currentUser: {},
     isProfile: true,
     toggleEditing: false,
-    avatarUrl: ''
+    avatarUrl: '',
+    editBio: ''
   }
+  componentDidMount(){
+    fetch('http://localhost:3000/api/v1/profile',
+      { method:'GET',
+        headers:
+        {
+          Authorization: `Bearer ${localStorage.getItem('jwt')}`
+        }
+      })
+      .then(r => r.json())
+      .then(currentUser => {
+        this.setState({ currentUser })
+      })
+  }
+
   handleClick = () => {
     this.setState({ toggleEditing: !this.state.toggleEditing })
   }
@@ -27,12 +43,19 @@ class Profile extends Component {
         Accept: 'application/json',
         Authorization: `Bearer ${localStorage.getItem('jwt')}`
       }, body: JSON.stringify({
-        avatar: this.state.avatarUrl
+        avatar: this.state.avatarUrl,
+        bio: this.state.editBio
       })
     })
     .then(r => r.json())
-    .then(object => {
-      console.log(object);
+    .then(updatedUser => {
+      this.setState({
+        toggleEditing: !this.state.toggleEditing,
+        currentUser: updatedUser,
+        avatarUrl: '',
+        editBio: '',
+        toggleEditing: false
+      })
     })
   }
 
@@ -47,7 +70,7 @@ class Profile extends Component {
         <div className="profile-wrapper">
           <div className="avatar-wrapper">
             <div className="avatar-frame">
-              <img className="profile-avatar" src={this.props.avatar} />
+              <img className="profile-avatar" src={this.state.currentUser.avatar} />
             </div>
           </div>
           <div className="avatar-btn-wrapper">
@@ -67,7 +90,7 @@ class Profile extends Component {
           </div>
           <div className="edit-fields-wrapper">
             <div className="profile-fields">
-              <div>Username: {this.props.username}</div>
+              <div>Username: {this.state.currentUser.username}</div>
               <div>
                 <button> Edit Username </button>
               </div>
