@@ -114,7 +114,7 @@ class Profile extends Component {
             </div>
             <div className="avatar-btn-wrapper">
               {!this.state.editAvatar ? (
-                <div >
+                <div>
                   <div className="avatar-btn">
                     <button
                       className="edit-btn"
@@ -124,9 +124,9 @@ class Profile extends Component {
                       Change Avatar{" "}
                     </button>
                   </div>
-                    {this.state.activeError[0] === "avatar" ? (
-                      <div>{this.state.activeError[1]}</div>
-                    ) : null}
+                  {this.state.activeError[0] === "avatar" ? (
+                    <div>{this.state.activeError[1]}</div>
+                  ) : null}
                 </div>
               ) : (
                 <div className="editing-avatar">
@@ -158,7 +158,6 @@ class Profile extends Component {
                   </div>
                 </div>
               )}
-
             </div>
           </div>
           <div className="edit-container">
@@ -166,116 +165,121 @@ class Profile extends Component {
               <div className="profile-fields">
                 <div className="edit-text-fields-wrapper">
                   <div className="profile-title">
-                    <h3 className="profile-content-header"style={{ margin: "0" }}>Username</h3>
-                      <div className="arrow-line">
-                        <div className="bus-border-bottom"></div>
-                        <div className="point"></div>
-                      </div>
+                    <h3
+                      className="profile-content-header"
+                      style={{ margin: "0" }}
+                    >
+                      Username
+                    </h3>
+                    <div className="arrow-line">
+                      <div className="bus-border-bottom" />
+                      <div className="point" />
+                    </div>
                   </div>
                   <div className="edit-user-text">
                     {!this.state.editUsername ? (
                       <div className="toggle-wrapper">
                         <div className="top-box">
-                        <div className="error-wrapper">
-                          <div>
-                            {user.username}
+                          <div className="error-wrapper">
+                            <div className="user-content">{user.username}</div>
+                            <div className="input-error">
+                              {this.state.activeError[0] === "username" ? (
+                                <div>{this.state.activeError[1]}</div>
+                              ) : null}
                             </div>
-                          <div className="input-error">
-                          { this.state.activeError[0] === "username"
-                              ? (
-                              <div>
-                                {this.state.activeError[1]}
-                              </div>
-                              )
-                            : null }
+                          </div>
+                          <div>
+                            <button
+                              className="edit-btn"
+                              onClick={this.toggleEdit("editUsername")}
+                            >
+                              <span role="img" aria-label="edit pencil">
+                                EDIT ✏️
+                              </span>{" "}
+                            </button>
                           </div>
                         </div>
-                        <div>
-                          <button
-                            className="edit-btn"
-                            onClick={this.toggleEdit("editUsername")}
-                          >
-                            <span role="img" aria-label="edit pencil">
-                              EDIT ✏️
-                            </span>{" "}
-                          </button>
-                        </div>
-                        </div>
-                        <div className="bottom-box"></div>
+                        <div className="bottom-box" />
                       </div>
                     ) : (
                       <div className="editing-bottom-cont">
-                      <div className="editing-wrapper">
-                        <div className="top-box">
-                        <div className="editing-header">
-                          <span role="img" aria-label="nb with pencil">
-                            📝{" "}
-                          </span>{" "}
-                          <input
-                            type="text"
-                            placeholder="Enter new username."
-                            onChange={this.handleChange("username")}
-                          />
+                        <div className="editing-wrapper">
+                          <div className="top-box">
+                            <div className="editing-header">
+                              <span role="img" aria-label="nb with pencil">
+                                📝{" "}
+                              </span>{" "}
+                              <input
+                                type="text"
+                                placeholder="Enter new username."
+                                onChange={this.handleChange("username")}
+                              />
+                            </div>
+                            <div className="editing input-form">
+                              <button onClick={this.handleUpdate("username")}>
+                                <span role="img" aria-label="save-edit">
+                                  {" "}
+                                  ✅{" "}
+                                </span>
+                              </button>
+                              <button onClick={this.toggleEdit("editUsername")}>
+                                {" "}
+                                <span role="img" aria-label="x-quit-edit">
+                                  {" "}
+                                  ❌{" "}
+                                </span>
+                              </button>
+                            </div>
+                          </div>
+                          <div className="bottom-box" />
                         </div>
-                        <div className="editing input-form">
-                          <button onClick={this.handleUpdate("username")}>
-                            <span role="img" aria-label="save-edit">
-                              {" "}
-                              ✅{" "}
-                            </span>
-                          </button>
-                          <button onClick={this.toggleEdit("editUsername")}>
-                            {" "}
-                            <span role="img" aria-label="x-quit-edit">
-                              {" "}
-                              ❌{" "}
-                            </span>
-                          </button>
-                        </div>
-                        </div>
-                        <div className="bottom-box"></div>
-                      </div>
                       </div>
                     )}
                   </div>
                 </div>
-                </div>
-                <div className="profile-fields">
-                  <div className="profile-title">
-                    <h3 className="profile-content-header" style={{ margin: "0" }}> Name, Location </h3>
-                    <div className="arrow-line">
-                      <div className="bus-border-bottom"></div>
-                      <div className="point"></div>
-                    </div>
+              </div>
+              <div className="profile-fields">
+                <div className="profile-title">
+                  <h3
+                    className="profile-content-header"
+                    style={{ margin: "0" }}
+                  >
+                    {" "}
+                    Name, Location{" "}
+                  </h3>
+                  <div className="arrow-line">
+                    <div className="bus-border-bottom" />
+                    <div className="point" />
                   </div>
-                  <div>
-                    <div className="edit-bio-wrapper">
-                      {!this.state.editBio ? (
-                        <div className="toggle-wrapper">
-                          <div className="top-box">
-                            {user.bio === "" ? (
-                              <div className="add-bio-text">
-                                <span className="add-bio-text">
-                                  {" "}
-                                  Please add name & where you're located{" "}
-                                </span>
+                </div>
+                <div>
+                  <div className="edit-bio-wrapper">
+                    {!this.state.editBio ? (
+                      <div className="toggle-wrapper">
+                        <div className="top-box">
+                          {user.bio === "" ? (
+                            <div className="add-bio-text">
+                              <span className="add-bio-text">
+                                {" "}
+                                Please add name & where you're located{" "}
+                              </span>
+                            </div>
+                          ) : (
+                            <div>
+                              <div className="user-content">{user.bio}</div>
+                              <div className="error-wrapper">
+                                {this.state.activeError[0] === "avatar" ? (
+                                  <div>{this.state.activeError[1]}</div>
+                                ) : (
+                                  ""
+                                )}
                               </div>
-                            ) : (
-                                <div>
-                                  <div>{user.bio}</div>
-                                  <div className="error-wrapper">
-                                  {this.state.activeError[0] === "avatar" ? (
-                                    <div>{this.state.activeError[1]}</div>
-                                  ) : (
-                                    ""
-                                  )}
-                                  </div>
-                                </div>
-                            )}
+                            </div>
+                          )}
                           <div>
-                          {this.state.activeError[0] === "bio" ? (
-                            <div>{this.state.activeError[1]}</div>
-                          ) : null}
+                            {this.state.activeError[0] === "bio" ? (
+                              <div>{this.state.activeError[1]}</div>
+                            ) : null}
                           </div>
 
                           <div>
@@ -289,13 +293,11 @@ class Profile extends Component {
                               </span>
                             </button>
                           </div>
-
-                          </div>
-                          <div className="bottom-box"></div>
-
                         </div>
-                      ) : (
-                        <div className="editing-wrapper">
+                        <div className="bottom-box" />
+                      </div>
+                    ) : (
+                      <div className="editing-wrapper">
                         <div className="top-box">
                           <div className="editing-header">
                             <span role="img" aria-label="nb with pencil">
@@ -322,17 +324,17 @@ class Profile extends Component {
                               </span>
                             </button>
                           </div>
-                          </div>
-                          <div className="bottom-box"></div>
                         </div>
-                      )}
-                    </div>
+                        <div className="bottom-box" />
+                      </div>
+                    )}
                   </div>
                 </div>
-                </div>
-                </div>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
     );
   }
 }
