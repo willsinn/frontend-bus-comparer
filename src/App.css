@@ -88,7 +88,7 @@ body {
   height: 320px;
 }
 .edit-fields-wrapper {
-  margin-top: 40px;
+  margin-top: 20px;
   margin-left: 40px;
   margin-right: 40px;
 }
@@ -108,10 +108,28 @@ body {
 }
 .profile-fields {
   display:flex;
-  justify-content: space-between;
   margin-top: 10px;
+}
+.edit-text-fields-wrapper {
+
 }
 .editing-wrapper {
   display: flex;
   justify-content: space-between;
+  width: 320px;
+}
+.edit-user-text {
+  display:flex;
+  justify-content: space-between;
+}
+.toggle-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 320px;
+}
+.add-bio-text {
+  color: red;
+  font-size: .85em;
+  display:flex;
+  overflow-y: wrap;
 }
