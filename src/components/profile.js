@@ -7,26 +7,12 @@ class Profile extends Component {
   state = {
     currentUser: {},
     isProfile: true,
-    toggleEditing: false,
-    avatarUrl: '',
+    editingAvatar: false,
+    avatar: '',
     editBio: ''
   }
-  componentDidMount(){
-    fetch('http://localhost:3000/api/v1/profile',
-      { method:'GET',
-        headers:
-        {
-          Authorization: `Bearer ${localStorage.getItem('jwt')}`
-        }
-      })
-      .then(r => r.json())
-      .then(currentUser => {
-        this.setState({ currentUser })
-      })
-  }
-
-  handleClick = () => {
-    this.setState({ toggleEditing: !this.state.toggleEditing })
+  toggleAvatar = () => {
+    this.setState({ editingAvatar: true })
   }
   handleChange = (fieldType) => {
     return (event) => {
@@ -35,34 +21,42 @@ class Profile extends Component {
       })
     }
   }
-  handleUpdate = () => {
+  handleUpdate = (updateType) => {
+    switch(updateType) {
+      case "avatar":
+        return (event) => {
+            this.handleFetch({ avatar: this.state.avatar })
+          }
+        break;
+      default:
+        break;
+    }
+  }
+  handleFetch = (body) => {
+    const type = Object.keys(body)
     fetch('http://localhost:3000/api/v1/users/1',
     { method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
         Authorization: `Bearer ${localStorage.getItem('jwt')}`
-      }, body: JSON.stringify({
-        avatar: this.state.avatarUrl,
-        bio: this.state.editBio
-      })
+      }, body: JSON.stringify(body)
     })
     .then(r => r.json())
     .then(updatedUser => {
       this.setState({
-        toggleEditing: !this.state.toggleEditing,
-        currentUser: updatedUser,
-        avatarUrl: '',
-        editBio: '',
-        toggleEditing: false
+          currentUser: updatedUser,
+          [type]: '',
+          editingAvatar: false
       })
     })
   }
-
-
-
   render() {
     console.log(this.props);
+    let renderAvatar;
+    (this.state.currentUser.id === undefined)
+    ? (renderAvatar = this.props.avatar)
+    : (renderAvatar = this.state.currentUser.avatar)
 
     return (
       <>
@@ -70,20 +64,20 @@ class Profile extends Component {
         <div className="profile-wrapper">
           <div className="avatar-wrapper">
             <div className="avatar-frame">
-              <img className="profile-avatar" src={this.state.currentUser.avatar} />
+              <img className="profile-avatar" src={renderAvatar} alt="" />
             </div>
           </div>
           <div className="avatar-btn-wrapper">
-            {(!this.state.toggleEditing)?
+            {(!this.state.editingAvatar)?
               (
-                <button onClick={this.handleClick}> Change Avatar </button>
+                <button onClick={this.toggleAvatar}> Change Avatar </button>
               ) : (
                 <div className='editing-wrapper'>
                   <div className='editing-header'>
-                    New Avatar: <input type="text" onChange={this.handleChange('avatarUrl')} />
+                    New Avatar: <input type="text" onChange={this.handleChange('avatar')} />
                   </div>
                   <div className='editing input-form'>
-                    <button onClick={this.handleUpdate}> Update </button>
+                    <button onClick={this.handleUpdate('avatar')}> Update </button>
                   </div>
                 </div>
               )}
