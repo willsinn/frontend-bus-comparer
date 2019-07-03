@@ -82,7 +82,7 @@ class Profile extends Component {
   }
   handleFetch = (body) => {
     const type = Object.keys(body)
-    const editType = "edit" + `${type[0].charAt(0).toUpperCase() + type[0].slice(1)}`
+    const editType = `edit${type[0].charAt(0).toUpperCase() + type[0].slice(1)}`
     fetch('http://localhost:3000/api/v1/users/1',
     { method: 'PATCH',
       headers: {
@@ -132,10 +132,11 @@ class Profile extends Component {
               ) : (
                 <div className='editing-wrapper'>
                   <div className='editing-header'>
-                    🔗 <input type="text" placeholder="Input image URL only." onChange={this.handleChange('avatar')} />
+                    <span role="img" aria-label=""> 🔗 </span> <input type="text" placeholder="Input image URL only." onChange={this.handleChange('avatar')} />
                   </div>
                   <div className='editing input-form'>
-                    <button onClick={this.handleUpdate('avatar')}> Update </button>
+                  <button onClick={this.handleUpdate('avatar')}><span role="img" aria-label="save-edit"> ✅ </span></button>
+                    <button onClick={this.toggleEdit('editAvatar')}> <span role="img" aria-label="x-quit-edit"> ❌ </span></button>
                   </div>
                 </div>
               )}
@@ -160,16 +161,17 @@ class Profile extends Component {
                         (null)}
                       </div>
                       <div>
-                        <button className='edit-btn' onClick={this.toggleEdit('editUsername')}> ✏️ </button>
+                        <button className='edit-btn' onClick={this.toggleEdit('editUsername')}><span role="img" aria-label="edit pencil">EDIT ✏️</span> </button>
                       </div>
                     </div>
                   ) : (
                     <div className='editing-wrapper'>
                       <div className='editing-header'>
-                        📝 <input type="text" placeholder="Enter new username." onChange={this.handleChange('username')} />
+                        <span role="img" aria-label="nb with pencil">📝  </span> <input type="text" placeholder="Enter new username." onChange={this.handleChange('username')} />
                       </div>
                       <div className='editing input-form'>
-                        <button onClick={this.handleUpdate('username')}> Update </button>
+                      <button onClick={this.handleUpdate('username')}><span role="img" aria-label="save-edit"> ✅ </span></button>
+                        <button onClick={this.toggleEdit('editUsername')}> <span role="img" aria-label="x-quit-edit"> ❌ </span></button>
                       </div>
                     </div>
                   )}
@@ -205,17 +207,18 @@ class Profile extends Component {
                         (<div>{this.state.activeError[1]}</div>) :
                         (null)}
                       <div>
-                        <button className='edit-btn' onClick={this.toggleEdit('editBio')}> ✏️ </button>
+                        <button className='edit-btn' onClick={this.toggleEdit('editBio')}> <span role="img" aria-label="edit pencil">EDIT  ✏️</span></button>
 
                       </div>
                     </div>
                   ) : (
                     <div className='editing-wrapper'>
                       <div className='editing-header'>
-📝  <input type="text" placeholder="Input name and residence location." onChange={this.handleChange('bio')} />
+                        <span role="img" aria-label="nb with pencil">📝  </span><input type="text" placeholder="Input name and residence location." onChange={this.handleChange('bio')} />
                       </div>
                       <div className='editing input-form'>
-                        <button onClick={this.handleUpdate('bio')}> Update </button>
+                      <button onClick={this.handleUpdate('bio')}><span role="img" aria-label="save-edit"> ✅ </span></button>
+                        <button onClick={this.toggleEdit('editBio')}> <span role="img" aria-label="x-quit-edit"> ❌ </span></button>
                       </div>
                     </div>
                   )}
