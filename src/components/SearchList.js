@@ -1,27 +1,24 @@
-import React from 'react'
-import SearchListItem from './SearchListItem'
-
+import React from "react";
+import SearchListItem from "./SearchListItem";
 
 const SearchList = props => {
-  const busList = props.search
-  const generateItems = () => (
-    busList.items.map(item => (
-      <SearchListItem
-        key={item.id}
-        item={item}
-      />
-    ))
-  )
+  const list = props.search;
+  // const generateItems = () =>
+  //   list.items.map(item => <SearchListItem key={item.id} item={item} />);
   return (
-    <div className="search-list">
-      <div className="search-result-company">
-        {busList.company}
-      </div>
-      {/*<div>{busList.target_date}</div>*/}
-      {/*<div>{busList.url}</div>*/}
-      {generateItems()}
-    </div>
-  )
-}
+    <tr className="search-date-row">
+      <td>
+        <span role="img" className="expand-search-btn">
+          {" "}
+          ⍖{" "}
+        </span>
+      </td>
+      <td>{list.date}</td>
+      <td>{list.start_from}</td>
+      <td>{list.to_destination}</td>
+      <td>{list.company}</td>
+    </tr>
+  );
+};
 
-export default SearchList
+export default SearchList;
