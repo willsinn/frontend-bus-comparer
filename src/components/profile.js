@@ -7,12 +7,22 @@ class Profile extends Component {
   state = {
     currentUser: {},
     isProfile: true,
-    editingAvatar: false,
+
+    editAvatar: false,
     avatar: '',
-    editBio: ''
+
+    editUsername: false,
+    username: '',
+
+    editBio: false,
+    bio: ''
   }
-  toggleAvatar = () => {
-    this.setState({ editingAvatar: true })
+  toggleEdit = (toggleType) => {
+    return (event) => {
+      this.setState({
+        [toggleType]: true
+      })
+    }
   }
   handleChange = (fieldType) => {
     return (event) => {
@@ -25,14 +35,25 @@ class Profile extends Component {
     switch(updateType) {
       case "avatar":
         return (event) => {
-            this.handleFetch({ avatar: this.state.avatar })
+            this.handleFetch( this.state.editAvatar, { avatar: this.state.avatar })
           }
         break;
+      case "username":
+        return (event) => {
+            this.handleFetch( this.state.editUsername, {
+              username: this.state.username })
+          }
+        break;
+      case "bio":
+        return (event) => {
+            this.handleFetch( this.state.editBio, {
+              bio: this.state.bio })
+          }
       default:
         break;
     }
   }
-  handleFetch = (body) => {
+  handleFetch = (toggle, body) => {
     const type = Object.keys(body)
     fetch('http://localhost:3000/api/v1/users/1',
     { method: 'PATCH',
@@ -47,17 +68,18 @@ class Profile extends Component {
       this.setState({
           currentUser: updatedUser,
           [type]: '',
-          editingAvatar: false
+          toggle: false
       })
     })
   }
   render() {
-    console.log(this.props);
-    let renderAvatar;
-    (this.state.currentUser.id === undefined)
-    ? (renderAvatar = this.props.avatar)
-    : (renderAvatar = this.state.currentUser.avatar)
+    console.log(this.state.editUsername);
+    console.log(this.state.editBio);
 
+    let renderAvatar;
+    (this.state.currentUser.id)
+    ? (renderAvatar = this.state.currentUser.avatar)
+    : (renderAvatar = this.props.avatar)
     return (
       <>
       <div className="profile-page">
@@ -68,9 +90,9 @@ class Profile extends Component {
             </div>
           </div>
           <div className="avatar-btn-wrapper">
-            {(!this.state.editingAvatar)?
+            {(!this.state.editAvatar)?
               (
-                <button onClick={this.toggleAvatar}> Change Avatar </button>
+                <button onClick={this.toggleEdit('editAvatar')}> Change Avatar </button>
               ) : (
                 <div className='editing-wrapper'>
                   <div className='editing-header'>
@@ -86,13 +108,13 @@ class Profile extends Component {
             <div className="profile-fields">
               <div>Username: {this.state.currentUser.username}</div>
               <div>
-                <button> Edit Username </button>
+                <button onClick={this.toggleEdit('editUsername')}> Edit Username </button>
               </div>
             </div>
             <div className="profile-fields">
               <div>Full-Name: Full Name</div>
               <div>
-                <button> Edit name </button>
+                <button onClick={this.toggleEdit('editBio')}> Edit name </button>
               </div>
             </div>
           </div>
