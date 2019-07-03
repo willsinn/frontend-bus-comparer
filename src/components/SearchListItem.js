@@ -2,7 +2,15 @@ import React from "react";
 
 const SearchListItem = props => {
   console.log(props);
-  return <div className="search-list-item">Hello</div>;
+  const item = props.item;
+  return (
+    <div className="item-row">
+      <span> {item.time} </span>
+      <span> {item.price} </span>
+      <span> {item.pickup_from} </span>
+      <span> {item.purchase_url} </span>
+    </div>
+  );
 };
 
 export default SearchListItem;

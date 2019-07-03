@@ -71,7 +71,6 @@ body {
   height: 100%;
 }
 .search-date-table {
-  border-collapse: collapse;
 }
 .search-date-row th,
 .search-date-row td {
@@ -83,7 +82,12 @@ body {
   font-weight: 900;
   font-size: 20px;
 }
-
+.nested-items {
+  display: flex;
+}
+.items-wrapper {
+  height: 100px;
+}
 /* Profile */
 
 .form-box {

@@ -19,6 +19,7 @@ class Search extends Component {
       });
   }
   handleToggleItems = props => {
+    console.log(props.id);
     this.setState({ isActive: !this.state.isActive });
   };
   generateSearchList = () =>

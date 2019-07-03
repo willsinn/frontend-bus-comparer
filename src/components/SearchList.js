@@ -28,9 +28,23 @@ const SearchList = props => {
       <td>{searchList.start_from}</td>
       <td>{searchList.to_destination}</td>
       <td>{searchList.company}</td>
-      {props.isActive ? generateItems() : null}
     </tr>
   );
 };
 
 export default SearchList;
+// <tr>{generateItems()}</tr>
+
+// <tr>
+//   {props.isActive ? (
+//     <div className="nested-items">
+//       <div className="item-headers">
+//         <span> Time </span>
+//         <span> Price </span>
+//         <span> Pick-Up </span>
+//         <span> Purchase </span>
+//       </div>
+//
+//     </div>
+//   ) : null}
+// </tr>
