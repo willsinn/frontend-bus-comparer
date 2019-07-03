@@ -23,7 +23,6 @@ export const loginUser = (username, password) => {
       })
       /* {username: will, pw: will} */
       .then(JSONResponse => {
-        console.log('%c INSIDE YE OLDE .THEN', 'color: navy')
         localStorage.setItem('jwt', JSONResponse.jwt)
         dispatch({ type: 'SET_CURRENT_USER', payload: JSONResponse.user })
       })

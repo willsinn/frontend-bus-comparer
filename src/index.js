@@ -5,7 +5,6 @@ import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
-import SignupForm from './components/SignupForm'
 
 
 import App from './App'

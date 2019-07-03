@@ -71,3 +71,65 @@ body {
   padding: 30px 20px;
   color: white;
 }
+
+.profile-page {
+  display:flex;
+  justify-content: center;
+  align-content: center;
+  padding: 15px;
+}
+.profile-wrapper {
+  border: 2px solid black;
+  width: 400px;
+  height: 500px;
+}
+.profile-avatar {
+  width: 320px;
+  height: 320px;
+}
+.edit-fields-wrapper {
+  margin-top: 20px;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+.avatar-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+.avatar-btn-wrapper {
+  margin-top: 10px;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+.avatar-frame {
+  border: 3px inset #47aedc96;
+  border-radius: 4px;
+}
+.profile-fields {
+  display:flex;
+  margin-top: 10px;
+}
+.edit-text-fields-wrapper {
+
+}
+.editing-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 320px;
+}
+.edit-user-text {
+  display:flex;
+  justify-content: space-between;
+}
+.toggle-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 320px;
+}
+.add-bio-text {
+  color: red;
+  font-size: .85em;
+  display:flex;
+  overflow-y: wrap;
+}
