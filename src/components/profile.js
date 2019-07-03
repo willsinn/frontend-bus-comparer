@@ -80,7 +80,7 @@ class Profile extends Component {
     const type = Object.keys(body);
     const editType = `edit${type[0].charAt(0).toUpperCase() +
       type[0].slice(1)}`;
-    fetch("http://localhost:3000/api/v1/users/1", {
+    fetch("http://localhost:3000/api/v1/users/2", {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

@@ -2,21 +2,33 @@ import React from "react";
 import SearchListItem from "./SearchListItem";
 
 const SearchList = props => {
-  const list = props.search;
-  // const generateItems = () =>
-  //   list.items.map(item => <SearchListItem key={item.id} item={item} />);
+  const searchList = props.search;
+  const generateItems = () =>
+    searchList.items.map(item => (
+      <td>
+        <SearchListItem key={item.id} item={item} />
+      </td>
+    ));
   return (
     <tr className="search-date-row">
       <td>
-        <span role="img" className="expand-search-btn">
-          {" "}
-          ⍖{" "}
-        </span>
+        <button
+          onClick={e => {
+            props.handleToggleItems(props.search);
+          }}
+          className="expand-search-btn"
+        >
+          <span role="img" className="expand-search-span">
+            {" "}
+            ⍖{" "}
+          </span>
+        </button>
       </td>
-      <td>{list.date}</td>
-      <td>{list.start_from}</td>
-      <td>{list.to_destination}</td>
-      <td>{list.company}</td>
+      <td>{searchList.date}</td>
+      <td>{searchList.start_from}</td>
+      <td>{searchList.to_destination}</td>
+      <td>{searchList.company}</td>
+      {props.isActive ? generateItems() : null}
     </tr>
   );
 };
