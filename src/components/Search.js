@@ -44,9 +44,7 @@ class Search extends Component {
   render() {
     return (
       <div className="console-wrapper">
-        <div id="search-console">
-          <SearchConsole searches={this.state.searches} />
-        </div>
+        <SearchConsole searches={this.state.searches} />
         <div id="search-table">
           <div className="search-wrapper">
             <div className="table-wrapper">

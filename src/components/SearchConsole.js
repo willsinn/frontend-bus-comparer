@@ -8,9 +8,10 @@ class SearchConsole extends Component {
   render() {
     console.log(this.props.searches);
     return (
-      <>
+      <div id="search-console">
         <ConsoleFilterFns />
-      </>
+        <div className="render-search-console" />
+      </div>
     );
   }
 }

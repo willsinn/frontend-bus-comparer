@@ -366,3 +366,16 @@ input {
 .table-wrapper {
   position: fixed;
 }
+
+/* CONSOLE */
+
+#search-console {
+  height: 55vh;
+  width: 50vw;
+  background: white;
+}
+.render-search-console {
+  height: 40vh;
+  width: 40vw;
+  border: 2px solid blue;
+}
