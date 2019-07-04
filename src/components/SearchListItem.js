@@ -1,18 +1,37 @@
-import React from "react";
+import React, { Component } from "react";
 
-const SearchListItem = props => {
-  console.log(props);
-  const item = props.item;
-  return (
-    <div className="item-row">
-      <span> {item.time} </span>
-      <span> {item.price} </span>
-      <span> {item.pickup_from} </span>
-      <span> {item.purchase_url} </span>
-    </div>
-  );
-};
+class SearchListItem extends Component {
+  render() {
+    const item = this.props.item;
+    return (
+      <div className="search-item-wrapper">
+        <div className="item-row">
+          <div className="search-item-column"> {item.time} </div>
+          <div className="search-item-column"> {item.price} </div>
+          <div className="search-item-column"> {item.pickup_from} </div>
+          <div className="search-item-column"> {item.purchase_url} </div>
+        </div>
+      </div>
+    );
+  }
+}
 export default SearchListItem;
+// const SearchListItem = props => {
+//   console.log(props);
+//   const time = props.item.time.split("T");
+//   const item = props.item;
+//   return (
+//     <div className="search-item-wrapper">
+//       <div className="item-row">
+//         <div className="search-item-column"> {item.time} </div>
+//         <div className="search-item-column"> {item.price} </div>
+//         <div className="search-item-column"> {item.pickup_from} </div>
+//         <div className="search-item-column"> {item.purchase_url} </div>
+//       </div>
+//     </div>
+//   );
+// };
+// export default SearchListItem;
 // <div className="search-info">Price: ${bus.price}</div>
 // <div className="search-info">Time: {bus.bus_time}</div>
 // <div className="search-info">Location: {bus.location}</div>

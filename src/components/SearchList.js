@@ -7,10 +7,17 @@ const SearchList = props => {
     searchList.items.map(item => <SearchListItem key={item.id} item={item} />);
   return (
     <div className="console-content-wrapper">
-      <div className="console-column content">{searchList.date}</div>
-      <div className="console-column content">{searchList.start_from}</div>
-      <div className="console-column content">{searchList.to_destination}</div>
-      <div className="console-column content">{searchList.company}</div>
+      <div className="search-content-wrapper">
+        <div className="console-column content">{searchList.date}</div>
+        <div className="console-column content">{searchList.start_from}</div>
+        <div className="console-column content">
+          {searchList.to_destination}
+        </div>
+        <div className="console-column content">{searchList.company}</div>
+      </div>
+      <div className="align-right-items">
+        <div className="search-item-content-wrapper">{generateItems()}</div>
+      </div>
     </div>
   );
 };
