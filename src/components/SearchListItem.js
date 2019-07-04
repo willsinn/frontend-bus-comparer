@@ -7,10 +7,16 @@ const SearchListItem = props => {
   return (
     <div className="search-item-wrapper">
       <div className="item-row">
-        <div className="search-item-column"> {item.time} </div>
-        <div className="search-item-column"> {item.price} </div>
-        <div className="search-item-column"> {item.pickup_from} </div>
-        <div className="search-item-column"> {item.purchase_url} </div>
+        <div className="search-item-column">
+          <div className="item-content-break">DEPARTS</div>
+          <div className="item-content">Add to watchlist</div>{" "}
+        </div>
+        <div className="search-item-column">
+          <div className="item-content">{item.time}</div>
+          <div className="item-content">${item.price}</div>
+        </div>
+        <div className="search-item-column 2"> {item.pickup_from} </div>
+        <div className="search-item-column 2"> {item.purchase_url} </div>
       </div>
     </div>
   );

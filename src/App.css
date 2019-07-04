@@ -70,26 +70,28 @@ body {
 }
 .search-content-wrapper {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+}
+.item-content {
 }
 .search-item-content-wrapper {
-  height: 20vh;
-  width: 85%;
+  height: 35vh;
+  width: 40vw;
   display: flex;
   flex-direction: column;
   overflow: scroll;
+  border: 3.5px inset lightblue;
 }
 .console-toggle.wrapper {
   display: flex;
 }
 .align-right-items {
   display: flex;
-  justify-content: flex-end;
-  flex-direction: row-reverse;
+  justify-content: center;
 }
 .al-r {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 }
 .search-info {
   display: block;
@@ -149,6 +151,22 @@ body {
 }
 .item-row {
   display: flex;
+  justify-content: space-evenly;
+}
+.search-item-column {
+  padding: 0.5em;
+  background: lightblue;
+}
+.search-item-column.2 {
+  flex-basis: 2;
+}
+.search-item-wrapper {
+  border: 2px dashed #f1a0a740;
+}
+
+.item-content-break {
+  background-color: blue;
+  color: #f1a0a740;
 }
 /* Profile */
 
