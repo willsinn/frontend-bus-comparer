@@ -6,7 +6,7 @@ class Search extends Component {
   state = {
     searches: [],
     showing: [],
-    targetView: {}
+    watching: []
   };
   componentDidMount() {
     fetch("http://localhost:3000/api/v1/searches", {
