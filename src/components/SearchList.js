@@ -16,7 +16,26 @@ const SearchList = props => {
         <div className="console-column content">{searchList.company}</div>
       </div>
       <div className="align-right-items">
-        <div className="search-item-content-wrapper">{generateItems()}</div>
+        <div className="search-item-content-wrapper">
+          {!props.isShowing ? (
+            <div className="search-item-info btn">
+              {" "}
+              <button
+                onClick={e => {
+                  props.handleShowClick(props.search);
+                }}
+                className="expand-search-btn"
+              >
+                <span role="img" className="expand-search-span">
+                  {" "}
+                  ✚{" "}
+                </span>
+              </button>
+            </div>
+          ) : (
+            <>{generateItems()}</>
+          )}
+        </div>
       </div>
     </div>
   );
