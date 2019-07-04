@@ -2,23 +2,43 @@ import React from "react";
 import SearchListItem from "./SearchListItem";
 
 const SearchList = props => {
-  const list = props.search;
-  // const generateItems = () =>
-  //   list.items.map(item => <SearchListItem key={item.id} item={item} />);
+  const searchList = props.search;
+  const generateItems = () =>
+    searchList.items.map(item => <SearchListItem key={item.id} item={item} />);
   return (
-    <tr className="search-date-row">
-      <td>
-        <span role="img" className="expand-search-btn">
-          {" "}
-          ⍖{" "}
-        </span>
-      </td>
-      <td>{list.date}</td>
-      <td>{list.start_from}</td>
-      <td>{list.to_destination}</td>
-      <td>{list.company}</td>
-    </tr>
+    <div className="console-content-wrapper">
+      <div className="search-content-wrapper">
+        <div className="console-column content">{searchList.date}</div>
+        <div className="console-column content">{searchList.start_from}</div>
+        <div className="console-column content">
+          {searchList.to_destination}
+        </div>
+        <div className="console-column content">{searchList.company}</div>
+      </div>
+      <div className="align-right-items">
+        <div className="search-item-content-wrapper">{generateItems()}</div>
+      </div>
+    </div>
   );
 };
 
 export default SearchList;
+// {
+//   generateItems();
+// }
+
+// <tr>{generateItems()}</tr>
+
+// <tr>
+//   {props.isActive ? (
+//     <div className="nested-items">
+//       <div className="item-headers">
+//         <span> Time </span>
+//         <span> Price </span>
+//         <span> Pick-Up </span>
+//         <span> Purchase </span>
+//       </div>
+//
+//     </div>
+//   ) : null}
+// </tr>

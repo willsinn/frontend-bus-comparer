@@ -17,28 +17,75 @@ body {
   display: flex;
   justify-content: center;
 }
-.search-console {
+#search-console {
   display: flex;
   justify-content: center;
   align-content: center;
-  width: 100%;
-}
-.search-wrapper {
   width: 70vw;
   height: 75vh;
+  background-color: white;
+  border: 2px solid blue;
+  overflow: scroll;
+}
+.search-wrapper {
+  width: 85%;
+  height: 60%;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: space-evenly;
+  justify-content: space-evenly;
+}
+.column-headers {
+  display: flex;
+  justify-content: space-evenly;
+}
+.console-column {
+  width: 20%;
+  display: flex;
   justify-content: center;
+  padding: 0.6em;
+  margin: 0.3em;
 }
-
-.search-list-item:last-child {
-  border: 0;
+.console-column.header {
+  border-bottom: 3px inset blue;
+  border-right: 3px inset blue;
+  margin-left: 2%;
+  padding-top: 0.5em;
+  padding-bottom: 0.4em;
 }
-
+.console-column.content {
+  background: #f1a0a740;
+}
+.console-content-wrapper {
+  width: 100%;
+  border-bottom: 3px solid blue;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.search-content-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+.search-item-content-wrapper {
+  height: 20vh;
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+}
+.align-right-items {
+  display: flex;
+  justify-content: flex-end;
+}
 .search-info {
   display: block;
 }
-
+.table-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .login-page,
 .signup-page {
   height: 100vh;
@@ -70,19 +117,26 @@ body {
   align-items: center;
   height: 100%;
 }
-.search-date-table {
-  border-collapse: collapse;
-}
-.search-date-row th,
-.search-date-row td {
+
+.search-date-row {
+  display: flex;
   padding: 8px;
   text-align: left;
   border-bottom: 1px solid #ddd;
 }
-.expand-search-btn {
+.expand-search-span {
   font-weight: 900;
+  font-size: 20px;
 }
-
+.nested-items {
+  display: flex;
+}
+.items-wrapper {
+  height: 100px;
+}
+.item-row {
+  display: flex;
+}
 /* Profile */
 
 .form-box {
