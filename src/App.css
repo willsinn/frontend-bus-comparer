@@ -13,6 +13,10 @@ body {
 }
 
 /* SEARCH */
+.col {
+  display: flex;
+  flex-direction: column;
+}
 .console-wrapper {
   display: flex;
   justify-content: center;
@@ -38,6 +42,7 @@ body {
 .column-headers {
   display: flex;
   justify-content: space-evenly;
+  width: 655px;
 }
 .console-column {
   width: 20%;
@@ -55,7 +60,6 @@ body {
 }
 .console-column.content {
   background: #f1a0a740;
-  position: relative;
 }
 .console-content-wrapper {
   width: 100%;
@@ -75,7 +79,15 @@ body {
   flex-direction: column;
   overflow: scroll;
 }
+.console-toggle.wrapper {
+  display: flex;
+}
 .align-right-items {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row-reverse;
+}
+.al-r {
   display: flex;
   justify-content: flex-end;
 }
