@@ -4,7 +4,8 @@ import SearchList from "./SearchList";
 class Search extends Component {
   state = {
     searches: [],
-    showing: []
+    showing: [],
+    target: {}
   };
   componentDidMount() {
     fetch("http://localhost:3000/api/v1/searches", {

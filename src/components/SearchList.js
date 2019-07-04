@@ -10,6 +10,37 @@ const SearchList = props => {
   return (
     <div className="console-content-wrapper">
       <div className="search-content-wrapper">
+        {!props.showing.includes(props.search) ? (
+          <>
+            {" "}
+            <button
+              onClick={e => {
+                props.handleShowItems(props.search);
+              }}
+              className="expand-search-btn"
+            >
+              <span role="img" className="expand-search-span">
+                {" "}
+                ✚{" "}
+              </span>
+            </button>
+          </>
+        ) : (
+          <>
+            {" "}
+            <button
+              onClick={e => {
+                props.handleHideItems(props.search);
+              }}
+              className="expand-search-btn"
+            >
+              <span role="img" className="expand-search-span">
+                {" "}
+                −{" "}
+              </span>
+            </button>
+          </>
+        )}
         <div className="console-column content">{searchList.date}</div>
         <div className="console-column content">{searchList.start_from}</div>
         <div className="console-column content">
@@ -18,34 +49,28 @@ const SearchList = props => {
         <div className="console-column content">{searchList.company}</div>
       </div>
       <div className="align-right-items">
-        <div className="search-item-content-wrapper">
-          {!props.showing.includes(props.search) ? (
-            <div className="search-item-info btn">
-              {" "}
-              <button
-                onClick={e => {
-                  props.handleShowItems(props.search);
-                }}
-                className="expand-search-btn"
-              >
-                <span role="img" className="expand-search-span">
-                  {" "}
-                  ✚{" "}
-                </span>
-              </button>
-            </div>
-          ) : (
-            <div>
-              <button
-                onClick={e => {
-                  props.handleHideItems(props.search);
-                }}
-              >
-                HIDE
-              </button>{" "}
+        <div className="al-r">
+          {props.showing.includes(props.search) ? (
+            <div className="search-item-content-wrapper">
+              <div className="items-header">
+                <div className="item-row">
+                  <div className="search-item-column">
+                    <div className="item-content-label">Depart</div>
+                  </div>
+                  <div className="search-item-column">
+                    <div className="item-content-label">Price</div>
+                  </div>
+                  <div className="search-item-column">
+                    <div className="item-content-label">Website</div>
+                  </div>
+                  <div className="search-item-column">
+                    <div className="item-content-label">Save to Watchlist</div>
+                  </div>
+                </div>
+              </div>
               {generateItems()}
             </div>
-          )}
+          ) : null}
         </div>
       </div>
     </div>
@@ -53,9 +78,6 @@ const SearchList = props => {
 };
 
 export default SearchList;
-// {
-//   generateItems();
-// }
 
 // <tr>{generateItems()}</tr>
 

@@ -4,13 +4,22 @@ const SearchListItem = props => {
   console.log(props);
   const time = props.item.time.split("T");
   const item = props.item;
+
   return (
     <div className="search-item-wrapper">
       <div className="item-row">
-        <div className="search-item-column"> {item.time} </div>
-        <div className="search-item-column"> {item.price} </div>
-        <div className="search-item-column"> {item.pickup_from} </div>
-        <div className="search-item-column"> {item.purchase_url} </div>
+        <div className="search-item-column">
+          <div className="item-content">{item.time}</div>
+        </div>
+        <div className="search-item-column">
+          <div className="item-content">${item.price}</div>
+        </div>
+        <div className="search-item-column">
+          <form action={item.purchase_url}>
+            <input type="submit" value="Purchase Ticket" />
+          </form>
+        </div>
+        <div className="search-item-column">Add to watchlist</div>
       </div>
     </div>
   );
