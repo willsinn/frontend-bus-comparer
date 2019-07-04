@@ -4,7 +4,7 @@ import SearchList from "./SearchList";
 class Search extends Component {
   state = {
     searches: [],
-    isActive: false
+    showing: []
   };
   componentDidMount() {
     fetch("http://localhost:3000/api/v1/searches", {
@@ -18,9 +18,15 @@ class Search extends Component {
         this.setState({ searches: [...searches] });
       });
   }
-  handleToggleItems = props => {
-    console.log(props.id);
-    this.setState({ isActive: !this.state.isActive });
+  handleShowItems = targetValue => {
+    this.setState({ showing: [...this.state.showing, targetValue] });
+  };
+  handleHideItems = targetValue => {
+    this.setState({
+      showing: [
+        [...this.state.showing].filter(search => search !== targetValue)
+      ]
+    });
   };
   generateSearchList = () =>
     this.state.searches.map(search => {
@@ -28,14 +34,14 @@ class Search extends Component {
         <SearchList
           key={search.id}
           search={search}
-          handleToggleItems={this.handleToggleItems}
-          isActive={this.state.isActive}
+          handleShowItems={this.handleShowItems}
+          handleHideItems={this.handleHideItems}
+          showing={this.state.showing}
         />
       );
     });
 
   render() {
-    console.log(this.state.searches);
     return (
       <div className="console-wrapper">
         <div id="search-console">
