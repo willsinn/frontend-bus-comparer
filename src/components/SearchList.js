@@ -8,8 +8,15 @@ const SearchList = props => {
       return <SearchListItem key={item.id} item={item} />;
     });
   return (
-    <div className="console-content-wrapper">
-      <div className="search-content-wrapper">
+    <div className="table-content-wrapper">
+      <div
+        className="search-content-wrapper"
+        style={
+          !props.showing.includes(props.search)
+            ? {}
+            : { border: "4px double blue" }
+        }
+      >
         {!props.showing.includes(props.search) ? (
           <>
             {" "}
@@ -34,9 +41,9 @@ const SearchList = props => {
               }}
               className="expand-search-btn"
             >
-              <span role="img" className="expand-search-span">
+              <span role="img" className="close-search-span">
                 {" "}
-                −{" "}
+                ☞{" "}
               </span>
             </button>
           </>
@@ -51,25 +58,32 @@ const SearchList = props => {
       <div className="align-right-items">
         <div className="al-r">
           {props.showing.includes(props.search) ? (
-            <div className="search-item-content-wrapper">
-              <div className="items-header">
-                <div className="item-row">
-                  <div className="search-item-column">
-                    <div className="item-content-label">Depart</div>
-                  </div>
-                  <div className="search-item-column">
-                    <div className="item-content-label">Price</div>
-                  </div>
-                  <div className="search-item-column">
-                    <div className="item-content-label">Website</div>
-                  </div>
-                  <div className="search-item-column">
-                    <div className="item-content-label">Save to Watchlist</div>
+            <>
+              <span role="img" className="folder-items-indicator">
+                {"  "}↳{"  "}
+              </span>
+              <div className="search-item-content-wrapper">
+                <div className="items-header">
+                  <div className="item-row">
+                    <div className="search-item-column-header">
+                      <div className="item-content-label">Depart</div>
+                    </div>
+                    <div className="search-item-column-header">
+                      <div className="item-content-label">Price</div>
+                    </div>
+                    <div className="search-item-column-header">
+                      <div className="item-content-label">Website</div>
+                    </div>
+                    <div className="search-item-column-header">
+                      <div className="item-content-label">
+                        Save to Watchlist
+                      </div>
+                    </div>
                   </div>
                 </div>
+                {generateItems()}
               </div>
-              {generateItems()}
-            </div>
+            </>
           ) : null}
         </div>
       </div>

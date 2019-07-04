@@ -5,6 +5,9 @@
 body {
   margin: 0;
 }
+button {
+  border: 0;
+}
 
 #root {
   height: 100vh;
@@ -21,7 +24,7 @@ body {
   display: flex;
   justify-content: center;
 }
-#search-console {
+#search-table {
   display: flex;
   justify-content: center;
   align-content: center;
@@ -29,7 +32,7 @@ body {
   width: 70vw;
   height: 75vh;
   background-color: white;
-  border: 2px solid blue;
+  border: 2px solid #d43a3a;
   overflow: scroll;
 }
 .search-wrapper {
@@ -52,8 +55,8 @@ body {
   margin: 0.3em;
 }
 .console-column.header {
-  border-bottom: 3px inset blue;
-  border-right: 3px inset blue;
+  border-bottom: 4px inset blue;
+  border-right: 4px inset blue;
   margin-left: 2%;
   padding-top: 0.5em;
   padding-bottom: 0.4em;
@@ -61,19 +64,28 @@ body {
 .console-column.content {
   background: #f1a0a740;
 }
-.console-content-wrapper {
+.table-content-wrapper {
   width: 100%;
-  border-bottom: 3px solid blue;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  padding-top: 0.5%;
+  padding-bottom: 0.5%;
 }
 .search-content-wrapper {
   display: flex;
   justify-content: center;
+  border: 4px double #d43a3a;
+}
+
+.close-search-span {
+  color: black;
+  font-weight: 900;
+  font-size: 25px;
 }
 .item-content {
 }
+
 .search-item-content-wrapper {
   height: 35vh;
   width: 40vw;
@@ -83,7 +95,6 @@ body {
   border-right: 3px solid blue;
   border-left: 3px solid blue;
   border-bottom: 3px solid blue;
-  padding-bottom: 15px;
 }
 .console-toggle.wrapper {
   display: flex;
@@ -144,7 +155,8 @@ body {
 }
 .expand-search-span {
   font-weight: 900;
-  font-size: 20px;
+  font-size: 22px;
+  padding: 0 6.5px 0 6.5px;
 }
 .nested-items {
   display: flex;
@@ -171,10 +183,11 @@ body {
   height: 40px;
 }
 .search-item-wrapper {
-  border-bottom: 4px double #f1a0a7a6;
+  border-bottom: 4px double blue;
 }
 .item-content-label {
   font-weight: 900;
+  padding-top: 10px;
 }
 .search-item-column-header {
   border-bottom: #d43a3a;
@@ -192,7 +205,7 @@ body {
   opacity: 1;
 }
 .item-content-break {
-  background-color: blue;
+  background-color: #d43a3a;
   color: #f1a0a740;
 }
 /* Profile */
@@ -306,7 +319,7 @@ body {
   padding-left: 17.5%;
 }
 .bus-border-bottom {
-  border-top: 2px solid blue;
+  border-top: 2px solid #d43a3a;
   margin: 0;
   margin-left: 15px;
   width: 85%;
@@ -316,7 +329,7 @@ body {
   height: 0;
   border-top: 3.5px solid transparent;
   border-bottom: 3.5px solid transparent;
-  border-left: 10px solid blue;
+  border-left: 10px solid #d43a3a;
   width: 5%;
 }
 .bottom-box {
@@ -349,4 +362,7 @@ input {
 .user-content {
   display: flex;
   overflow: hidden;
+}
+.table-wrapper {
+  position: fixed;
 }
