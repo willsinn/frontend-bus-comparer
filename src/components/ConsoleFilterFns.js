@@ -4,13 +4,18 @@ const ConsoleFilterFns = props => {
   console.log(props);
   // const handleTimeClick = () => {};
   const handlePriceClick = () => {};
-  return;
-  <div>
-    <div />
+  return (
     <div>
-      <button onClick={handlePriceClick()} />
+      <button
+        onClick={e => {
+          handlePriceClick();
+        }}
+      >
+        {" "}
+        Price{" "}
+      </button>
     </div>
-  </div>;
+  );
 };
 
 export default ConsoleFilterFns;

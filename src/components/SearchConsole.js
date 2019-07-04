@@ -7,7 +7,11 @@ class SearchConsole extends Component {
   };
   render() {
     console.log(this.props.searches);
-    return <></>;
+    return (
+      <>
+        <ConsoleFilterFns />
+      </>
+    );
   }
 }
 
