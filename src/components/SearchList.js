@@ -4,7 +4,9 @@ import SearchListItem from "./SearchListItem";
 const SearchList = props => {
   const searchList = props.search;
   const generateItems = () =>
-    searchList.items.map(item => <SearchListItem key={item.id} item={item} />);
+    props.search.items.map(item => {
+      return <SearchListItem key={item.id} item={item} />;
+    });
   return (
     <div className="console-content-wrapper">
       <div className="search-content-wrapper">
@@ -17,12 +19,12 @@ const SearchList = props => {
       </div>
       <div className="align-right-items">
         <div className="search-item-content-wrapper">
-          {!props.isShowing ? (
+          {!props.showing.includes(props.search) ? (
             <div className="search-item-info btn">
               {" "}
               <button
                 onClick={e => {
-                  props.handleShowClick(props.search);
+                  props.handleShowItems(props.search);
                 }}
                 className="expand-search-btn"
               >

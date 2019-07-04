@@ -4,7 +4,7 @@ import SearchList from "./SearchList";
 class Search extends Component {
   state = {
     searches: [],
-    isShowing: false
+    showing: []
   };
   componentDidMount() {
     fetch("http://localhost:3000/api/v1/searches", {
@@ -18,8 +18,8 @@ class Search extends Component {
         this.setState({ searches: [...searches] });
       });
   }
-  handleShowClick = () => {
-    this.setState({ isShowing: !this.state.isShowing });
+  handleShowItems = targetValue => {
+    this.setState({ showing: [...this.state.showing, targetValue] });
   };
   generateSearchList = () =>
     this.state.searches.map(search => {
@@ -27,14 +27,15 @@ class Search extends Component {
         <SearchList
           key={search.id}
           search={search}
-          handleShowClick={this.handleShowClick}
-          isShowing={this.state.isShowing}
+          handleShowItems={this.handleShowItems}
+          showing={this.state.showing}
+          targetSearch={this.state.targetSearch}
         />
       );
     });
 
   render() {
-    console.log(this.state.searches);
+    console.log(this.state.notShowing);
     return (
       <div className="console-wrapper">
         <div id="search-console">
