@@ -4,35 +4,22 @@ import SearchListItem from "./SearchListItem";
 const SearchList = props => {
   const searchList = props.search;
   const generateItems = () =>
-    searchList.items.map(item => (
-      <td>
-        <SearchListItem key={item.id} item={item} />
-      </td>
-    ));
+    searchList.items.map(item => <SearchListItem key={item.id} item={item} />);
   return (
-    <tr className="search-date-row">
-      <td>
-        <button
-          onClick={e => {
-            props.handleToggleItems(props.search);
-          }}
-          className="expand-search-btn"
-        >
-          <span role="img" className="expand-search-span">
-            {" "}
-            ⍖{" "}
-          </span>
-        </button>
-      </td>
-      <td>{searchList.date}</td>
-      <td>{searchList.start_from}</td>
-      <td>{searchList.to_destination}</td>
-      <td>{searchList.company}</td>
-    </tr>
+    <div className="console-content-wrapper">
+      <div className="console-column content">{searchList.date}</div>
+      <div className="console-column content">{searchList.start_from}</div>
+      <div className="console-column content">{searchList.to_destination}</div>
+      <div className="console-column content">{searchList.company}</div>
+    </div>
   );
 };
 
 export default SearchList;
+// {
+//   generateItems();
+// }
+
 // <tr>{generateItems()}</tr>
 
 // <tr>

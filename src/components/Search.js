@@ -40,18 +40,15 @@ class Search extends Component {
       <div className="console-wrapper">
         <div id="search-console">
           <div className="search-wrapper">
-            <table className="search-date-table">
-              <tbody>
-                <tr className="search-date-row">
-                  <th />
-                  <th> Date </th>
-                  <th> From Location </th>
-                  <th> To Destination </th>
-                  <th> Company </th>
-                </tr>
-                {this.generateSearchList()}
-              </tbody>
-            </table>
+            <div className="table-wrapper">
+              <div className="column-headers">
+                <div className="console-column header"> Date: </div>
+                <div className="console-column header"> From: </div>
+                <div className="console-column header"> To: </div>
+                <div className="console-column header"> Company: </div>
+              </div>
+              {this.generateSearchList()}
+            </div>
           </div>
         </div>
       </div>

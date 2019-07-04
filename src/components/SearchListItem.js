@@ -12,8 +12,21 @@ const SearchListItem = props => {
     </div>
   );
 };
-
 export default SearchListItem;
 // <div className="search-info">Price: ${bus.price}</div>
 // <div className="search-info">Time: {bus.bus_time}</div>
 // <div className="search-info">Location: {bus.location}</div>
+//
+// <div>
+//   <button
+//     onClick={e => {
+//       props.handleToggleItems(props.search);
+//     }}
+//     className="expand-search-btn"
+//   >
+//     <span role="img" className="expand-search-span">
+//       {" "}
+//       ⍖{" "}
+//     </span>
+//   </button>
+// </div>
