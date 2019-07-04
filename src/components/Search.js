@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import SearchList from "./SearchList";
+import SearchConsole from "./SearchConsole";
 
 class Search extends Component {
   state = {
     searches: [],
     showing: [],
-    target: {}
+    targetView: {}
   };
   componentDidMount() {
     fetch("http://localhost:3000/api/v1/searches", {
@@ -20,13 +21,11 @@ class Search extends Component {
       });
   }
   handleShowItems = targetValue => {
-    this.setState({ showing: [...this.state.showing, targetValue] });
+    this.setState({ showing: [targetValue] });
   };
   handleHideItems = targetValue => {
     this.setState({
-      showing: [
-        [...this.state.showing].filter(search => search !== targetValue)
-      ]
+      showing: []
     });
   };
   generateSearchList = () =>
@@ -46,6 +45,9 @@ class Search extends Component {
     return (
       <div className="console-wrapper">
         <div id="search-console">
+          <SearchConsole searches={this.state.searches} />
+        </div>
+        <div id="search-table">
           <div className="search-wrapper">
             <div className="table-wrapper">
               <div className="column-headers">
