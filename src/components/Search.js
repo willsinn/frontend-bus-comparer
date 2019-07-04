@@ -21,6 +21,13 @@ class Search extends Component {
   handleShowItems = targetValue => {
     this.setState({ showing: [...this.state.showing, targetValue] });
   };
+  handleHideItems = targetValue => {
+    this.setState({
+      showing: [
+        [...this.state.showing].filter(search => search !== targetValue)
+      ]
+    });
+  };
   generateSearchList = () =>
     this.state.searches.map(search => {
       return (
@@ -28,14 +35,13 @@ class Search extends Component {
           key={search.id}
           search={search}
           handleShowItems={this.handleShowItems}
+          handleHideItems={this.handleHideItems}
           showing={this.state.showing}
-          targetSearch={this.state.targetSearch}
         />
       );
     });
 
   render() {
-    console.log(this.state.notShowing);
     return (
       <div className="console-wrapper">
         <div id="search-console">

@@ -35,7 +35,16 @@ const SearchList = props => {
               </button>
             </div>
           ) : (
-            <>{generateItems()}</>
+            <div>
+              <button
+                onClick={e => {
+                  props.handleHideItems(props.search);
+                }}
+              >
+                HIDE
+              </button>{" "}
+              {generateItems()}
+            </div>
           )}
         </div>
       </div>
