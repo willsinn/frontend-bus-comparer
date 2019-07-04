@@ -51,7 +51,25 @@ const SearchList = props => {
       <div className="align-right-items">
         <div className="al-r">
           {props.showing.includes(props.search) ? (
-            <div className="search-item-content-wrapper">{generateItems()}</div>
+            <div className="search-item-content-wrapper">
+              <div className="items-header">
+                <div className="item-row">
+                  <div className="search-item-column">
+                    <div className="item-content-label">Depart</div>
+                  </div>
+                  <div className="search-item-column">
+                    <div className="item-content-label">Price</div>
+                  </div>
+                  <div className="search-item-column">
+                    <div className="item-content-label">Website</div>
+                  </div>
+                  <div className="search-item-column">
+                    <div className="item-content-label">Save to Watchlist</div>
+                  </div>
+                </div>
+              </div>
+              {generateItems()}
+            </div>
           ) : null}
         </div>
       </div>
