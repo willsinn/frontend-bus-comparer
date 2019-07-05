@@ -87,8 +87,8 @@ button {
 }
 
 .search-item-content-wrapper {
-  height: 35vh;
-  width: 40vw;
+  height: 40vh;
+  width: 35vw;
   display: flex;
   flex-direction: column;
   overflow: scroll;
@@ -365,4 +365,17 @@ input {
 }
 .table-wrapper {
   position: fixed;
+}
+
+/* CONSOLE */
+
+#search-console {
+  height: 55vh;
+  width: 50vw;
+  background: white;
+}
+.render-search-console {
+  height: 40vh;
+  width: 40vw;
+  border: 2px solid blue;
 }

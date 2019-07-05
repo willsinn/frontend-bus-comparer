@@ -9,3 +9,11 @@
 ## Search List-item
 
 1. Don't see first item, header is covering the first item
+
+## Build-console
+
+1. Create a render console that populates searched items
+
+2. Create built-in fns
+
+3. Create curried fn, applicable to all searches
