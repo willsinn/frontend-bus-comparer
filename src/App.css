@@ -379,3 +379,14 @@ input {
   width: 40vw;
   border: 2px solid blue;
 }
+#console-item {
+  height: 2.5vh;
+  width: 3.5vw;
+}
+.console-result-item-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.console-result-item {
+  display: flex;
+}
