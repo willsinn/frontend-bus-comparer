@@ -422,3 +422,12 @@ input {
   height: auto;
   width: 44.5%;
 }
+
+/* WATCHLIST */
+
+#watchlist-container {
+  width: 50vw;
+  height: 40vh;
+  border: 5px solid pink;
+  display: flex;
+}

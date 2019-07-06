@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SearchConsoleItem from "./SearchConsoleItem";
 import SearchConsoleForm from "./SearchConsoleForm";
+import Watchlist from "./Watchlist";
 
 class SearchConsole extends Component {
   state = {
@@ -89,6 +90,8 @@ class SearchConsole extends Component {
               </div>
               {this.renderConsoleItems()}
             </div>
+
+            <Watchlist />
           </div>
           <div className="target-item-container">
             <div className="target-item-wrapper">
