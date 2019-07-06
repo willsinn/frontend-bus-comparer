@@ -1,19 +1,20 @@
 import React from "react";
 
 const SearchConsoleItem = props => {
+  const weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   return (
-    <div id="console-item">
-      <div className="console-result-item-wrapper">
+    <div className="console-item">
+      <div className="cih-col">
         <button>
           {" "}
           <span>⭒</span>{" "}
         </button>
-        <div className="console-result-item">
-          <div>{props.route}</div>
-
-          <div>{props.result.time}</div>
-          <div>{props.result.price}</div>
-        </div>
+      </div>
+      <div className="cih-col">{weekday[props.day]}</div>
+      <div className="cih-col">{`${props.date[1]}-${props.date[2]}`}</div>
+      <div className="cih-col">{props.result.time}</div>
+      <div className="cih-col">{props.result.price}</div>
+      <div className="cih-col">
         <button
           onClick={e => {
             props.handleDeleteItem(props.result);

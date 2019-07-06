@@ -22,13 +22,14 @@ class SearchConsole extends Component {
   };
 
   renderConsoleItems = () => {
-    const route =
-      this.state.searchParams.start + "→" + this.state.searchParams.destination;
+    const date = this.state.searchParams.date.split("-");
+    const day = date[2] % 7;
     return this.state.results.map(result => (
       <SearchConsoleItem
         key={result.id}
+        date={date}
+        day={day}
         result={result}
-        route={route}
         handleDeleteItem={this.handleDeleteItem}
       />
     ));
@@ -61,19 +62,28 @@ class SearchConsole extends Component {
   };
 
   render() {
+    const route =
+      this.state.searchParams.start + "→" + this.state.searchParams.destination;
     console.log(this.state.results);
     return (
       <div id="search-console">
         <SearchConsoleForm handleSearchSubmit={this.handleSearchSubmit} />
+        <div className="items-header">
+          <div>{this.state.searchParams.date}</div>
+          <div>{route}</div>
+        </div>
         <div className="render-search-console">
-          <div className="items-header">
-            <div>{this.state.searchParams.date}</div>
-            <div>{this.state.searchParams.start}</div>
-            <div>{this.state.searchParams.start}</div>
-          </div>
-
-          <div className="console-content-wrapper">
-            {this.renderConsoleItems()}
+          <div className="content-wrapper wrapper">
+            <div className="console-content-wrapper">
+              <div className="console-item header">
+                <div className="cih-col header">Watchlist</div>
+                <div className="cih-col header">Day</div>
+                <div className="cih-col header">Time</div>
+                <div className="cih-col header">Price</div>
+                <div className="cih-col header">Remove</div>
+              </div>
+              {this.renderConsoleItems()}
+            </div>
           </div>
         </div>
       </div>
