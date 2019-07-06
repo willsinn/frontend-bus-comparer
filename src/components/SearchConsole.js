@@ -85,6 +85,11 @@ class SearchConsole extends Component {
               {this.renderConsoleItems()}
             </div>
           </div>
+          <div className="target-item-container">
+            <div className="target-item-wrapper">
+              <div className="render-target-item">Hi</div>
+            </div>
+          </div>
         </div>
       </div>
     );

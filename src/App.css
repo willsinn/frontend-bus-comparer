@@ -376,6 +376,7 @@ input {
   height: 42vh;
   width: 49.5vw;
   border: 2px solid blue;
+  display: flex;
 }
 .console-item {
   height: 60px;
@@ -387,7 +388,7 @@ input {
 .console-item.header {
   background-color: lightblue;
   height: 60px;
-  width: 55%;
+  width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -408,6 +409,8 @@ input {
 
 .content-wrapper.wrapper {
   height: auto;
+  border-right: 5px solid black;
+  width: 55%;
 }
 .console-content-wrapper {
   display: flex;
@@ -415,4 +418,7 @@ input {
   flex-direction: column;
   overflow: scroll;
   justify-content: center;
+}
+.target-item-container {
+  width: 40%;
 }
