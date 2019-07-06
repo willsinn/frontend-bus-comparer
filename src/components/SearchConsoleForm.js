@@ -2,8 +2,8 @@ import React, { Component } from "react";
 class SearchConsoleForm extends Component {
   state = {
     date: "2019-07-12",
-    start: "NY, NY",
-    destination: "Maryland",
+    start: "NY",
+    destination: "MD",
     time: "03:00"
   };
   handleChange = (e, fieldType) => {
