@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import SearchConsoleItem from "./SearchConsoleItem";
 import SearchConsoleForm from "./SearchConsoleForm";
+import ConsoleSearchInput from "./ConsoleSearchInput";
 
 class SearchConsole extends Component {
   state = {
     results: [],
     searchParams: {
       date: "2019-07-12",
-      start: "NY, NY",
-      destination: "Maryland",
+      start: "NY",
+      destination: "MD",
       time: "03:00"
     },
     renderTarget: []
@@ -22,13 +23,13 @@ class SearchConsole extends Component {
     this.setState({ results: [...this.state.results.concat(time)] });
   };
 
-  renderConsoleItems = () => {
+  renderConsoleItems = searchParams => {
     const date = this.state.searchParams.date.split("-");
     const day = date[2] % 7;
     return this.state.results.map(result => (
       <SearchConsoleItem
         key={result.id}
-        date={date}
+        date={this.state.searchParams.date}
         day={day}
         result={result}
         handleDeleteItem={this.handleDeleteItem}
@@ -75,45 +76,52 @@ class SearchConsole extends Component {
     const target = this.state.renderTarget;
     return (
       <div id="search-console">
-        <SearchConsoleForm handleSearchSubmit={this.handleSearchSubmit} />
-
         <div className="render-search-console">
-          <div className="content-wrapper wrapper">
-            <div className="console-content-wrapper">
-              <div className="console-item header">
-                <div className="cih-col header">Watchlist</div>
-                <div className="cih-col header">Day</div>
-                <div className="cih-col header">Time</div>
-                <div className="cih-col header">Price</div>
-                <div className="cih-col header">Remove</div>
-              </div>
-              {this.renderConsoleItems()}
+          <div className="left-s container">
+            <ConsoleSearchInput />
+            <SearchConsoleForm
+              handleSearchSubmit={this.handleSearchSubmit}
+              searches={this.props.searches}
+            />
+            <div className="items-header">
+              <div>{this.state.searchParams.date}</div>
+              <div>{route}</div>
             </div>
           </div>
-          <div className="target-item-container">
-            <div className="target-item-wrapper">
-              <div className="render-target-item">
-                <div className="items-header">
-                  <div>{this.state.searchParams.date}</div>
-                  <div>{route}</div>
+          <div className="right-s container">
+            <div className="content-wrapper wrapper">
+              <div className="console-content-wrapper">
+                <div className="console-item header">
+                  <div className="cih-col header">Watchlist</div>
+                  <div className="cih-col header">Day</div>
+                  <div className="cih-col header">Time</div>
+                  <div className="cih-col header">Price</div>
+                  <div className="cih-col header">Remove</div>
                 </div>
-                {Array.isArray(this.state.renderTarget) ? null : (
-                  <div className="rti-item wrapper">
-                    <div className="rti-item-col">{target.company}</div>
-                    <div className="rti-item-col">{route}</div>
-                    <div className="rti-item-col">{target.item.time}</div>
-                    <div className="rti-item-col">{target.item.date}</div>
-                    <div className="rti-item-col">{target.time}</div>
-                    <div className="rti-item-col">
-                      {target.item.pickup_from}
-                    </div>
-                    <div className="rti-item-col">
-                      {target.item.purchase_url}
-                    </div>
+                {this.renderConsoleItems()}
+              </div>
+            </div>
+            <div className="target-item-container">
+              <div className="target-item-wrapper">
+                <div className="render-target-item">
+                  {Array.isArray(this.state.renderTarget) ? null : (
+                    <div className="rti-item wrapper">
+                      <div className="rti-item-col">{target.company}</div>
+                      <div className="rti-item-col">{route}</div>
+                      <div className="rti-item-col">{target.item.time}</div>
+                      <div className="rti-item-col">{target.item.date}</div>
+                      <div className="rti-item-col">{target.time}</div>
+                      <div className="rti-item-col">
+                        {target.item.pickup_from}
+                      </div>
+                      <div className="rti-item-col">
+                        {target.item.purchase_url}
+                      </div>
 
-                    <div className="rti-item-col">{target.item.price}</div>
-                  </div>
-                )}
+                      <div className="rti-item-col">{target.item.price}</div>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>
