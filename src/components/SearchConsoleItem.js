@@ -3,7 +3,12 @@ import React from "react";
 const SearchConsoleItem = props => {
   const weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   return (
-    <div className="console-item">
+    <div
+      onClick={e => {
+        props.handleRenderClick(props.result);
+      }}
+      className="console-item"
+    >
       <div className="cih-col">
         <button>
           {" "}
@@ -12,8 +17,8 @@ const SearchConsoleItem = props => {
       </div>
       <div className="cih-col">{weekday[props.day]}</div>
       <div className="cih-col">{`${props.date[1]}-${props.date[2]}`}</div>
-      <div className="cih-col">{props.result.time}</div>
-      <div className="cih-col">{props.result.price}</div>
+      <div className="cih-col">{props.result.item.time}</div>
+      <div className="cih-col">{props.result.item.price}</div>
       <div className="cih-col">
         <button
           onClick={e => {

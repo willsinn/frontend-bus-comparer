@@ -10,7 +10,8 @@ class SearchConsole extends Component {
       start: "NY, NY",
       destination: "Maryland",
       time: "03:00"
-    }
+    },
+    renderTarget: []
   };
   handleSearchSubmit = searchParams => {
     this.setState({ searchParams: searchParams });
@@ -31,6 +32,7 @@ class SearchConsole extends Component {
         day={day}
         result={result}
         handleDeleteItem={this.handleDeleteItem}
+        handleRenderClick={this.handleRenderClick}
       />
     ));
   };
@@ -47,9 +49,10 @@ class SearchConsole extends Component {
   filterTime = params => {
     const array = [];
     this.props.searches.forEach(search => {
+      const company = search.company;
       search.items.forEach(item => {
         if (item.time === params.time) {
-          array.push(item);
+          array.push({ item, company });
         }
       });
     });
@@ -60,18 +63,20 @@ class SearchConsole extends Component {
       results: [...this.state.results.filter(result => result !== target)]
     });
   };
+  handleRenderClick = renderTarget => {
+    this.setState({
+      renderTarget: renderTarget
+    });
+  };
 
   render() {
     const route =
       this.state.searchParams.start + "→" + this.state.searchParams.destination;
-    console.log(this.state.results);
+    const target = this.state.renderTarget;
     return (
       <div id="search-console">
         <SearchConsoleForm handleSearchSubmit={this.handleSearchSubmit} />
-        <div className="items-header">
-          <div>{this.state.searchParams.date}</div>
-          <div>{route}</div>
-        </div>
+
         <div className="render-search-console">
           <div className="content-wrapper wrapper">
             <div className="console-content-wrapper">
@@ -87,7 +92,29 @@ class SearchConsole extends Component {
           </div>
           <div className="target-item-container">
             <div className="target-item-wrapper">
-              <div className="render-target-item">Hi</div>
+              <div className="render-target-item">
+                <div className="items-header">
+                  <div>{this.state.searchParams.date}</div>
+                  <div>{route}</div>
+                </div>
+                {Array.isArray(this.state.renderTarget) ? null : (
+                  <div className="rti-item wrapper">
+                    <div className="rti-item-col">{target.company}</div>
+                    <div className="rti-item-col">{route}</div>
+                    <div className="rti-item-col">{target.item.time}</div>
+                    <div className="rti-item-col">{target.item.date}</div>
+                    <div className="rti-item-col">{target.time}</div>
+                    <div className="rti-item-col">
+                      {target.item.pickup_from}
+                    </div>
+                    <div className="rti-item-col">
+                      {target.item.purchase_url}
+                    </div>
+
+                    <div className="rti-item-col">{target.item.price}</div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
