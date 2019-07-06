@@ -7,10 +7,10 @@ class SearchConsole extends Component {
   state = {
     results: [],
     searchParams: {
-      date: "2019-07-12",
-      start: "NY",
-      destination: "MD",
-      time: "03:00"
+      date: "",
+      start: "",
+      destination: "",
+      time: ""
     },
     renderTarget: []
   };
@@ -83,10 +83,6 @@ class SearchConsole extends Component {
               handleSearchSubmit={this.handleSearchSubmit}
               searches={this.props.searches}
             />
-            <div className="items-header">
-              <div>{this.state.searchParams.date}</div>
-              <div>{route}</div>
-            </div>
           </div>
           <div className="right-s container">
             <div className="content-wrapper wrapper">
@@ -132,3 +128,7 @@ class SearchConsole extends Component {
 }
 
 export default SearchConsole;
+// <div className="items-header">
+//   <div>{this.state.searchParams.date}</div>
+//   <div>{route}</div>
+// </div>

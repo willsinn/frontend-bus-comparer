@@ -3,9 +3,9 @@ import React, { Component } from "react";
 class SearchConsoleForm extends Component {
   state = {
     date: "",
-    start_from: "NY",
-    to_destination: "MD",
-    time: "03:00"
+    start_from: "",
+    to_destination: "",
+    time: ""
   };
   handleChange = fieldType => {
     return event => {
@@ -14,26 +14,12 @@ class SearchConsoleForm extends Component {
   };
   generateOptions = options => {
     return options.map(option => (
-      <option value={option} onChange={this.handleChange}>
-        {option}
-      </option>
+      <option value={options[option]}>{option}</option>
     ));
   };
-  // generateSelectOptions = param => {
-  //   const values = [...this.props.searches].map(search => [
-  //     search[param],
-  //     search.id
-  //   ]);
-  //   const options = [];
-  //   values.forEach(value => {
-  //     if (!options.includes(value)) {
-  //       options.push(value);
-  //     }
-  //   });
-  //   return options.map(option => <option>{option.param}</option>);
-  // };
+
   render() {
-    let sOptions = [];
+    const sOptions = [];
     const sValues = [...this.props.searches].map(search => search.start_from);
     sValues.forEach(value => {
       if (!sOptions.includes(value)) {
@@ -41,8 +27,7 @@ class SearchConsoleForm extends Component {
       }
     });
 
-    let dOptions = [];
-
+    const dOptions = [];
     const dValues = [...this.props.searches].map(
       search => search.to_destination
     );
@@ -51,34 +36,62 @@ class SearchConsoleForm extends Component {
         dOptions.push(value);
       }
     });
-    console.log(dOptions);
+
+    const tOptions = [];
+    const items = [...this.props.searches].map(search => search.times);
+    debugger;
+    items.forEach(item => {
+      const time = item.map(attr => attr.time);
+      if (!tOptions.includes(item)) {
+        tOptions.concat(item);
+      }
+    });
+    console.log(this.state);
     return (
       <div id="scf-form container">
-        <label for="dateofbirth">Travel Date</label>
-        <input
-          onChange={e => {
-            this.handleChange("date");
-          }}
-          type="date"
-          name="dateofsearch"
-          className="dateofsearch"
-          value={this.state.date}
-        />
-        <div className="destinationofsearch">
-          <select required>
+        <div for="select-date search-option">
+          <input
+            onChange={e => {
+              this.handleChange("date");
+            }}
+            type="date"
+            name="date"
+            value={this.state.date}
+          />
+        </div>
+        <div className="select-start search-option">
+          <select onChange={this.handleChange("start_from")} required>
             <option value="" hidden>
-              Example Placeholder
+              Starting from:
             </option>
             {this.generateOptions(sOptions)}
           </select>
         </div>
-        <input
-          type="submit"
-          value="submit"
-          onClick={e => {
-            this.props.handleSearchSubmit(this.state);
-          }}
-        />
+        <div className="select-destination search-option">
+          <select onChange={this.handleChange("to_destination")} required>
+            <option value="" hidden>
+              To Destination
+            </option>
+            {this.generateOptions(dOptions)}
+          </select>
+        </div>
+        <div className="select-destination search-option">
+          <select onChange={this.handleChange("time")} required>
+            <option value="" hidden>
+              Time
+            </option>
+            {this.generateOptions(tOptions)}
+          </select>
+        </div>
+        <div className="submit-selections search-option">
+          <input
+            type="submit"
+            value="submit"
+            onClick={e => {
+              this.props.handleSearchSubmit(this.state);
+            }}
+          />
+        </div>
       </div>
     );
   }

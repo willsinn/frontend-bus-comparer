@@ -1,30 +1,31 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React from "react";
+import { connect } from "react-redux";
+import { withRouter, Redirect } from "react-router";
+import { loginUser } from "../actions/user";
+import { Button, Form, Segment, Message } from "semantic-ui-react";
 // import { bindActionCreators } from 'redux'
-import { withRouter, Redirect } from 'react-router'
-import { loginUser } from '../actions/user'
-import { Button, Form, Segment, Message } from 'semantic-ui-react'
 
 class LoginForm extends React.Component {
   state = {
-    username: '',
-    password: ''
-  }
+    username: "",
+    password: ""
+  };
   // handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
   handleChange = (e, semanticInputData) => {
     // this.setState({ [semanticInputData.name]: semanticInputData.value })
-    this.setState({ [e.target.name]: e.target.value })
-  }
+    this.setState({ [e.target.name]: e.target.value });
+  };
 
-  handleLoginSubmit = (e) => { //semantic forms preventDefault for you
+  handleLoginSubmit = e => {
+    //semantic forms preventDefault for you
     // e.preventDefault()
-    this.props.loginUser(this.state.username, this.state.password) //comes from mapDispatchToProps
-    this.setState({ username: '', password: '' }) //reset form to initial state
-  }
+    this.props.loginUser(this.state.username, this.state.password); //comes from mapDispatchToProps
+    this.setState({ username: "", password: "" }); //reset form to initial state
+  };
 
   render() {
-    console.log('%c LOGIN FORM PROPS: ', 'color: red', this.props)
+    console.log("%c LOGIN FORM PROPS: ", "color: red", this.props);
     return this.props.loggedIn ? (
       <Redirect to="/profile" />
     ) : (
@@ -40,7 +41,10 @@ class LoginForm extends React.Component {
                 loading={this.props.authenticatingUser}
                 error={this.props.failedLogin}
               >
-                <Message error header={this.props.failedLogin ? this.props.error : null} />
+                <Message
+                  error
+                  header={this.props.failedLogin ? this.props.error : null}
+                />
                 <Form.Group widths="equal">
                   <Form.Input
                     label="username"
@@ -64,7 +68,7 @@ class LoginForm extends React.Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
@@ -77,13 +81,14 @@ class LoginForm extends React.Component {
 //   }
 // }
 
-const mapStateToProps = ({ usersReducer: { authenticatingUser, failedLogin, error, loggedIn } }) => ({
+const mapStateToProps = ({
+  usersReducer: { authenticatingUser, failedLogin, error, loggedIn }
+}) => ({
   authenticatingUser,
   failedLogin,
   error,
   loggedIn
-})
-
+});
 
 // const mapDispatchToProps = (dispatch) => {
 //   return {
@@ -97,5 +102,9 @@ const mapStateToProps = ({ usersReducer: { authenticatingUser, failedLogin, erro
 //
 // export default connectedToReduxHOCWithRouterLoginForm
 
-
-export default withRouter(connect(mapStateToProps, { loginUser })(LoginForm))
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { loginUser }
+  )(LoginForm)
+);

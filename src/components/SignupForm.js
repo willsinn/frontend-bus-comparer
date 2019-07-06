@@ -1,40 +1,33 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { setUpUser } from '../actions/user'
-import { Redirect } from 'react-router'
-import { Button, Form, Message } from 'semantic-ui-react'
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { setUpUser } from "../actions/user";
+import { Redirect } from "react-router";
+import { Button, Form, Message } from "semantic-ui-react";
 
 class SignupForm extends Component {
   state = {
-    username: '',
-    password: '',
-    confirmPassword: '',
-    error:''
-  }
-  handleChange = (fieldType) => {
-    return (event) => {
+    username: "",
+    password: "",
+    confirmPassword: "",
+    error: ""
+  };
+  handleChange = fieldType => {
+    return event => {
       this.setState({
         [fieldType]: event.target.value
-      })
-    }
-  }
+      });
+    };
+  };
 
   handleSubmit = () => {
-    if(this.state.password !== this.state.confirmPassword) {
-      this.setState({error: 'Passwords dont match'})
+    if (this.state.password !== this.state.confirmPassword) {
+      this.setState({ error: "Passwords dont match" });
     } else {
-      this.props.setUpUser(
-        this.state.username,
-        this.state.password
-      );
+      this.props.setUpUser(this.state.username, this.state.password);
     }
-  }
-  render(){
-    const signupFields = [
-      'username',
-      'password',
-      'confirmPassword'
-    ];
+  };
+  render() {
+    const signupFields = ["username", "password", "confirmPassword"];
 
     return this.props.loggedIn ? (
       <Redirect to="/profile" />
@@ -50,9 +43,12 @@ class SignupForm extends Component {
               loading={this.props.authenticatingUser}
               error={this.props.failedLogin}
             >
-              <Message error header={this.state.error ? this.state.error : null} />
+              <Message
+                error
+                header={this.state.error ? this.state.error : null}
+              />
               <Form.Group widths="equal">
-                {signupFields.map((field) => {
+                {signupFields.map(field => {
                   return (
                     <Form.Input
                       type={field}
@@ -62,7 +58,7 @@ class SignupForm extends Component {
                       onChange={this.handleChange(field)}
                       value={this.state[field]}
                     />
-                  )
+                  );
                 })}
               </Form.Group>
               <Button type="submit">Signup</Button>
@@ -70,25 +66,25 @@ class SignupForm extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
 const mapStateToProps = ({
-  usersReducer: {
-    authenticatingUser,
-    loggedIn
-  }
+  usersReducer: { authenticatingUser, loggedIn }
 }) => {
   return {
     loggedIn
-  }
-}
+  };
+};
 
 const mapDispatchToProps = dispatch => {
   return {
     setUpUser: (username, password) => dispatch(setUpUser(username, password))
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignupForm)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SignupForm);
