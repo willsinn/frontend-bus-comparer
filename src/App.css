@@ -178,7 +178,6 @@ button {
   background: #f9e5e7;
   border-bottom: 1px ridge gray;
   border-bottom: 1.5px ridge gray;
-
   height: 40px;
 }
 .search-item-wrapper {
@@ -369,18 +368,19 @@ input {
 
 #search-console {
   height: 55vh;
-  width: 50vw;
+  width: 65vw;
   background: white;
 }
 .render-search-console {
   height: 42vh;
-  width: 49.5vw;
+  width: 100%;
   border: 2px solid blue;
   display: flex;
+  justify-content: space-between;
 }
 .console-item {
   height: 60px;
-  width: 55%;
+  width: 100%;
   display: flex;
   justify-content: space-around;
   align-content: center;
@@ -389,9 +389,6 @@ input {
   background-color: lightblue;
   height: 60px;
   width: 100%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
 }
 .console-result-item {
   display: flex;
@@ -400,11 +397,13 @@ input {
 }
 .cih-col {
   display: flex;
+  height: 60px;
   justify-content: center;
   align-items: center;
 }
 .cih-col.header {
   font-weight: 900;
+  height: 60px;
 }
 
 .content-wrapper.wrapper {
@@ -414,11 +413,12 @@ input {
 }
 .console-content-wrapper {
   display: flex;
-  height: inherit;
+  height: 100%;
   flex-direction: column;
   overflow: scroll;
-  justify-content: center;
+  align-content: center;
 }
 .target-item-container {
-  width: 40%;
+  height: auto;
+  width: 44.5%;
 }
