@@ -85,20 +85,6 @@ export const setUpUser = (username, password) => {
       );
   };
 };
-//
-// export const setUpUser = () => {
-//   return (dispatch) => {
-//     dispatch({ type: 'SIGNUP_USER'})
-//     fetch('http://localhost:3000/api/v1/users', {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type':'application/json',
-//         Accept: 'application/json'
-//       }
-//     })
-//
-//   }
-// }
 
 export const setCurrentUser = userData => ({
   type: "SET_CURRENT_USER",
