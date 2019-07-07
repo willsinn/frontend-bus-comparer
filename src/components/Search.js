@@ -6,7 +6,8 @@ class Search extends Component {
   state = {
     searches: [],
     showing: [],
-    items: []
+    items: [],
+    itemsValues: []
   };
   componentDidMount() {
     fetch("http://localhost:3000/api/v1/searches", {
@@ -29,9 +30,23 @@ class Search extends Component {
     })
       .then(r => r.json())
       .then(items => {
-        console.log(items);
-        this.setState({ items: items });
+        const itemsValues = flattenItemKeyValues(items);
+        this.setState({ items: items, itemsValues: itemsValues });
       });
+    const flattenItemKeyValues = items => {
+      let itemsData = [...items].flat();
+      itemsData = itemsData.map(itemD => {
+        let vals = Object.entries(itemD);
+        return vals.flat();
+      });
+      itemsData = itemsData.map(itemD => {
+        let i = itemD.map(item =>
+          typeof item === "object" ? Object.entries(item) : item
+        );
+        return i.flat().flat();
+      });
+      return itemsData;
+    };
   }
   handleShowItems = targetValue => {
     this.setState({ showing: [targetValue] });
@@ -60,6 +75,7 @@ class Search extends Component {
         <SearchConsole
           searches={this.state.searches}
           items={this.state.items}
+          itemsValues={this.state.itemsValues}
         />
         <div id="search-table">
           <div className="search-wrapper">
