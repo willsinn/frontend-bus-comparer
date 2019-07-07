@@ -65,9 +65,19 @@ class SearchConsole extends Component {
   };
   handleSubmit = userInput => {
     let data = [...this.props.items].flat();
-    data = data.map(itemData => Object.entries(itemData).flat());
+    data = data.map(itemD => {
+      let vals = Object.entries(itemD);
+      return vals.flat();
+    });
+    data = data.map(itemD => {
+      let i = itemD.map(item =>
+        typeof item === "object" ? Object.entries(item) : item
+      );
+      return i.flat().flat();
+    });
+
+    console.log(data);
     debugger;
-    console.log();
     // const data = [...this.props.items].map(item => Object.entries([item]));
     //
     // const handleFlatten = array => {
@@ -86,7 +96,6 @@ class SearchConsole extends Component {
   };
 
   render() {
-    console.log(this.props.items);
     const route =
       this.state.searchParams.start + "→" + this.state.searchParams.destination;
     return (
