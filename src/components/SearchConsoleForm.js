@@ -17,6 +17,18 @@ class SearchConsoleForm extends Component {
       <option value={options[option]}>{option}</option>
     ));
   };
+  // uniqueChecker = values => {
+  //   const options = [];
+  //   const vals = values;
+  //   return event => {
+  //     vals.forEach(value => {
+  //       if (!options.includes(value)) {
+  //         options.push(value);
+  //       }
+  //     });
+  //     return options;
+  //   };
+  // };
 
   render() {
     const sOptions = [];
@@ -36,17 +48,24 @@ class SearchConsoleForm extends Component {
         dOptions.push(value);
       }
     });
-
     const tOptions = [];
-    const items = [...this.props.searches].map(search => search.times);
-    debugger;
-    items.forEach(item => {
-      const time = item.map(attr => attr.time);
-      if (!tOptions.includes(item)) {
-        tOptions.concat(item);
+    const tValues = [...this.props.items].map(item => item.time);
+    tValues.forEach(value => {
+      if (!tOptions.includes(value)) {
+        tOptions.push(value);
       }
     });
-    console.log(this.state);
+    //
+    //
+    // items.forEach(item => {
+    //   debugger;
+    //   const time = item.time;
+    //   item.forEach(attr => {
+    //     if (!tOptions.includes(time)) {
+    //       tOptions.push(time);
+    //     }
+    //   });
+    // });
     return (
       <div id="scf-form container">
         <div for="select-date search-option">

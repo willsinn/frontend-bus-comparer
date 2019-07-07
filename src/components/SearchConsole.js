@@ -80,8 +80,9 @@ class SearchConsole extends Component {
           <div className="left-s container">
             <ConsoleSearchInput />
             <SearchConsoleForm
-              handleSearchSubmit={this.handleSearchSubmit}
               searches={this.props.searches}
+              items={this.props.items}
+              handleSearchSubmit={this.handleSearchSubmit}
             />
           </div>
           <div className="right-s container">
