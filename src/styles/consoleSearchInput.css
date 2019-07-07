@@ -1,0 +1,27 @@
+input[type="text"] {
+  width: 50%;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 8em;
+  font-size: 19px;
+  background-color: white;
+  padding: 12px 20px 12px 20px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+input[type="text"]:focus {
+  width: 75%;
+  border-color: red;
+}
+
+.input-s.container {
+  width: 25vw;
+  height: 20vh;
+  border: 5px solid blue;
+}
+
+.console-s-input {
+  width: inherit;
+  height: 20vh;
+}
