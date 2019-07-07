@@ -80,7 +80,7 @@ class Profile extends Component {
     const type = Object.keys(body);
     const editType = `edit${type[0].charAt(0).toUpperCase() +
       type[0].slice(1)}`;
-    fetch("http://localhost:3000/api/v1/users/2", {
+    fetch(`http://localhost:3000/api/v1/users/${this.props.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -99,8 +99,7 @@ class Profile extends Component {
       });
   };
   render() {
-    console.log(this.state.activeError);
-    console.log(this.state.avatar);
+    console.log(this.props.user);
     let user;
     this.state.currentUser.id
       ? (user = this.state.currentUser)
@@ -341,9 +340,10 @@ class Profile extends Component {
 
 const mapStateToProps = ({
   usersReducer: {
-    user: { avatar, username, bio }
+    user: { id, avatar, username, bio }
   }
 }) => ({
+  id,
   avatar,
   username,
   bio

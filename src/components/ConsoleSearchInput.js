@@ -16,8 +16,8 @@ class ConsoleSearchInput extends Component {
   };
   render() {
     return (
-      <div class="console-s-input">
-        <div class="input-s container">
+      <div className="console-s-input">
+        <div className="input-s container">
           <div className="input-s wrapper">
             <input
               onMouseEnter={this.toggleHover}

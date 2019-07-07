@@ -54,7 +54,7 @@ class SearchConsoleForm extends Component {
 
     return (
       <div id="scf-form container">
-        <div for="select-date search-option">
+        <div className="select-date search-option">
           <div className="select-date search-option">
             <select onChange={this.handleChange("date")} required>
               <option value="" hidden>

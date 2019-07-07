@@ -17,7 +17,9 @@ class Search extends Component {
     })
       .then(r => r.json())
       .then(searches => {
-        this.setState({ searches: [...searches] });
+        this.setState({
+          searches: searches
+        });
       });
     fetch("http://localhost:3000/api/v1/items", {
       method: "GET",
@@ -27,6 +29,7 @@ class Search extends Component {
     })
       .then(r => r.json())
       .then(items => {
+        console.log(items);
         this.setState({ items: items });
       });
   }
