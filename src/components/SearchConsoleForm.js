@@ -17,20 +17,16 @@ class SearchConsoleForm extends Component {
       <option value={options[option]}>{option}</option>
     ));
   };
-  // uniqueChecker = values => {
-  //   const options = [];
-  //   const vals = values;
-  //   return event => {
-  //     vals.forEach(value => {
-  //       if (!options.includes(value)) {
-  //         options.push(value);
-  //       }
-  //     });
-  //     return options;
-  //   };
-  // };
 
   render() {
+    const dateOptions = [];
+    const dateValues = [...this.props.searches].map(search => search.date);
+    dateValues.forEach(value => {
+      if (!dateOptions.includes(value)) {
+        dateOptions.push(value);
+      }
+    });
+
     const sOptions = [];
     const sValues = [...this.props.searches].map(search => search.start_from);
     sValues.forEach(value => {
@@ -55,28 +51,18 @@ class SearchConsoleForm extends Component {
         tOptions.push(value);
       }
     });
-    //
-    //
-    // items.forEach(item => {
-    //   debugger;
-    //   const time = item.time;
-    //   item.forEach(attr => {
-    //     if (!tOptions.includes(time)) {
-    //       tOptions.push(time);
-    //     }
-    //   });
-    // });
+
     return (
       <div id="scf-form container">
         <div for="select-date search-option">
-          <input
-            onChange={e => {
-              this.handleChange("date");
-            }}
-            type="date"
-            name="date"
-            value={this.state.date}
-          />
+          <div className="select-date search-option">
+            <select onChange={this.handleChange("date")} required>
+              <option value="" hidden>
+                Avaliable Dates:
+              </option>
+              {this.generateOptions(dateOptions)}
+            </select>
+          </div>
         </div>
         <div className="select-start search-option">
           <select onChange={this.handleChange("start_from")} required>

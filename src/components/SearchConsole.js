@@ -7,7 +7,7 @@ class SearchConsole extends Component {
   state = {
     results: [],
     searchParams: {
-      date: "",
+      date: "019-07-11",
       start: "",
       destination: "",
       time: ""
@@ -69,8 +69,8 @@ class SearchConsole extends Component {
       renderTarget: renderTarget
     });
   };
-
   render() {
+    console.log(this.props.searches);
     const route =
       this.state.searchParams.start + "→" + this.state.searchParams.destination;
     const target = this.state.renderTarget;
