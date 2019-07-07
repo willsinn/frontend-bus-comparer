@@ -64,19 +64,26 @@ class SearchConsole extends Component {
     });
   };
   handleSubmit = userInput => {
-    let data = [...this.props.items].flat();
-    data = data.map(itemD => {
+    let itemsData = [...this.props.items].flat();
+    itemsData = itemsData.map(itemD => {
       let vals = Object.entries(itemD);
       return vals.flat();
     });
-    data = data.map(itemD => {
+    itemsData = itemsData.map(itemD => {
       let i = itemD.map(item =>
         typeof item === "object" ? Object.entries(item) : item
       );
       return i.flat().flat();
     });
-
-    console.log(data);
+    let matches = [];
+    itemsData.forEach((itemD, dataIndex) => {
+      itemD.forEach(item => {
+        if (item.includes(userInput)) {
+          return (matches = matches.concat(this.props.items[dataIndex]));
+        }
+      });
+    });
+    console.log(matches);
     debugger;
     // const data = [...this.props.items].map(item => Object.entries([item]));
     //
