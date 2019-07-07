@@ -7,12 +7,11 @@ class SearchConsole extends Component {
   state = {
     results: [],
     searchParams: {
-      date: "019-07-11",
+      date: "",
       start: "",
       destination: "",
       time: ""
-    },
-    renderTarget: []
+    }
   };
   handleSearchSubmit = searchParams => {
     this.setState({ searchParams: searchParams });
@@ -64,21 +63,37 @@ class SearchConsole extends Component {
       results: [...this.state.results.filter(result => result !== target)]
     });
   };
-  handleRenderClick = renderTarget => {
-    this.setState({
-      renderTarget: renderTarget
-    });
+  handleSubmit = userInput => {
+    let data = [...this.props.items].flat();
+    data = data.map(itemData => Object.entries(itemData).flat());
+    debugger;
+    console.log();
+    // const data = [...this.props.items].map(item => Object.entries([item]));
+    //
+    // const handleFlatten = array => {
+    //   let newArr = [];
+    //   for (let i = 0; i < array.length; i++) {
+    //     if (Array.isArray(array[i])) {
+    //       newArr = newArr.push(handleFlatten(array[i]));
+    //     } else {
+    //       newArr.push(array[i]);
+    //     }
+    //   }
+    //   return newArr;
+    // };
+    // handleFlatten(data);
+    // console.log(handleFlatten(data));
   };
+
   render() {
-    console.log(this.props.searches);
+    console.log(this.props.items);
     const route =
       this.state.searchParams.start + "→" + this.state.searchParams.destination;
-    const target = this.state.renderTarget;
     return (
       <div id="search-console">
         <div className="render-search-console">
           <div className="left-s container">
-            <ConsoleSearchInput />
+            <ConsoleSearchInput handleSubmit={this.handleSubmit} />
             <SearchConsoleForm
               searches={this.props.searches}
               items={this.props.items}
@@ -96,29 +111,6 @@ class SearchConsole extends Component {
                   <div className="cih-col header">Remove</div>
                 </div>
                 {this.renderConsoleItems()}
-              </div>
-            </div>
-            <div className="target-item-container">
-              <div className="target-item-wrapper">
-                <div className="render-target-item">
-                  {Array.isArray(this.state.renderTarget) ? null : (
-                    <div className="rti-item wrapper">
-                      <div className="rti-item-col">{target.company}</div>
-                      <div className="rti-item-col">{route}</div>
-                      <div className="rti-item-col">{target.item.time}</div>
-                      <div className="rti-item-col">{target.item.date}</div>
-                      <div className="rti-item-col">{target.time}</div>
-                      <div className="rti-item-col">
-                        {target.item.pickup_from}
-                      </div>
-                      <div className="rti-item-col">
-                        {target.item.purchase_url}
-                      </div>
-
-                      <div className="rti-item-col">{target.item.price}</div>
-                    </div>
-                  )}
-                </div>
               </div>
             </div>
           </div>

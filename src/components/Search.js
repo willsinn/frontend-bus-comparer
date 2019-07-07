@@ -27,7 +27,7 @@ class Search extends Component {
     })
       .then(r => r.json())
       .then(items => {
-        this.setState({ items: [...items.flat()] });
+        this.setState({ items: items });
       });
   }
   handleShowItems = targetValue => {

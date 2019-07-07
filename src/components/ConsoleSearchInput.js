@@ -15,10 +15,6 @@ class ConsoleSearchInput extends Component {
     this.setState({ hover: !this.state.hover });
   };
   render() {
-    // const hoverStyle = {
-    //   !this.state.hover ?
-    //   ()
-    // }
     return (
       <div class="console-s-input">
         <div class="input-s container">
@@ -29,6 +25,13 @@ class ConsoleSearchInput extends Component {
               value={this.state.input}
               onChange={this.handleChange}
               type="text"
+            />
+            <input
+              onClick={e => {
+                this.props.handleSubmit(this.state.input);
+              }}
+              type="submit"
+              value="Search"
             />
           </div>
         </div>
