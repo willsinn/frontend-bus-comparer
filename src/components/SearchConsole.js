@@ -56,8 +56,17 @@ class SearchConsole extends Component {
   };
 
   renderConsoleItems = searchParams => {
+    const date = this.state.searchParams.date.split("-");
+    const day = date[2] % 7;
     return this.state.results.map(result => (
-      <SearchConsoleItem key={uuidv4(result.id)} result={result} />
+      <SearchConsoleItem
+        key={uuidv4(result.id)}
+        date={this.state.searchParams.date}
+        day={day}
+        result={result}
+        handleDeleteItem={this.handleDeleteItem}
+        handleRenderClick={this.handleRenderClick}
+      />
     ));
   };
   filterRoute = params => {
@@ -81,6 +90,11 @@ class SearchConsole extends Component {
       });
     });
     return array;
+  };
+  handleDeleteItem = target => {
+    this.setState({
+      results: [...this.state.results.filter(result => result !== target)]
+    });
   };
   handleSubmit = event => {
     event.preventDefault();

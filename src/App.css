@@ -392,11 +392,7 @@ input {
   height: 60px;
   width: 100%;
 }
-.console-result-item {
-  display: flex;
-  justify-content: space-around;
-  align-self: flex-end;
-}
+
 .cih-col {
   display: flex;
   height: 60px;

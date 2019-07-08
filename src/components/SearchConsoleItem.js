@@ -1,14 +1,30 @@
 import React from "react";
 
 const SearchConsoleItem = props => {
-  const weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const weekday = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
+  const item = props.result;
+  const date = item.search.date.split("-");
+  const day = date[2] % 7;
   console.log("console item", props.result);
-  return <div className="console-item" />;
+  return (
+    <div className="console-item">
+      <div className="cih-col">
+        {item.search.start_from} -> {item.search.to_destination}
+      </div>
+      <div className="cih-col">{weekday[day]}</div>
+      <div className="cih-col">{item.search.date}</div>
+      <div className="cih-col">{item.pickup_from}</div>
+      <div className="cih-col">{item.price}</div>
+      <div className="cih-col">{item.purchase_url}</div>
+      <div className="cih-col">{item.search.purchase_url}</div>
+    </div>
+  );
   //1. Start-Destination
-  //2. Date-Time
-  //3. pickup_from
-  //4. Price
-  //5. purchase_url
-  //6. company
+  //2. Date-day
+  //3. Time
+  //4. pickup_from
+  //5. Price
+  //6. purchase_url
+  //7. company
 };
 export default SearchConsoleItem;
