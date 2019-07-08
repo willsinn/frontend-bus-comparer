@@ -20,7 +20,7 @@ const SearchConsoleItem = props => {
       <div className="cih-col">
         <button
           onClick={event => {
-            props.handleWatching();
+            props.handleWatching(props.result);
           }}
         >
           hello
