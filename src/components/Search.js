@@ -56,23 +56,21 @@ class Search extends Component {
     console.log(this.state.watchlistShowing);
     return (
       <div className="console-wrapper">
+        {!this.state.watchlistShowing ? (
+          <SearchConsole
+            handleWatching={this.handleWatching}
+            searches={this.state.searches}
+            items={this.state.items}
+            itemsValues={this.state.itemsValues}
+          />
+        ) : (
+          <SearchConsoleList
+            watching={this.state.watching}
+            handleRemoveWatching={this.handleRemoveWatching}
+          />
+        )}
         <div>
           <button onClick={this.toggleWatchlist}>Toggle</button>
-        </div>
-        <div>
-          {!this.state.watchlistShowing ? (
-            <SearchConsole
-              handleWatching={this.handleWatching}
-              searches={this.state.searches}
-              items={this.state.items}
-              itemsValues={this.state.itemsValues}
-            />
-          ) : (
-            <SearchConsoleList
-              watching={this.state.watching}
-              handleRemoveWatching={this.handleRemoveWatching}
-            />
-          )}
         </div>
       </div>
     );

@@ -15,7 +15,11 @@ const SearchConsoleItem = props => {
       <div className="cih-col">{item.search.date}</div>
       <div className="cih-col">{item.pickup_from}</div>
       <div className="cih-col">{item.price}</div>
-      <div className="cih-col">{item.purchase_url}</div>
+      <div className="cih-col purchase-btn">
+        <form action={item.purchase_url}>
+          <input type="submit" value="Purchase Ticket" />
+        </form>
+      </div>
       <div className="cih-col">{item.search.company}</div>
       <div className="cih-col">
         {props.handleWatching !== undefined ? (

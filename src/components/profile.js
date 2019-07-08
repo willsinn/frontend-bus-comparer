@@ -16,7 +16,9 @@ class Profile extends Component {
     username: "",
 
     editBio: false,
-    bio: ""
+    bio: "",
+
+    renderWatching: []
   };
   toggleEdit = toggleType => {
     return event => {

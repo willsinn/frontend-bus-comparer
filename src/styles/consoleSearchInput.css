@@ -1,5 +1,5 @@
 input[type="text"] {
-  width: 50%;
+  width: 100%;
   box-sizing: border-box;
   border: 2px solid #ccc;
   border-radius: 8em;
@@ -18,7 +18,9 @@ input[type="text"]:focus {
 .input-s.container {
   width: 25vw;
   height: 20vh;
-  border: 5px solid blue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .console-s-input {
