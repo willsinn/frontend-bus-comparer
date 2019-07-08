@@ -22,31 +22,6 @@ class Search extends Component {
           searches: searches
         });
       });
-    fetch("http://localhost:3000/api/v1/items", {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${localStorage.jwt}`
-      }
-    })
-      .then(r => r.json())
-      .then(items => {
-        const itemsValues = flattenItemKeyValues(items);
-        this.setState({ items: items, itemsValues: itemsValues });
-      });
-    const flattenItemKeyValues = items => {
-      let itemsData = [...items].flat();
-      itemsData = itemsData.map(itemD => {
-        let vals = Object.entries(itemD);
-        return vals.flat();
-      });
-      itemsData = itemsData.map(itemD => {
-        let i = itemD.map(item =>
-          typeof item === "object" ? Object.entries(item) : item
-        );
-        return i.flat().flat();
-      });
-      return itemsData;
-    };
   }
   handleShowItems = targetValue => {
     this.setState({ showing: [targetValue] });
@@ -75,7 +50,6 @@ class Search extends Component {
         <SearchConsole
           searches={this.state.searches}
           items={this.state.items}
-          itemsValues={this.state.itemsValues}
         />
         <div id="search-table">
           <div className="search-wrapper">

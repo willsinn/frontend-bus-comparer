@@ -6,14 +6,45 @@ import ConsoleSearchInput from "./ConsoleSearchInput";
 class SearchConsole extends Component {
   state = {
     results: [],
+    items: [],
+    itemsValues: [],
+    error: "",
     searchParams: {
       date: "",
       start: "",
       destination: "",
       time: ""
-    },
-    error: ""
+    }
   };
+  componentDidMount() {
+    fetch("http://localhost:3000/api/v1/items", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.jwt}`
+      }
+    })
+      .then(r => r.json())
+      .then(items => {
+        const itemsValues = flattenItemKeyValues(items);
+        this.setState({ items: items, itemsValues: itemsValues });
+      });
+    const flattenItemKeyValues = items => {
+      let itemsData = [...items].flat();
+      itemsData = itemsData.map(itemD => {
+        let vals = Object.entries(itemD);
+        return vals.flat();
+      });
+      itemsData = itemsData.map(itemD => {
+        let i = itemD.map(item =>
+          typeof item === "object" ? Object.entries(item) : item
+        );
+        return i.flat().flat();
+      });
+
+      return itemsData;
+    };
+  }
+
   handleSearchSubmit = searchParams => {
     this.setState({ searchParams: searchParams });
     const route = this.filterRoute(searchParams);
@@ -64,37 +95,23 @@ class SearchConsole extends Component {
       results: [...this.state.results.filter(result => result !== target)]
     });
   };
-  handleSubmit = userInput => {
-    const results = this.searchItemsAlg(userInput);
-    const error = `Nothing matches the search ${userInput}`;
-    results !== undefined
-      ? this.setState({ results: results })
-      : this.setState({ error: error });
+  handleSubmit = event => {
+    event.preventDefault();
+    const query = event.target.firstElementChild.value.toLowerCase();
 
-
-  };
-  searchItemsAlg = userInput => {
-
-    const matches = [...this.props.itemsValues].map(itemD => {
-      let match = false;
-      itemD.forEach(value => {
-        if (value.includes(userInput)) {
-          matches.push(this.props.items[dataIndex])
-
-        }
-        return value.includes(userInput) ? (match = true)
-      });
-      return match ?  : null;
+    const vals = [...this.state.itemsValues].map(v => v.join().toLowerCase());
+    let schIdxs = [];
+    vals.forEach((val, i) => {
+      if (val.includes(query)) {
+        schIdxs = schIdxs.concat(i);
+      }
     });
-
-    //1.map through each arrayItem
-    //2. iterate to check each values from AI using includes
-    //3 return either the an array with [] that are false and value that is true or use REDUCE
-    return matches;
+    const itms = [...this.state.items];
+    const idxMatch = schIdxs.map(schIdx => itms[schIdx]);
+    this.setState({ results: idxMatch });
   };
 
   render() {
-    console.log(this.props.dataValues);
     const route =
       this.state.searchParams.start + "→" + this.state.searchParams.destination;
     return (
@@ -129,7 +146,3 @@ class SearchConsole extends Component {
 }
 
 export default SearchConsole;
-// <div className="items-header">
-//   <div>{this.state.searchParams.date}</div>
-//   <div>{route}</div>
-// </div>

@@ -7,6 +7,7 @@ class ConsoleSearchInput extends Component {
     hover: false
   };
   handleChange = event => {
+    event.preventDefault();
     this.setState({
       input: event.target.value
     });
@@ -19,20 +20,20 @@ class ConsoleSearchInput extends Component {
       <div className="console-s-input">
         <div className="input-s container">
           <div className="input-s wrapper">
-            <input
-              onMouseEnter={this.toggleHover}
-              onMouseLeave={this.toggleHover}
-              value={this.state.input}
-              onChange={this.handleChange}
-              type="text"
-            />
-            <input
-              onClick={e => {
-                this.props.handleSubmit(this.state.input);
-              }}
+            <form
               type="submit"
-              value="Search"
-            />
+              onSubmit={event => {
+                this.props.handleSubmit(event);
+              }}
+            >
+              <input
+                onMouseEnter={this.toggleHover}
+                onMouseLeave={this.toggleHover}
+                value={this.state.input}
+                onChange={this.handleChange}
+                type="text"
+              />
+            </form>
           </div>
         </div>
       </div>

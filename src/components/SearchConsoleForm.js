@@ -93,7 +93,7 @@ class SearchConsoleForm extends Component {
             type="submit"
             value="submit"
             onClick={e => {
-              this.props.handleSearchSubmit(this.state);
+              this.props.handleSearchSubmit(e);
             }}
           />
         </div>
