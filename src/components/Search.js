@@ -1,74 +1,78 @@
 import React, { Component } from "react";
-import SearchList from "./SearchList";
 import SearchConsole from "./SearchConsole";
+import SearchConsoleList from "./SearchConsoleList";
 const uuidv4 = require("uuid/v4");
 
 class Search extends Component {
   state = {
-    searches: [],
-    showing: [],
     items: [],
     itemsValues: [],
-    watching: []
+    watching: [],
+    watchlistShowing: false
   };
   componentDidMount() {
-    fetch("http://localhost:3000/api/v1/searches", {
+    fetch("http://localhost:3000/api/v1/items", {
       method: "GET",
       headers: {
         Authorization: `Bearer ${localStorage.jwt}`
       }
     })
       .then(r => r.json())
-      .then(searches => {
-        this.setState({
-          searches: searches
-        });
+      .then(items => {
+        const itemsValues = flattenItemKeyValues(items);
+        this.setState({ items: items, itemsValues: itemsValues });
       });
+    const flattenItemKeyValues = items => {
+      let itemsData = [...items].flat();
+      itemsData = itemsData.map(itemD => {
+        let vals = Object.entries(itemD);
+        return vals.flat();
+      });
+      itemsData = itemsData.map(itemD => {
+        let i = itemD.map(item =>
+          typeof item === "object" ? Object.entries(item) : item
+        );
+        return i.flat().flat();
+      });
+
+      return itemsData;
+    };
   }
-  handleWatching = props => {
-    console.log(props);
+  handleWatching = targetValue => {
+    console.log(targetValue);
+    this.setState({ watching: [...this.state.watching, targetValue] });
   };
-  handleShowItems = targetValue => {
-    this.setState({ showing: [targetValue] });
-  };
-  handleHideItems = targetValue => {
+  handleRemoveWatching = targetValue => {
     this.setState({
-      showing: []
+      watching: [...this.state.watching].filter(tgt => tgt !== targetValue)
     });
   };
-  generateSearchList = () =>
-    this.state.searches.map(search => {
-      return (
-        <SearchList
-          key={uuidv4(search.id)}
-          search={search}
-          handleShowItems={this.handleShowItems}
-          handleHideItems={this.handleHideItems}
-          showing={this.state.showing}
-        />
-      );
-    });
+
+  toggleWatchlist = () => {
+    this.setState({ watchlistShowing: !this.state.watchlistShowing });
+  };
 
   render() {
+    console.log(this.state.watchlistShowing);
     return (
       <div className="console-wrapper">
-        <SearchConsole
-          handleWatching={this.handleWatching}
-          searches={this.state.searches}
-          items={this.state.items}
-        />
-        <div id="search-table">
-          <div className="search-wrapper">
-            <div className="table-wrapper">
-              <div className="column-headers">
-                <div className="console-column header"> Date: </div>
-                <div className="console-column header"> From: </div>
-                <div className="console-column header"> To: </div>
-                <div className="console-column header"> Company: </div>
-              </div>
-              {this.generateSearchList(uuidv4)}
-            </div>
-          </div>
+        <div>
+          <button onClick={this.toggleWatchlist}>Toggle</button>
+        </div>
+        <div>
+          {!this.state.watchlistShowing ? (
+            <SearchConsole
+              handleWatching={this.handleWatching}
+              searches={this.state.searches}
+              items={this.state.items}
+              itemsValues={this.state.itemsValues}
+            />
+          ) : (
+            <SearchConsoleList
+              watching={this.state.watching}
+              handleRemoveWatching={this.handleRemoveWatching}
+            />
+          )}
         </div>
       </div>
     );

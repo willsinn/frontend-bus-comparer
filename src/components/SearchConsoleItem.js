@@ -2,10 +2,10 @@ import React from "react";
 
 const SearchConsoleItem = props => {
   const weekday = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
-  const item = props.result;
+  const item = props.item;
   const date = item.search.date.split("-");
   const day = date[2] % 7;
-  console.log("console item", props.result);
+
   return (
     <div className="console-item">
       <div className="cih-col">
@@ -18,13 +18,23 @@ const SearchConsoleItem = props => {
       <div className="cih-col">{item.purchase_url}</div>
       <div className="cih-col">{item.search.company}</div>
       <div className="cih-col">
-        <button
-          onClick={event => {
-            props.handleWatching(props.result);
-          }}
-        >
-          hello
-        </button>
+        {props.handleWatching !== undefined ? (
+          <button
+            onClick={event => {
+              props.handleWatching(props.item);
+            }}
+          >
+            Add to Watchlist
+          </button>
+        ) : (
+          <button
+            onClick={event => {
+              props.handleRemoveWatching(props.item);
+            }}
+          >
+            Remove from Watchlist
+          </button>
+        )}
       </div>
     </div>
   );

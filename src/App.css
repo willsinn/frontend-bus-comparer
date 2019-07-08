@@ -439,3 +439,10 @@ input {
   height: auto;
   width: 60%;
 }
+.buy-tickets.link-btn {
+  padding: 5%;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  margin: 0 10% 0 10%;
+}

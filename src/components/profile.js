@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import withAuth from "../hocs/withAuth";
+import { Link } from "react-router-dom";
 
 class Profile extends Component {
   state = {
@@ -331,6 +332,15 @@ class Profile extends Component {
                 </div>
               </div>
             </div>
+          </div>
+          <div className="buy-tickets link-btn">
+            <Link
+              to="/search"
+              style={{ display: "flex" }}
+              activeStyle={{ color: "red" }}
+            >
+              Buy Tickets
+            </Link>
           </div>
         </div>
       </div>
