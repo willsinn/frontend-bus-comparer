@@ -6,7 +6,8 @@ class Search extends Component {
   state = {
     searches: [],
     showing: [],
-    items: []
+    items: [],
+    itemsValues: []
   };
   componentDidMount() {
     fetch("http://localhost:3000/api/v1/searches", {
@@ -17,17 +18,9 @@ class Search extends Component {
     })
       .then(r => r.json())
       .then(searches => {
-        this.setState({ searches: [...searches] });
-      });
-    fetch("http://localhost:3000/api/v1/items", {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${localStorage.jwt}`
-      }
-    })
-      .then(r => r.json())
-      .then(items => {
-        this.setState({ items: [...items.flat()] });
+        this.setState({
+          searches: searches
+        });
       });
   }
   handleShowItems = targetValue => {

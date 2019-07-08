@@ -54,7 +54,7 @@ class SearchConsoleForm extends Component {
 
     return (
       <div id="scf-form container">
-        <div for="select-date search-option">
+        <div className="select-date search-option">
           <div className="select-date search-option">
             <select onChange={this.handleChange("date")} required>
               <option value="" hidden>
@@ -93,7 +93,7 @@ class SearchConsoleForm extends Component {
             type="submit"
             value="submit"
             onClick={e => {
-              this.props.handleSearchSubmit(this.state);
+              this.props.handleSearchSubmit(e);
             }}
           />
         </div>

@@ -6,14 +6,45 @@ import ConsoleSearchInput from "./ConsoleSearchInput";
 class SearchConsole extends Component {
   state = {
     results: [],
+    items: [],
+    itemsValues: [],
+    error: "",
     searchParams: {
-      date: "019-07-11",
+      date: "",
       start: "",
       destination: "",
       time: ""
-    },
-    renderTarget: []
+    }
   };
+  componentDidMount() {
+    fetch("http://localhost:3000/api/v1/items", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.jwt}`
+      }
+    })
+      .then(r => r.json())
+      .then(items => {
+        const itemsValues = flattenItemKeyValues(items);
+        this.setState({ items: items, itemsValues: itemsValues });
+      });
+    const flattenItemKeyValues = items => {
+      let itemsData = [...items].flat();
+      itemsData = itemsData.map(itemD => {
+        let vals = Object.entries(itemD);
+        return vals.flat();
+      });
+      itemsData = itemsData.map(itemD => {
+        let i = itemD.map(item =>
+          typeof item === "object" ? Object.entries(item) : item
+        );
+        return i.flat().flat();
+      });
+
+      return itemsData;
+    };
+  }
+
   handleSearchSubmit = searchParams => {
     this.setState({ searchParams: searchParams });
     const route = this.filterRoute(searchParams);
@@ -64,21 +95,30 @@ class SearchConsole extends Component {
       results: [...this.state.results.filter(result => result !== target)]
     });
   };
-  handleRenderClick = renderTarget => {
-    this.setState({
-      renderTarget: renderTarget
+  handleSubmit = event => {
+    event.preventDefault();
+    const query = event.target.firstElementChild.value.toLowerCase();
+
+    const vals = [...this.state.itemsValues].map(v => v.join().toLowerCase());
+    let schIdxs = [];
+    vals.forEach((val, i) => {
+      if (val.includes(query)) {
+        schIdxs = schIdxs.concat(i);
+      }
     });
+    const itms = [...this.state.items];
+    const idxMatch = schIdxs.map(schIdx => itms[schIdx]);
+    this.setState({ results: idxMatch });
   };
+
   render() {
-    console.log(this.props.searches);
     const route =
       this.state.searchParams.start + "→" + this.state.searchParams.destination;
-    const target = this.state.renderTarget;
     return (
       <div id="search-console">
         <div className="render-search-console">
           <div className="left-s container">
-            <ConsoleSearchInput />
+            <ConsoleSearchInput handleSubmit={this.handleSubmit} />
             <SearchConsoleForm
               searches={this.props.searches}
               items={this.props.items}
@@ -98,29 +138,6 @@ class SearchConsole extends Component {
                 {this.renderConsoleItems()}
               </div>
             </div>
-            <div className="target-item-container">
-              <div className="target-item-wrapper">
-                <div className="render-target-item">
-                  {Array.isArray(this.state.renderTarget) ? null : (
-                    <div className="rti-item wrapper">
-                      <div className="rti-item-col">{target.company}</div>
-                      <div className="rti-item-col">{route}</div>
-                      <div className="rti-item-col">{target.item.time}</div>
-                      <div className="rti-item-col">{target.item.date}</div>
-                      <div className="rti-item-col">{target.time}</div>
-                      <div className="rti-item-col">
-                        {target.item.pickup_from}
-                      </div>
-                      <div className="rti-item-col">
-                        {target.item.purchase_url}
-                      </div>
-
-                      <div className="rti-item-col">{target.item.price}</div>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -129,7 +146,3 @@ class SearchConsole extends Component {
 }
 
 export default SearchConsole;
-// <div className="items-header">
-//   <div>{this.state.searchParams.date}</div>
-//   <div>{route}</div>
-// </div>
