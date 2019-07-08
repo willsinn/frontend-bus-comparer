@@ -32,6 +32,7 @@ class ConsoleSearchInput extends Component {
                 value={this.state.input}
                 onChange={this.handleChange}
                 type="text"
+                placeholder="Search Bus Stuff"
               />
             </form>
           </div>
