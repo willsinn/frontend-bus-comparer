@@ -16,7 +16,7 @@ const SearchConsoleItem = props => {
       <div className="cih-col">{item.pickup_from}</div>
       <div className="cih-col">{item.price}</div>
       <div className="cih-col">{item.purchase_url}</div>
-      <div className="cih-col">{item.search.purchase_url}</div>
+      <div className="cih-col">{item.search.company}</div>
     </div>
   );
   //1. Start-Destination

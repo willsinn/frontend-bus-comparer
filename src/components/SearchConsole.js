@@ -118,7 +118,7 @@ class SearchConsole extends Component {
     return (
       <div id="search-console">
         <div className="render-search-console">
-          <div className="left-s container">
+          <div className="top-s container">
             <ConsoleSearchInput
               key={uuidv4()}
               handleSubmit={this.handleSubmit}
@@ -130,19 +130,23 @@ class SearchConsole extends Component {
               handleSearchSubmit={this.handleSearchSubmit}
             />
           </div>
-          <div className="right-s container">
-            <div className="content-wrapper wrapper">
-              <div className="console-content-wrapper">
-                <div className="console-item header">
-                  <div className="cih-col header">Watchlist</div>
-                  <div className="cih-col header">Day</div>
-                  <div className="cih-col header">Time</div>
-                  <div className="cih-col header">Price</div>
-                  <div className="cih-col header">Remove</div>
+          <div className="bottom-s container">
+            {this.state.results.length !== 0 ? (
+              <div className="content-wrapper wrapper">
+                <div className="console-content-wrapper">
+                  <div className="console-item header">
+                    <div className="cih-col header">Watchlist</div>
+                    <div className="cih-col header">Day</div>
+                    <div className="cih-col header">Time</div>
+                    <div className="cih-col header">Price</div>
+                    <div className="cih-col header">Remove</div>
+                  </div>
+                  {this.renderConsoleItems()}
                 </div>
-                {this.renderConsoleItems()}
               </div>
-            </div>
+            ) : (
+              <></>
+            )}
           </div>
         </div>
       </div>
