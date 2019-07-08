@@ -17,6 +17,15 @@ const SearchConsoleItem = props => {
       <div className="cih-col">{item.price}</div>
       <div className="cih-col">{item.purchase_url}</div>
       <div className="cih-col">{item.search.company}</div>
+      <div className="cih-col">
+        <button
+          onClick={event => {
+            props.handleWatching();
+          }}
+        >
+          hello
+        </button>
+      </div>
     </div>
   );
   //1. Start-Destination

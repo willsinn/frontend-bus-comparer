@@ -426,6 +426,16 @@ input {
   display: flex;
   height: 100%;
   flex-direction: column;
-  width: 75%;
+  width: 100%;
   justify-content: center;
+}
+.top-s.left-container {
+  display: flex;
+  height: auto;
+  width: 40%;
+}
+.bottom-s.left-container {
+  display: flex;
+  height: auto;
+  width: 60%;
 }

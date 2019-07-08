@@ -8,7 +8,8 @@ class Search extends Component {
     searches: [],
     showing: [],
     items: [],
-    itemsValues: []
+    itemsValues: [],
+    watching: []
   };
   componentDidMount() {
     fetch("http://localhost:3000/api/v1/searches", {
@@ -24,6 +25,9 @@ class Search extends Component {
         });
       });
   }
+  handleWatching = props => {
+    console.log(props);
+  };
   handleShowItems = targetValue => {
     this.setState({ showing: [targetValue] });
   };
@@ -49,6 +53,7 @@ class Search extends Component {
     return (
       <div className="console-wrapper">
         <SearchConsole
+          handleWatching={this.handleWatching}
           searches={this.state.searches}
           items={this.state.items}
         />

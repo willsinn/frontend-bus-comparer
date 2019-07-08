@@ -6,6 +6,8 @@
 
 ## BUG-LIST
 
+1. pw after edit
+
 ## Search List-item
 
 1. Don't see first item, header is covering the first item

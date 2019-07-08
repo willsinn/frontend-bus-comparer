@@ -60,6 +60,7 @@ class SearchConsole extends Component {
     const day = date[2] % 7;
     return this.state.results.map(result => (
       <SearchConsoleItem
+        handleWatching={this.props.handleWatching}
         key={uuidv4(result.id)}
         date={this.state.searchParams.date}
         day={day}
@@ -119,16 +120,19 @@ class SearchConsole extends Component {
       <div id="search-console">
         <div className="render-search-console">
           <div className="top-s container">
-            <ConsoleSearchInput
-              key={uuidv4()}
-              handleSubmit={this.handleSubmit}
-            />
-            <SearchConsoleForm
-              key={uuidv4()}
-              searches={this.props.searches}
-              items={this.props.items}
-              handleSearchSubmit={this.handleSearchSubmit}
-            />
+            <div className="top-s left-container">
+              <ConsoleSearchInput
+                key={uuidv4()}
+                handleSubmit={this.handleSubmit}
+              />
+              <SearchConsoleForm
+                key={uuidv4()}
+                searches={this.props.searches}
+                items={this.props.items}
+                handleSearchSubmit={this.handleSearchSubmit}
+              />
+            </div>
+            <div className="top-s right-container" />
           </div>
           <div className="bottom-s container">
             {this.state.results.length !== 0 ? (
