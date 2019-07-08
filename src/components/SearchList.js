@@ -1,12 +1,14 @@
 import React from "react";
 import SearchListItem from "./SearchListItem";
+const uuidv4 = require("uuid/v4");
 
 const SearchList = props => {
   const searchList = props.search;
   const generateItems = () =>
     props.search.items.map(item => {
-      return <SearchListItem key={item.id} item={item} />;
+      return <SearchListItem key={uuidv4(item.date)} item={item} />;
     });
+  console.log(props);
   return (
     <div className="table-content-wrapper">
       <div

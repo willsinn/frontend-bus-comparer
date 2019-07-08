@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SearchList from "./SearchList";
 import SearchConsole from "./SearchConsole";
+const uuidv4 = require("uuid/v4");
 
 class Search extends Component {
   state = {
@@ -35,7 +36,7 @@ class Search extends Component {
     this.state.searches.map(search => {
       return (
         <SearchList
-          key={search.id}
+          key={uuidv4(search.id)}
           search={search}
           handleShowItems={this.handleShowItems}
           handleHideItems={this.handleHideItems}
@@ -60,7 +61,7 @@ class Search extends Component {
                 <div className="console-column header"> To: </div>
                 <div className="console-column header"> Company: </div>
               </div>
-              {this.generateSearchList()}
+              {this.generateSearchList(uuidv4)}
             </div>
           </div>
         </div>

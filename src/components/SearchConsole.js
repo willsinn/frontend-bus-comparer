@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import SearchConsoleItem from "./SearchConsoleItem";
 import SearchConsoleForm from "./SearchConsoleForm";
 import ConsoleSearchInput from "./ConsoleSearchInput";
+const uuidv4 = require("uuid/v4");
 
 class SearchConsole extends Component {
   state = {
@@ -55,17 +56,8 @@ class SearchConsole extends Component {
   };
 
   renderConsoleItems = searchParams => {
-    const date = this.state.searchParams.date.split("-");
-    const day = date[2] % 7;
     return this.state.results.map(result => (
-      <SearchConsoleItem
-        key={result.id}
-        date={this.state.searchParams.date}
-        day={day}
-        result={result}
-        handleDeleteItem={this.handleDeleteItem}
-        handleRenderClick={this.handleRenderClick}
-      />
+      <SearchConsoleItem key={uuidv4(result.id)} result={result} />
     ));
   };
   filterRoute = params => {
@@ -90,11 +82,6 @@ class SearchConsole extends Component {
     });
     return array;
   };
-  handleDeleteItem = target => {
-    this.setState({
-      results: [...this.state.results.filter(result => result !== target)]
-    });
-  };
   handleSubmit = event => {
     event.preventDefault();
     const query = event.target.firstElementChild.value.toLowerCase();
@@ -118,8 +105,12 @@ class SearchConsole extends Component {
       <div id="search-console">
         <div className="render-search-console">
           <div className="left-s container">
-            <ConsoleSearchInput handleSubmit={this.handleSubmit} />
+            <ConsoleSearchInput
+              key={uuidv4()}
+              handleSubmit={this.handleSubmit}
+            />
             <SearchConsoleForm
+              key={uuidv4()}
               searches={this.props.searches}
               items={this.props.items}
               handleSearchSubmit={this.handleSearchSubmit}
