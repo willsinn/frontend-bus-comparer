@@ -64,6 +64,25 @@ button {
 .console-column.content {
   background: #f1a0a740;
 }
+.login-signup.btn-back {
+  font-size: 40px;
+  color: white;
+  font-weight: bold;
+  background-color: inherit;
+}
+.login-signup.btn-back:hover {
+  font-size: 40px;
+  color: midnightblue;
+  text-shadow: 2px 0 0 white, -2px 0 0 white, 0 2px 0 white, 0 -2px 0 white,
+    1px 1px white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white;
+  background-color: inherit;
+}
+.login-signup.btn-back span {
+  background-color: inherit;
+  display: flex;
+  align-items: center;
+  margin-top: -9px;
+}
 .table-content-wrapper {
   width: 100%;
   display: flex;
@@ -83,9 +102,10 @@ button {
   font-weight: 900;
   font-size: 25px;
 }
-.item-content {
+.ls-form {
+  display: flex;
+  flex-direction: column;
 }
-
 .search-item-content-wrapper {
   height: 40vh;
   width: 35vw;
@@ -206,6 +226,13 @@ button {
   background-color: #d43a3a;
   color: #f1a0a740;
 }
+.login-signup.input.s {
+  margin-top: 20px;
+}
+.login-signup.btn-back a {
+  text-decoration: none;
+  color: inherit;
+}
 /* Profile */
 .login-signup.input {
   height: 45px;
@@ -214,9 +241,10 @@ button {
   border-radius: 0.5em;
   background-color: inherit;
   font-size: 20px;
+  color: whitesmoke;
 }
 .login-signup.input:hover {
-  background-color: white;
+  background-color: midnightblue;
   opacity: 0.8;
 }
 .login-signup.btn {

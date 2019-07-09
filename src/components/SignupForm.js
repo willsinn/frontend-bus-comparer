@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { setUpUser } from "../actions/user";
 import { Redirect } from "react-router";
+import { Link } from "react-router-dom";
 import { Button, Form, Message } from "semantic-ui-react";
 
 class SignupForm extends Component {
@@ -27,7 +28,10 @@ class SignupForm extends Component {
     }
   };
   render() {
-    const signupFields = ["username", "password", "confirmPassword"];
+    const signupFields = ["username", "password"];
+    const caps = field => {
+      return field.charAt(0).toUpperCase() + field.slice(1);
+    };
 
     return this.props.loggedIn ? (
       <Redirect to="/profile" />
@@ -53,18 +57,35 @@ class SignupForm extends Component {
                     <input
                       type={field}
                       label={field}
-                      placeholder={field}
+                      placeholder={`Create ${caps(field)}`}
                       name={field}
                       onChange={this.handleChange(field)}
                       value={this.state[field]}
-                      className="login-signup input"
+                      className="login-signup input s"
                     />
                   );
                 })}
+                <input
+                  type={"password"}
+                  label={"confirmPassword"}
+                  placeholder="Confirm Password"
+                  name={"confirmPassword"}
+                  onChange={this.handleChange("confirmPassword")}
+                  value={this.state["confirmPassword"]}
+                  className="login-signup input"
+                />
               </div>
-              <button className="login-signup btn" type="submit">
-                Signup
-              </button>
+
+              <div className="login-signup btn-wrapper">
+                <button className="login-signup btn-back">
+                  <Link to="/login">
+                    <span type="img">←</span>
+                  </Link>
+                </button>
+                <button className="login-signup btn" type="submit">
+                  Signup
+                </button>
+              </div>
             </Form>
           </div>
         </div>

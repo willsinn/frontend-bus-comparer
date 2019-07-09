@@ -49,7 +49,7 @@ class LoginForm extends React.Component {
                 <div className="login-signup input-wrapper">
                   <input
                     label="username"
-                    placeholder="username"
+                    placeholder="Username"
                     name="username"
                     onChange={this.handleChange}
                     value={this.state.username}
@@ -58,7 +58,7 @@ class LoginForm extends React.Component {
                   <input
                     type="password"
                     label="password"
-                    placeholder="password"
+                    placeholder="Password"
                     name="password"
                     onChange={this.handleChange}
                     value={this.state.password}
