@@ -143,17 +143,12 @@ button {
 }
 
 .navigation {
-  height: 55px;
-  background-color: #19161652;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  position: absolute;
+  padding-left: 4%;
+  padding-top: 1%;
 }
 
 .navigation-wrapper {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
 }
 
 .nav-menu-item {

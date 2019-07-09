@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
-import { NavLink, withRouter } from "react-router-dom";
-import { Menu } from "semantic-ui-react";
+import { Link, withRouter } from "react-router-dom";
+import "../styles/nav.css";
 
 const Nav = ({ user: { loggedIn }, location: { pathname } }) => {
   const handleLogoutClick = e => {
@@ -9,39 +9,50 @@ const Nav = ({ user: { loggedIn }, location: { pathname } }) => {
     document.location.reload();
     window.location.href = "/";
   };
-
+  const [burger, setBurger] = useState(false);
   return (
     <>
       {loggedIn ? (
         <div className="navigation">
           <div className="navigation-wrapper">
-            <div className="left-menu">
-              <Menu.Item
-                className="nav-menu-item"
-                as={NavLink}
-                to="/profile"
-                name="Profile"
-                active={pathname === "/profile"}
-              />
-              <Menu.Item
-                className="nav-menu-item"
-                as={NavLink}
-                to="/search"
-                name="Search"
-                active={pathname === "/search"}
-              />
-            </div>
-            <div className="right-menu">
-              <div className="nav-profile-avatar" />
-              <button
-                className="nav-menu-item"
-                onClick={e => {
-                  handleLogoutClick(e);
-                }}
-              >
-                Logout
-              </button>
-            </div>
+            {!burger ? (
+              <div className="burger-nav" onClick={() => setBurger(!burger)}>
+                <div className="bar1" />
+                <div className="bar2" />
+                <div className="bar3" />
+              </div>
+            ) : (
+              <div className="burger-nav" onClick={() => setBurger(!burger)}>
+                <div className="bar1 change" />
+                <div className="bar2 change" />
+                <div className="bar3 change" />
+              </div>
+            )}
+            {burger ? (
+              <div className="burger-menu">
+                <div className="nav-menu-item">
+                  <button>
+                    <Link to="/profile">Profile</Link>
+                  </button>
+                </div>
+                <div className="nav-menu-item">
+                  <button>
+                    <Link to="/search">Search</Link>
+                  </button>
+                </div>
+
+                <div className="nav-menu-item">
+                  <button
+                    onClick={e => {
+                      handleLogoutClick(e);
+                    }}
+                  >
+                    Logout
+                  </button>
+                </div>
+              </div>
+            ) : null}
+            <div className="nav-profile-avatar" />
           </div>
         </div>
       ) : null}
