@@ -2,7 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter, Redirect } from "react-router";
 import { loginUser } from "../actions/user";
-import { Button, Form, Segment, Message } from "semantic-ui-react";
+import { Link } from "react-router-dom";
+import { Form, Segment, Message } from "semantic-ui-react";
 // import { bindActionCreators } from 'redux'
 
 class LoginForm extends React.Component {
@@ -33,7 +34,7 @@ class LoginForm extends React.Component {
         <div className="form-wrapper">
           <div className="form-box">
             <Segment>
-              <h3>Login</h3>
+              <span className="l-s h">Login</span>
               <Form
                 onSubmit={this.handleLoginSubmit}
                 size="mini"
@@ -45,24 +46,33 @@ class LoginForm extends React.Component {
                   error
                   header={this.props.failedLogin ? this.props.error : null}
                 />
-                <Form.Group widths="equal">
-                  <Form.Input
+                <div className="login-signup input-wrapper">
+                  <input
                     label="username"
-                    placeholder="username"
+                    placeholder="Username"
                     name="username"
                     onChange={this.handleChange}
                     value={this.state.username}
+                    className="login-signup input"
                   />
-                  <Form.Input
+                  <input
                     type="password"
                     label="password"
-                    placeholder="password"
+                    placeholder="Password"
                     name="password"
                     onChange={this.handleChange}
                     value={this.state.password}
+                    className="login-signup input"
                   />
-                </Form.Group>
-                <Button type="submit">Login</Button>
+                </div>{" "}
+                <div className="login-signup btn-wrapper">
+                  <button className="login-signup btn" type="submit">
+                    Login
+                  </button>
+                  <button className="login-signup btn">
+                    <Link to="/signup">Sign-Up</Link>
+                  </button>
+                </div>
               </Form>
             </Segment>
           </div>

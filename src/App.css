@@ -12,7 +12,6 @@ button {
 #root {
   height: 100vh;
   width: 100vw;
-  background-image: url("./images/background.jpg");
 }
 
 /* SEARCH */
@@ -59,11 +58,30 @@ button {
   border-bottom: 4px inset blue;
   border-right: 4px inset blue;
   margin-left: 2%;
-  padding-top: 0.5em;
+  padding-top: 0.65em;
   padding-bottom: 0.4em;
 }
 .console-column.content {
   background: #f1a0a740;
+}
+.login-signup.btn-back {
+  font-size: 40px;
+  color: white;
+  font-weight: bold;
+  background-color: inherit;
+}
+.login-signup.btn-back:hover {
+  font-size: 40px;
+  color: midnightblue;
+  text-shadow: 2px 0 0 white, -2px 0 0 white, 0 2px 0 white, 0 -2px 0 white,
+    1px 1px white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white;
+  background-color: inherit;
+}
+.login-signup.btn-back span {
+  background-color: inherit;
+  display: flex;
+  align-items: center;
+  margin-top: -9px;
 }
 .table-content-wrapper {
   width: 100%;
@@ -84,9 +102,10 @@ button {
   font-weight: 900;
   font-size: 25px;
 }
-.item-content {
+.ls-form {
+  display: flex;
+  flex-direction: column;
 }
-
 .search-item-content-wrapper {
   height: 40vh;
   width: 35vw;
@@ -118,13 +137,14 @@ button {
 .login-page,
 .signup-page {
   height: 100vh;
-  background-color: #f1a0a740;
   background-size: cover;
+  background-image: url("./images/login-signup-background.jpg");
+  z-index: 1;
 }
 
 .navigation {
   height: 55px;
-  background-color: #191616;
+  background-color: #19161652;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -206,14 +226,74 @@ button {
   background-color: #d43a3a;
   color: #f1a0a740;
 }
+.login-signup.input.s {
+  margin-top: 20px;
+}
+.login-signup.btn-back a {
+  text-decoration: none;
+  color: inherit;
+}
 /* Profile */
-
-.form-box {
-  background: #d43a3a;
-  padding: 30px 20px;
+.login-signup.input {
+  height: 45px;
+  margin: 5px;
+  padding-left: 5%;
+  border-radius: 0.5em;
+  background-color: inherit;
+  font-size: 20px;
+  color: whitesmoke;
+}
+.login-signup.input:hover {
+  background-color: midnightblue;
+  opacity: 0.8;
+}
+.login-signup.btn {
+  border: 1.5px outset whitesmoke;
+  height: 40px;
+  width: 70px;
+  font-size: 13px;
+  border-radius: 0.65em;
+  background-color: inherit;
   color: white;
+  font-weight: 900;
+}
+.login-signup.btn-wrapper {
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-evenly;
+}
+.login-signup.btn a {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  color: white;
+  font-weight: 900;
+}
+.login-signup.btn:hover {
+  border: 2px inset whitesmoke;
+  background-color: midnightblue;
+}
+.login-signup.input-wrapper {
+  display: flex;
+  flex-direction: column;
 }
 
+.form-box {
+  /* border: 1px ridge #677bec;
+  background: #0c0c0e;
+
+  box-shadow: 2.5px 2px 3px 4.5px #3042a7;*/
+  padding: 4%;
+  height: 175px;
+  width: 215px;
+  color: white;
+}
+.l-s.h {
+  font-size: 32px;
+  padding-left: 10px;
+  padding-bottom: 20px;
+  font-weight: 500;
+}
 .profile-page {
   display: flex;
   justify-content: center;

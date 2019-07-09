@@ -1,54 +1,54 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { NavLink, withRouter } from 'react-router-dom'
-import { Menu } from 'semantic-ui-react'
-
-
+import React from "react";
+import { connect } from "react-redux";
+import { NavLink, withRouter } from "react-router-dom";
+import { Menu } from "semantic-ui-react";
 
 const Nav = ({ user: { loggedIn }, location: { pathname } }) => {
-  const handleLogoutClick = (e) => {
-    localStorage.clear()
-    document.location.reload()
-    window.location.href = '/';
-  }
+  const handleLogoutClick = e => {
+    localStorage.clear();
+    document.location.reload();
+    window.location.href = "/";
+  };
 
   return (
-    <div className="navigation">
+    <>
       {loggedIn ? (
-        <div className="navigation-wrapper">
-          <div className="left-menu">
-            <Menu.Item
-              className="nav-menu-item"
-              as={NavLink}
-              to="/profile"
-              name="Profile"
-              active={pathname === '/profile'}
-            />
-            <Menu.Item
-              className="nav-menu-item"
-              as={NavLink}
-              to="/search"
-              name="Search"
-              active={pathname === '/search'}
+        <div className="navigation">
+          <div className="navigation-wrapper">
+            <div className="left-menu">
+              <Menu.Item
+                className="nav-menu-item"
+                as={NavLink}
+                to="/profile"
+                name="Profile"
+                active={pathname === "/profile"}
               />
-          </div>
-          <div className="right-menu">
-            <div className="nav-profile-avatar">
+              <Menu.Item
+                className="nav-menu-item"
+                as={NavLink}
+                to="/search"
+                name="Search"
+                active={pathname === "/search"}
+              />
             </div>
-            <button
-              className="nav-menu-item"
-              onClick={(e) => {handleLogoutClick(e)}}
-            >
-              Logout
-            </button>
+            <div className="right-menu">
+              <div className="nav-profile-avatar" />
+              <button
+                className="nav-menu-item"
+                onClick={e => {
+                  handleLogoutClick(e);
+                }}
+              >
+                Logout
+              </button>
+            </div>
           </div>
         </div>
-      ) : null }
-    </div>
+      ) : null}
+    </>
   );
-}
+};
 
+const mapStateToProps = ({ usersReducer: user }) => ({ user });
 
-const mapStateToProps = ({ usersReducer: user }) => ({ user })
-
-export default withRouter(connect(mapStateToProps)(Nav))
+export default withRouter(connect(mapStateToProps)(Nav));
