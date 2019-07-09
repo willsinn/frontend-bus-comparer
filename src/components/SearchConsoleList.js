@@ -1,24 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import SearchConsoleItem from "./SearchConsoleItem";
 const uuidv4 = require("uuid/v4");
 
 const SearchConsoleList = props => {
-  let items = props.results;
-  items === undefined ? (items = props.watching) : (items = props.results);
+  const [isShowing, setWatchlist] = useState(false);
+  const items = props.results;
   const renderConsoleItems = () => {
     return items.map(item => (
       <SearchConsoleItem
+        key={uuidv4(item.id)}
+        item={item}
         handleWatching={props.handleWatching}
+      />
+    ));
+  };
+
+  const watchItems = props.watching;
+  const renderWatchlistItems = () => {
+    return watchItems.map(item => (
+      <SearchConsoleItem
         key={uuidv4(item.id)}
         item={item}
         handleRemoveWatching={props.handleRemoveWatching}
       />
     ));
   };
-  console.log("SCL", props);
-
-  return (
-    <div className="content-wrapper wrapper">
+  const renderHeader = () => {
+    return (
       <div className="console-content-wrapper">
         <div className="console-item header">
           <div className="cih-col header">Watchlist</div>
@@ -27,8 +35,27 @@ const SearchConsoleList = props => {
           <div className="cih-col header">Price</div>
           <div className="cih-col header">Remove</div>
         </div>
-        {renderConsoleItems()}
       </div>
+    );
+  };
+  console.log(isShowing);
+  return (
+    <div className="content-wrapper wrapper">
+      <div className="toggle-watchlist btn">
+        <button onClick={() => setWatchlist(!isShowing)}>View Watchlist</button>
+      </div>
+      {isShowing ? (
+        <>
+          {renderHeader()}
+          {renderWatchlistItems()}
+        </>
+      ) : null}
+      {props.results.length ? (
+        <>
+          {renderHeader()}
+          {renderConsoleItems()}
+        </>
+      ) : null}
     </div>
   );
 };

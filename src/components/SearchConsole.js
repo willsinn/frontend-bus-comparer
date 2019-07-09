@@ -7,7 +7,6 @@ const uuidv4 = require("uuid/v4");
 
 class SearchConsole extends Component {
   state = {
-    results: [],
     error: "",
     searchParams: {
       date: "",
@@ -22,7 +21,7 @@ class SearchConsole extends Component {
     const date = this.filterDate(searchParams);
     const time = this.filterTime(searchParams);
 
-    this.setState({ results: [...this.state.results.concat(time)] });
+    this.setState({ results: [...this.props.results.concat(time)] });
   };
 
   filterRoute = params => {
@@ -47,44 +46,17 @@ class SearchConsole extends Component {
     });
     return array;
   };
-  handleSubmit = event => {
-    event.preventDefault();
-    const query = event.target.firstElementChild.value.toLowerCase();
-
-    const vals = [...this.props.itemsValues].map(v => v.join().toLowerCase());
-    let schIdxs = [];
-    vals.forEach((val, i) => {
-      if (val.includes(query)) {
-        schIdxs = schIdxs.concat(i);
-      }
-    });
-    const itms = [...this.props.items];
-    const idxMatch = schIdxs.map(schIdx => itms[schIdx]);
-    this.setState({ results: idxMatch });
-  };
 
   render() {
     console.log(this.props.itemsValues);
-    const route =
-      this.state.searchParams.start + "→" + this.state.searchParams.destination;
     return (
       <div id="search-console">
         <div className="render-search-console">
-          <div className="top-s container">
-            <div className="top-s left-container">
-              <ConsoleSearchInput
-                key={uuidv4()}
-                handleSubmit={this.handleSubmit}
-              />
-            </div>
-            <div className="top-s right-container" />
-          </div>
-          <div className="bottom-s container">
-            <SearchConsoleList
-              results={this.state.results}
-              handleWatching={this.props.handleWatching}
-            />
-          </div>
+          <ConsoleSearchInput
+            key={uuidv4()}
+            handleSubmit={this.props.handleSubmit}
+            items={this.props.items}
+          />
         </div>
       </div>
     );

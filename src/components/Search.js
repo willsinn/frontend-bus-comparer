@@ -8,7 +8,8 @@ class Search extends Component {
     items: [],
     itemsValues: [],
     watching: [],
-    watchlistShowing: false
+    results: [],
+    message: ""
   };
   componentDidMount() {
     fetch("http://localhost:3000/api/v1/items", {
@@ -38,6 +39,38 @@ class Search extends Component {
       return itemsData;
     };
   }
+  handleSubmit = event => {
+    event.preventDefault();
+    const query = event.target.firstElementChild.value.toLowerCase();
+
+    const vals = [...this.state.itemsValues].map(v => v.join().toLowerCase());
+    let schIdxs = [];
+    vals.forEach((val, i) => {
+      if (val.includes(query)) {
+        schIdxs = schIdxs.concat(i);
+      }
+    });
+    const itms = [...this.state.items];
+    const idxMatch = schIdxs.map(schIdx => itms[schIdx]);
+    this.setState({ results: idxMatch }, () => {
+      this.handleSearchMessage(query);
+    });
+  };
+  handleSearchMessage = query => {
+    let message;
+    // console.log(this.state.results);
+    if (query === "") {
+      message = "No value entered. Try again.";
+    } else if (!this.state.results.length) {
+      message = `No values matching your search...   ${query}`;
+    } else {
+      message = `${
+        this.state.results.length
+      } results for searching...   ${query}`;
+    }
+
+    this.setState({ message: message });
+  };
   handleWatching = targetValue => {
     console.log(targetValue);
     this.setState({ watching: [...this.state.watching, targetValue] });
@@ -48,30 +81,34 @@ class Search extends Component {
     });
   };
 
-  toggleWatchlist = () => {
-    this.setState({ watchlistShowing: !this.state.watchlistShowing });
-  };
-
   render() {
-    console.log(this.state.watchlistShowing);
+    const msg = this.state.message;
+    const sVal = this.state.message.split("   ");
     return (
       <div className="console-wrapper">
-        {!this.state.watchlistShowing ? (
+        <div className="sch-cs wrap">
           <SearchConsole
-            handleWatching={this.handleWatching}
-            searches={this.state.searches}
             items={this.state.items}
             itemsValues={this.state.itemsValues}
+            handleSubmit={this.handleSubmit}
           />
-        ) : (
-          <SearchConsoleList
-            watching={this.state.watching}
-            handleRemoveWatching={this.handleRemoveWatching}
-          />
-        )}
-        <div>
-          <button onClick={this.toggleWatchlist}>Toggle</button>
+          <div className="sch-msg wrap">
+            {msg !== "" ? (
+              <div className="sch-msg static">{msg}</div>
+            ) : (
+              <>
+                <div className="sch-msg static">{sVal[0]}</div>
+                <div className="sch-msg active">{sVal[1]}</div>
+              </>
+            )}
+          </div>
         </div>
+        <SearchConsoleList
+          watching={this.state.watching}
+          results={this.state.results}
+          handleRemoveWatching={this.handleRemoveWatching}
+          handleWatching={this.handleWatching}
+        />
       </div>
     );
   }

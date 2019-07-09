@@ -84,7 +84,7 @@ class Profile extends Component {
     const editType = `edit${type[0].charAt(0).toUpperCase() +
       type[0].slice(1)}`;
     fetch(`http://localhost:3000/api/v1/users/${this.props.id}`, {
-      method: "PATCH",
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
