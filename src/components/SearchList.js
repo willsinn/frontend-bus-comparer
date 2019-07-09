@@ -18,6 +18,7 @@ const SearchList = props => {
           </div>
           <SearchListItem
             key={uuidv4(search.id)}
+            search={search}
             items={search.items}
             addToWatchlist={props.addToWatchlist}
           />

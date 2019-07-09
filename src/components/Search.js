@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import SearchConsole from "./SearchConsole";
 import SearchConsoleList from "./SearchConsoleList";
+import { connect } from "react-redux";
 import SearchList from "./SearchList";
+import withAuth from "../hocs/withAuth";
+
 const uuidv4 = require("uuid/v4");
 
 class Search extends Component {
@@ -52,23 +55,13 @@ class Search extends Component {
       return itemsData;
     };
   }
-  addToWatchlist = value => {
-    const addMsg = "Successfully added to your watchlist!";
 
-    const price = value.price;
-    const time = value.time;
-    let index = [];
-    const vals = [...this.state.itemsValues].map(v => v.join().toLowerCase());
-    let schIdxs = [];
-    vals.forEach((val, i) => {
-      if (val.includes(price) && val.includes(price)) {
-        schIdxs = schIdxs.concat(i);
-      }
-    });
-    const itms = [...this.state.items];
-    const idxMatch = schIdxs.map(schIdx => itms[schIdx]);
-    this.setState({ watching: idxMatch, addMsg: addMsg });
+  addToWatchlist = (props, item) => {
+    const search = props.search;
+    const addItem = { ...item, search };
+    this.handleWatching(addItem);
   };
+
   handleSubmit = event => {
     event.preventDefault();
     const query = event.target.firstElementChild.value.toLowerCase();
@@ -103,10 +96,19 @@ class Search extends Component {
   };
   handleWatching = targetValue => {
     const addMsg = "Successfully added to your watchlist!";
-    this.setState({
-      watching: [...this.state.watching, targetValue],
-      addMsg: addMsg
-    });
+    console.log("watching", targetValue);
+    this.setState(
+      {
+        watching: [...this.state.watching, targetValue],
+        addMsg: addMsg
+      },
+      () => {
+        this.handleFetchUserItem(targetValue);
+      }
+    );
+  };
+  handleFetchUserItem = value => {
+    const item = value;
   };
   handleRemoveWatching = targetValue => {
     this.setState({
@@ -151,5 +153,15 @@ class Search extends Component {
     );
   }
 }
+const mapStateToProps = ({
+  usersReducer: {
+    user: { id, avatar, username, bio }
+  }
+}) => ({
+  id,
+  avatar,
+  username,
+  bio
+});
 
-export default Search;
+export default withAuth(connect(mapStateToProps)(Search));
