@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SearchConsole from "./SearchConsole";
 import SearchConsoleList from "./SearchConsoleList";
+import SearchList from "./SearchList";
 const uuidv4 = require("uuid/v4");
 
 class Search extends Component {
@@ -8,10 +9,22 @@ class Search extends Component {
     items: [],
     itemsValues: [],
     watching: [],
+    searches: [],
     results: [],
-    message: ""
+    message: "",
+    addMsg: ""
   };
   componentDidMount() {
+    fetch("http://localhost:3000/api/v1/searches", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.jwt}`
+      }
+    })
+      .then(r => r.json())
+      .then(searches => {
+        this.setState({ searches: searches });
+      });
     fetch("http://localhost:3000/api/v1/items", {
       method: "GET",
       headers: {
@@ -39,6 +52,23 @@ class Search extends Component {
       return itemsData;
     };
   }
+  addToWatchlist = value => {
+    const addMsg = "Successfully added to your watchlist!";
+
+    const price = value.price;
+    const time = value.time;
+    let index = [];
+    const vals = [...this.state.itemsValues].map(v => v.join().toLowerCase());
+    let schIdxs = [];
+    vals.forEach((val, i) => {
+      if (val.includes(price) && val.includes(price)) {
+        schIdxs = schIdxs.concat(i);
+      }
+    });
+    const itms = [...this.state.items];
+    const idxMatch = schIdxs.map(schIdx => itms[schIdx]);
+    this.setState({ watching: idxMatch, addMsg: addMsg });
+  };
   handleSubmit = event => {
     event.preventDefault();
     const query = event.target.firstElementChild.value.toLowerCase();
@@ -58,7 +88,7 @@ class Search extends Component {
   };
   handleSearchMessage = query => {
     let message;
-    // console.log(this.state.results);
+    console.log(this.state.items);
     if (query === "") {
       message = "No value entered. Try again.";
     } else if (!this.state.results.length) {
@@ -72,8 +102,11 @@ class Search extends Component {
     this.setState({ message: message });
   };
   handleWatching = targetValue => {
-    console.log(targetValue);
-    this.setState({ watching: [...this.state.watching, targetValue] });
+    const addMsg = "Successfully added to your watchlist!";
+    this.setState({
+      watching: [...this.state.watching, targetValue],
+      addMsg: addMsg
+    });
   };
   handleRemoveWatching = targetValue => {
     this.setState({
@@ -103,11 +136,16 @@ class Search extends Component {
             )}
           </div>
         </div>
+        {this.state.addMsg}
         <SearchConsoleList
           watching={this.state.watching}
           results={this.state.results}
           handleRemoveWatching={this.handleRemoveWatching}
           handleWatching={this.handleWatching}
+        />
+        <SearchList
+          addToWatchlist={this.addToWatchlist}
+          searches={this.state.searches}
         />
       </div>
     );

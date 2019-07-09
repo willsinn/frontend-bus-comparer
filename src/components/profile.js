@@ -336,11 +336,7 @@ class Profile extends Component {
             </div>
           </div>
           <div className="buy-tickets link-btn">
-            <Link
-              to="/search"
-              style={{ display: "flex" }}
-              activeStyle={{ color: "red" }}
-            >
+            <Link to="/search" style={{ display: "flex" }}>
               Buy Tickets
             </Link>
           </div>

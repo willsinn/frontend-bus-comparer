@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import SearchConsoleItem from "./SearchConsoleItem";
 import SearchConsoleForm from "./SearchConsoleForm";
 import ConsoleSearchInput from "./ConsoleSearchInput";
-import SearchConsoleList from "./SearchConsoleList";
 const uuidv4 = require("uuid/v4");
 
 class SearchConsole extends Component {
@@ -15,37 +13,37 @@ class SearchConsole extends Component {
       time: ""
     }
   };
-  handleSearchSubmit = searchParams => {
-    this.setState({ searchParams: searchParams });
-    const route = this.filterRoute(searchParams);
-    const date = this.filterDate(searchParams);
-    const time = this.filterTime(searchParams);
-
-    this.setState({ results: [...this.props.results.concat(time)] });
-  };
-
-  filterRoute = params => {
-    return this.props.searches.filter(
-      search =>
-        search.start === params.start_from &&
-        search.destination === params.to_destination
-    );
-  };
-  filterDate = params => {
-    return this.props.searches.filter(search => search.date === params.date);
-  };
-  filterTime = params => {
-    const array = [];
-    this.props.searches.forEach(search => {
-      const company = search.company;
-      search.items.forEach(item => {
-        if (item.time === params.time) {
-          array.push({ item, company });
-        }
-      });
-    });
-    return array;
-  };
+  // handleSearchSubmit = searchParams => {
+  //   this.setState({ searchParams: searchParams });
+  //   const route = this.filterRoute(searchParams);
+  //   const date = this.filterDate(searchParams);
+  //   const time = this.filterTime(searchParams);
+  //
+  //   this.setState({ results: [...this.props.results.concat(time)] });
+  // };
+  //
+  // filterRoute = params => {
+  //   return this.props.searches.filter(
+  //     search =>
+  //       search.start === params.start_from &&
+  //       search.destination === params.to_destination
+  //   );
+  // };
+  // filterDate = params => {
+  //   return this.props.searches.filter(search => search.date === params.date);
+  // };
+  // filterTime = params => {
+  //   const array = [];
+  //   this.props.searches.forEach(search => {
+  //     const company = search.company;
+  //     search.items.forEach(item => {
+  //       if (item.time === params.time) {
+  //         array.push({ item, company });
+  //       }
+  //     });
+  //   });
+  //   return array;
+  // };
 
   render() {
     console.log(this.props.itemsValues);
