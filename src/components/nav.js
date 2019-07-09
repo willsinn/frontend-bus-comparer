@@ -14,46 +14,45 @@ const Nav = ({ user: { loggedIn }, location: { pathname } }) => {
     <>
       {loggedIn ? (
         <div className="navigation">
-          <div className="navigation-wrapper">
-            {!burger ? (
-              <div className="burger-nav" onClick={() => setBurger(!burger)}>
-                <div className="bar1" />
-                <div className="bar2" />
-                <div className="bar3" />
+          {!burger ? (
+            <div className="burger-nav" onClick={() => setBurger(!burger)}>
+              <div className="bar1" />
+              <div className="bar2" />
+              <div className="bar3" />
+            </div>
+          ) : (
+            <div className="burger-nav" onClick={() => setBurger(!burger)}>
+              <div className="bar1 change" />
+              <div className="bar2 change" />
+              <div className="bar3 change" />
+            </div>
+          )}
+          {burger ? (
+            <div className="burger-menu">
+              <div className="nav-menu-item">
+                <button className="nav-m-i btn">
+                  <Link to="/profile">Profile</Link>
+                </button>
               </div>
-            ) : (
-              <div className="burger-nav" onClick={() => setBurger(!burger)}>
-                <div className="bar1 change" />
-                <div className="bar2 change" />
-                <div className="bar3 change" />
+              <div className="nav-menu-item">
+                <button className="nav-m-i btn">
+                  <Link to="/search">Search</Link>
+                </button>
               </div>
-            )}
-            {burger ? (
-              <div className="burger-menu">
-                <div className="nav-menu-item">
-                  <button>
-                    <Link to="/profile">Profile</Link>
-                  </button>
-                </div>
-                <div className="nav-menu-item">
-                  <button>
-                    <Link to="/search">Search</Link>
-                  </button>
-                </div>
 
-                <div className="nav-menu-item">
-                  <button
-                    onClick={e => {
-                      handleLogoutClick(e);
-                    }}
-                  >
-                    Logout
-                  </button>
-                </div>
+              <div className="nav-menu-item">
+                <button
+                  className="nav-m-i btn"
+                  onClick={e => {
+                    handleLogoutClick(e);
+                  }}
+                >
+                  Logout
+                </button>
               </div>
-            ) : null}
-            <div className="nav-profile-avatar" />
-          </div>
+            </div>
+          ) : null}
+          <div className="nav-profile-avatar" />
         </div>
       ) : null}
     </>
