@@ -35,7 +35,7 @@ class SignupForm extends Component {
       <div className="signup-page">
         <div className="form-wrapper">
           <div className="form-box">
-            <h3>Signup</h3>
+            <span className="l-s h">Signup</span>
             <Form
               onSubmit={this.handleSubmit}
               size="mini"
@@ -47,21 +47,24 @@ class SignupForm extends Component {
                 error
                 header={this.state.error ? this.state.error : null}
               />
-              <Form.Group widths="equal">
+              <div className="login-signup input-wrapper">
                 {signupFields.map(field => {
                   return (
-                    <Form.Input
+                    <input
                       type={field}
                       label={field}
                       placeholder={field}
                       name={field}
                       onChange={this.handleChange(field)}
                       value={this.state[field]}
+                      className="login-signup input"
                     />
                   );
                 })}
-              </Form.Group>
-              <Button type="submit">Signup</Button>
+              </div>
+              <button className="login-signup btn" type="submit">
+                Signup
+              </button>
             </Form>
           </div>
         </div>
