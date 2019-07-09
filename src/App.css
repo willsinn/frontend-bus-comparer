@@ -333,6 +333,7 @@ button {
   background-size: cover;
   height: 100vh;
   background-image: url("./images/bus-station.jpg");
+  box-shadow: 2px 2px 2px;
 }
 .profile-wrapper {
   width: 35vw;
