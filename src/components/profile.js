@@ -144,17 +144,31 @@ class Profile extends Component {
                     />
                   </div>
                   <div className="editing input-form">
-                    <button onClick={this.handleUpdate("avatar")}>
-                      <span role="img" aria-label="save-edit">
+                    <button
+                      className="ein se btn"
+                      onClick={this.handleUpdate("avatar")}
+                    >
+                      <span
+                        role="img"
+                        className="ein-se check"
+                        aria-label="save-edit"
+                      >
                         {" "}
-                        ✅{" "}
+                        ✓{" "}
                       </span>
                     </button>
-                    <button onClick={this.toggleEdit("editAvatar")}>
+                    <button
+                      className="ein se btn"
+                      onClick={this.toggleEdit("editAvatar")}
+                    >
                       {" "}
-                      <span role="img" aria-label="x-quit-edit">
+                      <span
+                        role="img"
+                        className="ein-se x"
+                        aria-label="x-quit-edit"
+                      >
                         {" "}
-                        ❌{" "}
+                        ✘{" "}
                       </span>
                     </button>
                   </div>
@@ -199,11 +213,8 @@ class Profile extends Component {
                       ) : (
                         <div className="editing-bottom-cont">
                           <div className="editing-wrapper">
-                            <div className="top-box">
+                            <div className="top-box username">
                               <div className="editing-header">
-                                <span role="img" aria-label="nb with pencil">
-                                  📝{" "}
-                                </span>{" "}
                                 <input
                                   type="text"
                                   placeholder="Enter new username."
@@ -211,19 +222,31 @@ class Profile extends Component {
                                 />
                               </div>
                               <div className="editing input-form">
-                                <button onClick={this.handleUpdate("username")}>
-                                  <span role="img" aria-label="save-edit">
+                                <button
+                                  className="ein se btn"
+                                  onClick={this.handleUpdate("username")}
+                                >
+                                  <span
+                                    role="img"
+                                    className="ein-se check"
+                                    aria-label="save-edit"
+                                  >
                                     {" "}
-                                    ✅{" "}
+                                    ✓{" "}
                                   </span>
                                 </button>
                                 <button
+                                  className="ein se btn"
                                   onClick={this.toggleEdit("editUsername")}
                                 >
                                   {" "}
-                                  <span role="img" aria-label="x-quit-edit">
+                                  <span
+                                    role="img"
+                                    className="ein-se x"
+                                    aria-label="x-quit-edit"
+                                  >
                                     {" "}
-                                    ❌{" "}
+                                    ✘{" "}
                                   </span>
                                 </button>
                               </div>
@@ -275,7 +298,11 @@ class Profile extends Component {
                                 onClick={this.toggleEdit("editBio")}
                               >
                                 {" "}
-                                <span role="img" aria-label="edit pencil">
+                                <span
+                                  className="edit-btn-span"
+                                  role="img"
+                                  aria-label="edit pencil"
+                                >
                                   EDIT ✏️
                                 </span>
                               </button>
@@ -286,9 +313,6 @@ class Profile extends Component {
                         <div className="editing-wrapper">
                           <div className="top-box">
                             <div className="editing-header">
-                              <span role="img" aria-label="nb with pencil">
-                                📝{" "}
-                              </span>
                               <input
                                 type="text"
                                 placeholder="Input name and residence location."
@@ -300,9 +324,13 @@ class Profile extends Component {
                                 onClick={this.handleUpdate("bio")}
                                 className="prof-edit btn"
                               >
-                                <span role="img" aria-label="save-edit">
+                                <span
+                                  className="ein-se check"
+                                  role="img"
+                                  aria-label="save-edit"
+                                >
                                   {" "}
-                                  ✅{" "}
+                                  ✓{" "}
                                 </span>
                               </button>
                               <button
@@ -310,9 +338,13 @@ class Profile extends Component {
                                 className="prof-edit btn"
                               >
                                 {" "}
-                                <span role="img" aria-label="x-quit-edit">
+                                <span
+                                  className="ein-se x"
+                                  srole="img"
+                                  aria-label="x-quit-edit"
+                                >
                                   {" "}
-                                  ❌{" "}
+                                  ✘{" "}
                                 </span>
                               </button>
                             </div>

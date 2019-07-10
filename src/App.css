@@ -385,11 +385,10 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: #080f38;
+  background-color: #1b1b1f;
   width: 390px;
-  border-radius: 1.2em;
-  border: 1.5px outset black;
-  box-shadow: 1px 1px 1px;
+  border: 1.5px outset darkgray;
+  box-shadow: 2px 2px 2px 2px;
 }
 .avatar-btn-wrapper {
   margin-left: 40px;
@@ -403,7 +402,12 @@ button {
 .edit-bio-wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  height: 115px;
+  width: 100%;
+  justify-content: center;
+}
+.edit-btn-span {
+  color: white;
 }
 .profile-fields {
   display: flex;
@@ -416,6 +420,7 @@ button {
   /* border: 1.5px ridge #f1f1f1; */
   border: 1.5px outset whitesmoke;
   border-radius: 4.5px;
+  opacity: 0.85;
 }
 .edit-text-fields-wrapper {
   width: 100%;
@@ -438,6 +443,11 @@ button {
 .edit-user-text {
   display: flex;
   flex-direction: column;
+  height: 115px;
+  padding-left: -0.85em;
+  padding-right: -0.85em;
+
+  justify-content: center;
 }
 .toggle-wrapper {
   display: flex;
@@ -461,21 +471,25 @@ button {
   height: inherit;
   display: flex;
   flex-direction: column;
+  color: white;
+  opacity: 1;
 }
-
 .arrow-line {
   display: flex;
   margin: 0;
   align-items: center;
 }
 .profile-content-header {
-  background-color: #b1ced8;
+  background-color: #080f38;
   height: inherit;
   font-size: 22.5px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   padding-bottom: 0.15em;
+  font-size: 1.8em;
+  font-weight: 900;
+  padding-left: 1.2em;
 }
 .bus-border-bottom {
 }
@@ -601,11 +615,10 @@ input {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: #080f38;
+  background-color: #1b1b1f;
   width: 390px;
-  border-radius: 1.2em;
-  border: 1.5px outset black;
-  box-shadow: 1px 1px 1px;
+  border: 1.5px outset darkgray;
+  box-shadow: 2px 2px 2px 2px;
 }
 
 .console-content-wrapper {
@@ -617,7 +630,59 @@ input {
 }
 .s-c.sch-item {
 }
-.prof-edit.btn {
-  height: 38px;
-  width: 38px;
+
+.edit-btn {
+  background-color: #080f38;
+  padding: 7.5px;
+  height: 35px;
+  width: 60px;
+  border: 1.5px outset black;
+  border-radius: 8px;
+}
+.edit-btn span {
+  color: white;
+}
+
+.top-box {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: #d8e9f7;
+}
+.user-content {
+  display: flex;
+  overflow-x: scroll;
+  color: #080f38;
+}
+.error-wrapper {
+}
+.top-box.username {
+  display: flex;
+  justify-content: space-between;
+  align-content: space-between;
+}
+.editing-header {
+  display: flex;
+  padding-right: 0.75em;
+
+  width: 100%;
+}
+.editing-input-form span {
+  padding: 0;
+  margin: 0;
+}
+
+.editing-input-form {
+  margin: 0;
+  padding: 0;
+}
+
+.ein.se.btn {
+  background-color: none;
+}
+
+.ein-se {
+  font-size: 24px;
 }
