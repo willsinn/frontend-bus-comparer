@@ -1,13 +1,10 @@
 import React, { Component } from "react";
-import SearchConsoleItem from "./SearchConsoleItem";
 import SearchConsoleForm from "./SearchConsoleForm";
 import ConsoleSearchInput from "./ConsoleSearchInput";
-import SearchConsoleList from "./SearchConsoleList";
 const uuidv4 = require("uuid/v4");
 
 class SearchConsole extends Component {
   state = {
-    results: [],
     error: "",
     searchParams: {
       date: "",
@@ -16,75 +13,47 @@ class SearchConsole extends Component {
       time: ""
     }
   };
-  handleSearchSubmit = searchParams => {
-    this.setState({ searchParams: searchParams });
-    const route = this.filterRoute(searchParams);
-    const date = this.filterDate(searchParams);
-    const time = this.filterTime(searchParams);
-
-    this.setState({ results: [...this.state.results.concat(time)] });
-  };
-
-  filterRoute = params => {
-    return this.props.searches.filter(
-      search =>
-        search.start === params.start_from &&
-        search.destination === params.to_destination
-    );
-  };
-  filterDate = params => {
-    return this.props.searches.filter(search => search.date === params.date);
-  };
-  filterTime = params => {
-    const array = [];
-    this.props.searches.forEach(search => {
-      const company = search.company;
-      search.items.forEach(item => {
-        if (item.time === params.time) {
-          array.push({ item, company });
-        }
-      });
-    });
-    return array;
-  };
-  handleSubmit = event => {
-    event.preventDefault();
-    const query = event.target.firstElementChild.value.toLowerCase();
-
-    const vals = [...this.props.itemsValues].map(v => v.join().toLowerCase());
-    let schIdxs = [];
-    vals.forEach((val, i) => {
-      if (val.includes(query)) {
-        schIdxs = schIdxs.concat(i);
-      }
-    });
-    const itms = [...this.props.items];
-    const idxMatch = schIdxs.map(schIdx => itms[schIdx]);
-    this.setState({ results: idxMatch });
-  };
+  // handleSearchSubmit = searchParams => {
+  //   this.setState({ searchParams: searchParams });
+  //   const route = this.filterRoute(searchParams);
+  //   const date = this.filterDate(searchParams);
+  //   const time = this.filterTime(searchParams);
+  //
+  //   this.setState({ results: [...this.props.results.concat(time)] });
+  // };
+  //
+  // filterRoute = params => {
+  //   return this.props.searches.filter(
+  //     search =>
+  //       search.start === params.start_from &&
+  //       search.destination === params.to_destination
+  //   );
+  // };
+  // filterDate = params => {
+  //   return this.props.searches.filter(search => search.date === params.date);
+  // };
+  // filterTime = params => {
+  //   const array = [];
+  //   this.props.searches.forEach(search => {
+  //     const company = search.company;
+  //     search.items.forEach(item => {
+  //       if (item.time === params.time) {
+  //         array.push({ item, company });
+  //       }
+  //     });
+  //   });
+  //   return array;
+  // };
 
   render() {
-    console.log(this.props.itemsValues);
-    const route =
-      this.state.searchParams.start + "→" + this.state.searchParams.destination;
     return (
       <div id="search-console">
         <div className="render-search-console">
-          <div className="top-s container">
-            <div className="top-s left-container">
-              <ConsoleSearchInput
-                key={uuidv4()}
-                handleSubmit={this.handleSubmit}
-              />
-            </div>
-            <div className="top-s right-container" />
-          </div>
-          <div className="bottom-s container">
-            <SearchConsoleList
-              results={this.state.results}
-              handleWatching={this.props.handleWatching}
-            />
-          </div>
+          <ConsoleSearchInput
+            key={uuidv4()}
+            handleSubmit={this.props.handleSubmit}
+            items={this.props.items}
+          />
         </div>
       </div>
     );
