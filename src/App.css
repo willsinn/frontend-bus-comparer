@@ -256,7 +256,7 @@ button {
   height: 40px;
 }
 .search-item-wrapper {
-  border-bottom: 4px double blue;
+  /* border-bottom: 4px double blue; */
 }
 .item-content-label {
   font-weight: 900;
@@ -278,8 +278,8 @@ button {
   opacity: 1;
 }
 .item-content-break {
-  background-color: #d43a3a;
-  color: #f1a0a740;
+  /* background-color: #d43a3a;
+  color: #f1a0a740; */
 }
 .login-signup.input.s {
   margin-top: 20px;
@@ -288,6 +288,7 @@ button {
   text-decoration: none;
   color: inherit;
 }
+
 /* Profile */
 .login-signup.input {
   height: 45px;
@@ -364,8 +365,8 @@ button {
 .profile-wrapper {
   width: 35vw;
   height: 85vh;
-  background-color: none;
   display: flex;
+  align-items: center;
   flex-direction: column;
   justify-content: space-between;
 }
@@ -380,6 +381,7 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  width: inherit;
 }
 .avatar-wrapper {
   display: flex;
@@ -393,6 +395,28 @@ button {
 .avatar-btn-wrapper {
   margin-left: 40px;
   margin-right: 40px;
+}
+.error-render {
+  display: flex;
+  flex-direction: column-reverse;
+  height: 95px;
+  font-size: 20px;
+  color: black;
+  padding: 0 5px 5px 5px;
+  align-items: center;
+  background-color: #da5757;
+  justify-content: center;
+  font-weight: bold;
+}
+.error-container {
+  display: flex;
+  flex-direction: column-reverse;
+  width: 392px;
+  height: 95px;
+
+  background-color: inherit;
+  margin-top: -166px;
+  position: absolute;
 }
 .avatar-frame {
   display: flex;
@@ -412,11 +436,10 @@ button {
 .profile-fields {
   display: flex;
   flex-direction: column;
+  width: inherit;
   height: 10.5vh;
-  width: 30vw;
   justify-content: space-between;
   align-content: center;
-  background-color: #f1f1f1;
   /* border: 1.5px ridge #f1f1f1; */
   border: 1.5px outset whitesmoke;
   border-radius: 4.5px;
@@ -451,8 +474,9 @@ button {
 }
 .toggle-wrapper {
   display: flex;
+  height: 92.5%;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
   width: 100%;
 }
 .add-bio-text {
@@ -515,15 +539,20 @@ button {
   display: flex;
 }
 .avatar-btn-wrapper {
-  height: 25.5px;
+  height: 30px;
 }
 input {
-  height: 65%;
+  height: 85%;
 }
 .avatar-btn {
-  background-color: whitesmoke;
+  background-color: inherit;
   border: 1.5px outset gray;
-  color: white;
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  color: inherit;
+  margin-top: -25px;
+  margin-right: -7.5px;
 }
 .user-content {
   display: flex;
@@ -646,7 +675,7 @@ input {
 }
 
 .top-box {
-  height: 100%;
+  height: inherit;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -665,10 +694,14 @@ input {
   justify-content: space-between;
   align-content: space-between;
 }
+.editing-avatar span {
+  padding-top: 11px;
+  padding-right: 10px;
+}
 .editing-header {
   display: flex;
   padding-right: 0.75em;
-
+  justify-content: space-evenly;
   width: 100%;
 }
 .editing-input-form span {
@@ -680,11 +713,34 @@ input {
   margin: 0;
   padding: 0;
 }
+.ein.se.check {
+  background-color: green;
+}
+.save-edit {
+  color: green;
+}
 
 .ein.se.btn {
-  background-color: none;
+  background-color: inherit;
+  border-style: none;
+  border: 0;
 }
 
 .ein-se {
   font-size: 24px;
+}
+
+.ein-se.x {
+  color: red;
+}
+.ein-se.check {
+  color: green;
+}
+.ein-se.x:hover {
+  font-size: 33.5px;
+  font-weight: bold;
+}
+.ein-se.check:hover {
+  font-size: 33.5px;
+  font-weight: bold;
 }
