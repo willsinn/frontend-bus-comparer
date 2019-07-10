@@ -560,6 +560,14 @@ input {
   padding-left: 0.35em;
   margin: 0;
 }
+.console-s-input {
+  width: 100vw;
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  align-items: center;
+}
 .sch-msg.wrap {
   display: flex;
 }
@@ -568,7 +576,15 @@ input {
 }
 .input-s.container {
   background-color: blue;
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("./images/search-input.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+
 .console-content-wrapper {
   height: 100px;
 }

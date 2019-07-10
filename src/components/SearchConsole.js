@@ -46,7 +46,6 @@ class SearchConsole extends Component {
   // };
 
   render() {
-    console.log(this.props.itemsValues);
     return (
       <div id="search-console">
         <div className="render-search-console">

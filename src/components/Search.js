@@ -26,6 +26,7 @@ class Search extends Component {
     })
       .then(r => r.json())
       .then(searches => {
+        console.log("SEARCHES", searches);
         this.setState({ searches: searches });
       });
     fetch("http://localhost:3000/api/v1/items", {
@@ -36,11 +37,12 @@ class Search extends Component {
     })
       .then(r => r.json())
       .then(items => {
+        console.log("ITEMS", items);
         const itemsValues = flattenItemKeyValues(items);
         this.setState({ items: items, itemsValues: itemsValues });
       });
     const flattenItemKeyValues = items => {
-      let itemsData = [...items].flat();
+      let itemsData = items.flat();
       itemsData = itemsData.map(itemD => {
         let vals = Object.entries(itemD);
         return vals.flat();
@@ -55,12 +57,6 @@ class Search extends Component {
       return itemsData;
     };
   }
-
-  addToWatchlist = (props, item) => {
-    const search = props.search;
-    const addItem = { ...item, search };
-    this.handleWatching(addItem);
-  };
 
   handleSubmit = event => {
     event.preventDefault();
@@ -94,6 +90,26 @@ class Search extends Component {
 
     this.setState({ message: message });
   };
+  addToWatchlist = (props, item) => {
+    const searchId = props.search.id;
+    const userId = this.props.id;
+    debugger;
+    fetch(`http://localhost:3000/api/v1/user/${userId}/search/${searchId}`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.jwt}`
+      },
+      body: JSON.stringify({
+        user_id: userId,
+        search_id: searchId,
+        purchase: false
+      })
+    }).then(r => console.log(r));
+  };
+  // const addItem = { ...item, search };
+  // this.handleWatching(addItem);
   handleWatching = targetValue => {
     const addMsg = "Successfully added to your watchlist!";
     console.log("watching", targetValue);
@@ -103,12 +119,24 @@ class Search extends Component {
         addMsg: addMsg
       },
       () => {
-        this.handleFetchUserItem(targetValue);
+        this.handlePostWatching(targetValue);
       }
     );
   };
-  handleFetchUserItem = value => {
+
+  handlePostWatching = value => {
     const item = value;
+
+    debugger;
+    fetch("http://localhost:3000/api/v1/users/items", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.jwt}`
+      },
+      body: JSON.stringify({ user_id: this.props.id, item: item })
+    });
   };
   handleRemoveWatching = targetValue => {
     this.setState({

@@ -1,8 +1,6 @@
 import React from "react";
 
 const SearchListItem = props => {
-  console.log(props);
-
   const renderItems = () => {
     return props.items.map(item => {
       return (
@@ -20,7 +18,7 @@ const SearchListItem = props => {
               <button
                 className="s-i item"
                 onClick={event => {
-                  props.addToWatchlist(props, item);
+                  props.addToWatchlist(props.search, item);
                 }}
               >
                 Add
