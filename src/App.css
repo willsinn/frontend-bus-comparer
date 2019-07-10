@@ -364,12 +364,17 @@ button {
 .profile-wrapper {
   width: 35vw;
   height: 85vh;
-  background-color: white;
+  background-color: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .profile-avatar {
   width: 265px;
   height: 265px;
   border-radius: 12em;
+  border: 2px ridge black;
+  box-shadow: -2px -2px -2px;
 }
 .edit-fields-wrapper {
   display: flex;
@@ -380,7 +385,10 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: #d43a3a;
+  background-color: #1b1b1f;
+  width: 390px;
+  border: 1.5px outset darkgray;
+  box-shadow: 2px 2px 2px 2px;
 }
 .avatar-btn-wrapper {
   margin-left: 40px;
@@ -389,17 +397,30 @@ button {
 .avatar-frame {
   display: flex;
   justify-content: center;
-  margin: 10% 7.5%;
+  margin: 8% 6.5%;
+}
+.edit-bio-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 115px;
+  width: 100%;
+  justify-content: center;
+}
+.edit-btn-span {
+  color: white;
 }
 .profile-fields {
   display: flex;
   flex-direction: column;
-  height: 12.5vh;
-  width: 32.5vw;
+  height: 10.5vh;
+  width: 30vw;
   justify-content: space-between;
   align-content: center;
   background-color: #f1f1f1;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12) !important;
+  /* border: 1.5px ridge #f1f1f1; */
+  border: 1.5px outset whitesmoke;
+  border-radius: 4.5px;
+  opacity: 0.85;
 }
 .edit-text-fields-wrapper {
   width: 100%;
@@ -422,6 +443,11 @@ button {
 .edit-user-text {
   display: flex;
   flex-direction: column;
+  height: 115px;
+  padding-left: -0.85em;
+  padding-right: -0.85em;
+
+  justify-content: center;
 }
 .toggle-wrapper {
   display: flex;
@@ -443,33 +469,32 @@ button {
 }
 .profile-title {
   height: inherit;
-  background-image: url("./images/content-background.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  padding-top: 2.5%;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  opacity: 1;
 }
-
 .arrow-line {
   display: flex;
   margin: 0;
   align-items: center;
 }
 .profile-content-header {
-  padding-left: 17.5%;
+  background-color: #080f38;
+  height: inherit;
+  font-size: 22.5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 0.15em;
+  font-size: 1.8em;
+  font-weight: 900;
+  padding-left: 1.2em;
 }
 .bus-border-bottom {
-  border-top: 2px solid #d43a3a;
-  margin: 0;
-  margin-left: 15px;
-  width: 85%;
 }
 .point {
-  width: 0;
-  height: 0;
-  border-top: 3.5px solid transparent;
-  border-bottom: 3.5px solid transparent;
-  border-left: 10px solid #d43a3a;
-  width: 5%;
+  height: 10px;
 }
 .bottom-box {
   height: 20px;
@@ -496,7 +521,9 @@ input {
   height: 65%;
 }
 .avatar-btn {
-  margin-top: -14.5px;
+  background-color: whitesmoke;
+  border: 1.5px outset gray;
+  color: white;
 }
 .user-content {
   display: flex;
@@ -584,6 +611,17 @@ input {
   background-repeat: no-repeat;
   background-size: cover;
 }
+.btm-profile {
+  margin-top: 7.5%;
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #1b1b1f;
+  width: 390px;
+  border: 1.5px outset darkgray;
+  box-shadow: 2px 2px 2px 2px;
+}
 
 .console-content-wrapper {
   height: 100px;
@@ -593,4 +631,60 @@ input {
 .s-c.sch-wrap {
 }
 .s-c.sch-item {
+}
+
+.edit-btn {
+  background-color: #080f38;
+  padding: 7.5px;
+  height: 35px;
+  width: 60px;
+  border: 1.5px outset black;
+  border-radius: 8px;
+}
+.edit-btn span {
+  color: white;
+}
+
+.top-box {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: #d8e9f7;
+}
+.user-content {
+  display: flex;
+  overflow-x: scroll;
+  color: #080f38;
+}
+.error-wrapper {
+}
+.top-box.username {
+  display: flex;
+  justify-content: space-between;
+  align-content: space-between;
+}
+.editing-header {
+  display: flex;
+  padding-right: 0.75em;
+
+  width: 100%;
+}
+.editing-input-form span {
+  padding: 0;
+  margin: 0;
+}
+
+.editing-input-form {
+  margin: 0;
+  padding: 0;
+}
+
+.ein.se.btn {
+  background-color: none;
+}
+
+.ein-se {
+  font-size: 24px;
 }
