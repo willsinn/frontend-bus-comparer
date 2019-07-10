@@ -364,12 +364,17 @@ button {
 .profile-wrapper {
   width: 35vw;
   height: 85vh;
-  background-color: white;
+  background-color: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .profile-avatar {
   width: 265px;
   height: 265px;
   border-radius: 12em;
+  border: 2px ridge black;
+  box-shadow: -2px -2px -2px;
 }
 .edit-fields-wrapper {
   display: flex;
@@ -380,7 +385,11 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: #d43a3a;
+  background-color: #080f38;
+  width: 390px;
+  border-radius: 1.2em;
+  border: 1.5px outset black;
+  box-shadow: 1px 1px 1px;
 }
 .avatar-btn-wrapper {
   margin-left: 40px;
@@ -389,17 +398,18 @@ button {
 .avatar-frame {
   display: flex;
   justify-content: center;
-  margin: 10% 7.5%;
+  margin: 8% 6.5%;
 }
 .profile-fields {
   display: flex;
   flex-direction: column;
-  height: 12.5vh;
-  width: 32.5vw;
+  height: 10.5vh;
+  width: 30vw;
   justify-content: space-between;
   align-content: center;
   background-color: #f1f1f1;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12) !important;
+  background-color: lightblue;
 }
 .edit-text-fields-wrapper {
   width: 100%;
@@ -583,6 +593,18 @@ input {
   background-image: url("./images/search-input.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
+}
+.btm-profile {
+  margin-top: 7.5%;
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #080f38;
+  width: 390px;
+  border-radius: 1.2em;
+  border: 1.5px outset black;
+  box-shadow: 1px 1px 1px;
 }
 
 .console-content-wrapper {
