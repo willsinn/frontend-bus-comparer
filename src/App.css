@@ -521,7 +521,9 @@ input {
   height: 65%;
 }
 .avatar-btn {
-  margin-top: -14.5px;
+  background-color: whitesmoke;
+  border: 1.5px outset gray;
+  color: white;
 }
 .user-content {
   display: flex;

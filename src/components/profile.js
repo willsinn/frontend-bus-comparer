@@ -83,7 +83,7 @@ class Profile extends Component {
     const type = Object.keys(body);
     const editType = `edit${type[0].charAt(0).toUpperCase() +
       type[0].slice(1)}`;
-    fetch(`http://localhost:3000/api/v1/user/${this.props.id}`, {
+    fetch(`http://localhost:3000/api/v1/users/${this.props.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -94,6 +94,7 @@ class Profile extends Component {
     })
       .then(r => r.json())
       .then(updatedUser => {
+        console.log(updatedUser);
         this.setState({
           currentUser: updatedUser,
           [type]: "",
@@ -116,20 +117,19 @@ class Profile extends Component {
             </div>
             <div className="avatar-btn-wrapper">
               {!this.state.editAvatar ? (
-                <div>
+                <>
                   <div className="avatar-btn">
                     <button
                       className="edit-btn"
                       onClick={this.toggleEdit("editAvatar")}
                     >
-                      {" "}
-                      Change Avatar{" "}
+                      <span> Change Avatar </span>
                     </button>
                   </div>
                   {this.state.activeError[0] === "avatar" ? (
                     <div>{this.state.activeError[1]}</div>
                   ) : null}
-                </div>
+                </>
               ) : (
                 <div className="editing-avatar">
                   <div className="editing-header">

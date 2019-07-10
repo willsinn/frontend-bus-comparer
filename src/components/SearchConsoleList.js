@@ -39,6 +39,7 @@ const SearchConsoleList = props => {
     );
   };
   console.log(isShowing);
+  console.log(props);
   return (
     <div className="content-wrapper wrapper">
       <div className="toggle-watchlist btn">

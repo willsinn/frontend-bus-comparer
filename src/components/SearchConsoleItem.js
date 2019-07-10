@@ -2,16 +2,16 @@ import React from "react";
 
 const SearchConsoleItem = props => {
   const weekday = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
-  const item = props.item;
-  const date = item.search.date.split("-");
-  const day = date[2] % 7;
+  const item = item;
+  // const date = item.search.date.split("-");
+  // const day = date[2] % 7;
 
   return (
     <div className="console-item">
       <div className="cih-col">
         {item.search.start_from} -> {item.search.to_destination}
       </div>
-      <div className="cih-col">{weekday[day]}</div>
+      <div className="cih-col">hello</div>
       <div className="cih-col">{item.search.date}</div>
       <div className="cih-col">{item.pickup_from}</div>
       <div className="cih-col">{item.price}</div>
@@ -25,7 +25,7 @@ const SearchConsoleItem = props => {
         {props.handleWatching !== undefined ? (
           <button
             onClick={event => {
-              props.handleWatching(props.item);
+              props.handleWatching(item);
             }}
           >
             Add to Watchlist
@@ -33,7 +33,7 @@ const SearchConsoleItem = props => {
         ) : (
           <button
             onClick={event => {
-              props.handleRemoveWatching(props.item);
+              props.handleRemoveWatching(item);
             }}
           >
             Remove from Watchlist

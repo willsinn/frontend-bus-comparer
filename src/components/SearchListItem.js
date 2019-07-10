@@ -18,7 +18,7 @@ const SearchListItem = props => {
               <button
                 className="s-i item"
                 onClick={event => {
-                  props.addToWatchlist(props.search, item);
+                  props.handleWatching(item);
                 }}
               >
                 Add
