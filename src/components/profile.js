@@ -102,12 +102,14 @@ class Profile extends Component {
         });
       });
   };
+
   render() {
     console.log(this.props.user);
     let user;
     this.state.currentUser.id
       ? (user = this.state.currentUser)
       : (user = this.props);
+
     return (
       <div className="profile-page">
         <div className="profile-wrapper">
@@ -115,6 +117,7 @@ class Profile extends Component {
             <div className="avatar-frame">
               <img className="profile-avatar" src={user.avatar} alt="" />
             </div>
+
             <div className="avatar-btn-wrapper">
               {!this.state.editAvatar ? (
                 <>
@@ -126,20 +129,18 @@ class Profile extends Component {
                       <span> Change Avatar </span>
                     </button>
                   </div>
-                  {this.state.activeError[0] === "avatar" ? (
-                    <div>{this.state.activeError[1]}</div>
-                  ) : null}
                 </>
               ) : (
                 <div className="editing-avatar">
+                  <span role="img" aria-label="">
+                    {" "}
+                    🔗{" "}
+                  </span>
                   <div className="editing-header">
-                    <span role="img" aria-label="">
-                      {" "}
-                      🔗{" "}
-                    </span>
                     <input
+                      className="edit-input field"
                       type="text"
-                      placeholder="Input image URL only."
+                      placeholder="URL only."
                       onChange={this.handleChange("avatar")}
                     />
                   </div>
@@ -177,6 +178,11 @@ class Profile extends Component {
             </div>
           </div>
           <div className="btm-profile">
+            {this.state.activeError.length ? (
+              <div className="error-container">
+                <div className="error-render">{this.state.activeError}</div>
+              </div>
+            ) : null}
             <div className="edit-container">
               <div className="edit-fields-wrapper">
                 <div className="profile-fields">
@@ -192,11 +198,7 @@ class Profile extends Component {
                               <div className="user-content">
                                 {user.username}
                               </div>
-                              <div className="input-error">
-                                {this.state.activeError[0] === "username" ? (
-                                  <div>{this.state.activeError[1]}</div>
-                                ) : null}
-                              </div>
+                              <div className="input-error" />
                             </div>
                             <div>
                               <button
@@ -277,13 +279,6 @@ class Profile extends Component {
                             ) : (
                               <div>
                                 <div className="user-content">{user.bio}</div>
-                                <div className="error-wrapper">
-                                  {this.state.activeError[0] === "avatar" ? (
-                                    <div>{this.state.activeError[1]}</div>
-                                  ) : (
-                                    ""
-                                  )}
-                                </div>
                               </div>
                             )}
                             <div>
@@ -378,12 +373,24 @@ const mapStateToProps = ({
   username,
   bio
 });
-
+//
+// {this.state.activeError[0] === "avatar" ? (
+//   <div>{this.state.activeError[1]}</div>
 // const connectedToReduxHOC = connect(mapStateToProps)
 // const connectedProfile = connectedToReduxHOC(Profile)
 //
 // const withAuthProfile = withAuth(connectedProfile)
 //
 // export default withAuthProfile
-
+//
+// errors = () => {
+//   if (this.state.activeError[0] === "username") {
+//     return <div>{this.state.activeError[1]}</div>;
+//   } else if (this.state.activeError[0] === "avatar") {
+//     return <div>{this.state.activeError[0]}</div>;
+//   } else {
+//     return null;
+//   }
+//   return;
+// };
 export default withAuth(connect(mapStateToProps)(Profile));
