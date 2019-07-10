@@ -2,9 +2,7 @@ import React from "react";
 
 const SearchConsoleItem = props => {
   const weekday = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
-  const item = item;
-  // const date = item.search.date.split("-");
-  // const day = date[2] % 7;
+  const item = props.item;
 
   return (
     <div className="console-item">

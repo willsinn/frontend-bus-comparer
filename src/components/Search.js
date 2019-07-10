@@ -90,12 +90,16 @@ class Search extends Component {
 
     this.setState({ message: message });
   };
-  // addToWatchlist = item => {
-  //   //   const searchId = props.search.id;
-  //   //   const userId = this.props.id;
-  //   //   debugger;
-  //   console.log(props.search);
-  //   debugger;
+  addToWatchlist = (props, item) => {
+    //   const searchId = props.search.id;
+    //   const userId = this.props.id;
+    const search = props.search;
+    const addItem = { ...item, search };
+    {
+      this.handleWatching(addItem);
+    }
+  };
+
   //   //   fetch(`http://localhost:3000/api/v1/user/${userId}/search/${searchId}`, {
   //   //     method: "POST",
   //   //     headers: {
@@ -114,7 +118,6 @@ class Search extends Component {
   //   this.handleWatching(addItem);
   // };
   handleWatching = targetValue => {
-    debugger;
     const addMsg = "Successfully added to your watchlist!";
     console.log("watching", targetValue);
     this.setState(
@@ -141,11 +144,11 @@ class Search extends Component {
   //     body: JSON.stringify({ user_id: this.props.id, item: item })
   //   });
   // };
-  // handleRemoveWatching = targetValue => {
-  //   this.setState({
-  //     watching: [...this.state.watching].filter(tgt => tgt !== targetValue)
-  //   });
-  // };
+  handleRemoveWatching = targetValue => {
+    this.setState({
+      watching: [...this.state.watching].filter(tgt => tgt !== targetValue)
+    });
+  };
 
   render() {
     const msg = this.state.message;
@@ -177,8 +180,8 @@ class Search extends Component {
           handleWatching={this.handleWatching}
         />
         <SearchList
-          handleWatching={this.handleWatching}
-          items={this.state.items}
+          addToWatchlist={this.addToWatchlist}
+          searches={this.state.searches}
         />
       </div>
     );

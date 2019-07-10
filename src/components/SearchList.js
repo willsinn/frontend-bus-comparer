@@ -3,19 +3,26 @@ import SearchListItem from "./SearchListItem";
 const uuidv4 = require("uuid/v4");
 
 const SearchList = props => {
-  console.log(props);
   const renderSearches = () =>
-    props.items.map(item => {
+    props.searches.map(search => {
       const weekday = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
-      const search = item.search;
-
+      const day = search.date.split("-")[2] % 7;
       return (
-        <SearchListItem
-          key={search.uuidv4}
-          search={item.search}
-          items={props.items}
-          handleWatching={props.handleWatching}
-        />
+        <div className="s-c sch-cont">
+          <div className="s-c sch-wrap">
+            <div className="s-c sch-item">{search.start_from}</div>
+            <div className="s-c sch-item">{search.to_destination}</div>
+            <div className="s-c sch-item">{weekday[day]}</div>
+            <div className="s-c sch-item">{search.date}</div>
+            <div className="s-c sch-item">{search.company}</div>
+          </div>
+          <SearchListItem
+            key={uuidv4(search.id)}
+            search={search}
+            items={search.items}
+            addToWatchlist={props.addToWatchlist}
+          />
+        </div>
       );
     });
   const renderSearchesHeaders = () => {
@@ -43,15 +50,6 @@ const SearchList = props => {
 
 export default SearchList;
 
-//   <div className="s-c sch-cont">
-//   <div className="s-c sch-wrap">
-//     <div className="s-c sch-item">{item.search.start_from}</div>
-//     <div className="s-c sch-item">{item.search.to_destination}</div>
-//     <div className="s-c sch-item">{weekday[day]}</div>
-//     <div className="s-c sch-item">{item.search.date}</div>
-//     <div className="s-c sch-item">{item.search.company}</div>
-//   </div>
-// </div>
 // <div className="al-r">
 //   <span role="img" className="folder-items-indicator">
 //     {"  "}↳{"  "}

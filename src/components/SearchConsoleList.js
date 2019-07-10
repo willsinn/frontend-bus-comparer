@@ -45,7 +45,7 @@ const SearchConsoleList = props => {
       <div className="toggle-watchlist btn">
         <button onClick={() => setWatchlist(!isShowing)}>View Watchlist</button>
       </div>
-      {isShowing ? (
+      {!isShowing ? (
         <>
           {renderHeader()}
           {renderWatchlistItems()}
