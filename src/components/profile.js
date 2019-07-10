@@ -168,16 +168,7 @@ class Profile extends Component {
                 <div className="profile-fields">
                   <div className="edit-text-fields-wrapper">
                     <div className="profile-title">
-                      <h3
-                        className="profile-content-header"
-                        style={{ margin: "0" }}
-                      >
-                        Username
-                      </h3>
-                      <div className="arrow-line">
-                        <div className="bus-border-bottom" />
-                        <div className="point" />
-                      </div>
+                      <div className="profile-content-header">Username</div>
                     </div>
                     <div className="edit-user-text">
                       {!this.state.editUsername ? (
@@ -204,7 +195,6 @@ class Profile extends Component {
                               </button>
                             </div>
                           </div>
-                          <div className="bottom-box" />
                         </div>
                       ) : (
                         <div className="editing-bottom-cont">
@@ -238,7 +228,6 @@ class Profile extends Component {
                                 </button>
                               </div>
                             </div>
-                            <div className="bottom-box" />
                           </div>
                         </div>
                       )}
@@ -247,19 +236,10 @@ class Profile extends Component {
                 </div>
                 <div className="profile-fields">
                   <div className="profile-title">
-                    <h3
-                      className="profile-content-header"
-                      style={{ margin: "0" }}
-                    >
+                    <div className="profile-content-header">
                       {" "}
                       Name, Location{" "}
-                    </h3>
-                    <div className="arrow-line">
-                      <div className="bus-border-bottom" />
-                      <div className="point" />
                     </div>
-                  </div>
-                  <div>
                     <div className="edit-bio-wrapper">
                       {!this.state.editBio ? (
                         <div className="toggle-wrapper">
@@ -301,7 +281,6 @@ class Profile extends Component {
                               </button>
                             </div>
                           </div>
-                          <div className="bottom-box" />
                         </div>
                       ) : (
                         <div className="editing-wrapper">
@@ -317,13 +296,19 @@ class Profile extends Component {
                               />
                             </div>
                             <div className="editing input-form">
-                              <button onClick={this.handleUpdate("bio")}>
+                              <button
+                                onClick={this.handleUpdate("bio")}
+                                className="prof-edit btn"
+                              >
                                 <span role="img" aria-label="save-edit">
                                   {" "}
                                   ✅{" "}
                                 </span>
                               </button>
-                              <button onClick={this.toggleEdit("editBio")}>
+                              <button
+                                onClick={this.toggleEdit("editBio")}
+                                className="prof-edit btn"
+                              >
                                 {" "}
                                 <span role="img" aria-label="x-quit-edit">
                                   {" "}
@@ -332,7 +317,6 @@ class Profile extends Component {
                               </button>
                             </div>
                           </div>
-                          <div className="bottom-box" />
                         </div>
                       )}
                     </div>
