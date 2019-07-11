@@ -4,7 +4,7 @@ import SearchConsoleList from "./SearchConsoleList";
 import { connect } from "react-redux";
 import SearchList from "./SearchList";
 import withAuth from "../hocs/withAuth";
-
+import Nav from "./Nav";
 const uuidv4 = require("uuid/v4");
 
 class Search extends Component {
@@ -146,11 +146,6 @@ class Search extends Component {
   //     body: JSON.stringify({ user_id: this.props.id, item: item })
   //   });
   // };
-  handleRemoveWatching = targetValue => {
-    this.setState({
-      watching: [...this.state.watching].filter(tgt => tgt !== targetValue)
-    });
-  };
 
   render() {
     const msg = this.state.message;
@@ -163,6 +158,8 @@ class Search extends Component {
             itemsValues={this.state.itemsValues}
             handleSubmit={this.handleSubmit}
           />
+
+          <div style={{ position: "absolute" }} />
           <div className="sch-msg wrap">
             {msg !== "" ? (
               <div className="sch-msg static">{msg}</div>

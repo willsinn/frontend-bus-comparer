@@ -29,17 +29,17 @@ const SearchListItem = props => {
       return (
         <div className="s-i item-cont">
           <div className="s-i item-wrap">
-            <div className="s-i item">{item.time}</div>
-            <div className="s-i item">{item.pickup_from}</div>
-            <div className="s-i item">{item.price}</div>
+            <div className="panel-info s-i item">{item.time}</div>
+            <div className="panel-info s-i item">{item.pickup_from}</div>
+            <div className="panel-info s-i item">{item.price}</div>
             <div className="s-i item purchase-btn">
               <form action={item.purchase_url}>
                 <input type="submit" value="Purchase Ticket" />
               </form>
             </div>
-            <div className="s-i item">
+            <div className="panel-info s-i item">
               <button
-                className="s-i item"
+                className="panel-info s-i item"
                 onClick={() => {
                   props.addToWatchlist(props, item);
                   {
@@ -58,11 +58,11 @@ const SearchListItem = props => {
   return (
     <div className="s-i item-cont header">
       <div className="s-i item-wrap header">
-        <div className="s-i item header">Time </div>
-        <div className="s-i item header">Pickup </div>
-        <div className="s-i item header">Price</div>
-        <div className="s-i item header">Purchase</div>
-        <div className="s-i item header">Add to Watchlist</div>
+        <div className="s-i item header panel-header">Time </div>
+        <div className="s-i item header panel-header">Pickup </div>
+        <div className="s-i item header panel-header">Price</div>
+        <div className="s-i item header panel-header">Purchase</div>
+        <div className="s-i item header panel-header">Add to Watchlist</div>
       </div>
       {renderItems()}
     </div>

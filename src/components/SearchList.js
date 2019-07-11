@@ -10,11 +10,11 @@ const SearchList = props => {
       return (
         <div className="s-c sch-cont">
           <div className="s-c sch-wrap">
-            <div className="s-c sch-item">{search.start_from}</div>
-            <div className="s-c sch-item">{search.to_destination}</div>
-            <div className="s-c sch-item">{weekday[day]}</div>
-            <div className="s-c sch-item">{search.date}</div>
-            <div className="s-c sch-item">{search.company}</div>
+            <div className="s-c sch-item row">{search.start_from}</div>
+            <div className="s-c sch-item row">{search.to_destination}</div>
+            <div className="s-c sch-item row">{weekday[day]}</div>
+            <div className="s-c sch-item row">{search.date}</div>
+            <div className="s-c sch-item row">{search.company}</div>
           </div>
           <SearchListItem
             userId={props.userId}
@@ -30,11 +30,11 @@ const SearchList = props => {
     return (
       <div className="s-c sch-cont header">
         <div className="s-c sch-wrap header">
-          <div className="s-c sch-item header">From </div>
-          <div className="s-c sch-item header">To </div>
-          <div className="s-c sch-item header">Day of week</div>
-          <div className="s-c sch-item header">Date</div>
-          <div className="s-c sch-item header">Company</div>
+          <div className="s-c sch-item header row">From </div>
+          <div className="s-c sch-item header row">To </div>
+          <div className="s-c sch-item header row">Day of week</div>
+          <div className="s-c sch-item header row">Date</div>
+          <div className="s-c sch-item header row">Company</div>
         </div>
       </div>
     );

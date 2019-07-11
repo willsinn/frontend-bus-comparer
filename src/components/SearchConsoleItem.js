@@ -30,8 +30,10 @@ const SearchConsoleItem = props => {
         {item.search.start_from} -> {item.search.to_destination}
       </div>
       <div className="cih-col">{item.search.date}</div>
+      <div className="cih-col">{item.time}</div>
+
       <div className="cih-col">{item.pickup_from}</div>
-      <div className="cih-col">{item.price}</div>
+
       <div className="cih-col purchase-btn">
         <form action={item.purchase_url}>
           <input type="submit" value="Purchase Ticket" />
@@ -43,9 +45,6 @@ const SearchConsoleItem = props => {
           <button
             onClick={event => {
               props.handleWatching(item);
-              {
-                fetchPostWatching(item);
-              }
             }}
           >
             Add to Watchlist

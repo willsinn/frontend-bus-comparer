@@ -30,12 +30,11 @@ const SearchConsoleList = props => {
       <div className="console-content-wrapper">
         <div className="console-item header">
           <div className="cih-col header">{"From -> To"}</div>
-
           <div className="cih-col header">Date</div>
-          <div className="cih-col header">Date</div>
-
           <div className="cih-col header">Time</div>
-          <div className="cih-col header">Price</div>
+          <div className="cih-col header">Pick-Up From</div>
+          <div className="cih-col header">Purchase</div>{" "}
+          <div className="cih-col header">Company</div>
           <div className="cih-col header">Remove</div>
         </div>
       </div>
@@ -45,8 +44,13 @@ const SearchConsoleList = props => {
   console.log(props);
   return (
     <>
-      <div className="toggle-watchlist btn">
-        <button onClick={() => setWatchlist(!isShowing)}>View Watchlist</button>
+      <div>
+        <button
+          className="toggle-watchlist btn"
+          onClick={() => setWatchlist(!isShowing)}
+        >
+          View Watchlist
+        </button>
       </div>
       <div className="content-wrapper wrapper">
         {isShowing ? (

@@ -22,6 +22,7 @@ button {
 }
 .console-wrapper {
   display: flex;
+  background-color: #191c2b;
   justify-content: center;
   flex-direction: column;
   align-items: center;
@@ -90,27 +91,34 @@ button {
   justify-content: center;
   border: 4px double #d43a3a;
 }
-
+.s-c.sch-cont {
+  padding: 1%;
+  border: 4.5px inset whitesmoke;
+}
 .s-c.sch-wrap.header {
-  width: 100vh;
+  width: 100%;
   color: red;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .s-c.sch-wrap {
-  width: 100vh;
-  color: red;
+  width: inherit;
+  color: white;
+  height: inherit;
   display: flex;
   justify-content: space-between;
 }
 .s-i.item-wrap.header {
   width: 100vh;
-  color: blue;
+  color: white;
   display: flex;
   justify-content: space-between;
+  background-color: #191b27;
 }
 .s-i.item-wrap {
   width: 100vh;
+  height: 5vh;
   color: blue;
   display: flex;
   justify-content: space-between;
@@ -468,6 +476,16 @@ button {
   height: 85%;
   width: ;
 }
+.toggle-watchlist.btn {
+  height: 60px;
+  width: 70px;
+  background-color: midnightblue;
+  color: red;
+  font-size: 16px;
+
+  border-radius: 4px;
+  border-radius: 2px ridge white;
+}
 .toggle-wrapper {
   display: flex;
   height: 90%;
@@ -561,28 +579,61 @@ button {
 
 .console-item {
   height: 2em;
-  width: inherit;
+  width: 80%;
+  justify-content: center;
   display: flex;
-  justify-content: space-evenly;
-  align-content: center;
+  align-self: center;
+  align-items: center;
+  height: 3.5vh;
+  border: 2px inset whitesmoke;
+  background-color: dodgerblue;
 }
 .console-item.header {
   background-color: lightblue;
-  width: inherit;
-  height: 2.5em;
-  width: inherit;
+  width: 80%;
+  height: 1.5em;
+  justify-content: center;
   display: flex;
+  align-self: center;
+  padding-bottom: 5%;
   align-items: center;
 }
-
+.s-i.item {
+  display: flex;
+  margin-top: 3px;
+  opacity: 0.85;
+  padding: 1.5%;
+  margin-bottom: 3px;
+  align-items: center;
+  color: whitesmoke;
+  border-radius: 5px outset white;
+}
+.s-i.item-cont:nth-child(odd) {
+  background-color: lightblue;
+  opacity: 1.1;
+}
+.s-i.item-cont:nth-child(even) {
+  background-color: gray;
+  opacity: 1.1;
+}
 .cih-col {
   display: flex;
-  height: inherit;
+  width: 50vw;
+  height: auto;
+  border-right: 3.5px solid black;
+  opacity: 0.95;
   justify-content: center;
 }
 .cih-col.header {
   font-weight: 900;
+  background: midnightblue;
+  color: white;
+  border: 2px outset whitesmoke;
+  border-radius: 6px;
+  padding: 12px;
   height: inherit;
+  width: 60vw;
+  border: 2px outset whitesmoke;
 }
 .console-column.content {
   display: flex;
@@ -621,12 +672,12 @@ button {
   height: 26.5vh;
 }
 .input-s.container {
-  background-color: blue;
+  background-color: midnightblue;
+  opacity: 0.9;
   width: 40%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url("./images/search-input.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -640,13 +691,25 @@ button {
   width: 390px;
 }
 
-.s-c.sch-cont {
-}
-.s-c.sch-wrap {
-}
 .s-c.sch-item {
+  display: flex;
+  margin-top: 3px;
+  padding: 0.9em;
+  height: 1.2em;
+  width: 5em;
+  border: 2px solid black;
+  margin-bottom: 3px;
+  align-items: center;
 }
-
+.s-c.sch-item.row {
+  background-color: midnightblue;
+  opacity: 0.95;
+  border: 3px outset white;
+  color: white;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+}
 .edit-btn {
   background-color: #080f38;
   padding: 7.5px;
@@ -755,25 +818,27 @@ button {
 .console-content-wrapper {
   height: 100%;
   width: inherit;
+  display: flex;
+  flex-direction: column;
 }
 .s-c.sch-cont.header {
   display: flex;
   flex-direction: column;
-  align-content: center;
+  align-items: center;
+
   height: inherit;
-  width: inherit;
+  width: 95%;
+  background-color: #191b27;
 }
-.s-c.sch-wrap.header {
-  width: 80%;
-  display: flex;
-  justify-content: center;
-}
+
 .table-title.sli {
   font-size: 40px;
 }
 .content-wrapper.wrapper {
   height: inherit;
-  width: 100%;
+  width: inherit;
+  display: flex;
+  flex-direction: column;
 }
 .data-divider {
   display: flex;
