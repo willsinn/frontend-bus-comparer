@@ -113,10 +113,12 @@ class Profile extends Component {
     return (
       <div className="profile-page">
         <div className="profile-wrapper">
-          <div className="avatar-wrapper">
-            <div className="avatar-frame">
-              <img className="profile-avatar" src={user.avatar} alt="" />
-            </div>
+
+          <div className="error-container">
+            {this.state.activeError.length ? (
+              <div className="error-render">{`${this.state.activeError}`}</div>
+            ) : null}
+          </div>
 
             <div className="avatar-btn-wrapper">
               {!this.state.editAvatar ? (
@@ -177,6 +179,7 @@ class Profile extends Component {
               )}
             </div>
           </div>
+
           <div className="btm-profile">
             {this.state.activeError.length ? (
               <div className="error-container">
@@ -303,24 +306,26 @@ class Profile extends Component {
                             </div>
                           </div>
                         </div>
-                      ) : (
+                      </div>
+                    ) : (
+                      <div className="editing-bottom-cont">
                         <div className="editing-wrapper">
-                          <div className="top-box">
+                          <div className="top-box username">
                             <div className="editing-header">
                               <input
                                 type="text"
-                                placeholder="Input name and residence location."
-                                onChange={this.handleChange("bio")}
+                                placeholder="Enter new username."
+                                onChange={this.handleChange("username")}
                               />
                             </div>
                             <div className="editing input-form">
                               <button
-                                onClick={this.handleUpdate("bio")}
-                                className="prof-edit btn"
+                                className="ein se btn"
+                                onClick={this.handleUpdate("username")}
                               >
                                 <span
-                                  className="ein-se check"
                                   role="img"
+                                  className="ein-se check"
                                   aria-label="save-edit"
                                 >
                                   {" "}
@@ -328,13 +333,13 @@ class Profile extends Component {
                                 </span>
                               </button>
                               <button
-                                onClick={this.toggleEdit("editBio")}
-                                className="prof-edit btn"
+                                className="ein se btn"
+                                onClick={this.toggleEdit("editUsername")}
                               >
                                 {" "}
                                 <span
+                                  role="img"
                                   className="ein-se x"
-                                  srole="img"
                                   aria-label="x-quit-edit"
                                 >
                                   {" "}
@@ -344,51 +349,116 @@ class Profile extends Component {
                             </div>
                           </div>
                         </div>
-                      )}
-                    </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
+              <div className="profile-fields">
+                <div className="profile-title">
+                  <div className="profile-content-header"> Name, Location </div>
+                  <div className="edit-bio-wrapper">
+                    {!this.state.editBio ? (
+                      <div className="toggle-wrapper">
+                        <div className="top-box">
+                          {user.bio === "" ? (
+                            <div className="add-bio-text">
+                              <span className="add-bio-text">
+                                {" "}
+                                Please add name & where you're located{" "}
+                              </span>
+                            </div>
+                          ) : (
+                            <div>
+                              <div className="user-content">{user.bio}</div>
+                            </div>
+                          )}
+                          <div>
+                            {this.state.activeError[0] === "bio" ? (
+                              <div>{this.state.activeError[1]}</div>
+                            ) : null}
+                          </div>
+
+                          <div>
+                            <button
+                              className="edit-btn"
+                              onClick={this.toggleEdit("editBio")}
+                            >
+                              {" "}
+                              <span
+                                className="edit-btn span"
+                                role="img"
+                                aria-label="edit pencil"
+                              >
+                                EDIT ✏️
+                              </span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="editing-wrapper">
+                        <div className="top-box">
+                          <div className="editing-header">
+                            <input
+                              type="text"
+                              placeholder="Input name and residence location."
+                              onChange={this.handleChange("bio")}
+                            />
+                          </div>
+                          <div className="editing input-form">
+                            <button
+                              onClick={this.handleUpdate("bio")}
+                              className="prof-edit btn"
+                            >
+                              <span
+                                className="ein-se check"
+                                role="img"
+                                aria-label="save-edit"
+                              >
+                                {" "}
+                                ✓{" "}
+                              </span>
+                            </button>
+                            <button
+                              onClick={this.toggleEdit("editBio")}
+                              className="prof-edit btn"
+                            >
+                              {" "}
+                              <span
+                                className="ein-se x"
+                                srole="img"
+                                aria-label="x-quit-edit"
+                              >
+                                {" "}
+                                ✘{" "}
+                              </span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+              <div className="buy-tickets link-btn">
+                <Link to="/search">Buy Tickets</Link>
+              </div>
             </div>
           </div>
-          <div className="buy-tickets link-btn">
-            <Link to="/search" style={{ display: "flex" }}>
-              Buy Tickets
-            </Link>
-          </div>
         </div>
-      </div>
     );
-  }
+  
 }
 const mapStateToProps = ({
-  usersReducer: {
+  {usersReducer: {
     user: { id, avatar, username, bio }
-  }
+  }}
 }) => ({
   id,
   avatar,
   username,
   bio
 });
-//
-// {this.state.activeError[0] === "avatar" ? (
-//   <div>{this.state.activeError[1]}</div>
-// const connectedToReduxHOC = connect(mapStateToProps)
-// const connectedProfile = connectedToReduxHOC(Profile)
-//
-// const withAuthProfile = withAuth(connectedProfile)
-//
-// export default withAuthProfile
-//
-// errors = () => {
-//   if (this.state.activeError[0] === "username") {
-//     return <div>{this.state.activeError[1]}</div>;
-//   } else if (this.state.activeError[0] === "avatar") {
-//     return <div>{this.state.activeError[0]}</div>;
-//   } else {
-//     return null;
-//   }
-//   return;
-// };
-export default withAuth(connect(mapStateToProps)(Profile));
+
+export default withAuth(connect(mapStateToProps)(Profile))
