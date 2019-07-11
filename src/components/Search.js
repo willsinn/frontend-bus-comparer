@@ -90,9 +90,11 @@ class Search extends Component {
 
     this.setState({ message: message });
   };
+
   addToWatchlist = (props, item) => {
     //   const searchId = props.search.id;
     //   const userId = this.props.id;
+    console.log(props);
     const search = props.search;
     const addItem = { ...item, search };
     {
@@ -100,21 +102,21 @@ class Search extends Component {
     }
   };
 
-  //   //   fetch(`http://localhost:3000/api/v1/user/${userId}/search/${searchId}`, {
-  //   //     method: "POST",
-  //   //     headers: {
-  //   //       "Content-type": "application/json",
-  //   //       Accept: "application/json",
-  //   //       Authorization: `Bearer ${localStorage.jwt}`
-  //   //     },
-  //   //     body: JSON.stringify({
-  //   //       user_id: userId,
-  //   //       search_id: searchId,
-  //   //       purchase: false
-  //   //     })
-  //   //   }).then(r => console.log(r));
-  //   // };
-  //   // const addItem = { ...item, search };
+  //   fetch(`http://localhost:3000/api/v1/user/${userId}/search/${searchId}`, {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-type": "application/json",
+  //         Accept: "application/json",
+  //         Authorization: `Bearer ${localStorage.jwt}`
+  //       },
+  //       body: JSON.stringify({
+  //         user_id: userId,
+  //         search_id: searchId,
+  //         purchase: false
+  //       })
+  //     }).then(r => console.log(r));
+  //   };
+  //   const addItem = { ...item, search };
   //   this.handleWatching(addItem);
   // };
   handleWatching = targetValue => {
@@ -173,16 +175,24 @@ class Search extends Component {
           </div>
         </div>
         {this.state.addMsg}
-        <SearchConsoleList
-          results={this.state.results}
-          watching={this.state.watching}
-          handleRemoveWatching={this.handleRemoveWatching}
-          handleWatching={this.handleWatching}
-        />
-        <SearchList
-          addToWatchlist={this.addToWatchlist}
-          searches={this.state.searches}
-        />
+        <div className="data-divider">
+          <div className="data-divider left">
+            <SearchConsoleList
+              results={this.state.results}
+              watching={this.state.watching}
+              handleRemoveWatching={this.handleRemoveWatching}
+              handleWatching={this.handleWatching}
+              userId={this.props.id}
+            />
+          </div>
+          <div className="data-divider right">
+            <SearchList
+              addToWatchlist={this.addToWatchlist}
+              searches={this.state.searches}
+              userId={this.props.id}
+            />
+          </div>
+        </div>
       </div>
     );
   }

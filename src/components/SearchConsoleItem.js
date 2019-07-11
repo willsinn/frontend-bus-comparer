@@ -3,13 +3,32 @@ import React from "react";
 const SearchConsoleItem = props => {
   const weekday = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
   const item = props.item;
-
+  const fetchPostWatching = item => {
+    console.log(item);
+    return fetch("http://localhost:3000/api/v1/favorites", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("jwt")}`
+      },
+      body: {
+        user_id: props.userId,
+        price: item.price,
+        time: item.time,
+        pickup_from: item.pickup_from,
+        purchase_url: item.purchase_url,
+        company: props.search.company,
+        start_from: props.search.start_from,
+        to_destination: props.search.to_destination,
+        date: props.search.date,
+        purchased: false
+      }
+    }).then(console.log);
+  };
   return (
     <div className="console-item">
       <div className="cih-col">
         {item.search.start_from} -> {item.search.to_destination}
       </div>
-      <div className="cih-col">hello</div>
       <div className="cih-col">{item.search.date}</div>
       <div className="cih-col">{item.pickup_from}</div>
       <div className="cih-col">{item.price}</div>
@@ -24,13 +43,16 @@ const SearchConsoleItem = props => {
           <button
             onClick={event => {
               props.handleWatching(item);
+              {
+                fetchPostWatching(item);
+              }
             }}
           >
             Add to Watchlist
           </button>
         ) : (
           <button
-            onClick={event => {
+            onClick={() => {
               props.handleRemoveWatching(item);
             }}
           >

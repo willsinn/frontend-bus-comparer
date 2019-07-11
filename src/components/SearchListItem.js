@@ -1,7 +1,30 @@
 import React from "react";
 
 const SearchListItem = props => {
+  const fetchPostWatching = item => {
+    console.log(item);
+    return fetch("http://localhost:3000/api/v1/favorites", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("jwt")}`
+      },
+      body: {
+        user_id: props.userId,
+        price: item.price,
+        time: item.time,
+        pickup_from: item.pickup_from,
+        purchase_url: item.purchase_url,
+        company: props.search.company,
+        start_from: props.search.start_from,
+        to_destination: props.search.to_destination,
+        date: props.search.date,
+        purchased: false
+      }
+    }).then(console.log);
+  };
   const renderItems = () => {
+    const search = props.search;
+
     return props.items.map(item => {
       return (
         <div className="s-i item-cont">
@@ -17,8 +40,11 @@ const SearchListItem = props => {
             <div className="s-i item">
               <button
                 className="s-i item"
-                onClick={event => {
+                onClick={() => {
                   props.addToWatchlist(props, item);
+                  {
+                    fetchPostWatching(item);
+                  }
                 }}
               >
                 Add

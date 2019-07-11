@@ -17,6 +17,7 @@ const SearchList = props => {
             <div className="s-c sch-item">{search.company}</div>
           </div>
           <SearchListItem
+            userId={props.userId}
             key={uuidv4(search.id)}
             search={search}
             items={search.items}
@@ -42,6 +43,7 @@ const SearchList = props => {
   console.log(props);
   return (
     <div className="table-content-wrapper">
+      <div className="table-title sli">All Bus Times</div>
       {renderSearchesHeaders()}
       {renderSearches()}
     </div>

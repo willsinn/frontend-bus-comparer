@@ -35,10 +35,11 @@ const Nav = ({ user: { loggedIn }, location: { pathname } }) => {
                 </button>
               </div>
               <div className="nav-menu-item">
-                <button className="nav-m-i btn">
-                  <Link onClick={() => setBurger(!burger)} to="/search">
-                    Search
-                  </Link>
+                <button
+                  onClick={() => setBurger(!burger)}
+                  className="nav-m-i btn"
+                >
+                  <Link to="/search">Search</Link>
                 </button>
               </div>
 
