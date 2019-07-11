@@ -91,8 +91,6 @@ class Search extends Component {
     this.setState({ message: message });
   };
   addToWatchlist = (props, item) => {
-    //   const searchId = props.search.id;
-    //   const userId = this.props.id;
     const search = props.search;
     const addItem = { ...item, search };
     {
@@ -100,50 +98,15 @@ class Search extends Component {
     }
   };
 
-  //   //   fetch(`http://localhost:3000/api/v1/user/${userId}/search/${searchId}`, {
-  //   //     method: "POST",
-  //   //     headers: {
-  //   //       "Content-type": "application/json",
-  //   //       Accept: "application/json",
-  //   //       Authorization: `Bearer ${localStorage.jwt}`
-  //   //     },
-  //   //     body: JSON.stringify({
-  //   //       user_id: userId,
-  //   //       search_id: searchId,
-  //   //       purchase: false
-  //   //     })
-  //   //   }).then(r => console.log(r));
-  //   // };
-  //   // const addItem = { ...item, search };
-  //   this.handleWatching(addItem);
-  // };
   handleWatching = targetValue => {
     const addMsg = "Successfully added to your watchlist!";
     console.log("watching", targetValue);
-    this.setState(
-      {
-        watching: [...this.state.watching, targetValue],
-        addMsg: addMsg
-      }
-      // () => {
-      //   this.handlePostWatching(targetValue);
-      // }
-    );
+    this.setState({
+      watching: [...this.state.watching, targetValue],
+      addMsg: addMsg
+    });
   };
 
-  // handlePostWatching = value => {
-  //   const item = value;
-  //
-  //   fetch("http://localhost:3000/api/v1/users/items", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-type": "application/json",
-  //       Accept: "application/json",
-  //       Authorization: `Bearer ${localStorage.jwt}`
-  //     },
-  //     body: JSON.stringify({ user_id: this.props.id, item: item })
-  //   });
-  // };
   handleRemoveWatching = targetValue => {
     this.setState({
       watching: [...this.state.watching].filter(tgt => tgt !== targetValue)
