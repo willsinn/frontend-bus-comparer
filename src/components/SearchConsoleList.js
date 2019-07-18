@@ -46,17 +46,27 @@ const SearchConsoleList = props => {
     <>
       {isShowing ? (
         <div className="watchlist-wrapper">
-          Your Watchlist
+          <div className="watchlist-title">Your Watchlist</div>
           {renderHeader()}
           {renderWatchlistItems()}
         </div>
       ) : null}
-      <button
-        className="toggle-watchlist btn"
-        onClick={() => setWatchlist(!isShowing)}
-      >
-        View Watchlist
-      </button>
+      {!isShowing ? (
+        <button
+          className="toggle-watchlist btn"
+          onClick={() => setWatchlist(!isShowing)}
+        >
+          View Watchlist
+        </button>
+      ) : (
+        <button
+          className="toggle-watchlist btn"
+          onClick={() => setWatchlist(!isShowing)}
+        >
+          Minimize Watchlist
+        </button>
+      )}
+      <div className="add-to-watchlist">{props.addMsg}</div>
       {props.results.length ? (
         <div className="search-content-wrapper">
           {renderHeader()}

@@ -846,7 +846,15 @@ body {
   display: flex;
   flex-direction: column;
   padding-bottom: 5%;
-  background-color: white;
+  background-color: #405024;
+}
+.watchlist-title {
+  display: flex;
+  align-self: center;
+}
+.add-to-watchlist {
+  font-size: 24px;
+  color: white;
 }
 .data-divider {
   display: flex;

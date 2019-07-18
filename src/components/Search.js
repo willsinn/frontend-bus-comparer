@@ -126,7 +126,6 @@ class Search extends Component {
           />
         </div>
 
-        {this.state.addMsg}
         <div className="sch-msg wrap">
           {msg !== "" ? (
             <div className="sch-msg static">{msg}</div>
@@ -142,6 +141,7 @@ class Search extends Component {
           watching={this.state.watching}
           handleRemoveWatching={this.handleRemoveWatching}
           handleWatching={this.handleWatching}
+          addMsg={this.state.addMsg}
         />
         {/*        <SearchList
           addToWatchlist={this.addToWatchlist}
