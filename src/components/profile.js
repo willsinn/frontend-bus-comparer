@@ -198,18 +198,15 @@ class Profile extends Component {
                               <div className="user-content">
                                 {user.username}
                               </div>
-                              <div className="input-error" />
                             </div>
-                            <div>
-                              <button
-                                className="edit-btn"
-                                onClick={this.toggleEdit("editUsername")}
-                              >
-                                <span role="img" aria-label="edit pencil">
-                                  EDIT ✏️
-                                </span>{" "}
-                              </button>
-                            </div>
+                            <button
+                              className="edit-btn"
+                              onClick={this.toggleEdit("editUsername")}
+                            >
+                              <span role="img" aria-label="edit pencil">
+                                EDIT ✏️
+                              </span>{" "}
+                            </button>
                           </div>
                         </div>
                       ) : (
@@ -277,30 +274,24 @@ class Profile extends Component {
                                 </span>
                               </div>
                             ) : (
-                              <div>
+                              <div className="error-wrapper">
                                 <div className="user-content">{user.bio}</div>
                               </div>
                             )}
-                            <div>
-                              {this.state.activeError[0] === "bio" ? (
-                                <div>{this.state.activeError[1]}</div>
-                              ) : null}
-                            </div>
-                            <div>
-                              <button
-                                className="edit-btn"
-                                onClick={this.toggleEdit("editBio")}
+
+                            <button
+                              className="edit-btn"
+                              onClick={this.toggleEdit("editBio")}
+                            >
+                              {" "}
+                              <span
+                                className="edit-btn-span"
+                                role="img"
+                                aria-label="edit pencil"
                               >
-                                {" "}
-                                <span
-                                  className="edit-btn-span"
-                                  role="img"
-                                  aria-label="edit pencil"
-                                >
-                                  EDIT ✏️
-                                </span>
-                              </button>
-                            </div>
+                                EDIT ✏️
+                              </span>
+                            </button>
                           </div>
                         </div>
                       ) : (
@@ -316,7 +307,7 @@ class Profile extends Component {
                             <div className="editing input-form">
                               <button
                                 onClick={this.handleUpdate("bio")}
-                                className="prof-edit btn"
+                                className="ein se btn"
                               >
                                 <span
                                   className="ein-se check"
@@ -329,7 +320,7 @@ class Profile extends Component {
                               </button>
                               <button
                                 onClick={this.toggleEdit("editBio")}
-                                className="prof-edit btn"
+                                className="ein se btn"
                               >
                                 {" "}
                                 <span
@@ -351,8 +342,8 @@ class Profile extends Component {
               </div>
             </div>
           </div>
-          <div className="buy-tickets link-btn">
-            <Link to="/search" style={{ display: "flex" }}>
+          <div className="buy-link-btn">
+            <Link to="/search" className="buy-link-btn a">
               Buy Tickets
             </Link>
           </div>
