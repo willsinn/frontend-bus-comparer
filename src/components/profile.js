@@ -132,7 +132,7 @@ class Profile extends Component {
                 </>
               ) : (
                 <div className="editing-avatar">
-                  <span role="img" aria-label="">
+                  <span role="img" className="link-emoji" aria-label="">
                     {" "}
                     🔗{" "}
                   </span>
