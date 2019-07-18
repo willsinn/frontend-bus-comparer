@@ -15,14 +15,6 @@ input[type="text"]:focus {
   border-color: red;
 }
 
-.input-s.container {
-  width: 25vw;
-  height: 20vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
 .console-s-input {
   width: inherit;
   height: 20vh;

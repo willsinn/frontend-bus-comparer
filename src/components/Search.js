@@ -4,7 +4,7 @@ import SearchConsoleList from "./SearchConsoleList";
 import { connect } from "react-redux";
 import SearchList from "./SearchList";
 import withAuth from "../hocs/withAuth";
-import Nav from "./Nav";
+
 const uuidv4 = require("uuid/v4");
 
 class Search extends Component {
@@ -90,11 +90,7 @@ class Search extends Component {
 
     this.setState({ message: message });
   };
-
   addToWatchlist = (props, item) => {
-    //   const searchId = props.search.id;
-    //   const userId = this.props.id;
-    console.log(props);
     const search = props.search;
     const addItem = { ...item, search };
     {
@@ -102,50 +98,20 @@ class Search extends Component {
     }
   };
 
-  //   fetch(`http://localhost:3000/api/v1/user/${userId}/search/${searchId}`, {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-type": "application/json",
-  //         Accept: "application/json",
-  //         Authorization: `Bearer ${localStorage.jwt}`
-  //       },
-  //       body: JSON.stringify({
-  //         user_id: userId,
-  //         search_id: searchId,
-  //         purchase: false
-  //       })
-  //     }).then(r => console.log(r));
-  //   };
-  //   const addItem = { ...item, search };
-  //   this.handleWatching(addItem);
-  // };
   handleWatching = targetValue => {
     const addMsg = "Successfully added to your watchlist!";
     console.log("watching", targetValue);
-    this.setState(
-      {
-        watching: [...this.state.watching, targetValue],
-        addMsg: addMsg
-      }
-      // () => {
-      //   this.handlePostWatching(targetValue);
-      // }
-    );
+    this.setState({
+      watching: [...this.state.watching, targetValue],
+      addMsg: addMsg
+    });
   };
 
-  // handlePostWatching = value => {
-  //   const item = value;
-  //
-  //   fetch("http://localhost:3000/api/v1/users/items", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-type": "application/json",
-  //       Accept: "application/json",
-  //       Authorization: `Bearer ${localStorage.jwt}`
-  //     },
-  //     body: JSON.stringify({ user_id: this.props.id, item: item })
-  //   });
-  // };
+  handleRemoveWatching = targetValue => {
+    this.setState({
+      watching: [...this.state.watching].filter(tgt => tgt !== targetValue)
+    });
+  };
 
   render() {
     const msg = this.state.message;
@@ -158,8 +124,6 @@ class Search extends Component {
             itemsValues={this.state.itemsValues}
             handleSubmit={this.handleSubmit}
           />
-
-          <div style={{ position: "absolute" }} />
           <div className="sch-msg wrap">
             {msg !== "" ? (
               <div className="sch-msg static">{msg}</div>
@@ -171,25 +135,18 @@ class Search extends Component {
             )}
           </div>
         </div>
+
         {this.state.addMsg}
-        <div className="data-divider">
-          <div className="data-divider left">
-            <SearchConsoleList
-              results={this.state.results}
-              watching={this.state.watching}
-              handleRemoveWatching={this.handleRemoveWatching}
-              handleWatching={this.handleWatching}
-              userId={this.props.id}
-            />
-          </div>
-          <div className="data-divider right">
-            <SearchList
-              addToWatchlist={this.addToWatchlist}
-              searches={this.state.searches}
-              userId={this.props.id}
-            />
-          </div>
-        </div>
+        <SearchConsoleList
+          results={this.state.results}
+          watching={this.state.watching}
+          handleRemoveWatching={this.handleRemoveWatching}
+          handleWatching={this.handleWatching}
+        />
+        {/*        <SearchList
+          addToWatchlist={this.addToWatchlist}
+          searches={this.state.searches}
+        />*/}
       </div>
     );
   }
