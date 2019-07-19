@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import SearchConsoleForm from "./SearchConsoleForm";
 import ConsoleSearchInput from "./ConsoleSearchInput";
 const uuidv4 = require("uuid/v4");
 

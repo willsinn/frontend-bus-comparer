@@ -568,8 +568,9 @@ body {
 .user-content {
   display: flex;
   overflow: hidden;
-  color: white;
+  color: #405024;
   font-weight: bold;
+  font-size: 20px;
   justify-content: center;
   align-items: center;
 }
@@ -643,13 +644,6 @@ body {
   flex-direction: column;
 }
 
-.buy-tickets.link-btn {
-  padding: 5%;
-  border: 1px solid black;
-  display: flex;
-  justify-content: center;
-  margin: 0 10% 0 10%;
-}
 .sch-msg.static {
   font-size: 1.5em;
   color: white;
@@ -862,7 +856,6 @@ body {
 }
 
 .buy-link-btn.a {
-  display: flex;
   flex-direction: column;
   text-decoration: none;
   color: white;
@@ -874,6 +867,6 @@ body {
   display: flex;
 }
 .buy-link-btn.a:hover {
-  color: green;
+  color: #4f6529;
   font-weight: bold;
 }
