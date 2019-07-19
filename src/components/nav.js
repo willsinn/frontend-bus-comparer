@@ -30,17 +30,22 @@ const Nav = ({ user: { loggedIn }, location: { pathname } }) => {
           {burger ? (
             <div className="burger-menu">
               <div className="nav-menu-item">
-                <button className="nav-m-i btn">
-                  <Link to="/profile">Profile</Link>
-                </button>
-              </div>
-              <div className="nav-menu-item">
-                <button
+                <Link
                   onClick={() => setBurger(!burger)}
                   className="nav-m-i btn"
+                  to="/profile"
                 >
-                  <Link to="/search">Search</Link>
-                </button>
+                  Profile
+                </Link>
+              </div>
+              <div className="nav-menu-item">
+                <Link
+                  onClick={() => setBurger(!burger)}
+                  to="/search"
+                  className="nav-m-i btn"
+                >
+                  Search
+                </Link>
               </div>
 
               <div className="nav-menu-item">

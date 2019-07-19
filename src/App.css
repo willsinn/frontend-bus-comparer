@@ -72,14 +72,14 @@ body {
   background: #f1a0a740;
 }
 .login-signup.btn-back {
-  font-size: 40px;
+  font-size: 45px;
   color: white;
   font-weight: bold;
   background-color: inherit;
+  border: none;
 }
 .login-signup.btn-back:hover {
-  font-size: 40px;
-  color: midnightblue;
+  color: #4f6529;
   text-shadow: 2px 0 0 white, -2px 0 0 white, 0 2px 0 white, 0 -2px 0 white,
     1px 1px white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white;
   background-color: inherit;
@@ -207,22 +207,16 @@ body {
   border: 2px outset whitesmoke;
   border-radius: 0.35em;
   font-weight: 900;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .nav-m-i.btn:hover {
-  font-size: 18px;
   border: 3px inset whitesmoke;
-  background-color: #4955e0;
-  color: whitesmoke;
-  font-weight: 900;
+  color: #4f6529;
 }
-.nav-m-i.btn a {
-  color: inherit;
-  text-decoration: none;
-  background: none;
-  padding: 0;
-  margin: 0;
-  border: none;
-}
+
 .form-wrapper {
   display: flex;
   justify-content: center;
@@ -308,8 +302,7 @@ body {
   color: whitesmoke;
 }
 .login-signup.input:hover {
-  background-color: midnightblue;
-  opacity: 0.8;
+  background-color: #4f6529;
 }
 .login-signup.btn {
   border: 1.5px outset whitesmoke;
@@ -334,8 +327,8 @@ body {
   font-weight: 900;
 }
 .login-signup.btn:hover {
-  border: 2px inset whitesmoke;
-  background-color: midnightblue;
+  border: 2.5px inset whitesmoke;
+  background-color: #4f6529;
 }
 .login-signup.input-wrapper {
   display: flex;
@@ -720,10 +713,14 @@ body {
 .edit-btn span {
   color: white;
   font-weight: bold;
+  width: 100%;
+  height: 100%;
+}
+.edit-btn span:hover {
+  color: #4f6529;
 }
 .edit-btn:hover {
   border: 2.5px inset whitesmoke;
-  opacity: 0.85;
 }
 .top-box {
   height: inherit;
@@ -737,7 +734,7 @@ body {
   height: inherit;
   border: 1.5px inset darkgray;
   width: 100%;
-  background-color: #a0a0a0;
+  background-color: whitesmoke;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -786,7 +783,7 @@ body {
 }
 
 .ein-se {
-  font-size: 24px;
+  font-size: 27.5px;
 }
 
 .ein-se.x {
@@ -796,11 +793,11 @@ body {
   color: green;
 }
 .ein-se.x:hover {
-  font-size: 33.5px;
+  font-size: 29.5px;
   font-weight: bold;
 }
 .ein-se.check:hover {
-  font-size: 33.5px;
+  font-size: 29.5px;
   font-weight: bold;
 }
 .table-content-wrapper {
@@ -861,12 +858,12 @@ body {
   color: white;
   background-color: #080f38;
   padding: 7.5px;
-  border: 2px outset whitesmoke;
+  border: 2.5px outset whitesmoke;
   border-radius: 5px;
   weight: bold;
   display: flex;
 }
 .buy-link-btn.a:hover {
   color: #4f6529;
-  font-weight: bold;
+  border: 2.5px inset whitesmoke;
 }
