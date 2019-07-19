@@ -1,7 +1,7 @@
 input[type="text"] {
   width: 100%;
   box-sizing: border-box;
-  border: 2px solid #ccc;
+  border: 4px inset gray;
   border-radius: 8em;
   font-size: 19px;
   background-color: white;
@@ -12,7 +12,7 @@ input[type="text"] {
 
 input[type="text"]:focus {
   width: 75%;
-  border-color: red;
+  border-color: white;
 }
 
 .console-s-input {

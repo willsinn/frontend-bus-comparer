@@ -190,70 +190,66 @@ class Profile extends Component {
                     <div className="profile-title">
                       <div className="profile-content-header">Username</div>
                     </div>
-                    <div className="edit-user-text">
-                      {!this.state.editUsername ? (
-                        <div className="toggle-wrapper">
-                          <div className="top-box">
-                            <div className="error-wrapper">
-                              <div className="user-content">
-                                {user.username}
-                              </div>
-                            </div>
-                            <button
-                              className="edit-btn"
-                              onClick={this.toggleEdit("editUsername")}
-                            >
-                              <span role="img" aria-label="edit pencil">
-                                EDIT ✏️
-                              </span>{" "}
-                            </button>
+                    {!this.state.editUsername ? (
+                      <div className="toggle-wrapper">
+                        <div className="top-box">
+                          <div className="error-wrapper">
+                            <div className="user-content">{user.username}</div>
                           </div>
+                          <button
+                            className="edit-btn"
+                            onClick={this.toggleEdit("editUsername")}
+                          >
+                            <span role="img" aria-label="edit pencil">
+                              EDIT ✏️
+                            </span>{" "}
+                          </button>
                         </div>
-                      ) : (
-                        <div className="editing-bottom-cont">
-                          <div className="editing-wrapper">
-                            <div className="top-box username">
-                              <div className="editing-header">
-                                <input
-                                  type="text"
-                                  placeholder="Enter new username."
-                                  onChange={this.handleChange("username")}
-                                />
-                              </div>
-                              <div className="editing input-form">
-                                <button
-                                  className="ein se btn"
-                                  onClick={this.handleUpdate("username")}
-                                >
-                                  <span
-                                    role="img"
-                                    className="ein-se check"
-                                    aria-label="save-edit"
-                                  >
-                                    {" "}
-                                    ✓{" "}
-                                  </span>
-                                </button>
-                                <button
-                                  className="ein se btn"
-                                  onClick={this.toggleEdit("editUsername")}
+                      </div>
+                    ) : (
+                      <div className="editing-bottom-cont">
+                        <div className="editing-wrapper">
+                          <div className="top-box">
+                            <div className="editing-header">
+                              <input
+                                type="text"
+                                placeholder="Enter new username."
+                                onChange={this.handleChange("username")}
+                              />
+                            </div>
+                            <div className="editing input-form">
+                              <button
+                                className="ein se btn"
+                                onClick={this.handleUpdate("username")}
+                              >
+                                <span
+                                  role="img"
+                                  className="ein-se check"
+                                  aria-label="save-edit"
                                 >
                                   {" "}
-                                  <span
-                                    role="img"
-                                    className="ein-se x"
-                                    aria-label="x-quit-edit"
-                                  >
-                                    {" "}
-                                    ✘{" "}
-                                  </span>
-                                </button>
-                              </div>
+                                  ✓{" "}
+                                </span>
+                              </button>
+                              <button
+                                className="ein se btn"
+                                onClick={this.toggleEdit("editUsername")}
+                              >
+                                {" "}
+                                <span
+                                  role="img"
+                                  className="ein-se x"
+                                  aria-label="x-quit-edit"
+                                >
+                                  {" "}
+                                  ✘{" "}
+                                </span>
+                              </button>
                             </div>
                           </div>
                         </div>
-                      )}
-                    </div>
+                      </div>
+                    )}
                   </div>
                 </div>
                 <div className="profile-fields">
@@ -300,7 +296,7 @@ class Profile extends Component {
                             <div className="editing-header">
                               <input
                                 type="text"
-                                placeholder="Input name and residence location."
+                                placeholder=" location of origin."
                                 onChange={this.handleChange("bio")}
                               />
                             </div>
@@ -342,11 +338,9 @@ class Profile extends Component {
               </div>
             </div>
           </div>
-          <div className="buy-link-btn">
-            <Link to="/search" className="buy-link-btn a">
-              Buy Tickets
-            </Link>
-          </div>
+          <Link to="/search" className="buy-link-btn a">
+            Buy Tickets
+          </Link>
         </div>
       </div>
     );
