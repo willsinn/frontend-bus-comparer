@@ -26,12 +26,12 @@ body {
 }
 .console-wrapper {
   display: flex;
-  background-color: #191c2b;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   width: 100vw;
 }
+
 #search-table {
   display: flex;
   justify-content: flex-end;
@@ -480,12 +480,13 @@ body {
 .toggle-watchlist.btn {
   height: 35px;
   width: 200px;
-  background-color: inherit;
+  background-color: black;
   font-size: 16px;
   align-self: flex-start;
   color: white;
   border-radius: 4px;
   border: 2px ridge white;
+  margin-left: 8.5%;
 }
 .toggle-wrapper {
   display: flex;
@@ -578,7 +579,7 @@ body {
 }
 
 .console-item {
-  height: 2em;
+  height: 40px;
   width: 80%;
   justify-content: space-evenly;
   display: flex;
@@ -597,7 +598,6 @@ body {
 .s-i.item {
   display: flex;
   margin-top: 3px;
-  opacity: 0.85;
   padding: 1.5%;
   margin-bottom: 3px;
   align-items: center;
@@ -606,11 +606,9 @@ body {
 }
 .s-i.item-cont:nth-child(odd) {
   background-color: lightblue;
-  opacity: 1.1;
 }
 .s-i.item-cont:nth-child(even) {
-  background-color: gray;
-  opacity: 1.1;
+  background-color: midnightblue;
 }
 .cih-col {
   /* display: flex;
@@ -834,7 +832,9 @@ body {
   width: inherit;
   display: flex;
   flex-direction: column;
-  padding-bottom: 5%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+
   background-color: #405024;
 }
 .watchlist-title {
@@ -866,4 +866,10 @@ body {
 .buy-link-btn.a:hover {
   color: #4f6529;
   border: 2.5px inset whitesmoke;
+}
+.sch-ct-items.wrap {
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
 }

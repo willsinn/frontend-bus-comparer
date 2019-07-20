@@ -46,7 +46,6 @@ const SearchConsoleList = props => {
     <>
       {isShowing ? (
         <div className="watchlist-wrapper">
-          <div className="watchlist-title">Your Watchlist</div>
           {renderHeader()}
           {renderWatchlistItems()}
         </div>
@@ -70,7 +69,7 @@ const SearchConsoleList = props => {
       {props.results.length ? (
         <div className="search-content-wrapper">
           {renderHeader()}
-          {renderConsoleItems()}
+          <div className="sch-ct-items wrap">{renderConsoleItems()}</div>
         </div>
       ) : null}
     </>
