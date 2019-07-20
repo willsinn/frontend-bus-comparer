@@ -40,8 +40,7 @@ const SearchConsoleList = props => {
       </div>
     );
   };
-  console.log(isShowing);
-  console.log(props);
+
   return (
     <>
       {isShowing ? (

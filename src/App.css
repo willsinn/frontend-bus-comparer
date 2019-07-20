@@ -486,7 +486,12 @@ body {
   color: white;
   border-radius: 4px;
   border: 2px ridge white;
-  margin-left: 8.5%;
+  margin-left: 4.5%;
+  border: 3px outset whitesmoke;
+}
+.toggle-watchlist.btn:hover {
+  border: 2.5px inset whitesmoke;
+  color: #4f6529;
 }
 .toggle-wrapper {
   display: flex;
