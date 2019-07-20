@@ -99,12 +99,21 @@ class Search extends Component {
   };
 
   handleWatching = targetValue => {
-    const addMsg = "Successfully added to your watchlist!";
-    console.log("watching", targetValue);
-    this.setState({
-      watching: [...this.state.watching, targetValue],
-      addMsg: addMsg
-    });
+    const alreadyWatching = [...this.state.watching].filter(
+      value => value === targetValue
+    );
+    if (alreadyWatching[0]) {
+      const addMsg = "Already watching this item, try another item!";
+      this.setState({
+        addMsg: addMsg
+      });
+    } else {
+      const addMsg = "Successfully added to your watchlist!";
+      this.setState({
+        watching: [...this.state.watching, targetValue],
+        addMsg: addMsg
+      });
+    }
   };
 
   handleRemoveWatching = targetValue => {
