@@ -19,3 +19,5 @@
 2. Create built-in fns
 
 3. Create curried fn, applicable to all searches
+
+heroku create static-bus-app --buildpack https://github.com/willsinn/frontend_final/tree/branch-working
