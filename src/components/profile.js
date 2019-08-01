@@ -83,15 +83,20 @@ class Profile extends Component {
     const type = Object.keys(body);
     const editType = `edit${type[0].charAt(0).toUpperCase() +
       type[0].slice(1)}`;
-    fetch(`http://localhost:3000/api/v1/users/${this.props.id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: `Bearer ${localStorage.getItem("jwt")}`
-      },
-      body: JSON.stringify(body)
-    })
+    fetch(
+      `https://backend-final-project.herokuapp.com/api/v1/users/${
+        this.props.id
+      }`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: `Bearer ${localStorage.getItem("jwt")}`
+        },
+        body: JSON.stringify(body)
+      }
+    )
       .then(r => r.json())
       .then(updatedUser => {
         console.log(updatedUser);

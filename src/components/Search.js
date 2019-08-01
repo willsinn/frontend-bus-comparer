@@ -18,7 +18,7 @@ class Search extends Component {
     addMsg: ""
   };
   componentDidMount() {
-    fetch("http://localhost:3000/api/v1/searches", {
+    fetch("https://backend-final-project.herokuapp.com/api/v1/searches", {
       method: "GET",
       headers: {
         Authorization: `Bearer ${localStorage.jwt}`
@@ -29,7 +29,7 @@ class Search extends Component {
         console.log("SEARCHES", searches);
         this.setState({ searches: searches });
       });
-    fetch("http://localhost:3000/api/v1/items", {
+    fetch("https://backend-final-project.herokuapp.com/api/v1/items", {
       method: "GET",
       headers: {
         Authorization: `Bearer ${localStorage.jwt}`
@@ -90,13 +90,11 @@ class Search extends Component {
 
     this.setState({ message: message });
   };
-  addToWatchlist = (props, item) => {
-    const search = props.search;
-    const addItem = { ...item, search };
-    {
-      this.handleWatching(addItem);
-    }
-  };
+  // addToWatchlist = (props, item) => {
+  //   const search = props.search;
+  //   const addItem = { ...item, search };
+  //
+  // };
 
   handleWatching = targetValue => {
     const alreadyWatching = [...this.state.watching].filter(

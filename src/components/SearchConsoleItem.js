@@ -5,24 +5,27 @@ const SearchConsoleItem = props => {
   const item = props.item;
   const fetchPostWatching = item => {
     console.log(item);
-    return fetch("http://localhost:3000/api/v1/favorites", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("jwt")}`
-      },
-      body: {
-        user_id: props.userId,
-        price: item.price,
-        time: item.time,
-        pickup_from: item.pickup_from,
-        purchase_url: item.purchase_url,
-        company: props.search.company,
-        start_from: props.search.start_from,
-        to_destination: props.search.to_destination,
-        date: props.search.date,
-        purchased: false
+    return fetch(
+      "https://backend-final-project.herokuapp.com/api/v1/favorites",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("jwt")}`
+        },
+        body: {
+          user_id: props.userId,
+          price: item.price,
+          time: item.time,
+          pickup_from: item.pickup_from,
+          purchase_url: item.purchase_url,
+          company: props.search.company,
+          start_from: props.search.start_from,
+          to_destination: props.search.to_destination,
+          date: props.search.date,
+          purchased: false
+        }
       }
-    }).then(console.log);
+    ).then(console.log);
   };
   return (
     <div className="console-item">

@@ -1,7 +1,7 @@
 export const loginUser = (username, password) => {
   return dispatch => {
     dispatch({ type: "AUTHENTICATING_USER" });
-    fetch("http://localhost:3000/api/v1/login", {
+    fetch("https://backend-final-project.herokuapp.com/api/v1/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -38,7 +38,7 @@ export const fetchCurrentUser = () => {
   // takes the token in localStorage and finds out who it belongs to
   return dispatch => {
     dispatch(authenticatingUser()); //tells the app we are fetching
-    fetch("http://localhost:3000/api/v1/profile", {
+    fetch("https://backend-final-project.herokuapp.com/api/v1/profile", {
       method: "GET",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("jwt")}`
@@ -52,7 +52,7 @@ export const fetchCurrentUser = () => {
 export const setUpUser = (username, password) => {
   return dispatch => {
     dispatch({ type: "AUTHENTICATING_USER" });
-    fetch("http://localhost:3000/api/v1/users", {
+    fetch("https://backend-final-project.herokuapp.com/api/v1/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -89,7 +89,7 @@ export const setUpUser = (username, password) => {
 // export const setUpUser = () => {
 //   return (dispatch) => {
 //     dispatch({ type: 'SIGNUP_USER'})
-//     fetch('http://localhost:3000/api/v1/users', {
+//     fetch('https://backend-final-project.herokuapp.com/api/v1/users', {
 //       method: 'POST',
 //       headers: {
 //         'Content-Type':'application/json',
