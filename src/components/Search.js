@@ -86,13 +86,8 @@ class Search extends Component {
       message = `${this.state.results.length} results for searching...   ${query}`;
     }
 
-    this.setState({ message: message });
+    this.setState({ message: message, addMsg: "" });
   };
-  // addToWatchlist = (props, item) => {
-  //   const search = props.search;
-  //   const addItem = { ...item, search };
-  //
-  // };
 
   handleWatching = (targetValue) => {
     const alreadyWatching = [...this.state.watching].filter(
@@ -102,12 +97,14 @@ class Search extends Component {
       const addMsg = "Already watching this item, try another item!";
       this.setState({
         addMsg: addMsg,
+        message: "",
       });
     } else {
       const addMsg = "Successfully added to your watchlist!";
       this.setState({
         watching: [...this.state.watching, targetValue],
         addMsg: addMsg,
+        message: "",
       });
     }
   };
@@ -137,6 +134,12 @@ class Search extends Component {
             ) : null}
             {msg !== "" && msg.charAt(0) !== "1" ? (
               <div className="sch-msg-red">{msg}</div>
+            ) : null}
+            {this.state.addMsg !== "" && msg.charAt(0) === "A" ? (
+              <div className="sch-msg-red">{this.state.addMsg}</div>
+            ) : null}
+            {this.state.addMsg !== "" && msg.charAt(0) !== "A" ? (
+              <div className="sch-msg-green">{this.state.addMsg}</div>
             ) : null}
           </div>
           <SearchConsoleList
