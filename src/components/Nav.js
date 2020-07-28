@@ -14,7 +14,7 @@ const Nav = ({ user: { loggedIn }, location: { pathname } }) => {
   return (
     <div className="navbar">
       <div className="left-nav btn-wrap">
-        <div>LOGO</div>
+        <h3>BUS COMPARER</h3>
       </div>
       <div className="right-nav btn-wrap">
         <Link className="nav-m-i btn" to="/profile">
