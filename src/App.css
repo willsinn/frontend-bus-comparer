@@ -90,16 +90,10 @@ body {
 }
 
 .search-content-wrapper {
-  width: 70%;
-  box-shadow: 0 2px 0.25rem rgba(0, 0, 0, 0.2);
+  width: 100%;
 }
 .search-section {
-  min-height: 300px;
   width: 70%;
-  background-color: white;
-  border-radius: 3px;
-  box-shadow: 0 2px 0.25rem 2px rgba(0, 0, 0, 0.2);
-  margin-top: 36px;
 }
 .s-c.sch-cont {
   padding: 1%;
@@ -590,15 +584,16 @@ body {
 }
 
 .console-item {
-  height: 40px;
-  width: 80%;
+  height: 70px;
+  width: 100%;
   justify-content: space-evenly;
   display: flex;
   align-self: center;
   align-items: center;
-  height: inherit;
-  border: 2px inset whitesmoke;
-  background-color: #404344;
+  background-color: white;
+  border-radius: 3px;
+  box-shadow: 0 2px 0.25rem 2px rgba(0, 0, 0, 0.2);
+  margin: 4px 0;
 }
 .console-item.header {
   background-color: lightblue;

@@ -48,9 +48,7 @@ const SearchConsoleList = (props) => {
       )} */}
       <div className="add-to-watchlist">{props.addMsg}</div>
       {props.results.length ? (
-        <div className="search-content-wrapper">
-          <div className="sch-ct-items wrap">{renderConsoleItems()}</div>
-        </div>
+        <div className="search-content-wrapper">{renderConsoleItems()}</div>
       ) : null}
     </>
   );
