@@ -34,7 +34,6 @@ class LoginForm extends React.Component {
         <div className="form-wrapper">
           <div className="form-box">
             <Segment>
-              <span className="l-s h">Login</span>
               <Form
                 onSubmit={this.handleLoginSubmit}
                 size="mini"
@@ -47,31 +46,38 @@ class LoginForm extends React.Component {
                   header={this.props.failedLogin ? this.props.error : null}
                 />
                 <div className="login-signup input-wrapper">
+                  <label className="login-signup-label">Username</label>
                   <input
                     label="username"
-                    placeholder="Username"
+                    placeholder="Enter your username."
                     name="username"
                     onChange={this.handleChange}
                     value={this.state.username}
                     className="login-signup input"
                   />
+                  <label className="login-signup-label">Password</label>
                   <input
                     type="password"
                     label="password"
-                    placeholder="Password"
+                    placeholder="Enter your password."
                     name="password"
                     onChange={this.handleChange}
                     value={this.state.password}
                     className="login-signup input"
                   />
-                </div>{" "}
-                <div className="login-signup btn-wrapper">
-                  <button className="login-signup btn" type="submit">
-                    Login
-                  </button>
-                  <button className="login-signup btn">
-                    <Link to="/signup">Sign-Up</Link>
-                  </button>
+                  <hr />
+                  <div className="login-signup btn-wrapper">
+                    <button className="login-btn" type="submit">
+                      Log in
+                    </button>
+                    <Link
+                      to="/signup"
+                      style={{ textDecoration: "none" }}
+                      className="login-btn"
+                    >
+                      Sign up
+                    </Link>
+                  </div>
                 </div>
               </Form>
             </Segment>
