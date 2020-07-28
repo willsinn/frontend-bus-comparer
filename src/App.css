@@ -173,8 +173,6 @@ body {
 }
 .login-page,
 .signup-page {
-  height: 100vh;
-  background-size: cover;
   z-index: 1;
 }
 
@@ -361,6 +359,7 @@ hr {
   background-color: white;
   border-radius: 3px;
   box-shadow: 0 2px 0.25rem 2px rgba(0, 0, 0, 0.2);
+  margin-top: 10%;
 }
 .l-s.h {
   font-size: 32px;
