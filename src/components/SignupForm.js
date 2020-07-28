@@ -10,12 +10,12 @@ class SignupForm extends Component {
     username: "",
     password: "",
     confirmPassword: "",
-    error: ""
+    error: "",
   };
-  handleChange = fieldType => {
-    return event => {
+  handleChange = (fieldType) => {
+    return (event) => {
       this.setState({
-        [fieldType]: event.target.value
+        [fieldType]: event.target.value,
       });
     };
   };
@@ -29,7 +29,7 @@ class SignupForm extends Component {
   };
   render() {
     const signupFields = ["username", "password"];
-    const caps = field => {
+    const caps = (field) => {
       return field.charAt(0).toUpperCase() + field.slice(1);
     };
 
@@ -39,7 +39,6 @@ class SignupForm extends Component {
       <div className="signup-page">
         <div className="form-wrapper">
           <div className="form-box">
-            <span className="l-s h">Signup</span>
             <Form
               onSubmit={this.handleSubmit}
               size="mini"
@@ -52,19 +51,27 @@ class SignupForm extends Component {
                 header={this.state.error ? this.state.error : null}
               />
               <div className="login-signup input-wrapper">
-                {signupFields.map(field => {
+                {signupFields.map((field) => {
                   return (
-                    <input
-                      type={field}
-                      label={field}
-                      placeholder={`Create ${caps(field)}`}
-                      name={field}
-                      onChange={this.handleChange(field)}
-                      value={this.state[field]}
-                      className="login-signup input s"
-                    />
+                    <>
+                      <label className="login-signup-label">{`${caps(
+                        field
+                      )}`}</label>
+                      <input
+                        type={field}
+                        label={field}
+                        placeholder={`Create ${caps(field)}`}
+                        name={field}
+                        onChange={this.handleChange(field)}
+                        value={this.state[field]}
+                        className="login-signup input"
+                      />
+                    </>
                   );
                 })}
+                <label className="login-signup-label">
+                  Confirm your password
+                </label>
                 <input
                   type={"password"}
                   label={"confirmPassword"}
@@ -74,17 +81,18 @@ class SignupForm extends Component {
                   value={this.state["confirmPassword"]}
                   className="login-signup input"
                 />
-              </div>
-
-              <div className="login-signup btn-wrapper">
-                <button className="login-signup btn-back">
-                  <Link to="/login">
-                    <span type="img">←</span>
+                <div className="login-signup btn-wrapper">
+                  <Link
+                    to="/login"
+                    style={{ textDecoration: "none" }}
+                    className="login-btn"
+                  >
+                    <span type="img">Log in</span>
                   </Link>
-                </button>
-                <button className="login-signup btn" type="submit">
-                  Signup
-                </button>
+                  <button className="login-btn " type="submit">
+                    Sign up
+                  </button>
+                </div>
               </div>
             </Form>
           </div>
@@ -95,20 +103,17 @@ class SignupForm extends Component {
 }
 
 const mapStateToProps = ({
-  usersReducer: { authenticatingUser, loggedIn }
+  usersReducer: { authenticatingUser, loggedIn },
 }) => {
   return {
-    loggedIn
+    loggedIn,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    setUpUser: (username, password) => dispatch(setUpUser(username, password))
+    setUpUser: (username, password) => dispatch(setUpUser(username, password)),
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SignupForm);
+export default connect(mapStateToProps, mapDispatchToProps)(SignupForm);

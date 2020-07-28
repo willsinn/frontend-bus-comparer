@@ -3,6 +3,7 @@
 }
 label {
   margin-top: 5px;
+  margin-bottom: 0;
 }
 body {
   margin: 0;
@@ -174,7 +175,6 @@ body {
 .signup-page {
   height: 100vh;
   background-size: cover;
-  background-image: url("./images/login-signup-background.jpg");
   z-index: 1;
 }
 
