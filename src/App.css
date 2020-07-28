@@ -196,22 +196,15 @@ body {
   align-items: center;
 }
 .nav-m-i.btn {
-  font-size: 18px;
-  background-color: inherit;
-  color: white;
-  height: 65%;
-  width: 75%;
-  border: 2px outset whitesmoke;
-  border-radius: 0.35em;
-  font-weight: 900;
+  font-size: 14.5px;
   text-decoration: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  color: black;
+  border: 0;
+  background: transparent;
+  margin: 0 20px;
 }
 .nav-m-i.btn:hover {
-  border: 3px inset whitesmoke;
-  color: #4f6529;
+  color: #003e74;
 }
 
 .form-wrapper {
