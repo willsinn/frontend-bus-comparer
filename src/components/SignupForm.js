@@ -69,7 +69,10 @@ class SignupForm extends Component {
                     </>
                   );
                 })}
-                <label className="login-signup-label">
+                <label
+                  className="login-signup-label"
+                  style={{ marginTop: "24px" }}
+                >
                   Confirm your password
                 </label>
                 <input
@@ -81,6 +84,7 @@ class SignupForm extends Component {
                   value={this.state["confirmPassword"]}
                   className="login-signup input"
                 />
+                <hr />
                 <div className="login-signup btn-wrapper">
                   <Link
                     to="/login"

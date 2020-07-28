@@ -284,6 +284,10 @@ body {
 .fadein {
   opacity: 1;
 }
+.input[type="password"] {
+  padding: 2px 3px;
+  margin: 0;
+}
 .item-content-break {
   /* background-color: #d43a3a;
   color: #f1a0a740; */
@@ -343,6 +347,9 @@ body {
   background: none;
   color: #005580;
 }
+hr {
+  margin: 6px 0 0 0;
+}
 .login-btn:hover {
   color: #0088cc;
 }
@@ -353,6 +360,7 @@ body {
   color: black;
   background-color: white;
   border-radius: 3px;
+  box-shadow: 0 2px 0.25rem 2px rgba(0, 0, 0, 0.2);
 }
 .l-s.h {
   font-size: 32px;
