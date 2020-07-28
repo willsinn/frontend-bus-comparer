@@ -15,19 +15,18 @@ const Nav = ({ user: { loggedIn }, location: { pathname } }) => {
     <div className="navbar">
       <div className="left-nav btn-wrap">
         <div>LOGO</div>
-        <button className="nav-m-i btn">Watchlist</button>
       </div>
       <div className="right-nav btn-wrap">
         <Link className="nav-m-i btn" to="/profile">
           Profile
         </Link>
-        <button
+        <div
           className="nav-m-i btn"
           styles={{ borderStyle: "none" }}
           onClick={(e) => handleLogoutClick(e)}
         >
           Logout
-        </button>
+        </div>
       </div>
     </div>
   );

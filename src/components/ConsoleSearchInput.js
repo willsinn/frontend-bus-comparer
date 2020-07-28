@@ -18,22 +18,31 @@ class ConsoleSearchInput extends Component {
   render() {
     return (
       <div className="input-s container">
-        <div className="input-s wrapper">
-          <form
-            type="submit"
-            onSubmit={(event) => {
-              this.props.handleSubmit(event);
-            }}
-          >
-            <input
-              onMouseEnter={this.toggleHover}
-              onMouseLeave={this.toggleHover}
-              value={this.state.input}
-              onChange={this.handleChange}
-              type="text"
-              placeholder="Search Bus Stuff"
-            />
-          </form>
+        <form
+          type="submit"
+          style={{ margin: "0" }}
+          onSubmit={(event) => {
+            this.props.handleSubmit(event);
+          }}
+        >
+          <input
+            onMouseEnter={this.toggleHover}
+            onMouseLeave={this.toggleHover}
+            value={this.state.input}
+            onChange={this.handleChange}
+            type="text"
+            placeholder="Search Bus Stuff"
+          />
+        </form>
+        <div
+          className="row"
+          style={{
+            width: "150px",
+            justifyContent: "space-between",
+            color: "white",
+          }}
+        >
+          <div>Watchlist</div> <div className="rot-btn row">⌃</div>
         </div>
       </div>
     );
