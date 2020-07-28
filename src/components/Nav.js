@@ -4,66 +4,32 @@ import { Link, withRouter } from "react-router-dom";
 import "../styles/nav.css";
 
 const Nav = ({ user: { loggedIn }, location: { pathname } }) => {
-  const handleLogoutClick = e => {
+  const handleLogoutClick = (e) => {
     localStorage.clear();
     document.location.reload();
     window.location.href = "/";
   };
   const [burger, setBurger] = useState(false);
   return (
-    <>
-      {loggedIn ? (
-        <div className="navigation">
-          {!burger ? (
-            <div className="burger-nav" onClick={() => setBurger(!burger)}>
-              <div className="bar1" />
-              <div className="bar2" />
-              <div className="bar3" />
-            </div>
-          ) : (
-            <div className="burger-nav" onClick={() => setBurger(!burger)}>
-              <div className="bar1 change" />
-              <div className="bar2 change" />
-              <div className="bar3 change" />
-            </div>
-          )}
-          {burger ? (
-            <div className="burger-menu">
-              <div className="nav-menu-item">
-                <Link
-                  onClick={() => setBurger(!burger)}
-                  className="nav-m-i btn"
-                  to="/profile"
-                >
-                  Profile
-                </Link>
-              </div>
-              <div className="nav-menu-item">
-                <Link
-                  onClick={() => setBurger(!burger)}
-                  to="/search"
-                  className="nav-m-i btn"
-                >
-                  Search
-                </Link>
-              </div>
-
-              <div className="nav-menu-item">
-                <button
-                  className="nav-m-i btn"
-                  onClick={e => {
-                    handleLogoutClick(e);
-                  }}
-                >
-                  Logout
-                </button>
-              </div>
-            </div>
-          ) : null}
-          <div className="nav-profile-avatar" />
-        </div>
-      ) : null}
-    </>
+    <div className="navbar">
+      <div className="left-nav btn-wrap">
+        <div>LOGO</div>
+        <div>WATCHLIST</div>
+      </div>
+      <div className="right-nav btn-wrap">
+        <Link className="nav-m-i btn" to="/profile">
+          Profile
+        </Link>
+        <button
+          className="nav-m-i btn"
+          onClick={(e) => {
+            handleLogoutClick(e);
+          }}
+        >
+          Logout
+        </button>
+      </div>
+    </div>
   );
 };
 

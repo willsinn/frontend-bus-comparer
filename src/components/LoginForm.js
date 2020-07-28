@@ -9,7 +9,7 @@ import { Form, Segment, Message } from "semantic-ui-react";
 class LoginForm extends React.Component {
   state = {
     username: "",
-    password: ""
+    password: "",
   };
   // handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
@@ -18,7 +18,7 @@ class LoginForm extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleLoginSubmit = e => {
+  handleLoginSubmit = (e) => {
     //semantic forms preventDefault for you
     // e.preventDefault()
     this.props.loginUser(this.state.username, this.state.password); //comes from mapDispatchToProps
@@ -28,7 +28,7 @@ class LoginForm extends React.Component {
   render() {
     console.log("%c LOGIN FORM PROPS: ", "color: red", this.props);
     return this.props.loggedIn ? (
-      <Redirect to="/profile" />
+      <Redirect to="/search" />
     ) : (
       <div className="login-page">
         <div className="form-wrapper">
@@ -92,12 +92,12 @@ class LoginForm extends React.Component {
 // }
 
 const mapStateToProps = ({
-  usersReducer: { authenticatingUser, failedLogin, error, loggedIn }
+  usersReducer: { authenticatingUser, failedLogin, error, loggedIn },
 }) => ({
   authenticatingUser,
   failedLogin,
   error,
-  loggedIn
+  loggedIn,
 });
 
 // const mapDispatchToProps = (dispatch) => {
@@ -112,9 +112,4 @@ const mapStateToProps = ({
 //
 // export default connectedToReduxHOCWithRouterLoginForm
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    { loginUser }
-  )(LoginForm)
-);
+export default withRouter(connect(mapStateToProps, { loginUser })(LoginForm));
