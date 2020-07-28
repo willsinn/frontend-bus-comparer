@@ -6,6 +6,7 @@
   box-shadow: 0 1px 0 0 rgba(0, 11, 38, 0.12);
   position: relative;
   width: 100%;
+  background-color: white;
 }
 .btn-wrap {
   display: flex;

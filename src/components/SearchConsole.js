@@ -9,8 +9,8 @@ class SearchConsole extends Component {
       date: "",
       start: "",
       destination: "",
-      time: ""
-    }
+      time: "",
+    },
   };
 
   render() {
