@@ -18,58 +18,58 @@ class Profile extends Component {
     editBio: false,
     bio: "",
 
-    renderWatching: []
+    renderWatching: [],
   };
-  toggleEdit = toggleType => {
-    return event => {
+  toggleEdit = (toggleType) => {
+    return (event) => {
       this.setState({
         [toggleType]: !this.state[toggleType],
-        activeError: []
+        activeError: [],
       });
     };
   };
-  handleChange = fieldType => {
-    return event => {
+  handleChange = (fieldType) => {
+    return (event) => {
       this.setState({
-        [fieldType]: event.target.value
+        [fieldType]: event.target.value,
       });
     };
   };
-  handleUpdate = updateType => {
+  handleUpdate = (updateType) => {
     const messages = [
       ["avatar", "save failed, no URL provided."],
       ["username", "save failed, include new username."],
-      ["bio", "save failed, include new bio."]
+      ["bio", "save failed, include new bio."],
     ];
     switch (updateType) {
       case "avatar":
-        return event => {
+        return (event) => {
           if (this.state.avatar === "") {
             this.setState({
               activeError: [...messages[0]],
-              editAvatar: false
+              editAvatar: false,
             });
           } else {
             this.handleFetch({ avatar: this.state.avatar });
           }
         };
       case "username":
-        return event => {
+        return (event) => {
           if (this.state.username === "") {
             this.setState({
               activeError: [...messages[1]],
-              editUsername: false
+              editUsername: false,
             });
           } else {
             this.handleFetch({ username: this.state.username });
           }
         };
       case "bio":
-        return event => {
+        return (event) => {
           if (this.state.bio === "") {
             this.setState({
               activeError: [...messages[2]],
-              editBio: false
+              editBio: false,
             });
           } else {
             this.handleFetch({ bio: this.state.bio });
@@ -79,31 +79,30 @@ class Profile extends Component {
         return;
     }
   };
-  handleFetch = body => {
+  handleFetch = (body) => {
     const type = Object.keys(body);
-    const editType = `edit${type[0].charAt(0).toUpperCase() +
-      type[0].slice(1)}`;
+    const editType = `edit${
+      type[0].charAt(0).toUpperCase() + type[0].slice(1)
+    }`;
     fetch(
-      `https://backend-final-project.herokuapp.com/api/v1/users/${
-        this.props.id
-      }`,
+      `https://backend-final-project.herokuapp.com/api/v1/users/${this.props.id}`,
       {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
-          Authorization: `Bearer ${localStorage.getItem("jwt")}`
+          Authorization: `Bearer ${localStorage.getItem("jwt")}`,
         },
-        body: JSON.stringify(body)
+        body: JSON.stringify(body),
       }
     )
-      .then(r => r.json())
-      .then(updatedUser => {
+      .then((r) => r.json())
+      .then((updatedUser) => {
         console.log(updatedUser);
         this.setState({
           currentUser: updatedUser,
           [type]: "",
-          [editType]: false
+          [editType]: false,
         });
       });
   };
@@ -353,13 +352,13 @@ class Profile extends Component {
 }
 const mapStateToProps = ({
   usersReducer: {
-    user: { id, avatar, username, bio }
-  }
+    user: { id, avatar, username, bio },
+  },
 }) => ({
   id,
   avatar,
   username,
-  bio
+  bio,
 });
 //
 // {this.state.activeError[0] === "avatar" ? (

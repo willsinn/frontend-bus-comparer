@@ -15,40 +15,40 @@ class Search extends Component {
     searches: [],
     results: [],
     message: "",
-    addMsg: ""
+    addMsg: "",
   };
   componentDidMount() {
     fetch("https://backend-final-project.herokuapp.com/api/v1/searches", {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${localStorage.jwt}`
-      }
+        Authorization: `Bearer ${localStorage.jwt}`,
+      },
     })
-      .then(r => r.json())
-      .then(searches => {
+      .then((r) => r.json())
+      .then((searches) => {
         console.log("SEARCHES", searches);
         this.setState({ searches: searches });
       });
     fetch("https://backend-final-project.herokuapp.com/api/v1/items", {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${localStorage.jwt}`
-      }
+        Authorization: `Bearer ${localStorage.jwt}`,
+      },
     })
-      .then(r => r.json())
-      .then(items => {
+      .then((r) => r.json())
+      .then((items) => {
         console.log("ITEMS", items);
         const itemsValues = flattenItemKeyValues(items);
         this.setState({ items: items, itemsValues: itemsValues });
       });
-    const flattenItemKeyValues = items => {
+    const flattenItemKeyValues = (items) => {
       let itemsData = [...items].flat();
-      itemsData = itemsData.map(itemD => {
+      itemsData = itemsData.map((itemD) => {
         let vals = Object.entries(itemD);
         return vals.flat();
       });
-      itemsData = itemsData.map(itemD => {
-        let i = itemD.map(item =>
+      itemsData = itemsData.map((itemD) => {
+        let i = itemD.map((item) =>
           typeof item === "object" ? Object.entries(item) : item
         );
         return i.flat().flat();
@@ -58,11 +58,11 @@ class Search extends Component {
     };
   }
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
     const query = event.target.firstElementChild.value.toLowerCase();
 
-    const vals = [...this.state.itemsValues].map(v => v.join().toLowerCase());
+    const vals = [...this.state.itemsValues].map((v) => v.join().toLowerCase());
     let schIdxs = [];
     vals.forEach((val, i) => {
       if (val.includes(query)) {
@@ -70,12 +70,12 @@ class Search extends Component {
       }
     });
     const itms = [...this.state.items];
-    const idxMatch = schIdxs.map(schIdx => itms[schIdx]);
+    const idxMatch = schIdxs.map((schIdx) => itms[schIdx]);
     this.setState({ results: idxMatch }, () => {
       this.handleSearchMessage(query);
     });
   };
-  handleSearchMessage = query => {
+  handleSearchMessage = (query) => {
     let message;
     console.log(this.state.items);
     if (query === "") {
@@ -83,9 +83,7 @@ class Search extends Component {
     } else if (!this.state.results.length) {
       message = `No values matching your search...   ${query}`;
     } else {
-      message = `${
-        this.state.results.length
-      } results for searching...   ${query}`;
+      message = `${this.state.results.length} results for searching...   ${query}`;
     }
 
     this.setState({ message: message });
@@ -96,27 +94,27 @@ class Search extends Component {
   //
   // };
 
-  handleWatching = targetValue => {
+  handleWatching = (targetValue) => {
     const alreadyWatching = [...this.state.watching].filter(
-      value => value === targetValue
+      (value) => value === targetValue
     );
     if (alreadyWatching[0]) {
       const addMsg = "Already watching this item, try another item!";
       this.setState({
-        addMsg: addMsg
+        addMsg: addMsg,
       });
     } else {
       const addMsg = "Successfully added to your watchlist!";
       this.setState({
         watching: [...this.state.watching, targetValue],
-        addMsg: addMsg
+        addMsg: addMsg,
       });
     }
   };
 
-  handleRemoveWatching = targetValue => {
+  handleRemoveWatching = (targetValue) => {
     this.setState({
-      watching: [...this.state.watching].filter(tgt => tgt !== targetValue)
+      watching: [...this.state.watching].filter((tgt) => tgt !== targetValue),
     });
   };
 
@@ -160,13 +158,13 @@ class Search extends Component {
 }
 const mapStateToProps = ({
   usersReducer: {
-    user: { id, avatar, username, bio }
-  }
+    user: { id, avatar, username, bio },
+  },
 }) => ({
   id,
   avatar,
   username,
-  bio
+  bio,
 });
 
 export default withAuth(connect(mapStateToProps)(Search));

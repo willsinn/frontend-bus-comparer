@@ -1,20 +1,20 @@
 export const loginUser = (username, password) => {
-  return dispatch => {
+  return (dispatch) => {
     dispatch({ type: "AUTHENTICATING_USER" });
     fetch("https://backend-final-project.herokuapp.com/api/v1/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json"
+        Accept: "application/json",
       },
       body: JSON.stringify({
         user: {
           username: username,
-          password: password
-        }
-      })
+          password: password,
+        },
+      }),
     })
-      .then(response => {
+      .then((response) => {
         if (response.ok) {
           return response.json();
         } else {
@@ -22,50 +22,50 @@ export const loginUser = (username, password) => {
         }
       })
       /* {username: will, pw: will} */
-      .then(JSONResponse => {
+      .then((JSONResponse) => {
         localStorage.setItem("jwt", JSONResponse.jwt);
         dispatch({ type: "SET_CURRENT_USER", payload: JSONResponse.user });
       })
-      .catch(r =>
+      .catch((r) =>
         r
           .json()
-          .then(e => dispatch({ type: "FAILED_LOGIN", payload: e.message }))
+          .then((e) => dispatch({ type: "FAILED_LOGIN", payload: e.message }))
       );
   };
 };
 
 export const fetchCurrentUser = () => {
   // takes the token in localStorage and finds out who it belongs to
-  return dispatch => {
+  return (dispatch) => {
     dispatch(authenticatingUser()); //tells the app we are fetching
     fetch("https://backend-final-project.herokuapp.com/api/v1/profile", {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${localStorage.getItem("jwt")}`
-      }
+        Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      },
     })
-      .then(response => response.json())
-      .then(JSONResponse => dispatch(setCurrentUser(JSONResponse.user)));
+      .then((response) => response.json())
+      .then((JSONResponse) => dispatch(setCurrentUser(JSONResponse.user)));
   };
 };
 
 export const setUpUser = (username, password) => {
-  return dispatch => {
+  return (dispatch) => {
     dispatch({ type: "AUTHENTICATING_USER" });
     fetch("https://backend-final-project.herokuapp.com/api/v1/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json"
+        Accept: "application/json",
       },
       body: JSON.stringify({
         user: {
           username: username,
-          password: password
-        }
-      })
+          password: password,
+        },
+      }),
     })
-      .then(response => {
+      .then((response) => {
         console.log(response);
         if (response.ok) {
           return response.json();
@@ -74,15 +74,15 @@ export const setUpUser = (username, password) => {
         }
       })
       /* {username: will, pw: will} */
-      .then(JSONResponse => {
+      .then((JSONResponse) => {
         localStorage.setItem("jwt", JSONResponse.jwt);
         dispatch({ type: "SET_CURRENT_USER", payload: JSONResponse.user });
-      })
-      .catch(r =>
-        r
-          .json()
-          .then(e => dispatch({ type: "FAILED_LOGIN", payload: e.message }))
-      );
+      });
+    // .catch((r) =>
+    //   r
+    //     .json()
+    //     .then((e) => dispatch({ type: "FAILED_LOGIN", payload: e.message }))
+    // );
   };
 };
 //
@@ -100,14 +100,14 @@ export const setUpUser = (username, password) => {
 //   }
 // }
 
-export const setCurrentUser = userData => ({
+export const setCurrentUser = (userData) => ({
   type: "SET_CURRENT_USER",
-  payload: userData
+  payload: userData,
 });
 
-export const failedLogin = errorMsg => ({
+export const failedLogin = (errorMsg) => ({
   type: "FAILED_LOGIN",
-  payload: errorMsg
+  payload: errorMsg,
 });
 
 export const authenticatingUser = () => ({ type: "AUTHENTICATING_USER" });
