@@ -125,8 +125,10 @@ class Search extends Component {
       <div className="console-wrapper">
         <SearchConsole
           items={this.state.items}
-          itemsValues={this.state.itemsValues}
           handleSubmit={this.handleSubmit}
+          watching={this.state.watching}
+          handleWatching={this.handleWatching}
+          results={this.state.results}
         />
         <div className="search-section">
           <div className="sch-msg wrap">
@@ -147,9 +149,9 @@ class Search extends Component {
             addMsg={this.state.addMsg}
           />
           {/* <SearchList
-          addToWatchlist={this.addToWatchlist}
-          searches={this.state.searches}
-        /> */}
+            addToWatchlist={this.addToWatchlist}
+            searches={this.state.searches}
+          /> */}
         </div>
       </div>
     );

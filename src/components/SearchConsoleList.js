@@ -3,7 +3,6 @@ import SearchConsoleItem from "./SearchConsoleItem";
 const uuidv4 = require("uuid/v4");
 
 const SearchConsoleList = (props) => {
-  const [isShowing, setWatchlist] = useState(false);
   const items = props.results;
   const renderConsoleItems = () => {
     let counter = 0;
@@ -23,28 +22,33 @@ const SearchConsoleList = (props) => {
 
   const watchItems = props.watching;
   const renderWatchlistItems = () => {
-    return watchItems.map((item) => (
-      <SearchConsoleItem
-        key={uuidv4(item.id)}
-        item={item}
-        handleRemoveWatching={props.handleRemoveWatching}
-      />
-    ));
+    let counter = 0;
+
+    return watchItems.map((item) => {
+      counter++;
+      return (
+        <SearchConsoleItem
+          key={uuidv4(item.id)}
+          item={item}
+          handleRemoveWatching={props.handleRemoveWatching}
+          counter={counter}
+        />
+      );
+    });
   };
 
   return (
     <>
-      {isShowing ? (
-        <div className="watchlist-wrapper">{renderWatchlistItems()}</div>
-      ) : null}
       <div className="add-to-watchlist">{props.addMsg}</div>
-      <div className="body-container">
-        {props.results.length ? (
+      {!props.open ? (
+        <div className="body-container">
           <div className="search-content-wrapper">
             <div className="center">{renderConsoleItems()}</div>
           </div>
-        ) : null}
-      </div>
+        </div>
+      ) : (
+        <div className="watchlist-wrapper">{renderWatchlistItems()}</div>
+      )}
     </>
   );
 };

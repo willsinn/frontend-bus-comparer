@@ -21,6 +21,9 @@ class SearchConsole extends Component {
             key={uuidv4()}
             handleSubmit={this.props.handleSubmit}
             items={this.props.items}
+            watching={this.props.watching}
+            handleWatching={this.props.handleWatching}
+            results={this.props.results}
           />
         </div>
       </div>

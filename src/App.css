@@ -725,6 +725,18 @@ body {
   justify-content: space-around;
   align-items: flex-end;
   height: 75%;
+  position: relative;
+}
+.watching-window {
+  min-height: 200px;
+  width: 70%;
+  background-color: white;
+  position: absolute;
+  right: 275px;
+  top: 85px;
+  box-shadow: 0 2px 0.25rem 2px rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+  z-index: 1;
 }
 .btm-profile {
   margin-top: 7.5%;
@@ -884,15 +896,8 @@ body {
   font-size: 40px;
 }
 .watchlist-wrapper {
-  height: inherit;
-  width: inherit;
   display: flex;
   flex-direction: column;
-  padding-top: 1%;
-  padding-bottom: 1%;
-  border-top: 3.5px whitesmoke ridge;
-  border-bottom: 3.5px whitesmoke ridge;
-  background-color: #405024;
 }
 .watchlist-title {
   display: flex;

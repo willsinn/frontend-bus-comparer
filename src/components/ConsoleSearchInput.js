@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "../styles/consoleSearchInput.css";
+import SearchConsoleList from "./SearchConsoleList";
 
 const openWatch = { transform: "rotate(180deg)" };
 class ConsoleSearchInput extends Component {
@@ -24,6 +25,7 @@ class ConsoleSearchInput extends Component {
     }
   };
   render() {
+    console.log(this.props.watching);
     return (
       <div className="input-s container">
         <form
@@ -58,6 +60,17 @@ class ConsoleSearchInput extends Component {
             ⌃
           </div>
         </div>
+        {this.state.open ? (
+          <div className="watching-window">
+            <SearchConsoleList
+              results={this.props.results}
+              items={this.props.items}
+              watching={this.props.watching}
+              handleWatching={this.props.handleWatching}
+              open={this.state.open}
+            />
+          </div>
+        ) : null}
       </div>
     );
   }
