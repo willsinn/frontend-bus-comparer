@@ -26,7 +26,6 @@ class Search extends Component {
     })
       .then((r) => r.json())
       .then((searches) => {
-        console.log("SEARCHES", searches);
         this.setState({ searches: searches });
       });
     fetch("https://backend-final-project.herokuapp.com/api/v1/items", {
@@ -37,7 +36,6 @@ class Search extends Component {
     })
       .then((r) => r.json())
       .then((items) => {
-        console.log("ITEMS", items);
         const itemsValues = flattenItemKeyValues(items);
         this.setState({ items: items, itemsValues: itemsValues });
       });
@@ -77,7 +75,6 @@ class Search extends Component {
   };
   handleSearchMessage = (query) => {
     let message;
-    console.log(this.state.items);
     if (query === "") {
       message = "No value entered. Try again.";
     } else if (!this.state.results.length) {

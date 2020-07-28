@@ -184,11 +184,12 @@ body {
 }
 .bus-icon {
   max-width: 100%;
-  height: 48px;
+  height: 46px;
   vertical-align: middle;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  margin-right: 24px;
 }
 .burger-menu {
   height: 225px;

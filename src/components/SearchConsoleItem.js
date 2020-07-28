@@ -26,7 +26,7 @@ const SearchConsoleItem = (props) => {
           purchased: false,
         },
       }
-    ).then(console.log);
+    );
   };
   const renderBusIcon = () => {
     switch (item.search.company) {
@@ -37,7 +37,6 @@ const SearchConsoleItem = (props) => {
         break;
     }
   };
-  console.log(props);
   return (
     <div className="console-item">
       {props.handleWatching !== undefined ? (
