@@ -1,4 +1,5 @@
 import React from "react";
+import Greyhound from "../images/greyhound.jpg";
 
 const SearchConsoleItem = (props) => {
   const weekday = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
@@ -27,7 +28,15 @@ const SearchConsoleItem = (props) => {
       }
     ).then(console.log);
   };
+  const renderBusIcon = () => {
+    switch (item.search.company) {
+      case "greyhound":
+        return <img src={Greyhound} alt="" className="bus-icon" />;
 
+      default:
+        break;
+    }
+  };
   console.log(props);
   return (
     <div className="console-item">
@@ -57,7 +66,7 @@ const SearchConsoleItem = (props) => {
         <div className="cih-col">{item.search.date}</div>
       </div>
       <div className="cih-col">${item.price}</div>
-      <div className="cih-col">{item.search.company}</div>
+      <div className="cih-col">{renderBusIcon()}</div>
       <div className="purchase-btn">
         <form style={{ margin: "0" }} action={item.purchase_url}>
           <input type="submit" value="Buy" />

@@ -132,12 +132,12 @@ class Search extends Component {
         />
         <div className="search-section">
           <div className="sch-msg-wrap">
-            {msg !== "" ? (
+            {msg !== "" && msg.charAt(0) === "1" ? (
               <div className="sch-msg-green">{msg}</div>
-            ) : (
-              // <div className="sch-msg">{sVal[0]}</div>
-              <div className="sch-msg-red ">{sVal[1]}</div>
-            )}
+            ) : null}
+            {msg !== "" && msg.charAt(0) !== "1" ? (
+              <div className="sch-msg-red">{msg}</div>
+            ) : null}
           </div>
           <SearchConsoleList
             results={this.state.results}
