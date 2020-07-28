@@ -26,7 +26,6 @@ class Search extends Component {
     })
       .then((r) => r.json())
       .then((searches) => {
-        console.log("SEARCHES", searches);
         this.setState({ searches: searches });
       });
     fetch("https://backend-final-project.herokuapp.com/api/v1/items", {
@@ -37,7 +36,6 @@ class Search extends Component {
     })
       .then((r) => r.json())
       .then((items) => {
-        console.log("ITEMS", items);
         const itemsValues = flattenItemKeyValues(items);
         this.setState({ items: items, itemsValues: itemsValues });
       });
@@ -77,7 +75,6 @@ class Search extends Component {
   };
   handleSearchMessage = (query) => {
     let message;
-    console.log(this.state.items);
     if (query === "") {
       message = "No value entered. Try again.";
     } else if (!this.state.results.length) {
@@ -86,13 +83,8 @@ class Search extends Component {
       message = `${this.state.results.length} results for searching...   ${query}`;
     }
 
-    this.setState({ message: message });
+    this.setState({ message: message, addMsg: "" });
   };
-  // addToWatchlist = (props, item) => {
-  //   const search = props.search;
-  //   const addItem = { ...item, search };
-  //
-  // };
 
   handleWatching = (targetValue) => {
     const alreadyWatching = [...this.state.watching].filter(
@@ -102,12 +94,14 @@ class Search extends Component {
       const addMsg = "Already watching this item, try another item!";
       this.setState({
         addMsg: addMsg,
+        message: "",
       });
     } else {
       const addMsg = "Successfully added to your watchlist!";
       this.setState({
         watching: [...this.state.watching, targetValue],
         addMsg: addMsg,
+        message: "",
       });
     }
   };
@@ -123,35 +117,40 @@ class Search extends Component {
     const sVal = this.state.message.split("   ");
     return (
       <div className="console-wrapper">
-        <div className="sch-cs wrap">
-          <SearchConsole
-            items={this.state.items}
-            itemsValues={this.state.itemsValues}
-            handleSubmit={this.handleSubmit}
-          />
-        </div>
-
-        <div className="sch-msg wrap">
-          {msg !== "" ? (
-            <div className="sch-msg static">{msg}</div>
-          ) : (
-            <>
-              <div className="sch-msg static">{sVal[0]}</div>
-              <div className="sch-msg active">{sVal[1]}</div>
-            </>
-          )}
-        </div>
-        <SearchConsoleList
-          results={this.state.results}
+        <SearchConsole
+          items={this.state.items}
+          handleSubmit={this.handleSubmit}
           watching={this.state.watching}
           handleRemoveWatching={this.handleRemoveWatching}
-          handleWatching={this.handleWatching}
-          addMsg={this.state.addMsg}
+          results={this.state.results}
         />
-        {/*        <SearchList
-          addToWatchlist={this.addToWatchlist}
-          searches={this.state.searches}
-        />*/}
+        <div className="search-section">
+          <div className="sch-msg-wrap">
+            {msg !== "" && msg.charAt(0) === "1" ? (
+              <div className="sch-msg-green">{msg}</div>
+            ) : null}
+            {msg !== "" && msg.charAt(0) !== "1" ? (
+              <div className="sch-msg-red">{msg}</div>
+            ) : null}
+            {this.state.addMsg !== "" && msg.charAt(0) === "A" ? (
+              <div className="sch-msg-red">{this.state.addMsg}</div>
+            ) : null}
+            {this.state.addMsg !== "" && msg.charAt(0) !== "A" ? (
+              <div className="sch-msg-green">{this.state.addMsg}</div>
+            ) : null}
+          </div>
+          <SearchConsoleList
+            results={this.state.results}
+            watching={this.state.watching}
+            handleRemoveWatching={this.handleRemoveWatching}
+            handleWatching={this.handleWatching}
+            addMsg={this.state.addMsg}
+          />
+          {/* <SearchList
+            addToWatchlist={this.addToWatchlist}
+            searches={this.state.searches}
+          /> */}
+        </div>
       </div>
     );
   }

@@ -2,9 +2,9 @@ import React from "react";
 import SearchListItem from "./SearchListItem";
 const uuidv4 = require("uuid/v4");
 
-const SearchList = props => {
+const SearchList = (props) => {
   const renderSearches = () =>
-    props.searches.map(search => {
+    props.searches.map((search) => {
       const weekday = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
       const day = search.date.split("-")[2] % 7;
       return (
@@ -39,8 +39,6 @@ const SearchList = props => {
       </div>
     );
   };
-
-  console.log(props);
   return (
     <div className="table-content-wrapper">
       <div className="table-title sli">All Bus Times</div>

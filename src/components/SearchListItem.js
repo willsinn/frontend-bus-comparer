@@ -1,14 +1,13 @@
 import React from "react";
 
-const SearchListItem = props => {
-  const fetchPostWatching = item => {
-    console.log(item);
+const SearchListItem = (props) => {
+  const fetchPostWatching = (item) => {
     return fetch(
       "https://backend-final-project.herokuapp.com/api/v1/favorites",
       {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("jwt")}`
+          Authorization: `Bearer ${localStorage.getItem("jwt")}`,
         },
         body: {
           user_id: props.userId,
@@ -20,15 +19,15 @@ const SearchListItem = props => {
           start_from: props.search.start_from,
           to_destination: props.search.to_destination,
           date: props.search.date,
-          purchased: false
-        }
+          purchased: false,
+        },
       }
-    ).then(console.log);
+    );
   };
   const renderItems = () => {
     const search = props.search;
 
-    return props.items.map(item => {
+    return props.items.map((item) => {
       return (
         <div className="s-i item-cont">
           <div className="s-i item-wrap">

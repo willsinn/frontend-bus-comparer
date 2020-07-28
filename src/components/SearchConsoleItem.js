@@ -1,16 +1,17 @@
 import React from "react";
+import Greyhound from "../images/greyhound.jpg";
 
-const SearchConsoleItem = props => {
+const SearchConsoleItem = (props) => {
   const weekday = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
   const item = props.item;
-  const fetchPostWatching = item => {
+  const fetchPostWatching = (item) => {
     console.log(item);
     return fetch(
       "https://backend-final-project.herokuapp.com/api/v1/favorites",
       {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("jwt")}`
+          Authorization: `Bearer ${localStorage.getItem("jwt")}`,
         },
         body: {
           user_id: props.userId,
@@ -22,45 +23,53 @@ const SearchConsoleItem = props => {
           start_from: props.search.start_from,
           to_destination: props.search.to_destination,
           date: props.search.date,
-          purchased: false
-        }
+          purchased: false,
+        },
       }
-    ).then(console.log);
+    );
+  };
+  const renderBusIcon = () => {
+    switch (item.search.company) {
+      case "greyhound":
+        return <img src={Greyhound} alt="" className="bus-icon" />;
+
+      default:
+        break;
+    }
   };
   return (
     <div className="console-item">
-      <div className="cih-col">
-        {item.search.start_from} -> {item.search.to_destination}
+      {props.handleWatching !== undefined ? (
+        <button
+          className="watch-btn"
+          onClick={(e) => props.handleWatching(item)}
+        >
+          ✔︎
+        </button>
+      ) : (
+        <button
+          className="watch-btn"
+          onClick={(e) => props.handleRemoveWatching(item)}
+        >
+          ✖︎
+        </button>
+      )}
+      <div>{props.counter}</div>
+
+      <div className="center">
+        <div>{item.search.start_from}</div>
+        <div>{item.search.to_destination}</div>
       </div>
-      <div className="cih-col">{item.search.date}</div>
-      <div className="cih-col">{item.time}</div>
-
-      <div className="cih-col">{item.pickup_from}</div>
-
-      <div className="cih-col purchase-btn">
-        <form action={item.purchase_url}>
-          <input type="submit" value="Purchase Ticket" />
+      <div className="center">
+        <div className="cih-col">{item.time}</div>
+        <div className="cih-col">{item.search.date}</div>
+      </div>
+      <div className="cih-col">${item.price}</div>
+      <div className="cih-col">{renderBusIcon()}</div>
+      <div className="purchase-btn">
+        <form style={{ margin: "0" }} action={item.purchase_url}>
+          <input type="submit" value="Buy" />
         </form>
-      </div>
-      <div className="cih-col">{item.search.company}</div>
-      <div className="cih-col">
-        {props.handleWatching !== undefined ? (
-          <button
-            onClick={event => {
-              props.handleWatching(item);
-            }}
-          >
-            Add to Watchlist
-          </button>
-        ) : (
-          <button
-            onClick={() => {
-              props.handleRemoveWatching(item);
-            }}
-          >
-            Remove from Watchlist
-          </button>
-        )}
       </div>
     </div>
   );

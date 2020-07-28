@@ -9,8 +9,8 @@ class SearchConsole extends Component {
       date: "",
       start: "",
       destination: "",
-      time: ""
-    }
+      time: "",
+    },
   };
 
   render() {
@@ -21,6 +21,9 @@ class SearchConsole extends Component {
             key={uuidv4()}
             handleSubmit={this.props.handleSubmit}
             items={this.props.items}
+            watching={this.props.watching}
+            handleRemoveWatching={this.props.handleRemoveWatching}
+            results={this.props.results}
           />
         </div>
       </div>

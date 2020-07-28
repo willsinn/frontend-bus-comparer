@@ -1,9 +1,8 @@
 input[type="text"] {
-  width: 100%;
+  width: 250px;
+  height: 32px;
   box-sizing: border-box;
-  border: 3px inset gray;
-  border-radius: 8em;
-  font-size: 17.25px;
+  font-size: 14px;
   background-color: white;
   padding: 12px 20px 12px 20px;
   -webkit-transition: width 0.4s ease-in-out;
@@ -11,11 +10,9 @@ input[type="text"] {
 }
 
 input[type="text"]:focus {
-  width: 75%;
-  border-color: white;
+  border-color: blue;
 }
 
 .console-s-input {
   width: inherit;
-  height: 20vh;
 }
