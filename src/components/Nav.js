@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
 import "../styles/nav.css";
@@ -11,7 +11,6 @@ const Nav = ({ user: { loggedIn }, location: { pathname } }) => {
       window.location.href = "/";
     }
   };
-  const [burger, setBurger] = useState(false);
   return (
     <div className="navbar">
       <div className="left-nav btn-wrap">

@@ -123,13 +123,11 @@ class Search extends Component {
     const sVal = this.state.message.split("   ");
     return (
       <div className="console-wrapper">
-        <div className="sch-cs wrap">
-          <SearchConsole
-            items={this.state.items}
-            itemsValues={this.state.itemsValues}
-            handleSubmit={this.handleSubmit}
-          />
-        </div>
+        <SearchConsole
+          items={this.state.items}
+          itemsValues={this.state.itemsValues}
+          handleSubmit={this.handleSubmit}
+        />
 
         <div className="sch-msg wrap">
           {msg !== "" ? (
@@ -148,10 +146,10 @@ class Search extends Component {
           handleWatching={this.handleWatching}
           addMsg={this.state.addMsg}
         />
-        {/*        <SearchList
+        {/* <SearchList
           addToWatchlist={this.addToWatchlist}
           searches={this.state.searches}
-        />*/}
+        /> */}
       </div>
     );
   }
