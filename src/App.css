@@ -625,7 +625,6 @@ body {
   align-items: center;
   background-color: white;
   border-radius: 3px;
-  box-shadow: 0 2px 0.25rem 2px rgba(0, 0, 0, 0.2);
   margin: 3px 4px;
 }
 .center {
@@ -676,17 +675,25 @@ body {
   flex-direction: column;
 }
 
-.sch-msg.static {
-  font-size: 1.5em;
+.sch-msg-red {
+  display: flex;
+  background-color: red;
+  width: 70%;
+  justify-content: center;
+  align-items: center;
+  height: 70%;
   color: white;
-  font-weight: bold;
+  border-radius: 3px;
 }
-.sch-msg.active {
-  color: red;
-  font-size: 1.6em;
-  font-weight: bold;
-  padding-left: 0.35em;
-  margin: 0;
+.sch-msg-green {
+  display: flex;
+  background-color: green;
+  width: 70%;
+  justify-content: center;
+  align-items: center;
+  height: 70%;
+  color: white;
+  border-radius: 3px;
 }
 .console-s-input {
   width: inherit;
@@ -696,8 +703,12 @@ body {
   background-color: black;
   align-items: center;
 }
-.sch-msg.wrap {
+.sch-msg-wrap {
   display: flex;
+  width: 100%;
+  align-items: center;
+  height: 36px;
+  justify-content: center;
 }
 .rot-btn {
   transform: rotate(90deg);
@@ -737,6 +748,9 @@ body {
   box-shadow: 0 2px 0.25rem 2px rgba(0, 0, 0, 0.2);
   border-radius: 2px;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .btm-profile {
   margin-top: 7.5%;
@@ -886,7 +900,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-
   height: inherit;
   width: 95%;
   background-color: #191b27;
@@ -898,6 +911,8 @@ body {
 .watchlist-wrapper {
   display: flex;
   flex-direction: column;
+  width: 97%;
+  margin-top: 8px;
 }
 .watchlist-title {
   display: flex;

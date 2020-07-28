@@ -66,7 +66,7 @@ class ConsoleSearchInput extends Component {
               results={this.props.results}
               items={this.props.items}
               watching={this.props.watching}
-              handleWatching={this.props.handleWatching}
+              handleRemoveWatching={this.props.handleRemoveWatching}
               open={this.state.open}
             />
           </div>

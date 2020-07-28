@@ -22,7 +22,7 @@ class SearchConsole extends Component {
             handleSubmit={this.props.handleSubmit}
             items={this.props.items}
             watching={this.props.watching}
-            handleWatching={this.props.handleWatching}
+            handleRemoveWatching={this.props.handleRemoveWatching}
             results={this.props.results}
           />
         </div>

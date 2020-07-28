@@ -127,18 +127,16 @@ class Search extends Component {
           items={this.state.items}
           handleSubmit={this.handleSubmit}
           watching={this.state.watching}
-          handleWatching={this.handleWatching}
+          handleRemoveWatching={this.handleRemoveWatching}
           results={this.state.results}
         />
         <div className="search-section">
-          <div className="sch-msg wrap">
+          <div className="sch-msg-wrap">
             {msg !== "" ? (
-              <div className="sch-msg static">{msg}</div>
+              <div className="sch-msg-green">{msg}</div>
             ) : (
-              <>
-                <div className="sch-msg static">{sVal[0]}</div>
-                <div className="sch-msg active">{sVal[1]}</div>
-              </>
+              // <div className="sch-msg">{sVal[0]}</div>
+              <div className="sch-msg-red ">{sVal[1]}</div>
             )}
           </div>
           <SearchConsoleList
