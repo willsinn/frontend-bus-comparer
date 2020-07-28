@@ -1,7 +1,10 @@
 * {
   font-family: "Helvetica Neue", Arial;
 }
-
+label {
+  margin-top: 5px;
+  margin-bottom: 0;
+}
 body {
   margin: 0;
 }
@@ -172,7 +175,6 @@ body {
 .signup-page {
   height: 100vh;
   background-size: cover;
-  background-image: url("./images/login-signup-background.jpg");
   z-index: 1;
 }
 
@@ -282,6 +284,10 @@ body {
 .fadein {
   opacity: 1;
 }
+.input[type="password"] {
+  padding: 2px 3px;
+  margin: 0;
+}
 .item-content-break {
   /* background-color: #d43a3a;
   color: #f1a0a740; */
@@ -296,16 +302,15 @@ body {
 
 /* Profile */
 .login-signup.input {
-  height: 45px;
-  margin: 5px;
+  height: 28px;
   padding-left: 5%;
-  border-radius: 0.5em;
+  border-radius: 3px;
   background-color: inherit;
-  font-size: 20px;
-  color: whitesmoke;
+  font-size: 14.5px;
+  color: black;
 }
 .login-signup.input:hover {
-  background-color: #4f6529;
+  background-color: #eeecec;
 }
 .login-signup.btn {
   border: 1.5px outset whitesmoke;
@@ -337,15 +342,25 @@ body {
   display: flex;
   flex-direction: column;
 }
-
+.login-btn {
+  border: 0;
+  background: none;
+  color: #005580;
+}
+hr {
+  margin: 6px 0 0 0;
+}
+.login-btn:hover {
+  color: #0088cc;
+}
 .form-box {
-  /* border: 1px ridge #677bec;
-  background: #0c0c0e;
-  box-shadow: 2.5px 2px 3px 4.5px #3042a7;*/
-  padding: 4%;
-  height: 175px;
-  width: 215px;
-  color: white;
+  padding: 4.5%;
+  height: 225px;
+  width: 225px;
+  color: black;
+  background-color: white;
+  border-radius: 3px;
+  box-shadow: 0 2px 0.25rem 2px rgba(0, 0, 0, 0.2);
 }
 .l-s.h {
   font-size: 32px;
