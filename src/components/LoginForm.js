@@ -3,25 +3,20 @@ import { connect } from "react-redux";
 import { withRouter, Redirect } from "react-router";
 import { loginUser } from "../actions/user";
 import { Link } from "react-router-dom";
-import { Form, Segment, Message } from "semantic-ui-react";
+import { Form, Segment } from "semantic-ui-react";
 // import { bindActionCreators } from 'redux'
 
 class LoginForm extends React.Component {
   state = {
     username: "",
     password: "",
-    error: "",
   };
-  // handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
-  handleChange = (e, semanticInputData) => {
-    // this.setState({ [semanticInputData.name]: semanticInputData.value })
+  handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
   handleLoginSubmit = (e) => {
-    //semantic forms preventDefault for you
-    // e.preventDefault()
     if (e) {
       this.props.loginUser(this.state.username, this.state.password);
       this.setState({ username: "", password: "" });
@@ -29,17 +24,27 @@ class LoginForm extends React.Component {
   };
 
   render() {
-    console.log("%c LOGIN FORM PROPS: ", "color: red", this.props);
     return this.props.loggedIn ? (
       <Redirect to="/search" />
     ) : (
       <div className="login-page">
+        <img
+          src={require("../images/bus-stop.png")}
+          height="200px"
+          width="200px"
+          alt=""
+          className="landing-bg"
+        />
         <div className="form-wrapper">
           <div className="form-box">
             {this.props.failedLogin ? (
               <div
                 className="sch-msg-red"
-                style={{ width: "220px", position: "absolute" }}
+                style={{
+                  width: "220px",
+                  position: "absolute",
+                  top: "40px",
+                }}
               >
                 {this.props.error}
               </div>

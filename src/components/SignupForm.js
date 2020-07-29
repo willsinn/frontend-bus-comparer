@@ -22,7 +22,7 @@ class SignupForm extends Component {
 
   handleSubmit = () => {
     if (this.state.password !== this.state.confirmPassword) {
-      this.setState({ error: "Passwords dont match" });
+      this.setState({ error: "Passwords dont match." });
     } else {
       this.props.setUpUser(this.state.username, this.state.password);
     }
@@ -39,6 +39,18 @@ class SignupForm extends Component {
       <div className="signup-page">
         <div className="form-wrapper">
           <div className="form-box" style={{ height: "225px" }}>
+            {this.state.error ? (
+              <div
+                className="sch-msg-red"
+                style={{
+                  width: "220px",
+                  position: "absolute",
+                  top: "40px",
+                }}
+              >
+                {this.state.error}
+              </div>
+            ) : null}
             <Form
               onSubmit={this.handleSubmit}
               size="mini"
@@ -46,10 +58,6 @@ class SignupForm extends Component {
               loading={this.props.authenticatingUser}
               error={this.props.failedLogin}
             >
-              <Message
-                error
-                header={this.state.error ? this.state.error : null}
-              />
               <div className="login-signup input-wrapper">
                 {signupFields.map((field) => {
                   return (
