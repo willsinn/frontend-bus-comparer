@@ -70,13 +70,18 @@ class LoginForm extends React.Component {
                     <button className="login-btn" type="submit">
                       Log in
                     </button>
-                    <Link
-                      to="/signup"
-                      style={{ textDecoration: "none" }}
-                      className="login-btn"
+                    <div
+                      className="row"
+                      style={{
+                        marginTop: "8px",
+                        justifyContent: "space-between",
+                      }}
                     >
-                      Sign up
-                    </Link>
+                      Don't have an account?
+                      <Link to="/signup" style={{ textDecoration: "none" }}>
+                        Sign up
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </Form>

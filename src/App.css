@@ -323,6 +323,8 @@ body {
 .login-signup.btn-wrapper {
   padding-top: 10px;
   display: flex;
+  flex-direction: column;
+  width: 100%;
   justify-content: space-evenly;
 }
 .login-signup.btn a {
@@ -343,23 +345,26 @@ body {
 .login-btn {
   border: 0;
   background: none;
-  color: #005580;
+  color: white;
+  background-color: #0088cc;
+  padding: 4px 0;
+  border-radius: 2px;
 }
 hr {
   margin: 6px 0 0 0;
 }
 .login-btn:hover {
-  color: #0088cc;
+  background-color: #005580;
 }
 .form-box {
   padding: 4.5%;
-  height: 225px;
+  height: 150px;
   width: 225px;
   color: black;
   background-color: white;
   border-radius: 3px;
   box-shadow: 0 2px 0.25rem 2px rgba(0, 0, 0, 0.2);
-  margin-top: 10%;
+  margin-top: 7.5%;
 }
 .l-s.h {
   font-size: 32px;
@@ -370,11 +375,7 @@ hr {
 .profile-page {
   display: flex;
   justify-content: center;
-  align-content: center;
-  padding: 2.5%;
-  background-size: cover;
-  height: 100vh;
-  background-image: url("./images/bus-station.jpg");
+  height: 100%;
 }
 .middle-s.container {
   background: black;
@@ -741,6 +742,7 @@ hr {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0;
 }
 .purchase-btn {
   height: 20px;
