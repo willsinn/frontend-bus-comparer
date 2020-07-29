@@ -63,12 +63,10 @@ class ConsoleSearchInput extends Component {
         {this.state.open ? (
           <div className="watching-window">
             {this.props.watching.length === 0 ? (
-              <div className="empty-arr-cont">
-                <span className="empty-arr-msg">
-                  You aren't currently watching anything. Search then select a
-                  ticket to watch down below.
-                </span>
-              </div>
+              <span className="empty-arr-msg">
+                You aren't currently watching anything. Search then select a
+                ticket to watch down below.
+              </span>
             ) : (
               <SearchConsoleList
                 results={this.props.results}

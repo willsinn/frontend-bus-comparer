@@ -808,6 +808,9 @@ hr {
   display: flex;
   justify-content: center;
 }
+.empty-arr-msg {
+  margin-top: 36px;
+}
 .edit-btn {
   background-color: #080f38;
   padding: 7.5px;
