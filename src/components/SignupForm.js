@@ -38,7 +38,7 @@ class SignupForm extends Component {
     ) : (
       <div className="signup-page">
         <div className="form-wrapper">
-          <div className="form-box">
+          <div className="form-box" style={{ height: "225px" }}>
             <Form
               onSubmit={this.handleSubmit}
               size="mini"
@@ -69,10 +69,7 @@ class SignupForm extends Component {
                     </>
                   );
                 })}
-                <label
-                  className="login-signup-label"
-                  style={{ marginTop: "24px" }}
-                >
+                <label className="login-signup-label">
                   Confirm your password
                 </label>
                 <input
@@ -86,16 +83,21 @@ class SignupForm extends Component {
                 />
                 <hr />
                 <div className="login-signup btn-wrapper">
-                  <Link
-                    to="/login"
-                    style={{ textDecoration: "none" }}
-                    className="login-btn"
-                  >
-                    <span type="img">Log in</span>
-                  </Link>
                   <button className="login-btn " type="submit">
                     Sign up
                   </button>
+                  <div
+                    className="row"
+                    style={{
+                      marginTop: "8px",
+                      justifyContent: "space-around",
+                    }}
+                  >
+                    Already have an account?
+                    <Link to="/login" style={{ textDecoration: "none" }}>
+                      Log in
+                    </Link>
+                  </div>
                 </div>
               </div>
             </Form>

@@ -10,6 +10,7 @@ class LoginForm extends React.Component {
   state = {
     username: "",
     password: "",
+    error: "",
   };
   // handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
@@ -21,8 +22,10 @@ class LoginForm extends React.Component {
   handleLoginSubmit = (e) => {
     //semantic forms preventDefault for you
     // e.preventDefault()
-    this.props.loginUser(this.state.username, this.state.password); //comes from mapDispatchToProps
-    this.setState({ username: "", password: "" }); //reset form to initial state
+    if (e) {
+      this.props.loginUser(this.state.username, this.state.password);
+      this.setState({ username: "", password: "" });
+    }
   };
 
   render() {
@@ -33,18 +36,22 @@ class LoginForm extends React.Component {
       <div className="login-page">
         <div className="form-wrapper">
           <div className="form-box">
+            {this.props.failedLogin ? (
+              <div
+                className="sch-msg-red"
+                style={{ width: "220px", position: "absolute" }}
+              >
+                {this.props.error}
+              </div>
+            ) : null}
             <Segment>
               <Form
-                onSubmit={this.handleLoginSubmit}
+                onSubmit={(e) => this.handleLoginSubmit(e)}
                 size="mini"
                 key="mini"
                 loading={this.props.authenticatingUser}
                 error={this.props.failedLogin}
               >
-                <Message
-                  error
-                  header={this.props.failedLogin ? this.props.error : null}
-                />
                 <div className="login-signup input-wrapper">
                   <label className="login-signup-label">Username</label>
                   <input
@@ -74,7 +81,7 @@ class LoginForm extends React.Component {
                       className="row"
                       style={{
                         marginTop: "8px",
-                        justifyContent: "space-between",
+                        justifyContent: "space-around",
                       }}
                     >
                       Don't have an account?
@@ -93,15 +100,6 @@ class LoginForm extends React.Component {
   }
 }
 
-// const mapStateToProps = (reduxStoreState) => {
-//   return {
-//     authenticatingUser: reduxStoreState.usersReducer.authenticatingUser,
-//     failedLogin: reduxStoreState.usersReducer.failedLogin,
-//     error: reduxStoreState.usersReducer.error,
-//     loggedIn: reduxStoreState.usersReducer.loggedIn
-//   }
-// }
-
 const mapStateToProps = ({
   usersReducer: { authenticatingUser, failedLogin, error, loggedIn },
 }) => ({
@@ -110,17 +108,5 @@ const mapStateToProps = ({
   error,
   loggedIn,
 });
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     loginUser: (username, password) => dispatch(loginUser(username, password))
-//   }
-// }
-
-// const connectedToReduxHOC = connect(mapStateToProps, mapDispatchToProps)
-// const connectedToReduxLoginForm = connectedToReduxHOC(LoginForm)
-// const connectedToReduxHOCWithRouterLoginForm = withRouter(connectedToReduxLoginForm)
-//
-// export default connectedToReduxHOCWithRouterLoginForm
 
 export default withRouter(connect(mapStateToProps, { loginUser })(LoginForm));

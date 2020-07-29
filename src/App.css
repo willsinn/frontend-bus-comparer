@@ -2,7 +2,7 @@
   font-family: "Helvetica Neue", Arial;
 }
 label {
-  margin-top: 5px;
+  margin-top: 2px;
   margin-bottom: 0;
 }
 body {
@@ -306,6 +306,7 @@ body {
   background-color: inherit;
   font-size: 14.5px;
   color: black;
+  border: 1.25px solid #003e74;
 }
 .login-signup.input:hover {
   background-color: #eeecec;
@@ -357,6 +358,7 @@ hr {
   background-color: #005580;
 }
 .form-box {
+  position: relative;
   padding: 4.5%;
   height: 150px;
   width: 225px;
