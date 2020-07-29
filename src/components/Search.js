@@ -113,6 +113,7 @@ class Search extends Component {
   };
 
   render() {
+    console.log(this.state.items);
     const msg = this.state.message;
     const sVal = this.state.message.split("   ");
     return (

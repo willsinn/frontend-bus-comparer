@@ -24,14 +24,22 @@ const Nav = ({ user, location: { pathname } }) => {
             <h3>BUS COMPARER</h3>
           </div>
           <div className="right-nav btn-wrap">
-            <Link className="nav-m-i btn" to="/search">
+            <Link
+              className="nav-m-i"
+              to="/search"
+              style={{ textDecoration: "none" }}
+            >
               Search
             </Link>
-            <Link className="nav-m-i btn" to="/profile">
+            <Link
+              className="nav-m-i"
+              to="/profile"
+              style={{ textDecoration: "none" }}
+            >
               Profile
             </Link>
             <div
-              className="nav-m-i btn"
+              className="nav-m-i"
               styles={{ borderStyle: "none" }}
               onClick={(e) => handleLogoutClick(e)}
             >

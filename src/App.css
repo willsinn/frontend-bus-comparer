@@ -174,7 +174,7 @@ body {
 .landing-bg {
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: ;
   position: absolute;
 }
 
@@ -210,15 +210,15 @@ body {
   justify-content: center;
   align-items: center;
 }
-.nav-m-i.btn {
-  font-size: 14.5px;
+.nav-m-i {
+  font-size: 16px;
   text-decoration: none;
   color: black;
   border: 0;
-  background: transparent;
   margin: 0 20px;
+  font-weight: 700;
 }
-.nav-m-i.btn:hover {
+.nav-m-i:hover {
   color: #003e74;
 }
 
@@ -415,10 +415,9 @@ hr {
   box-shadow: 2px 2px 2px;
 }
 .render-search-console {
-  width: 70%;
+  width: 100%;
   background: #003e74;
   height: 120px;
-  border-radius: 3px;
   margin-top: 16px;
 }
 .error-render {
