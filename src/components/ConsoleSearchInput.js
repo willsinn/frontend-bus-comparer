@@ -45,7 +45,7 @@ class ConsoleSearchInput extends Component {
         <div
           className="row"
           style={{
-            width: "150px",
+            width: "100px",
             justifyContent: "space-between",
             color: "white",
             height: "40px",
@@ -62,13 +62,22 @@ class ConsoleSearchInput extends Component {
         </div>
         {this.state.open ? (
           <div className="watching-window">
-            <SearchConsoleList
-              results={this.props.results}
-              items={this.props.items}
-              watching={this.props.watching}
-              handleRemoveWatching={this.props.handleRemoveWatching}
-              open={this.state.open}
-            />
+            {this.props.watching.length === 0 ? (
+              <div className="empty-arr-cont">
+                <span className="empty-arr-msg">
+                  You aren't currently watching anything. Search then select a
+                  ticket to watch down below.
+                </span>
+              </div>
+            ) : (
+              <SearchConsoleList
+                results={this.props.results}
+                items={this.props.items}
+                watching={this.props.watching}
+                handleRemoveWatching={this.props.handleRemoveWatching}
+                open={this.state.open}
+              />
+            )}
           </div>
         ) : null}
       </div>

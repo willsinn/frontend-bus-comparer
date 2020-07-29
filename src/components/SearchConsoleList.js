@@ -43,7 +43,9 @@ const SearchConsoleList = (props) => {
       {!props.open ? (
         <div className="body-container">
           {props.results.length === 0 ? (
-            <div>Find your bus</div>
+            <div className="empty-arr-cont">
+              <span className="empty-arr-msg">No current searches.</span>
+            </div>
           ) : (
             <div className="search-content-wrapper">
               <div className="center">{renderConsoleItems()}</div>
