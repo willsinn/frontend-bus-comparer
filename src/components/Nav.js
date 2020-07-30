@@ -20,7 +20,6 @@ const Nav = ({ user, location: { pathname } }) => {
           style={{
             backgroundColor: "#003e74",
             justifyContent: "center",
-            marginRight: "7.5%",
           }}
         >
           <img
@@ -43,6 +42,19 @@ const Nav = ({ user, location: { pathname } }) => {
       ) : (
         <div className="navbar">
           <div className="left-nav btn-wrap">
+            <img
+              src={require("../images/app-logo.png")}
+              height="40px"
+              width="40px"
+              alt=""
+              className="landing-bg"
+              style={{
+                position: "relative",
+                height: "52px",
+                weight: "40px",
+                marginTop: "8px",
+              }}
+            />
             <h3>BUS COMPARER</h3>
           </div>
           <div className="right-nav btn-wrap">

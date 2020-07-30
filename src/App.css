@@ -174,7 +174,7 @@ body {
 .landing-bg {
   background-position: center;
   background-repeat: no-repeat;
-  background-size: ;
+  background-size: cover;
   position: absolute;
 }
 
