@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import SearchConsole from "./SearchConsole";
 import SearchConsoleList from "./SearchConsoleList";
 import { connect } from "react-redux";
-import SearchList from "./SearchList";
 import withAuth from "../hocs/withAuth";
 
 const uuidv4 = require("uuid/v4");
