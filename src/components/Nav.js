@@ -36,7 +36,7 @@ const Nav = ({ user, location: { pathname } }) => {
             }}
           />
           <h3 style={{ color: "white", marginLeft: "12px", paddingTop: "4px" }}>
-            BUS COMPARER
+            Bus Comparer
           </h3>
         </div>
       ) : (
@@ -53,9 +53,10 @@ const Nav = ({ user, location: { pathname } }) => {
                 height: "52px",
                 weight: "40px",
                 marginTop: "8px",
+                marginRight: "12px",
               }}
             />
-            <h3>BUS COMPARER</h3>
+            <h3>Bus Comparer</h3>
           </div>
           <div className="right-nav btn-wrap">
             <Link
