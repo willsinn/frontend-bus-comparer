@@ -15,8 +15,30 @@ const Nav = ({ user, location: { pathname } }) => {
   return (
     <>
       {user === null ? (
-        <div className="navbar" style={{ backgroundColor: "#003e74" }}>
-          <h3 style={{ color: "white", marginRight: "7.5%" }}>BUS COMPARER</h3>
+        <div
+          className="navbar"
+          style={{
+            backgroundColor: "#003e74",
+            justifyContent: "center",
+            marginRight: "7.5%",
+          }}
+        >
+          <img
+            src={require("../images/app-logo.png")}
+            height="40px"
+            width="40px"
+            alt=""
+            className="landing-bg"
+            style={{
+              position: "relative",
+              height: "52px",
+              weight: "40px",
+              marginTop: "8px",
+            }}
+          />
+          <h3 style={{ color: "white", marginLeft: "12px", paddingTop: "4px" }}>
+            BUS COMPARER
+          </h3>
         </div>
       ) : (
         <div className="navbar">
