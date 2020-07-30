@@ -220,7 +220,8 @@ body {
 .nav-m-i:hover {
   color: #003e74;
 }
-.login-page {
+.login-page,
+.signup-page {
   background-color: #fff;
   height: 100%;
 }

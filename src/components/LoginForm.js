@@ -37,7 +37,7 @@ class LoginForm extends React.Component {
             width: "175px",
             left: "25%",
             bottom: "100px",
-            position: "fixed",
+            position: "absolute",
           }}
         />
         <img
@@ -49,7 +49,7 @@ class LoginForm extends React.Component {
             width: "450px",
             right: "20%",
             bottom: "0",
-            position: "fixed",
+            position: "absolute",
           }}
         />
         <div className="form-wrapper">
