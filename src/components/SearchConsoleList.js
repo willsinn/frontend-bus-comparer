@@ -42,9 +42,13 @@ const SearchConsoleList = (props) => {
       {/* <div className="add-to-watchlist">{props.addMsg}</div> */}
       {!props.open ? (
         <div className="body-container">
-          <div className="search-content-wrapper">
-            <div className="center">{renderConsoleItems()}</div>
-          </div>
+          {props.results.length === 0 ? (
+            <span className="empty-arr-msg">No current searches.</span>
+          ) : (
+            <div className="search-content-wrapper">
+              <div className="center">{renderConsoleItems()}</div>
+            </div>
+          )}
         </div>
       ) : (
         <div className="watchlist-wrapper">{renderWatchlistItems()}</div>

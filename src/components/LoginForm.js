@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { withRouter, Redirect } from "react-router";
 import { loginUser } from "../actions/user";
 import { Link } from "react-router-dom";
-import { Form, Segment, Message } from "semantic-ui-react";
+import { Form, Segment } from "semantic-ui-react";
 // import { bindActionCreators } from 'redux'
 
 class LoginForm extends React.Component {
@@ -11,40 +11,69 @@ class LoginForm extends React.Component {
     username: "",
     password: "",
   };
-  // handleChange = (e, { name, value }) => this.setState({ [name]: value })
 
-  handleChange = (e, semanticInputData) => {
-    // this.setState({ [semanticInputData.name]: semanticInputData.value })
+  handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
   handleLoginSubmit = (e) => {
-    //semantic forms preventDefault for you
-    // e.preventDefault()
-    this.props.loginUser(this.state.username, this.state.password); //comes from mapDispatchToProps
-    this.setState({ username: "", password: "" }); //reset form to initial state
+    if (e) {
+      this.props.loginUser(this.state.username, this.state.password);
+      this.setState({ username: "", password: "" });
+    }
   };
 
   render() {
-    console.log("%c LOGIN FORM PROPS: ", "color: red", this.props);
     return this.props.loggedIn ? (
       <Redirect to="/search" />
     ) : (
       <div className="login-page">
+        <img
+          src={require("../images/bus-stop.png")}
+          alt=""
+          className="landing-bg"
+          style={{
+            height: "175px",
+            width: "175px",
+            left: "25%",
+            bottom: "100px",
+            position: "absolute",
+          }}
+        />
+        <img
+          src={require("../images/bus.png")}
+          alt=""
+          className="landing-bg"
+          style={{
+            height: "375px",
+            width: "450px",
+            right: "20%",
+            bottom: "0",
+            position: "absolute",
+          }}
+        />
         <div className="form-wrapper">
           <div className="form-box">
+            {this.props.failedLogin ? (
+              <div
+                className="sch-msg-red"
+                style={{
+                  width: "220px",
+                  position: "absolute",
+                  top: "40px",
+                }}
+              >
+                {this.props.error}
+              </div>
+            ) : null}
             <Segment>
               <Form
-                onSubmit={this.handleLoginSubmit}
+                onSubmit={(e) => this.handleLoginSubmit(e)}
                 size="mini"
                 key="mini"
                 loading={this.props.authenticatingUser}
                 error={this.props.failedLogin}
               >
-                <Message
-                  error
-                  header={this.props.failedLogin ? this.props.error : null}
-                />
                 <div className="login-signup input-wrapper">
                   <label className="login-signup-label">Username</label>
                   <input
@@ -70,13 +99,18 @@ class LoginForm extends React.Component {
                     <button className="login-btn" type="submit">
                       Log in
                     </button>
-                    <Link
-                      to="/signup"
-                      style={{ textDecoration: "none" }}
-                      className="login-btn"
+                    <div
+                      className="row"
+                      style={{
+                        marginTop: "8px",
+                        justifyContent: "space-around",
+                      }}
                     >
-                      Sign up
-                    </Link>
+                      Don't have an account?
+                      <Link to="/signup" style={{ textDecoration: "none" }}>
+                        Sign up
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </Form>
@@ -88,15 +122,6 @@ class LoginForm extends React.Component {
   }
 }
 
-// const mapStateToProps = (reduxStoreState) => {
-//   return {
-//     authenticatingUser: reduxStoreState.usersReducer.authenticatingUser,
-//     failedLogin: reduxStoreState.usersReducer.failedLogin,
-//     error: reduxStoreState.usersReducer.error,
-//     loggedIn: reduxStoreState.usersReducer.loggedIn
-//   }
-// }
-
 const mapStateToProps = ({
   usersReducer: { authenticatingUser, failedLogin, error, loggedIn },
 }) => ({
@@ -105,17 +130,5 @@ const mapStateToProps = ({
   error,
   loggedIn,
 });
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     loginUser: (username, password) => dispatch(loginUser(username, password))
-//   }
-// }
-
-// const connectedToReduxHOC = connect(mapStateToProps, mapDispatchToProps)
-// const connectedToReduxLoginForm = connectedToReduxHOC(LoginForm)
-// const connectedToReduxHOCWithRouterLoginForm = withRouter(connectedToReduxLoginForm)
-//
-// export default connectedToReduxHOCWithRouterLoginForm
 
 export default withRouter(connect(mapStateToProps, { loginUser })(LoginForm));

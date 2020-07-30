@@ -22,7 +22,7 @@ class SignupForm extends Component {
 
   handleSubmit = () => {
     if (this.state.password !== this.state.confirmPassword) {
-      this.setState({ error: "Passwords dont match" });
+      this.setState({ error: "Passwords dont match." });
     } else {
       this.props.setUpUser(this.state.username, this.state.password);
     }
@@ -37,8 +37,44 @@ class SignupForm extends Component {
       <Redirect to="/profile" />
     ) : (
       <div className="signup-page">
+        <img
+          src={require("../images/bus-stop.png")}
+          alt=""
+          className="landing-bg"
+          style={{
+            height: "175px",
+            width: "175px",
+            left: "25%",
+            bottom: "100px",
+            position: "absolute",
+          }}
+        />
+        <img
+          src={require("../images/bus.png")}
+          alt=""
+          className="landing-bg"
+          style={{
+            height: "375px",
+            width: "450px",
+            right: "20%",
+            bottom: "0",
+            position: "absolute",
+          }}
+        />
         <div className="form-wrapper">
-          <div className="form-box">
+          <div className="form-box" style={{ height: "225px" }}>
+            {this.state.error ? (
+              <div
+                className="sch-msg-red"
+                style={{
+                  width: "220px",
+                  position: "absolute",
+                  top: "40px",
+                }}
+              >
+                {this.state.error}
+              </div>
+            ) : null}
             <Form
               onSubmit={this.handleSubmit}
               size="mini"
@@ -46,10 +82,6 @@ class SignupForm extends Component {
               loading={this.props.authenticatingUser}
               error={this.props.failedLogin}
             >
-              <Message
-                error
-                header={this.state.error ? this.state.error : null}
-              />
               <div className="login-signup input-wrapper">
                 {signupFields.map((field) => {
                   return (
@@ -69,10 +101,7 @@ class SignupForm extends Component {
                     </>
                   );
                 })}
-                <label
-                  className="login-signup-label"
-                  style={{ marginTop: "24px" }}
-                >
+                <label className="login-signup-label">
                   Confirm your password
                 </label>
                 <input
@@ -86,16 +115,21 @@ class SignupForm extends Component {
                 />
                 <hr />
                 <div className="login-signup btn-wrapper">
-                  <Link
-                    to="/login"
-                    style={{ textDecoration: "none" }}
-                    className="login-btn"
-                  >
-                    <span type="img">Log in</span>
-                  </Link>
                   <button className="login-btn " type="submit">
                     Sign up
                   </button>
+                  <div
+                    className="row"
+                    style={{
+                      marginTop: "8px",
+                      justifyContent: "space-around",
+                    }}
+                  >
+                    Already have an account?
+                    <Link to="/login" style={{ textDecoration: "none" }}>
+                      Log in
+                    </Link>
+                  </div>
                 </div>
               </div>
             </Form>
