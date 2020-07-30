@@ -32,16 +32,27 @@ class LoginForm extends React.Component {
           src={require("../images/bus-stop.png")}
           alt=""
           className="landing-bg"
-          style={{ height: "275px", width: "275px" }}
+          style={{
+            height: "175px",
+            width: "175px",
+            left: "25%",
+            bottom: "100px",
+            position: "fixed",
+          }}
         />
-
+        <img
+          src={require("../images/bus.png")}
+          alt=""
+          className="landing-bg"
+          style={{
+            height: "375px",
+            width: "450px",
+            right: "20%",
+            bottom: "0",
+            position: "fixed",
+          }}
+        />
         <div className="form-wrapper">
-          <img
-            src={require("../images/bus.png")}
-            alt=""
-            className="landing-bg"
-            style={{ height: "200px", width: "200px" }}
-          />
           <div className="form-box">
             {this.props.failedLogin ? (
               <div
