@@ -68,6 +68,10 @@ body {
   padding-top: 0.65em;
   padding-bottom: 0.4em;
 }
+.btn-container {
+  display: flex;
+  margin-left: 8px;
+}
 .console-column.content {
   background: #f1a0a740;
 }
@@ -392,8 +396,6 @@ hr {
   width: 265px;
   height: 265px;
   border-radius: 12em;
-  border: 2px ridge black;
-  box-shadow: -2px -2px -2px;
 }
 .edit-fields-wrapper {
   display: flex;
@@ -481,13 +483,8 @@ hr {
   height: 100%;
   background-color: #405024;
 }
-.editing-avatar {
+.editing-container {
   display: flex;
-  justify-content: space-between;
-  height: 100%;
-  margin-top: -15px;
-  background-color: #405024;
-  align-items: center;
 }
 .edit-user-text {
   display: flex;
@@ -496,8 +493,6 @@ hr {
   align-items: center;
 }
 .edit-input.field {
-  height: 57.5%;
-  width: inherit;
 }
 .toggle-watchlist.btn {
   height: 35px;
@@ -806,6 +801,9 @@ hr {
 .empty-arr-msg {
   margin-top: 36px;
 }
+.edit-btn {
+  margin-left: 4px;
+}
 /* .edit-btn {
   background-color: #080f38;
   padding: 7.5px;
@@ -853,14 +851,9 @@ hr {
 .editing-header {
   display: flex;
   height: 100%;
-  padding: 0.75em;
   justify-content: space-evenly;
   width: 100%;
   align-items: center;
-}
-.editing-header input {
-  height: 57.5%;
-  width: inherit;
 }
 .link-emoji {
   margin-left: 20px;
@@ -881,30 +874,6 @@ hr {
   color: green;
 }
 
-.ein.se.btn {
-  background-color: inherit;
-  border-style: none;
-  border: 0;
-}
-
-.ein-se {
-  font-size: 27.5px;
-}
-
-.ein-se.x {
-  color: red;
-}
-.ein-se.check {
-  color: green;
-}
-.ein-se.x:hover {
-  font-size: 29.5px;
-  font-weight: bold;
-}
-.ein-se.check:hover {
-  font-size: 29.5px;
-  font-weight: bold;
-}
 .table-content-wrapper {
   height: inherit;
   width: 100%;
