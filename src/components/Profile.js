@@ -116,51 +116,54 @@ class Profile extends Component {
 
     return (
       <div className="profile-page">
-        <div className="body-container" style={{ width: "60%" }}>
+        <div
+          className="body-container"
+          style={{ width: "60%", flexDirection: "column" }}
+        >
           <div className="avatar-wrapper">
             <div className="avatar-frame">
               <img className="profile-avatar" src={user.avatar} alt="" />
-            </div>
-
-            <div className="avatar-btn-wrapper">
-              {!this.state.editAvatar ? (
-                <>
-                  <div className="avatar-btn">
-                    <button
-                      className="edit-btn"
-                      onClick={this.toggleEdit("editAvatar")}
-                    >
-                      <span>Update</span>
-                    </button>
+              <div className="avatar-btn-wrapper">
+                {!this.state.editAvatar ? (
+                  <>
+                    <div className="avatar-btn">
+                      <button
+                        className="edit-btn"
+                        onClick={this.toggleEdit("editAvatar")}
+                      >
+                        <span>Update</span>
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                  <div className="editing-container">
+                    <div className="editing-header">
+                      <div className="edit-title">Update image address</div>
+                      <input
+                        className="edit-input-field"
+                        style={{ margin: "0", borderRadius: "2px" }}
+                        type="text"
+                        placeholder="Paste new image address."
+                        onChange={this.handleChange("avatar")}
+                      />
+                    </div>
+                    <div className="btn-container">
+                      <button
+                        className="edit-btn login-btn"
+                        onClick={this.handleUpdate("avatar")}
+                      >
+                        <span>Save</span>
+                      </button>
+                      <button
+                        className="edit-btn login-btn"
+                        onClick={this.toggleEdit("editAvatar")}
+                      >
+                        <span>Exit</span>
+                      </button>
+                    </div>
                   </div>
-                </>
-              ) : (
-                <div className="editing-container">
-                  <div className="editing-header">
-                    <input
-                      className="edit-input-field"
-                      style={{ margin: "0" }}
-                      type="text"
-                      placeholder="Add new image address."
-                      onChange={this.handleChange("avatar")}
-                    />
-                  </div>
-                  <div className="btn-container">
-                    <button
-                      className="edit-btn login-btn"
-                      onClick={this.handleUpdate("avatar")}
-                    >
-                      <span>Save</span>
-                    </button>
-                    <button
-                      className="edit-btn login-btn"
-                      onClick={this.toggleEdit("editAvatar")}
-                    >
-                      <span>Exit</span>
-                    </button>
-                  </div>
-                </div>
-              )}
+                )}
+              </div>
             </div>
           </div>
           <div className="btm-profile">
