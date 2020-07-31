@@ -388,6 +388,10 @@ hr {
   padding-bottom: 20px;
   font-weight: 500;
 }
+h3 {
+  font-family: "PT Sans Narrow", sans-serif;
+  color: black;
+}
 .profile-page {
   display: flex;
   justify-content: center;

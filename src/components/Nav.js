@@ -18,7 +18,7 @@ const Nav = ({ user, location: { pathname } }) => {
         <div
           className="navbar"
           style={{
-            backgroundColor: "#003e74",
+            backgroundColor: "#ebecf0",
             justifyContent: "center",
           }}
         >
@@ -35,7 +35,7 @@ const Nav = ({ user, location: { pathname } }) => {
               marginTop: "8px",
             }}
           />
-          <h3 style={{ color: "white", marginLeft: "12px", paddingTop: "4px" }}>
+          <h3 style={{ marginLeft: "12px", paddingTop: "4px" }}>
             Bus Comparer
           </h3>
         </div>

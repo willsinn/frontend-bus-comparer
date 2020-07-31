@@ -36,7 +36,7 @@ class LoginForm extends React.Component {
             height: "175px",
             width: "175px",
             left: "25%",
-            bottom: "100px",
+            bottom: "50px",
             position: "absolute",
           }}
         />
@@ -48,7 +48,7 @@ class LoginForm extends React.Component {
             height: "375px",
             width: "450px",
             right: "20%",
-            bottom: "0",
+            bottom: "-50px",
             position: "absolute",
           }}
         />
