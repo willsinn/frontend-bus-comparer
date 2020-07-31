@@ -49,7 +49,7 @@ export const fetchCurrentUser = () => {
   };
 };
 
-export const setUpUser = (username, password) => {
+export const setUpUser = (user) => {
   return (dispatch) => {
     dispatch({ type: "AUTHENTICATING_USER" });
     fetch("https://backend-final-project.herokuapp.com/api/v1/users", {
@@ -60,8 +60,9 @@ export const setUpUser = (username, password) => {
       },
       body: JSON.stringify({
         user: {
-          username: username,
-          password: password,
+          username: user.username,
+          password: user.password,
+          avatar: user.avatar,
         },
       }),
     })

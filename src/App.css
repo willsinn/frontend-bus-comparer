@@ -387,14 +387,7 @@ hr {
 .middle-s.container {
   background: black;
 }
-.profile-wrapper {
-  width: 35vw;
-  height: 85vh;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-between;
-}
+
 .profile-avatar {
   width: 265px;
   height: 265px;
@@ -409,13 +402,13 @@ hr {
   width: inherit;
 }
 .avatar-wrapper {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   justify-content: center;
   background-color: #1b1b1f;
   width: 390px;
   border: 3px ridge darkgray;
-  box-shadow: 2px 2px 2px;
+  box-shadow: 2px 2px 2px; */
 }
 .render-search-console {
   width: 100%;
@@ -448,7 +441,6 @@ hr {
 .avatar-frame {
   display: flex;
   justify-content: center;
-  margin: 8% 6.5%;
 }
 .edit-bio-wrapper {
   display: flex;
@@ -814,7 +806,7 @@ hr {
 .empty-arr-msg {
   margin-top: 36px;
 }
-.edit-btn {
+/* .edit-btn {
   background-color: #080f38;
   padding: 7.5px;
   height: inherit;
@@ -834,7 +826,7 @@ hr {
 }
 .edit-btn:hover {
   border: 2.5px inset whitesmoke;
-}
+} */
 .top-box {
   height: inherit;
   display: flex;

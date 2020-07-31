@@ -21,10 +21,16 @@ class SignupForm extends Component {
   };
 
   handleSubmit = () => {
+    const defaultUrl =
+      "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pngwing.com%2Fen%2Ffree-png-zlrqq&psig=AOvVaw1nOPlu_2aJTPN5zvFAnJcD&ust=1596296269500000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLj7_pfp9-oCFQAAAAAdAAAAABAJ";
     if (this.state.password !== this.state.confirmPassword) {
       this.setState({ error: "Passwords dont match." });
     } else {
-      this.props.setUpUser(this.state.username, this.state.password);
+      this.props.setUpUser({
+        username: this.state.username,
+        password: this.state.password,
+        avatar: defaultUrl,
+      });
     }
   };
   render() {

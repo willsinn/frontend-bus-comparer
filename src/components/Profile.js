@@ -116,69 +116,65 @@ class Profile extends Component {
 
     return (
       <div className="profile-page">
-        <div className="profile-wrapper">
+        <div className="body-container" style={{ width: "60%" }}>
           <div className="avatar-wrapper">
             <div className="avatar-frame">
               <img className="profile-avatar" src={user.avatar} alt="" />
             </div>
 
             <div className="avatar-btn-wrapper">
-              {!this.state.editAvatar ? (
-                <>
-                  <div className="avatar-btn">
-                    <button
-                      className="edit-btn"
-                      onClick={this.toggleEdit("editAvatar")}
-                    >
-                      <span> Change Avatar </span>
-                    </button>
-                  </div>
-                </>
-              ) : (
-                <div className="editing-avatar">
-                  <span role="img" className="link-emoji" aria-label="">
-                    {" "}
-                    🔗{" "}
-                  </span>
-                  <div className="editing-header">
-                    <input
-                      className="edit-input field"
-                      type="text"
-                      placeholder="URL only."
-                      onChange={this.handleChange("avatar")}
-                    />
-                  </div>
-                  <div className="editing input-form">
-                    <button
-                      className="ein se btn"
-                      onClick={this.handleUpdate("avatar")}
-                    >
-                      <span
-                        role="img"
-                        className="ein-se check"
-                        aria-label="save-edit"
+              {/* {!this.state.editAvatar ? (
+                  <>
+                    <div className="avatar-btn">
+                      <button
+                        className="edit-btn"
+                        onClick={this.toggleEdit("editAvatar")}
                       >
-                        {" "}
-                        ✓{" "}
-                      </span>
-                    </button>
-                    <button
-                      className="ein se btn"
-                      onClick={this.toggleEdit("editAvatar")}
-                    >
-                      {" "}
-                      <span
-                        role="img"
-                        className="ein-se x"
-                        aria-label="x-quit-edit"
+                        <span> Change Avatar </span>
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                  <div className="editing-avatar">
+                    <span role="img" className="link-emoji" aria-label="">
+                      🔗
+                    </span>
+                    <div className="editing-header">
+                      <input
+                        className="edit-input field"
+                        type="text"
+                        placeholder="URL only."
+                        onChange={this.handleChange("avatar")}
+                      />
+                    </div>
+                    <div className="editing input-form">
+                      <button
+                        className="ein se btn"
+                        onClick={this.handleUpdate("avatar")}
                       >
-                        {" "}
-                        ✘{" "}
-                      </span>
-                    </button>
+                        <span
+                          role="img"
+                          className="ein-se check"
+                          aria-label="save-edit"
+                        >
+                          ✓
+                        </span>
+                      </button>
+                      <button
+                        className="ein se btn"
+                        onClick={this.toggleEdit("editAvatar")}
+                      >
+                        <span
+                          role="img"
+                          className="ein-se x"
+                          aria-label="x-quit-edit"
+                        >
+                          ✘
+                        </span>
+                      </button>
+                    </div>
                   </div>
-                </div>
-              )}
+                )} */}
             </div>
           </div>
           <div className="btm-profile">
@@ -206,7 +202,7 @@ class Profile extends Component {
                           >
                             <span role="img" aria-label="edit pencil">
                               EDIT ✏️
-                            </span>{" "}
+                            </span>
                           </button>
                         </div>
                       </div>
@@ -231,22 +227,19 @@ class Profile extends Component {
                                   className="ein-se check"
                                   aria-label="save-edit"
                                 >
-                                  {" "}
-                                  ✓{" "}
+                                  ✓
                                 </span>
                               </button>
                               <button
                                 className="ein se btn"
                                 onClick={this.toggleEdit("editUsername")}
                               >
-                                {" "}
                                 <span
                                   role="img"
                                   className="ein-se x"
                                   aria-label="x-quit-edit"
                                 >
-                                  {" "}
-                                  ✘{" "}
+                                  ✘
                                 </span>
                               </button>
                             </div>
@@ -258,10 +251,7 @@ class Profile extends Component {
                 </div>
                 <div className="profile-fields">
                   <div className="profile-title">
-                    <div className="profile-content-header">
-                      {" "}
-                      Name, Location{" "}
-                    </div>
+                    <div className="profile-content-header">Name, Location</div>
                     <div className="edit-bio-wrapper">
                       {!this.state.editBio ? (
                         <div className="toggle-wrapper">
@@ -269,8 +259,7 @@ class Profile extends Component {
                             {user.bio === "" ? (
                               <div className="add-bio-text">
                                 <span className="add-bio-text">
-                                  {" "}
-                                  Please add name & where you're located{" "}
+                                  Please add name & where you're located
                                 </span>
                               </div>
                             ) : (
@@ -283,7 +272,6 @@ class Profile extends Component {
                               className="edit-btn"
                               onClick={this.toggleEdit("editBio")}
                             >
-                              {" "}
                               <span
                                 className="edit-btn-span"
                                 role="img"
@@ -314,22 +302,19 @@ class Profile extends Component {
                                   role="img"
                                   aria-label="save-edit"
                                 >
-                                  {" "}
-                                  ✓{" "}
+                                  ✓
                                 </span>
                               </button>
                               <button
                                 onClick={this.toggleEdit("editBio")}
                                 className="ein se btn"
                               >
-                                {" "}
                                 <span
                                   className="ein-se x"
                                   srole="img"
                                   aria-label="x-quit-edit"
                                 >
-                                  {" "}
-                                  ✘{" "}
+                                  ✘
                                 </span>
                               </button>
                             </div>
@@ -360,24 +345,5 @@ const mapStateToProps = ({
   username,
   bio,
 });
-//
-// {this.state.activeError[0] === "avatar" ? (
-//   <div>{this.state.activeError[1]}</div>
-// const connectedToReduxHOC = connect(mapStateToProps)
-// const connectedProfile = connectedToReduxHOC(Profile)
-//
-// const withAuthProfile = withAuth(connectedProfile)
-//
-// export default withAuthProfile
-//
-// errors = () => {
-//   if (this.state.activeError[0] === "username") {
-//     return <div>{this.state.activeError[1]}</div>;
-//   } else if (this.state.activeError[0] === "avatar") {
-//     return <div>{this.state.activeError[0]}</div>;
-//   } else {
-//     return null;
-//   }
-//   return;
-// };
+
 export default withAuth(connect(mapStateToProps)(Profile));
