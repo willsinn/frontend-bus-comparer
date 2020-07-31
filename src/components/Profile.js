@@ -128,10 +128,10 @@ class Profile extends Component {
                   <>
                     <div className="avatar-btn">
                       <button
-                        className="edit-btn"
+                        className="edit-btn login-btn"
                         onClick={this.toggleEdit("editAvatar")}
                       >
-                        <span>Update</span>
+                        Update
                       </button>
                     </div>
                   </>
@@ -166,159 +166,120 @@ class Profile extends Component {
               </div>
             </div>
           </div>
-          <div className="btm-profile">
-            {this.state.activeError.length ? (
-              <div className="error-container">
-                <div className="error-render">{this.state.activeError}</div>
-              </div>
-            ) : null}
-            <div className="edit-container">
-              <div className="edit-fields-wrapper">
-                <div className="profile-fields">
-                  <div className="edit-text-fields-wrapper">
-                    <div className="profile-title">
-                      <div className="profile-content-header">Username</div>
-                    </div>
-                    {!this.state.editUsername ? (
-                      <div className="toggle-wrapper">
-                        <div className="top-box">
-                          <div className="error-wrapper">
-                            <div className="user-content">{user.username}</div>
-                          </div>
-                          <button
-                            className="edit-btn"
-                            onClick={this.toggleEdit("editUsername")}
-                          >
-                            <span role="img" aria-label="edit pencil">
-                              EDIT ✏️
-                            </span>
-                          </button>
-                        </div>
-                      </div>
-                    ) : (
-                      <div className="editing-bottom-cont">
-                        <div className="editing-wrapper">
-                          <div className="top-box">
-                            <div className="editing-header">
-                              <input
-                                type="text"
-                                placeholder="Enter new username."
-                                onChange={this.handleChange("username")}
-                              />
-                            </div>
-                            <div className="editing input-form">
-                              <button
-                                className="ein se btn"
-                                onClick={this.handleUpdate("username")}
-                              >
-                                <span
-                                  role="img"
-                                  className="ein-se check"
-                                  aria-label="save-edit"
-                                >
-                                  ✓
-                                </span>
-                              </button>
-                              <button
-                                className="ein se btn"
-                                onClick={this.toggleEdit("editUsername")}
-                              >
-                                <span
-                                  role="img"
-                                  className="ein-se x"
-                                  aria-label="x-quit-edit"
-                                >
-                                  ✘
-                                </span>
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </div>
-                <div className="profile-fields">
-                  <div className="profile-title">
-                    <div className="profile-content-header">Name, Location</div>
-                    <div className="edit-bio-wrapper">
-                      {!this.state.editBio ? (
-                        <div className="toggle-wrapper">
-                          <div className="top-box">
-                            {user.bio === "" ? (
-                              <div className="add-bio-text">
-                                <span className="add-bio-text">
-                                  Please add name & where you're located
-                                </span>
-                              </div>
-                            ) : (
-                              <div className="error-wrapper">
-                                <div className="user-content">{user.bio}</div>
-                              </div>
-                            )}
 
-                            <button
-                              className="edit-btn"
-                              onClick={this.toggleEdit("editBio")}
-                            >
-                              <span
-                                className="edit-btn-span"
-                                role="img"
-                                aria-label="edit pencil"
-                              >
-                                EDIT ✏️
-                              </span>
-                            </button>
-                          </div>
-                        </div>
-                      ) : (
-                        <div className="editing-wrapper">
-                          <div className="top-box">
-                            <div className="editing-header">
-                              <input
-                                type="text"
-                                placeholder=" location of origin."
-                                onChange={this.handleChange("bio")}
-                              />
-                            </div>
-                            <div className="editing input-form">
-                              <button
-                                onClick={this.handleUpdate("bio")}
-                                className="ein se btn"
-                              >
-                                <span
-                                  className="ein-se check"
-                                  role="img"
-                                  aria-label="save-edit"
-                                >
-                                  ✓
-                                </span>
-                              </button>
-                              <button
-                                onClick={this.toggleEdit("editBio")}
-                                className="ein se btn"
-                              >
-                                <span
-                                  className="ein-se x"
-                                  srole="img"
-                                  aria-label="x-quit-edit"
-                                >
-                                  ✘
-                                </span>
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      )}
+          <div className="edit-section">
+            <div className="editing-container">
+              <div className="edit-text-fields-wrapper">
+                <div className="editing-header">
+                  <div className="edit-title">Username</div>
+                </div>
+                <div className="edit-fields-wrapper">
+                  {!this.state.editUsername ? (
+                    <div className="toggle-wrapper">
+                      <div className="error-wrapper">
+                        <div className="user-content">{user.username}</div>
+                      </div>
+                      <div className="avatar-btn">
+                        <button
+                          className="edit-btn login-btn"
+                          onClick={this.toggleEdit("editUsername")}
+                        >
+                          Update
+                        </button>
+                      </div>
                     </div>
-                  </div>
+                  ) : (
+                    <div style={{ display: "flex" }}>
+                      <div className="editing-header">
+                        <input
+                          className="edit-input-field"
+                          style={{ margin: "0", borderRadius: "2px" }}
+                          type="text"
+                          placeholder="Enter new username."
+                          onChange={this.handleChange("username")}
+                        />
+                      </div>
+                      <div style={{ display: "flex" }}>
+                        <button
+                          className="edit-btn login-btn"
+                          onClick={this.handleUpdate("username")}
+                        >
+                          <span>Save</span>
+                        </button>
+                        <button
+                          className="edit-btn login-btn"
+                          onClick={this.toggleEdit("editUsername")}
+                        >
+                          <span>Exit</span>
+                        </button>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
           </div>
-          <Link to="/search" className="buy-link-btn a">
-            Buy Tickets
-          </Link>
+          <div className="edit-section" style={{ marginBottom: "40px" }}>
+            <div className="editing-container">
+              <div className="edit-text-fields-wrapper">
+                <div className="editing-header">
+                  <div className="edit-title">About</div>
+                </div>
+                <div className="edit-fields-wrapper">
+                  {!this.state.editBio ? (
+                    <div className="toggle-wrapper">
+                      <div className="error-wrapper">
+                        {user.bio ? (
+                          <div className="user-content">{user.bio}</div>
+                        ) : (
+                          <div
+                            className="user-content"
+                            style={{ color: "darkgray" }}
+                          >
+                            Record your bio now.
+                          </div>
+                        )}
+                      </div>
+                      <div className="avatar-btn">
+                        <button
+                          className="edit-btn login-btn"
+                          onClick={this.toggleEdit("editBio")}
+                        >
+                          Update
+                        </button>
+                      </div>
+                    </div>
+                  ) : (
+                    <div style={{ display: "flex" }}>
+                      <div className="editing-header">
+                        <input
+                          className="edit-input-field"
+                          style={{ margin: "0", borderRadius: "2px" }}
+                          type="text"
+                          placeholder="Enter new username."
+                          onChange={this.handleChange("bio")}
+                        />
+                      </div>
+                      <div style={{ display: "flex" }}>
+                        <button
+                          className="edit-btn login-btn"
+                          onClick={this.handleUpdate("bio")}
+                        >
+                          <span>Save</span>
+                        </button>
+                        <button
+                          className="edit-btn login-btn"
+                          onClick={this.toggleEdit("editBio")}
+                        >
+                          <span>Exit</span>
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );
