@@ -116,235 +116,170 @@ class Profile extends Component {
 
     return (
       <div className="profile-page">
-        <div className="profile-wrapper">
+        <div
+          className="body-container"
+          style={{ width: "60%", flexDirection: "column" }}
+        >
           <div className="avatar-wrapper">
             <div className="avatar-frame">
               <img className="profile-avatar" src={user.avatar} alt="" />
-            </div>
-
-            <div className="avatar-btn-wrapper">
-              {!this.state.editAvatar ? (
-                <>
-                  <div className="avatar-btn">
-                    <button
-                      className="edit-btn"
-                      onClick={this.toggleEdit("editAvatar")}
-                    >
-                      <span> Change Avatar </span>
-                    </button>
-                  </div>
-                </>
-              ) : (
-                <div className="editing-avatar">
-                  <span role="img" className="link-emoji" aria-label="">
-                    {" "}
-                    🔗{" "}
-                  </span>
-                  <div className="editing-header">
-                    <input
-                      className="edit-input field"
-                      type="text"
-                      placeholder="URL only."
-                      onChange={this.handleChange("avatar")}
-                    />
-                  </div>
-                  <div className="editing input-form">
-                    <button
-                      className="ein se btn"
-                      onClick={this.handleUpdate("avatar")}
-                    >
-                      <span
-                        role="img"
-                        className="ein-se check"
-                        aria-label="save-edit"
+              <div className="avatar-btn-wrapper">
+                {!this.state.editAvatar ? (
+                  <>
+                    <div className="avatar-btn">
+                      <button
+                        className="edit-btn login-btn"
+                        onClick={this.toggleEdit("editAvatar")}
                       >
-                        {" "}
-                        ✓{" "}
-                      </span>
-                    </button>
-                    <button
-                      className="ein se btn"
-                      onClick={this.toggleEdit("editAvatar")}
-                    >
-                      {" "}
-                      <span
-                        role="img"
-                        className="ein-se x"
-                        aria-label="x-quit-edit"
+                        Update
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                  <div className="editing-container">
+                    <div className="editing-header">
+                      <div className="edit-title">Update image address</div>
+                      <input
+                        className="edit-input-field"
+                        style={{ margin: "0", borderRadius: "2px" }}
+                        type="text"
+                        placeholder="Paste new image address."
+                        onChange={this.handleChange("avatar")}
+                      />
+                    </div>
+                    <div className="btn-container">
+                      <button
+                        className="edit-btn login-btn"
+                        onClick={this.handleUpdate("avatar")}
                       >
-                        {" "}
-                        ✘{" "}
-                      </span>
-                    </button>
+                        <span>Save</span>
+                      </button>
+                      <button
+                        className="edit-btn login-btn"
+                        onClick={this.toggleEdit("editAvatar")}
+                      >
+                        <span>Exit</span>
+                      </button>
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
+              </div>
             </div>
           </div>
-          <div className="btm-profile">
-            {this.state.activeError.length ? (
-              <div className="error-container">
-                <div className="error-render">{this.state.activeError}</div>
-              </div>
-            ) : null}
-            <div className="edit-container">
-              <div className="edit-fields-wrapper">
-                <div className="profile-fields">
-                  <div className="edit-text-fields-wrapper">
-                    <div className="profile-title">
-                      <div className="profile-content-header">Username</div>
+
+          <div className="edit-section">
+            <div className="editing-container">
+              <div className="edit-text-fields-wrapper">
+                <div className="editing-header">
+                  <div className="edit-title">Username</div>
+                </div>
+                <div className="edit-fields-wrapper">
+                  {!this.state.editUsername ? (
+                    <div className="toggle-wrapper">
+                      <div className="error-wrapper">
+                        <div className="user-content">{user.username}</div>
+                      </div>
+                      <div className="avatar-btn">
+                        <button
+                          className="edit-btn login-btn"
+                          onClick={this.toggleEdit("editUsername")}
+                        >
+                          Update
+                        </button>
+                      </div>
                     </div>
-                    {!this.state.editUsername ? (
-                      <div className="toggle-wrapper">
-                        <div className="top-box">
-                          <div className="error-wrapper">
-                            <div className="user-content">{user.username}</div>
-                          </div>
-                          <button
-                            className="edit-btn"
-                            onClick={this.toggleEdit("editUsername")}
+                  ) : (
+                    <div style={{ display: "flex" }}>
+                      <div className="editing-header">
+                        <input
+                          className="edit-input-field"
+                          style={{ margin: "0", borderRadius: "2px" }}
+                          type="text"
+                          placeholder="Enter new username."
+                          onChange={this.handleChange("username")}
+                        />
+                      </div>
+                      <div style={{ display: "flex" }}>
+                        <button
+                          className="edit-btn login-btn"
+                          onClick={this.handleUpdate("username")}
+                        >
+                          <span>Save</span>
+                        </button>
+                        <button
+                          className="edit-btn login-btn"
+                          onClick={this.toggleEdit("editUsername")}
+                        >
+                          <span>Exit</span>
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="edit-section" style={{ marginBottom: "40px" }}>
+            <div className="editing-container">
+              <div className="edit-text-fields-wrapper">
+                <div className="editing-header">
+                  <div className="edit-title">About</div>
+                </div>
+                <div className="edit-fields-wrapper">
+                  {!this.state.editBio ? (
+                    <div className="toggle-wrapper">
+                      <div className="error-wrapper">
+                        {user.bio ? (
+                          <div className="user-content">{user.bio}</div>
+                        ) : (
+                          <div
+                            className="user-content"
+                            style={{ color: "darkgray" }}
                           >
-                            <span role="img" aria-label="edit pencil">
-                              EDIT ✏️
-                            </span>{" "}
-                          </button>
-                        </div>
+                            Record your bio now.
+                          </div>
+                        )}
                       </div>
-                    ) : (
-                      <div className="editing-bottom-cont">
-                        <div className="editing-wrapper">
-                          <div className="top-box">
-                            <div className="editing-header">
-                              <input
-                                type="text"
-                                placeholder="Enter new username."
-                                onChange={this.handleChange("username")}
-                              />
-                            </div>
-                            <div className="editing input-form">
-                              <button
-                                className="ein se btn"
-                                onClick={this.handleUpdate("username")}
-                              >
-                                <span
-                                  role="img"
-                                  className="ein-se check"
-                                  aria-label="save-edit"
-                                >
-                                  {" "}
-                                  ✓{" "}
-                                </span>
-                              </button>
-                              <button
-                                className="ein se btn"
-                                onClick={this.toggleEdit("editUsername")}
-                              >
-                                {" "}
-                                <span
-                                  role="img"
-                                  className="ein-se x"
-                                  aria-label="x-quit-edit"
-                                >
-                                  {" "}
-                                  ✘{" "}
-                                </span>
-                              </button>
-                            </div>
-                          </div>
-                        </div>
+                      <div className="avatar-btn">
+                        <button
+                          className="edit-btn login-btn"
+                          onClick={this.toggleEdit("editBio")}
+                        >
+                          Update
+                        </button>
                       </div>
-                    )}
-                  </div>
-                </div>
-                <div className="profile-fields">
-                  <div className="profile-title">
-                    <div className="profile-content-header">
-                      {" "}
-                      Name, Location{" "}
                     </div>
-                    <div className="edit-bio-wrapper">
-                      {!this.state.editBio ? (
-                        <div className="toggle-wrapper">
-                          <div className="top-box">
-                            {user.bio === "" ? (
-                              <div className="add-bio-text">
-                                <span className="add-bio-text">
-                                  {" "}
-                                  Please add name & where you're located{" "}
-                                </span>
-                              </div>
-                            ) : (
-                              <div className="error-wrapper">
-                                <div className="user-content">{user.bio}</div>
-                              </div>
-                            )}
-
-                            <button
-                              className="edit-btn"
-                              onClick={this.toggleEdit("editBio")}
-                            >
-                              {" "}
-                              <span
-                                className="edit-btn-span"
-                                role="img"
-                                aria-label="edit pencil"
-                              >
-                                EDIT ✏️
-                              </span>
-                            </button>
-                          </div>
-                        </div>
-                      ) : (
-                        <div className="editing-wrapper">
-                          <div className="top-box">
-                            <div className="editing-header">
-                              <input
-                                type="text"
-                                placeholder=" location of origin."
-                                onChange={this.handleChange("bio")}
-                              />
-                            </div>
-                            <div className="editing input-form">
-                              <button
-                                onClick={this.handleUpdate("bio")}
-                                className="ein se btn"
-                              >
-                                <span
-                                  className="ein-se check"
-                                  role="img"
-                                  aria-label="save-edit"
-                                >
-                                  {" "}
-                                  ✓{" "}
-                                </span>
-                              </button>
-                              <button
-                                onClick={this.toggleEdit("editBio")}
-                                className="ein se btn"
-                              >
-                                {" "}
-                                <span
-                                  className="ein-se x"
-                                  srole="img"
-                                  aria-label="x-quit-edit"
-                                >
-                                  {" "}
-                                  ✘{" "}
-                                </span>
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      )}
+                  ) : (
+                    <div style={{ display: "flex" }}>
+                      <div className="editing-header">
+                        <input
+                          className="edit-input-field"
+                          style={{ margin: "0", borderRadius: "2px" }}
+                          type="text"
+                          placeholder="Enter new username."
+                          onChange={this.handleChange("bio")}
+                        />
+                      </div>
+                      <div style={{ display: "flex" }}>
+                        <button
+                          className="edit-btn login-btn"
+                          onClick={this.handleUpdate("bio")}
+                        >
+                          <span>Save</span>
+                        </button>
+                        <button
+                          className="edit-btn login-btn"
+                          onClick={this.toggleEdit("editBio")}
+                        >
+                          <span>Exit</span>
+                        </button>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               </div>
             </div>
           </div>
-          <Link to="/search" className="buy-link-btn a">
-            Buy Tickets
-          </Link>
         </div>
       </div>
     );
@@ -360,24 +295,5 @@ const mapStateToProps = ({
   username,
   bio,
 });
-//
-// {this.state.activeError[0] === "avatar" ? (
-//   <div>{this.state.activeError[1]}</div>
-// const connectedToReduxHOC = connect(mapStateToProps)
-// const connectedProfile = connectedToReduxHOC(Profile)
-//
-// const withAuthProfile = withAuth(connectedProfile)
-//
-// export default withAuthProfile
-//
-// errors = () => {
-//   if (this.state.activeError[0] === "username") {
-//     return <div>{this.state.activeError[1]}</div>;
-//   } else if (this.state.activeError[0] === "avatar") {
-//     return <div>{this.state.activeError[0]}</div>;
-//   } else {
-//     return null;
-//   }
-//   return;
-// };
+
 export default withAuth(connect(mapStateToProps)(Profile));

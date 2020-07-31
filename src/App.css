@@ -68,6 +68,15 @@ body {
   padding-top: 0.65em;
   padding-bottom: 0.4em;
 }
+.edit-title {
+  font-weight: 500;
+}
+.btn-container {
+  display: flex;
+  margin-left: 8px;
+  height: 44px;
+  align-items: flex-end;
+}
 .console-column.content {
   background: #f1a0a740;
 }
@@ -379,28 +388,27 @@ hr {
   padding-bottom: 20px;
   font-weight: 500;
 }
+h3 {
+  font-family: "PT Sans Narrow", sans-serif;
+  color: black;
+}
 .profile-page {
   display: flex;
   justify-content: center;
   height: 100%;
+  margin-top: 40px;
 }
 .middle-s.container {
   background: black;
 }
-.profile-wrapper {
-  width: 35vw;
-  height: 85vh;
+.edit-section {
   display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
 }
 .profile-avatar {
   width: 265px;
   height: 265px;
   border-radius: 12em;
-  border: 2px ridge black;
-  box-shadow: -2px -2px -2px;
 }
 .edit-fields-wrapper {
   display: flex;
@@ -409,13 +417,8 @@ hr {
   width: inherit;
 }
 .avatar-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-color: #1b1b1f;
-  width: 390px;
-  border: 3px ridge darkgray;
-  box-shadow: 2px 2px 2px;
+  height: 350px;
+  margin-top: 80px;
 }
 .render-search-console {
   width: 100%;
@@ -447,8 +450,8 @@ hr {
 }
 .avatar-frame {
   display: flex;
-  justify-content: center;
-  margin: 8% 6.5%;
+  flex-direction: column;
+  align-items: center;
 }
 .edit-bio-wrapper {
   display: flex;
@@ -475,7 +478,6 @@ hr {
   box-shadow: 2px 2px 2px 2px;
 }
 .edit-text-fields-wrapper {
-  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -489,12 +491,10 @@ hr {
   height: 100%;
   background-color: #405024;
 }
-.editing-avatar {
+.editing-container {
   display: flex;
-  justify-content: space-between;
-  height: 100%;
-  margin-top: -15px;
-  background-color: #405024;
+  height: 50px;
+  padding: 0 12px;
   align-items: center;
 }
 .edit-user-text {
@@ -503,10 +503,7 @@ hr {
   height: inherit;
   align-items: center;
 }
-.edit-input.field {
-  height: 57.5%;
-  width: inherit;
-}
+
 .toggle-watchlist.btn {
   height: 35px;
   width: 200px;
@@ -524,11 +521,6 @@ hr {
 }
 .toggle-wrapper {
   display: flex;
-  height: 100%;
-  width: 100%;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 .add-bio-text {
   color: red;
@@ -583,6 +575,7 @@ hr {
 .avatar-btn-wrapper {
   display: flex;
   height: 50px;
+  width: 300px;
   flex-direction: column;
   justify-content: flex-end;
 }
@@ -596,11 +589,10 @@ hr {
 .user-content {
   display: flex;
   overflow: hidden;
-  color: #405024;
-  font-weight: bold;
-  font-size: 20px;
-  justify-content: center;
+  color: #0088cc;
   align-items: center;
+  margin-left: 8px;
+  width: 250px;
 }
 .table-wrapper {
 }
@@ -815,6 +807,16 @@ hr {
   margin-top: 36px;
 }
 .edit-btn {
+  margin-left: 4px;
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+.edit-input-field {
+  margin: 0;
+  border-radius: 2px;
+  background-color: #ebecf0;
+}
+/* .edit-btn {
   background-color: #080f38;
   padding: 7.5px;
   height: inherit;
@@ -834,7 +836,7 @@ hr {
 }
 .edit-btn:hover {
   border: 2.5px inset whitesmoke;
-}
+} */
 .top-box {
   height: inherit;
   display: flex;
@@ -844,12 +846,10 @@ hr {
   width: 97.5%;
 }
 .error-wrapper {
-  height: inherit;
-  border: 1.5px inset darkgray;
+  height: 26px;
   width: 100%;
-  background-color: whitesmoke;
-  justify-content: center;
-  align-items: center;
+  background-color: #ebecf0;
+  border-radius: 2px;
   display: flex;
 }
 .top-box.username {
@@ -861,14 +861,9 @@ hr {
 .editing-header {
   display: flex;
   height: 100%;
-  padding: 0.75em;
   justify-content: space-evenly;
   width: 100%;
-  align-items: center;
-}
-.editing-header input {
-  height: 57.5%;
-  width: inherit;
+  flex-direction: column;
 }
 .link-emoji {
   margin-left: 20px;
@@ -889,30 +884,6 @@ hr {
   color: green;
 }
 
-.ein.se.btn {
-  background-color: inherit;
-  border-style: none;
-  border: 0;
-}
-
-.ein-se {
-  font-size: 27.5px;
-}
-
-.ein-se.x {
-  color: red;
-}
-.ein-se.check {
-  color: green;
-}
-.ein-se.x:hover {
-  font-size: 29.5px;
-  font-weight: bold;
-}
-.ein-se.check:hover {
-  font-size: 29.5px;
-  font-weight: bold;
-}
 .table-content-wrapper {
   height: inherit;
   width: 100%;

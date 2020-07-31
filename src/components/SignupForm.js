@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { setUpUser } from "../actions/user";
 import { Redirect } from "react-router";
 import { Link } from "react-router-dom";
-import { Form, Message } from "semantic-ui-react";
+import { Form } from "semantic-ui-react";
 
 class SignupForm extends Component {
   state = {
@@ -21,10 +21,15 @@ class SignupForm extends Component {
   };
 
   handleSubmit = () => {
+    const defaultUrl = "https://svgur.com/i/65U.svg";
     if (this.state.password !== this.state.confirmPassword) {
       this.setState({ error: "Passwords dont match." });
     } else {
-      this.props.setUpUser(this.state.username, this.state.password);
+      this.props.setUpUser({
+        username: this.state.username,
+        password: this.state.password,
+        avatar: defaultUrl,
+      });
     }
   };
   render() {
@@ -45,7 +50,7 @@ class SignupForm extends Component {
             height: "175px",
             width: "175px",
             left: "25%",
-            bottom: "100px",
+            bottom: "50px",
             position: "absolute",
           }}
         />
@@ -57,7 +62,7 @@ class SignupForm extends Component {
             height: "375px",
             width: "450px",
             right: "20%",
-            bottom: "0",
+            bottom: "-50px",
             position: "absolute",
           }}
         />
