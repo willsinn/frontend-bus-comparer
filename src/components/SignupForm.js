@@ -42,30 +42,6 @@ class SignupForm extends Component {
       <Redirect to="/profile" />
     ) : (
       <div className="signup-page">
-        <img
-          src={require("../images/bus-stop.png")}
-          alt=""
-          className="landing-bg"
-          style={{
-            height: "175px",
-            width: "175px",
-            left: "25%",
-            bottom: "50px",
-            position: "absolute",
-          }}
-        />
-        <img
-          src={require("../images/bus.png")}
-          alt=""
-          className="landing-bg"
-          style={{
-            height: "375px",
-            width: "450px",
-            right: "20%",
-            bottom: "-50px",
-            position: "absolute",
-          }}
-        />
         <div className="form-wrapper">
           <div className="form-box" style={{ height: "225px" }}>
             {this.state.error ? (

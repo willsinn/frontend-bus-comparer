@@ -14,48 +14,9 @@ const Nav = ({ user, location: { pathname } }) => {
   console.log(user);
   return (
     <>
-      {user === null ? (
-        <div
-          className="navbar"
-          style={{
-            backgroundColor: "#ebecf0",
-            justifyContent: "center",
-          }}
-        >
-          <img
-            src={require("../images/app-logo.png")}
-            height="40px"
-            width="40px"
-            alt=""
-            className="landing-bg"
-            style={{
-              position: "relative",
-              height: "52px",
-              weight: "40px",
-              marginTop: "8px",
-            }}
-          />
-          <h3 style={{ marginLeft: "12px", paddingTop: "4px" }}>
-            Bus Comparer
-          </h3>
-        </div>
-      ) : (
+      {user === null ? null : (
         <div className="navbar">
           <div className="left-nav btn-wrap">
-            <img
-              src={require("../images/app-logo.png")}
-              height="40px"
-              width="40px"
-              alt=""
-              className="landing-bg"
-              style={{
-                position: "relative",
-                height: "52px",
-                weight: "40px",
-                marginTop: "8px",
-                marginRight: "12px",
-              }}
-            />
             <h3>Bus Comparer</h3>
           </div>
           <div className="right-nav btn-wrap">

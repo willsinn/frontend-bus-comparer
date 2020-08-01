@@ -13,7 +13,7 @@ body {
 } */
 
 #root {
-  max-height: 100vh;
+  height: 100vh;
   width: 100%;
   background-color: #ebecf0;
 }
@@ -233,6 +233,11 @@ body {
 .signup-page {
   background-color: #fff;
   height: 100%;
+  width: 100%;
+  background-image: url("./images/landing.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .form-wrapper {
   display: flex;

@@ -28,7 +28,7 @@ class LoginForm extends React.Component {
       <Redirect to="/search" />
     ) : (
       <div className="login-page">
-        <img
+        {/* <img
           src={require("../images/bus-stop.png")}
           alt=""
           className="landing-bg"
@@ -51,7 +51,7 @@ class LoginForm extends React.Component {
             bottom: "-50px",
             position: "absolute",
           }}
-        />
+        /> */}
         <div className="form-wrapper">
           <div className="form-box">
             {this.props.failedLogin ? (
