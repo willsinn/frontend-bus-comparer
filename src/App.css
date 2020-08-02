@@ -102,10 +102,10 @@ body {
 }
 .search-content-wrapper {
   overflow-x: scroll;
-  margin: 12px 12px;
+  margin: 40px 12px 12px 12px;
   border-radius: 2px;
   border: 2px inset darkgray;
-  width: 100%;
+  width: 475px;
 }
 .search-section {
   width: 100%;
@@ -594,6 +594,11 @@ h3 {
   padding-left: 0.5em;
   padding-bottom: 0.5em;
 }
+.list-tab-txt {
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+}
 .user-content {
   display: flex;
   overflow: hidden;
@@ -602,7 +607,17 @@ h3 {
   margin-left: 8px;
   width: 250px;
 }
-.table-wrapper {
+.list-tab {
+  width: 100px;
+  height: 30px;
+  position: absolute;
+  background: rgb(0, 62, 116);
+  border-radius: 8px 8px 0 0;
+  top: -30px;
+  left: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* CONSOLE */
@@ -617,12 +632,14 @@ h3 {
 }
 .body-container {
   height: 450px;
-  width: 450px;
+  width: 600px;
   border-radius: 3px;
   box-shadow: 0 2px 0.25rem 2px rgba(0, 0, 0, 0.2);
   background-color: white;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  position: relative;
 }
 ::-webkit-scrollbar {
   -webkit-appearance: none;
@@ -631,7 +648,7 @@ h3 {
 
 ::-webkit-scrollbar-thumb {
   border-radius: 4px;
-  background-color: #003e74;
+  background-color: darkgray;
   box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
 }
 .watch-btn {
@@ -648,7 +665,7 @@ h3 {
   position: relative;
   height: 48px;
   width: 99.45%;
-  justify-content: space-around;
+  justify-content: space-evenly;
   display: flex;
   align-self: center;
   align-items: center;
@@ -717,7 +734,7 @@ h3 {
 .sch-msg-green {
   display: flex;
   background-color: #3abf3ab5;
-  width: 70%;
+  width: 500px;
   justify-content: center;
   align-items: center;
   height: 24px;
@@ -734,10 +751,8 @@ h3 {
 }
 .sch-msg-wrap {
   display: flex;
-  width: 95%;
   align-items: center;
   flex-direction: column;
-  height: 100%;
   justify-content: center;
   margin-top: 12px;
 }

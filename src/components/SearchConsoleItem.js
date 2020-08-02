@@ -37,12 +37,13 @@ const SearchConsoleItem = (props) => {
         break;
     }
   };
+
   return (
     <div className="console-item">
       {props.handleWatching !== undefined ? (
         <button
           className="watch-btn"
-          onClick={(e) => props.handleWatching(item)}
+          onClick={(e) => props.handleWatching(item, props.watchLocation)}
         >
           ✔︎
         </button>

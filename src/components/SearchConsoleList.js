@@ -3,7 +3,7 @@ import SearchConsoleItem from "./SearchConsoleItem";
 const uuidv4 = require("uuid/v4");
 
 const SearchConsoleList = (props) => {
-  const renderConsoleItems = (arr) => {
+  const renderConsoleItems = (arr, watchLocation) => {
     if (arr && arr.length > 0) {
       let counter = 0;
       return arr.map((item) => {
@@ -14,6 +14,7 @@ const SearchConsoleList = (props) => {
             item={item}
             handleWatching={props.handleWatching}
             counter={counter}
+            watchLocation={watchLocation}
           />
         );
       });
@@ -41,11 +42,15 @@ const SearchConsoleList = (props) => {
     <>
       {props.results && props.results.length > 0 ? (
         <div className="search-content-wrapper">
-          <div className="center">{renderConsoleItems(props.results)}</div>
+          <div className="center">
+            {renderConsoleItems(props.results, "search")}
+          </div>
         </div>
       ) : (
         <div className="search-content-wrapper" style={{ border: "0" }}>
-          <div className="center">{renderConsoleItems(props.items)}</div>
+          <div className="center">
+            {renderConsoleItems(props.items, "masterlist")}
+          </div>
         </div>
       )}
     </>

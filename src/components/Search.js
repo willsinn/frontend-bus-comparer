@@ -15,6 +15,7 @@ class Search extends Component {
     results: [],
     message: "",
     addMsg: "",
+    messageTarget: "",
   };
   componentDidMount() {
     fetch("https://backend-final-project.herokuapp.com/api/v1/searches", {
@@ -85,7 +86,7 @@ class Search extends Component {
     this.setState({ message: message, addMsg: "" });
   };
 
-  handleWatching = (targetValue) => {
+  handleWatching = (targetValue, watchLocation) => {
     const alreadyWatching = [...this.state.watching].filter(
       (value) => value === targetValue
     );
@@ -94,6 +95,7 @@ class Search extends Component {
       this.setState({
         addMsg: addMsg,
         message: "",
+        messageTarget: `${watchLocation}`,
       });
     } else {
       const addMsg = "Successfully added to your watchlist!";
@@ -101,6 +103,7 @@ class Search extends Component {
         watching: [...this.state.watching, targetValue],
         addMsg: addMsg,
         message: "",
+        messageTarget: `${watchLocation}`,
       });
     }
   };
@@ -112,33 +115,28 @@ class Search extends Component {
   };
 
   render() {
-    console.log(this.state.items);
+    console.log(this.state.messageTarget);
     const msg = this.state.message;
     const sVal = this.state.message.split("   ");
+
     return (
       <div className="console-wrapper">
-        <SearchConsole
+        {/* <SearchConsole
           items={this.state.items}
           handleSubmit={this.handleSubmit}
           watching={this.state.watching}
           handleRemoveWatching={this.handleRemoveWatching}
           results={this.state.results}
-        />
+        /> */}
         <div className="search-section">
           <div
             className="body-container"
-            style={{ backgroundColor: "#003e74" }}
+            style={{ backgroundColor: "#003e74", width: "500px" }}
           >
-            <SearchConsoleList
-              watching={this.state.watching}
-              handleRemoveWatching={this.handleRemoveWatching}
-              handleWatching={this.handleWatching}
-              addMsg={this.state.addMsg}
-              items={this.state.items}
-            />
-          </div>
-          <div className="body-container">
-            <div className="sch-msg-wrap">
+            <div className="list-tab">
+              <span className="list-tab-txt">MASTERLIST</span>
+            </div>
+            <span className="sch-msg-wrap">
               {msg !== "" && msg.charAt(0) === "1" ? (
                 <div className="sch-msg-green">{msg}</div>
               ) : null}
@@ -151,14 +149,37 @@ class Search extends Component {
               {this.state.addMsg !== "" && msg.charAt(0) !== "A" ? (
                 <div className="sch-msg-green">{this.state.addMsg}</div>
               ) : null}
-              <SearchConsoleList
-                results={this.state.results}
-                watching={this.state.watching}
-                handleRemoveWatching={this.handleRemoveWatching}
-                handleWatching={this.handleWatching}
-                addMsg={this.state.addMsg}
-              />
-            </div>
+            </span>
+            <SearchConsoleList
+              watching={this.state.watching}
+              handleRemoveWatching={this.handleRemoveWatching}
+              handleWatching={this.handleWatching}
+              addMsg={this.state.addMsg}
+              items={this.state.items}
+            />
+          </div>
+          <div className="body-container" style={{ width: "60%" }}>
+            <span className="sch-msg-wrap">
+              {msg !== "" && msg.charAt(0) === "1" ? (
+                <div className="sch-msg-green">{msg}</div>
+              ) : null}
+              {msg !== "" && msg.charAt(0) !== "1" ? (
+                <div className="sch-msg-red">{msg}</div>
+              ) : null}
+              {this.state.addMsg !== "" && msg.charAt(0) === "A" ? (
+                <div className="sch-msg-red">{this.state.addMsg}</div>
+              ) : null}
+              {this.state.addMsg !== "" && msg.charAt(0) !== "A" ? (
+                <div className="sch-msg-green">{this.state.addMsg}</div>
+              ) : null}
+            </span>
+            <SearchConsoleList
+              results={this.state.results}
+              watching={this.state.watching}
+              handleRemoveWatching={this.handleRemoveWatching}
+              handleWatching={this.handleWatching}
+              addMsg={this.state.addMsg}
+            />
           </div>
         </div>
       </div>
