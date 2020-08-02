@@ -16,6 +16,7 @@ class Search extends Component {
     message: "",
     addMsg: "",
     messageTarget: "",
+    isActive: "",
   };
   componentDidMount() {
     fetch("https://backend-final-project.herokuapp.com/api/v1/searches", {
@@ -115,26 +116,30 @@ class Search extends Component {
   };
 
   render() {
-    console.log(this.state.messageTarget);
+    console.log(this.state.isActive);
     const msg = this.state.message;
     const sVal = this.state.message.split("   ");
 
     return (
       <div className="console-wrapper">
-        {/* <SearchConsole
-          items={this.state.items}
-          handleSubmit={this.handleSubmit}
-          watching={this.state.watching}
-          handleRemoveWatching={this.handleRemoveWatching}
-          results={this.state.results}
-        /> */}
         <div className="search-section">
           <div
             className="body-container"
-            style={{ backgroundColor: "#003e74", width: "500px" }}
+            style={{
+              backgroundColor: "#003e74",
+              width: "525px",
+            }}
           >
-            <div className="list-tab">
+            <div className="list-tab-active">
               <span className="list-tab-txt">MASTERLIST</span>
+            </div>
+            <div className="list-tab">
+              <span
+                className="list-tab-txt"
+                onClick={() => this.setState({ isActive: "watchlist" })}
+              >
+                WATCHLIST
+              </span>
             </div>
             {this.state.messageTarget === "masterlist" ? (
               <span className="sch-msg-wrap">
@@ -161,7 +166,7 @@ class Search extends Component {
               items={this.state.items}
             />
           </div>
-          <div className="body-container" style={{ width: "60%" }}>
+          <div className="body-container" style={{ width: "55%" }}>
             {this.state.messageTarget === "search" ? (
               <span className="sch-msg-wrap">
                 {msg !== "" && msg.charAt(0) === "1" ? (

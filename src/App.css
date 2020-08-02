@@ -102,7 +102,7 @@ body {
 }
 .search-content-wrapper {
   overflow-x: scroll;
-  margin: 40px 12px 12px 12px;
+  margin: 30px 12px 24px 16px;
   border-radius: 2px;
   border: 2px inset darkgray;
   width: 475px;
@@ -607,19 +607,36 @@ h3 {
   margin-left: 8px;
   width: 250px;
 }
-.list-tab {
+.list-tab-active {
   width: 100px;
   height: 30px;
   position: absolute;
   background: rgb(0, 62, 116);
   border-radius: 8px 8px 0 0;
   top: -30px;
-  left: 8px;
+  left: 28px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
+.list-tab {
+  width: 100px;
+  height: 30px;
+  position: absolute;
+  background: rgb(0, 62, 116);
+  border-radius: 8px 8px 0 0;
+  top: -31px;
+  left: 130px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid gray;
+  cursor: pointer;
+}
+.list-tab:hover {
+  background-color: #246eaf;
+  border: white;
+}
 /* CONSOLE */
 
 #search-console {
@@ -639,7 +656,10 @@ h3 {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   position: relative;
+  margin-top: 80px;
+  border: 1px solid gray;
 }
 ::-webkit-scrollbar {
   -webkit-appearance: none;
@@ -724,7 +744,7 @@ h3 {
 .sch-msg-red {
   display: flex;
   background-color: #ee6666;
-  width: 70%;
+  width: 460px;
   justify-content: center;
   align-items: center;
   height: 24px;
@@ -734,7 +754,7 @@ h3 {
 .sch-msg-green {
   display: flex;
   background-color: #3abf3ab5;
-  width: 500px;
+  width: 470px;
   justify-content: center;
   align-items: center;
   height: 24px;
@@ -754,7 +774,7 @@ h3 {
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  margin-top: 12px;
+  margin-top: 24px;
 }
 .rot-btn {
   transform: rotate(90deg);
