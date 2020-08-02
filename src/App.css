@@ -587,9 +587,7 @@ h3 {
   flex-direction: column;
   justify-content: flex-end;
 }
-/* input {
-  height: 82.5%;
-} */
+
 .avatar-btn {
   padding-left: 0.5em;
   padding-bottom: 0.5em;
