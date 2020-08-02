@@ -25,7 +25,6 @@ class ConsoleSearchInput extends Component {
     }
   };
   render() {
-    console.log(this.props.watching);
     return (
       <div className="input-s container">
         <form
@@ -42,42 +41,6 @@ class ConsoleSearchInput extends Component {
             placeholder="search your bus"
           />
         </form>
-        <div
-          className="row"
-          style={{
-            width: "100px",
-            justifyContent: "space-between",
-            color: "white",
-            height: "40px",
-          }}
-        >
-          <div>Watchlist</div>
-          <div
-            className="rot-btn row"
-            style={this.state.open ? openWatch : null}
-            onClick={(e) => this.handleOpen(e)}
-          >
-            ⌃
-          </div>
-        </div>
-        {this.state.open ? (
-          <div className="watching-window">
-            {this.props.watching.length === 0 ? (
-              <span className="empty-arr-msg">
-                You aren't currently watching anything. Search then select a
-                ticket to watch down below.
-              </span>
-            ) : (
-              <SearchConsoleList
-                results={this.props.results}
-                items={this.props.items}
-                watching={this.props.watching}
-                handleRemoveWatching={this.props.handleRemoveWatching}
-                open={this.state.open}
-              />
-            )}
-          </div>
-        ) : null}
       </div>
     );
   }

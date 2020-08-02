@@ -3,6 +3,7 @@ import SearchConsole from "./SearchConsole";
 import SearchConsoleList from "./SearchConsoleList";
 import { connect } from "react-redux";
 import withAuth from "../hocs/withAuth";
+import ConsoleSearchInput from "./ConsoleSearchInput";
 
 const uuidv4 = require("uuid/v4");
 
@@ -15,6 +16,8 @@ class Search extends Component {
     results: [],
     message: "",
     addMsg: "",
+    messageTarget: "",
+    isActive: "masterlist",
   };
   componentDidMount() {
     fetch("https://backend-final-project.herokuapp.com/api/v1/searches", {
@@ -85,7 +88,7 @@ class Search extends Component {
     this.setState({ message: message, addMsg: "" });
   };
 
-  handleWatching = (targetValue) => {
+  handleWatching = (targetValue, watchLocation) => {
     const alreadyWatching = [...this.state.watching].filter(
       (value) => value === targetValue
     );
@@ -94,6 +97,7 @@ class Search extends Component {
       this.setState({
         addMsg: addMsg,
         message: "",
+        messageTarget: `${watchLocation}`,
       });
     } else {
       const addMsg = "Successfully added to your watchlist!";
@@ -101,6 +105,7 @@ class Search extends Component {
         watching: [...this.state.watching, targetValue],
         addMsg: addMsg,
         message: "",
+        messageTarget: `${watchLocation}`,
       });
     }
   };
@@ -112,44 +117,127 @@ class Search extends Component {
   };
 
   render() {
-    console.log(this.state.items);
+    console.log(this.state.isActive);
     const msg = this.state.message;
     const sVal = this.state.message.split("   ");
+
     return (
       <div className="console-wrapper">
-        <SearchConsole
-          items={this.state.items}
-          handleSubmit={this.handleSubmit}
-          watching={this.state.watching}
-          handleRemoveWatching={this.handleRemoveWatching}
-          results={this.state.results}
-        />
+        <div className="render-search-console">
+          <ConsoleSearchInput />
+        </div>
+
         <div className="search-section">
-          <div className="sch-msg-wrap">
-            {msg !== "" && msg.charAt(0) === "1" ? (
-              <div className="sch-msg-green">{msg}</div>
+          <div className="body-container" style={{ width: "55%" }}>
+            {this.state.messageTarget === "search" ? (
+              <span className="sch-msg-wrap">
+                {msg !== "" && msg.charAt(0) === "1" ? (
+                  <div className="sch-msg-green">{msg}</div>
+                ) : null}
+                {msg !== "" && msg.charAt(0) !== "1" ? (
+                  <div className="sch-msg-red">{msg}</div>
+                ) : null}
+                {this.state.addMsg !== "" && msg.charAt(0) === "A" ? (
+                  <div className="sch-msg-red">{this.state.addMsg}</div>
+                ) : null}
+                {this.state.addMsg !== "" && msg.charAt(0) !== "A" ? (
+                  <div className="sch-msg-green">{this.state.addMsg}</div>
+                ) : null}
+              </span>
             ) : null}
-            {msg !== "" && msg.charAt(0) !== "1" ? (
-              <div className="sch-msg-red">{msg}</div>
-            ) : null}
-            {this.state.addMsg !== "" && msg.charAt(0) === "A" ? (
-              <div className="sch-msg-red">{this.state.addMsg}</div>
-            ) : null}
-            {this.state.addMsg !== "" && msg.charAt(0) !== "A" ? (
-              <div className="sch-msg-green">{this.state.addMsg}</div>
-            ) : null}
+            <SearchConsoleList
+              results={this.state.results}
+              watching={this.state.watching}
+              handleRemoveWatching={this.handleRemoveWatching}
+              handleWatching={this.handleWatching}
+              addMsg={this.state.addMsg}
+            />
           </div>
-          <SearchConsoleList
-            results={this.state.results}
-            watching={this.state.watching}
-            handleRemoveWatching={this.handleRemoveWatching}
-            handleWatching={this.handleWatching}
-            addMsg={this.state.addMsg}
-          />
-          {/* <SearchList
-            addToWatchlist={this.addToWatchlist}
-            searches={this.state.searches}
-          /> */}
+          <div
+            className="body-container"
+            style={{
+              backgroundColor: "rgb(0, 62, 116, 0.8)",
+              width: "525px",
+            }}
+          >
+            <div
+              className="list-tab-active"
+              style={
+                this.state.isActive === "masterlist"
+                  ? {
+                      backgroundColor: "rgb(0, 62, 116, 0.8)",
+                      borderBottom: "0",
+                    }
+                  : null
+              }
+            >
+              <span
+                className="list-tab-txt"
+                onClick={() => this.setState({ isActive: "masterlist" })}
+              >
+                MASTERLIST
+              </span>
+            </div>
+            <div
+              className="list-tab"
+              style={
+                this.state.isActive === "watchlist"
+                  ? {
+                      backgroundColor: "rgb(0, 62, 116, 0.8)",
+                      borderBottom: "0",
+                    }
+                  : null
+              }
+            >
+              <span
+                className="list-tab-txt"
+                onClick={() => this.setState({ isActive: "watchlist" })}
+              >
+                WATCHLIST
+              </span>
+            </div>
+            {this.state.messageTarget === "masterlist" ? (
+              <span className="sch-msg-wrap">
+                {msg !== "" && msg.charAt(0) === "1" ? (
+                  <div className="sch-msg-green">{msg}</div>
+                ) : null}
+                {msg !== "" && msg.charAt(0) !== "1" ? (
+                  <div className="sch-msg-red">{msg}</div>
+                ) : null}
+                {this.state.addMsg !== "" && msg.charAt(0) === "A" ? (
+                  <div className="sch-msg-red">{this.state.addMsg}</div>
+                ) : null}
+                {this.state.addMsg !== "" && msg.charAt(0) !== "A" ? (
+                  <div className="sch-msg-green">{this.state.addMsg}</div>
+                ) : null}
+              </span>
+            ) : null}
+            {this.state.isActive === "watchlist" ? (
+              <span>
+                {this.state.watching.length === 0 ? (
+                  <span className="empty-arr-msg">
+                    You aren't currently watching anything. Search then select a
+                    ticket to watch down below.
+                  </span>
+                ) : (
+                  <SearchConsoleList
+                    watching={this.state.watching}
+                    handleRemoveWatching={this.handleRemoveWatching}
+                    handleWatching={this.handleWatching}
+                    addMsg={this.state.addMsg}
+                  />
+                )}
+              </span>
+            ) : (
+              <SearchConsoleList
+                watching={this.state.watching}
+                handleRemoveWatching={this.handleRemoveWatching}
+                handleWatching={this.handleWatching}
+                addMsg={this.state.addMsg}
+                items={this.state.items}
+              />
+            )}
+          </div>
         </div>
       </div>
     );

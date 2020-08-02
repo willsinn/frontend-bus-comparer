@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import withAuth from "../hocs/withAuth";
-import { Link } from "react-router-dom";
 
 class Profile extends Component {
   state = {
@@ -118,7 +117,11 @@ class Profile extends Component {
       <div className="profile-page">
         <div
           className="body-container"
-          style={{ width: "60%", flexDirection: "column" }}
+          style={{
+            width: "425px",
+            flexDirection: "column",
+            paddingBottom: "40px",
+          }}
         >
           <div className="avatar-wrapper">
             <div className="avatar-frame">
