@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import withAuth from "../hocs/withAuth";
-import { Link } from "react-router-dom";
 
 class Profile extends Component {
   state = {

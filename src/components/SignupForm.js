@@ -39,7 +39,7 @@ class SignupForm extends Component {
     };
 
     return this.props.loggedIn ? (
-      <Redirect to="/profile" />
+      <Redirect to="/search" />
     ) : (
       <div className="signup-page">
         <div className="form-wrapper">

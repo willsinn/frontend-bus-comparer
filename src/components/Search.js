@@ -125,31 +125,41 @@ class Search extends Component {
           results={this.state.results}
         />
         <div className="search-section">
-          <div className="sch-msg-wrap">
-            {msg !== "" && msg.charAt(0) === "1" ? (
-              <div className="sch-msg-green">{msg}</div>
-            ) : null}
-            {msg !== "" && msg.charAt(0) !== "1" ? (
-              <div className="sch-msg-red">{msg}</div>
-            ) : null}
-            {this.state.addMsg !== "" && msg.charAt(0) === "A" ? (
-              <div className="sch-msg-red">{this.state.addMsg}</div>
-            ) : null}
-            {this.state.addMsg !== "" && msg.charAt(0) !== "A" ? (
-              <div className="sch-msg-green">{this.state.addMsg}</div>
-            ) : null}
+          <div
+            className="body-container"
+            style={{ backgroundColor: "#003e74" }}
+          >
+            <SearchConsoleList
+              watching={this.state.watching}
+              handleRemoveWatching={this.handleRemoveWatching}
+              handleWatching={this.handleWatching}
+              addMsg={this.state.addMsg}
+              items={this.state.items}
+            />
           </div>
-          <SearchConsoleList
-            results={this.state.results}
-            watching={this.state.watching}
-            handleRemoveWatching={this.handleRemoveWatching}
-            handleWatching={this.handleWatching}
-            addMsg={this.state.addMsg}
-          />
-          {/* <SearchList
-            addToWatchlist={this.addToWatchlist}
-            searches={this.state.searches}
-          /> */}
+          <div className="body-container">
+            <div className="sch-msg-wrap">
+              {msg !== "" && msg.charAt(0) === "1" ? (
+                <div className="sch-msg-green">{msg}</div>
+              ) : null}
+              {msg !== "" && msg.charAt(0) !== "1" ? (
+                <div className="sch-msg-red">{msg}</div>
+              ) : null}
+              {this.state.addMsg !== "" && msg.charAt(0) === "A" ? (
+                <div className="sch-msg-red">{this.state.addMsg}</div>
+              ) : null}
+              {this.state.addMsg !== "" && msg.charAt(0) !== "A" ? (
+                <div className="sch-msg-green">{this.state.addMsg}</div>
+              ) : null}
+              <SearchConsoleList
+                results={this.state.results}
+                watching={this.state.watching}
+                handleRemoveWatching={this.handleRemoveWatching}
+                handleWatching={this.handleWatching}
+                addMsg={this.state.addMsg}
+              />
+            </div>
+          </div>
         </div>
       </div>
     );

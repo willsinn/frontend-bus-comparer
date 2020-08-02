@@ -100,16 +100,19 @@ body {
   align-items: center;
   margin-top: -9px;
 }
-
 .search-content-wrapper {
-  width: 75%;
   overflow-x: scroll;
-  margin: 48px 24px;
+  margin: 12px 12px;
   border-radius: 2px;
   border: 2px inset darkgray;
+  width: 100%;
 }
 .search-section {
-  width: 70%;
+  width: 100%;
+  display: flex;
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
 }
 .s-c.sch-cont {
   padding: 1%;
@@ -200,7 +203,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  margin-right: 24px;
+  margin-right: 48px;
 }
 .burger-menu {
   height: 225px;
@@ -613,7 +616,8 @@ h3 {
   box-shadow: 0 1px 0 0 rgba(0, 11, 38, 0.12);
 }
 .body-container {
-  height: 500px;
+  height: 450px;
+  width: 450px;
   border-radius: 3px;
   box-shadow: 0 2px 0.25rem 2px rgba(0, 0, 0, 0.2);
   background-color: white;
@@ -730,9 +734,10 @@ h3 {
 }
 .sch-msg-wrap {
   display: flex;
-  width: 100%;
+  width: 95%;
   align-items: center;
-  height: 48px;
+  flex-direction: column;
+  height: 100%;
   justify-content: center;
   margin-top: 12px;
 }
