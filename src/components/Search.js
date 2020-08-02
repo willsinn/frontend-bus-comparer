@@ -136,20 +136,23 @@ class Search extends Component {
             <div className="list-tab">
               <span className="list-tab-txt">MASTERLIST</span>
             </div>
-            <span className="sch-msg-wrap">
-              {msg !== "" && msg.charAt(0) === "1" ? (
-                <div className="sch-msg-green">{msg}</div>
-              ) : null}
-              {msg !== "" && msg.charAt(0) !== "1" ? (
-                <div className="sch-msg-red">{msg}</div>
-              ) : null}
-              {this.state.addMsg !== "" && msg.charAt(0) === "A" ? (
-                <div className="sch-msg-red">{this.state.addMsg}</div>
-              ) : null}
-              {this.state.addMsg !== "" && msg.charAt(0) !== "A" ? (
-                <div className="sch-msg-green">{this.state.addMsg}</div>
-              ) : null}
-            </span>
+            {this.state.messageTarget === "masterlist" ? (
+              <span className="sch-msg-wrap">
+                {msg !== "" && msg.charAt(0) === "1" ? (
+                  <div className="sch-msg-green">{msg}</div>
+                ) : null}
+                {msg !== "" && msg.charAt(0) !== "1" ? (
+                  <div className="sch-msg-red">{msg}</div>
+                ) : null}
+                {this.state.addMsg !== "" && msg.charAt(0) === "A" ? (
+                  <div className="sch-msg-red">{this.state.addMsg}</div>
+                ) : null}
+                {this.state.addMsg !== "" && msg.charAt(0) !== "A" ? (
+                  <div className="sch-msg-green">{this.state.addMsg}</div>
+                ) : null}
+              </span>
+            ) : null}
+
             <SearchConsoleList
               watching={this.state.watching}
               handleRemoveWatching={this.handleRemoveWatching}
@@ -159,20 +162,22 @@ class Search extends Component {
             />
           </div>
           <div className="body-container" style={{ width: "60%" }}>
-            <span className="sch-msg-wrap">
-              {msg !== "" && msg.charAt(0) === "1" ? (
-                <div className="sch-msg-green">{msg}</div>
-              ) : null}
-              {msg !== "" && msg.charAt(0) !== "1" ? (
-                <div className="sch-msg-red">{msg}</div>
-              ) : null}
-              {this.state.addMsg !== "" && msg.charAt(0) === "A" ? (
-                <div className="sch-msg-red">{this.state.addMsg}</div>
-              ) : null}
-              {this.state.addMsg !== "" && msg.charAt(0) !== "A" ? (
-                <div className="sch-msg-green">{this.state.addMsg}</div>
-              ) : null}
-            </span>
+            {this.state.messageTarget === "search" ? (
+              <span className="sch-msg-wrap">
+                {msg !== "" && msg.charAt(0) === "1" ? (
+                  <div className="sch-msg-green">{msg}</div>
+                ) : null}
+                {msg !== "" && msg.charAt(0) !== "1" ? (
+                  <div className="sch-msg-red">{msg}</div>
+                ) : null}
+                {this.state.addMsg !== "" && msg.charAt(0) === "A" ? (
+                  <div className="sch-msg-red">{this.state.addMsg}</div>
+                ) : null}
+                {this.state.addMsg !== "" && msg.charAt(0) !== "A" ? (
+                  <div className="sch-msg-green">{this.state.addMsg}</div>
+                ) : null}
+              </span>
+            ) : null}
             <SearchConsoleList
               results={this.state.results}
               watching={this.state.watching}
