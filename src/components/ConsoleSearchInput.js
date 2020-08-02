@@ -42,7 +42,7 @@ class ConsoleSearchInput extends Component {
             placeholder="search your bus"
           />
         </form>
-        <div
+        {/* <div
           className="row"
           style={{
             width: "100px",
@@ -77,7 +77,7 @@ class ConsoleSearchInput extends Component {
               />
             )}
           </div>
-        ) : null}
+        ) : null} */}
       </div>
     );
   }
