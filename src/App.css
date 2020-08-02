@@ -430,9 +430,9 @@ h3 {
 }
 .render-search-console {
   width: 100%;
-  background: #003e74;
+  background: white;
   height: 120px;
-  margin-top: 16px;
+  box-shadow: 0 0 0.25rem 2px rgba(0, 0, 0, 0.2);
 }
 .error-render {
   display: flex;
@@ -798,10 +798,11 @@ h3 {
   right: 16px;
 }
 .input-s.container {
-  width: 100%;
+  width: 400px;
   display: flex;
   justify-content: space-around;
   align-items: flex-end;
+  margin-left: 12.5%;
   height: 75%;
   position: relative;
 }

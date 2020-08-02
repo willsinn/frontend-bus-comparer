@@ -123,7 +123,7 @@ class Search extends Component {
 
     return (
       <div className="console-wrapper">
-        <div className="search-console">
+        <div className="render-search-console">
           <ConsoleSearchInput />
         </div>
 

@@ -1,9 +1,9 @@
 input[type="text"] {
-  width: 250px;
+  width: 350px;
   box-sizing: border-box;
   font-size: 14px;
   background-color: white;
   padding: 12px 20px 12px 20px;
-  -webkit-transition: width 0.4s ease-in-out;
   transition: width 0.4s ease-in-out;
+  height: 32px;
 }
