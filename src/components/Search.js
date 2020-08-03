@@ -14,7 +14,7 @@ class Search extends Component {
     watching: [],
     searches: [],
     results: [],
-    message: "",
+    message: "... searching for results  with $11.",
     addMsg: "",
     messageTarget: "",
     isActive: "masterlist",
@@ -128,25 +128,20 @@ class Search extends Component {
         </div>
 
         <div className="search-section">
-          <div className="body-container" style={{ width: "55%" }}>
-            {this.state.messageTarget === "search" ? (
-              <span className="sch-msg-wrap">
-                {msg !== "" && msg.charAt(0) === "1" ? (
-                  <div className="sch-msg-green">{msg}</div>
-                ) : null}
-                {msg !== "" && msg.charAt(0) !== "1" ? (
-                  <div className="sch-msg-red">{msg}</div>
-                ) : null}
-                {this.state.addMsg !== "" && msg.charAt(0) === "A" ? (
-                  <div className="sch-msg-red">{this.state.addMsg}</div>
-                ) : null}
-                {this.state.addMsg !== "" && msg.charAt(0) !== "A" ? (
-                  <div className="sch-msg-green">{this.state.addMsg}</div>
-                ) : null}
-              </span>
-            ) : null}
+          <div
+            className="body-container"
+            style={{
+              width: "40%",
+              display: "flex",
+              alignItems: "center",
+              flexDirection: "column",
+            }}
+          >
+            <span className="sch-msg-wrap">
+              <div className="sch-msg-green">{msg}</div>
+            </span>
             <SearchConsoleList
-              results={this.state.results}
+              items={this.state.items}
               watching={this.state.watching}
               handleRemoveWatching={this.handleRemoveWatching}
               handleWatching={this.handleWatching}
