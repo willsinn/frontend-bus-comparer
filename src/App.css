@@ -224,7 +224,7 @@ body {
 }
 .nav-m-i {
   text-decoration: none;
-  color: black;
+  color: #ebecf0;
   border: 0;
   margin: 0 20px;
   font-weight: 700;
@@ -319,7 +319,9 @@ body {
   text-decoration: none;
   color: inherit;
 }
-
+.btn-wrap {
+  color: white;
+}
 /* Profile */
 .login-signup.input {
   height: 28px;
@@ -398,7 +400,7 @@ hr {
 }
 h3 {
   font-family: "PT Sans Narrow", sans-serif;
-  color: black;
+  color: #ebe5e5;
 }
 .profile-page {
   display: flex;
@@ -646,7 +648,7 @@ h3 {
   box-shadow: 0 1px 0 0 rgba(0, 11, 38, 0.12);
 }
 .body-container {
-  height: 450px;
+  height: 600px;
   width: 600px;
   border-radius: 3px;
   box-shadow: 0 2px 0.25rem 2px rgba(0, 0, 0, 0.2);
@@ -656,7 +658,7 @@ h3 {
   justify-content: center;
   align-items: center;
   position: relative;
-  margin-top: 80px;
+  margin-top: 40px;
   border: 1px solid gray;
 }
 ::-webkit-scrollbar {
