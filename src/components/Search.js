@@ -4,6 +4,7 @@ import SearchConsoleList from "./SearchConsoleList";
 import { connect } from "react-redux";
 import withAuth from "../hocs/withAuth";
 import ConsoleSearchInput from "./ConsoleSearchInput";
+import { fetchUrl } from "../urls.js";
 
 const uuidv4 = require("uuid/v4");
 
@@ -20,7 +21,7 @@ class Search extends Component {
     isActive: "masterlist",
   };
   componentDidMount() {
-    fetch("https://backend-final-project.herokuapp.com/api/v1/searches", {
+    fetch(`${fetchUrl}/api/v1/searches`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${localStorage.jwt}`,
@@ -30,7 +31,7 @@ class Search extends Component {
       .then((searches) => {
         this.setState({ searches: searches });
       });
-    fetch("https://backend-final-project.herokuapp.com/api/v1/items", {
+    fetch(`${fetchUrl}/api/v1/items`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${localStorage.jwt}`,

@@ -1,7 +1,8 @@
+import { fetchUrl } from "../urls.js";
 export const loginUser = (username, password) => {
   return (dispatch) => {
     dispatch({ type: "AUTHENTICATING_USER" });
-    fetch("https://backend-final-project.herokuapp.com/api/v1/login", {
+    fetch(`${fetchUrl}/api/v1/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -38,7 +39,7 @@ export const fetchCurrentUser = () => {
   // takes the token in localStorage and finds out who it belongs to
   return (dispatch) => {
     dispatch(authenticatingUser()); //tells the app we are fetching
-    fetch("https://backend-final-project.herokuapp.com/api/v1/profile", {
+    fetch(`${fetchUrl}/api/v1/profile`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("jwt")}`,
@@ -52,7 +53,7 @@ export const fetchCurrentUser = () => {
 export const setUpUser = (user) => {
   return (dispatch) => {
     dispatch({ type: "AUTHENTICATING_USER" });
-    fetch("https://backend-final-project.herokuapp.com/api/v1/users", {
+    fetch(`${fetchUrl}/api/v1/users`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
