@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import withAuth from "../hocs/withAuth";
+import { fetchUrl } from "../urls.js";
 
 class Profile extends Component {
   state = {
@@ -83,18 +84,15 @@ class Profile extends Component {
     const editType = `edit${
       type[0].charAt(0).toUpperCase() + type[0].slice(1)
     }`;
-    fetch(
-      `https://backend-final-project.herokuapp.com/api/v1/users/${this.props.id}`,
-      {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          Authorization: `Bearer ${localStorage.getItem("jwt")}`,
-        },
-        body: JSON.stringify(body),
-      }
-    )
+    fetch(`${fetchUrl}/api/v1/users/${this.props.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      },
+      body: JSON.stringify(body),
+    })
       .then((r) => r.json())
       .then((updatedUser) => {
         console.log(updatedUser);

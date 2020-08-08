@@ -1,32 +1,30 @@
 import React from "react";
 import Greyhound from "../images/greyhound.jpg";
+import { fetchUrl } from "../urls.js";
 
 const SearchConsoleItem = (props) => {
   const weekday = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
   const item = props.item;
   const fetchPostWatching = (item) => {
     console.log(item);
-    return fetch(
-      "https://backend-final-project.herokuapp.com/api/v1/favorites",
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("jwt")}`,
-        },
-        body: {
-          user_id: props.userId,
-          price: item.price,
-          time: item.time,
-          pickup_from: item.pickup_from,
-          purchase_url: item.purchase_url,
-          company: props.search.company,
-          start_from: props.search.start_from,
-          to_destination: props.search.to_destination,
-          date: props.search.date,
-          purchased: false,
-        },
-      }
-    );
+    return fetch(`${fetchUrl}/api/v1/favorites`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      },
+      body: {
+        user_id: props.userId,
+        price: item.price,
+        time: item.time,
+        pickup_from: item.pickup_from,
+        purchase_url: item.purchase_url,
+        company: props.search.company,
+        start_from: props.search.start_from,
+        to_destination: props.search.to_destination,
+        date: props.search.date,
+        purchased: false,
+      },
+    });
   };
   const renderBusIcon = () => {
     switch (item.search.company) {
