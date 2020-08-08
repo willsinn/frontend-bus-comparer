@@ -681,6 +681,23 @@ h3 {
   position: absolute;
   left: 6px;
 }
+.logo-icon {
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 36px;
+  width: 36px;
+  margin-right: 4px;
+}
+.login-logo {
+  position: absolute;
+  top: 0;
+  right: 25%;
+  left: 25%;
+}
+.login-logo h3 {
+  color: #005580;
+}
 .console-item {
   position: relative;
   height: 48px;

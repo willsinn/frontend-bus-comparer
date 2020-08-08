@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
 import "../styles/nav.css";
+import Logo from "../images/appicon.png";
 
 const Nav = ({ user, location: { pathname } }) => {
   const handleLogoutClick = (e) => {
@@ -17,7 +18,10 @@ const Nav = ({ user, location: { pathname } }) => {
       {user === null ? null : (
         <div className="navbar">
           <div className="left-nav btn-wrap">
-            <h3>Bus Comparer</h3>
+            <h3>
+              <img src={Logo} alt="" className="logo-icon" />
+              Bus Comparer
+            </h3>
           </div>
           <div className="right-nav btn-wrap">
             <Link
