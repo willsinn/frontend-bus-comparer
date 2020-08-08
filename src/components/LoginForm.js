@@ -4,6 +4,8 @@ import { withRouter, Redirect } from "react-router";
 import { loginUser } from "../actions/user";
 import { Link } from "react-router-dom";
 import { Form, Segment } from "semantic-ui-react";
+import Logo from "../images/appicon.png";
+
 // import { bindActionCreators } from 'redux'
 
 class LoginForm extends React.Component {
@@ -30,6 +32,12 @@ class LoginForm extends React.Component {
       <div className="login-page">
         <div className="form-wrapper">
           <div className="form-box">
+            <div className="login-logo">
+              <h3>
+                <img src={Logo} alt="" className="logo-icon" />
+                Bus Comparer
+              </h3>
+            </div>
             {this.props.failedLogin ? (
               <div
                 className="sch-msg-red"

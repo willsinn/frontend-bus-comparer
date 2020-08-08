@@ -4,6 +4,7 @@ import { setUpUser } from "../actions/user";
 import { Redirect } from "react-router";
 import { Link } from "react-router-dom";
 import { Form } from "semantic-ui-react";
+import Logo from "../images/appicon.png";
 
 class SignupForm extends Component {
   state = {
@@ -44,6 +45,12 @@ class SignupForm extends Component {
       <div className="signup-page">
         <div className="form-wrapper">
           <div className="form-box" style={{ height: "225px" }}>
+            <div className="login-logo">
+              <h3>
+                <img src={Logo} alt="" className="logo-icon" />
+                Bus Comparer
+              </h3>
+            </div>
             {this.state.error ? (
               <div
                 className="sch-msg-red"
