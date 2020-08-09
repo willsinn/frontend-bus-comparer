@@ -1,1 +1,1 @@
-export const fetchUrl = "http://54.83.167.110:3000";
+export const fetchUrl = "https://backend-final-project.herokuapp.com";
